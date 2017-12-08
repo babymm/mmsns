@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mmsns-action" />
+        <module name="mmsns-article" />
+        <module name="mmsns-group" />
+        <module name="mmsns-news" />
+        <module name="mmsns-picture" />
+        <module name="mmsns-web-manager" />
+        <module name="mmsns-web-portal" />
+        <module name="mmsns-web-root" />
+        <module name="mmsns-weibo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mmsns" target="1.8" />
+      <module name="mmsns-action" target="1.8" />
+      <module name="mmsns-article" target="1.8" />
+      <module name="mmsns-group" target="1.8" />
+      <module name="mmsns-news" target="1.8" />
+      <module name="mmsns-picture" target="1.8" />
+      <module name="mmsns-web" target="1.8" />
+      <module name="mmsns-web-manager" target="1.8" />
+      <module name="mmsns-web-portal" target="1.8" />
+      <module name="mmsns-web-root" target="1.8" />
+      <module name="mmsns-weibo" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

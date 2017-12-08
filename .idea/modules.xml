@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mmsns.iml" filepath="$PROJECT_DIR$/mmsns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-action/mmsns-action.iml" filepath="$PROJECT_DIR$/mmsns-action/mmsns-action.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-article/mmsns-article.iml" filepath="$PROJECT_DIR$/mmsns-article/mmsns-article.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-group/mmsns-group.iml" filepath="$PROJECT_DIR$/mmsns-group/mmsns-group.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-news/mmsns-news.iml" filepath="$PROJECT_DIR$/mmsns-news/mmsns-news.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-picture/mmsns-picture.iml" filepath="$PROJECT_DIR$/mmsns-picture/mmsns-picture.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-web/mmsns-web.iml" filepath="$PROJECT_DIR$/mmsns-web/mmsns-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-web/mmsns-web-manager/mmsns-web-manager.iml" filepath="$PROJECT_DIR$/mmsns-web/mmsns-web-manager/mmsns-web-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-web/mmsns-web-portal/mmsns-web-portal.iml" filepath="$PROJECT_DIR$/mmsns-web/mmsns-web-portal/mmsns-web-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-web/mmsns-web-root/mmsns-web-root.iml" filepath="$PROJECT_DIR$/mmsns-web/mmsns-web-root/mmsns-web-root.iml" />
+    </modules>
+  </component>
+</project>

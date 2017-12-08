@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="mmsns-web-root:war">
+    <output-path>$PROJECT_DIR$/mmsns-web/mmsns-web-root/target</output-path>
+    <root id="archive" name="mmsns-web-root.war">
+      <element id="artifact" artifact-name="mmsns-web-root:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="mmsns-web-manager:war exploded">
+    <output-path>$PROJECT_DIR$/mmsns-web/mmsns-web-manager/target/mmsns-web-manager</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="mmsns-web-manager" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/mmsns-web/mmsns-web-manager/target/mmsns-web-manager/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="mmsns-web-manager/web/Web" />
+    </root>
+  </artifact>
+</component>
