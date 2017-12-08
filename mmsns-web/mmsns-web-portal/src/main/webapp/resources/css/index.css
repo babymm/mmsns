@@ -150,16 +150,21 @@ body {
     width: 100%;
     min-width: 1000px;
     height: 80px;
-    background-color: #393D49;
+    background-color: #24292f;
     color: #fff;
 }
 .mmsns-footer .footer-copyright{
     line-height: 26px;
-    margin-top: 20px;
-    color:#878B91;
-}
-.mmsns-footer .footer-beian{
-    line-height: 26px;
     margin-top: 0px;
     color:#878B91;
+}
+.mmsns-footer .footer-about{
+    line-height: 26px;
+    margin-top: 10px;
+    color:#878B91;
+}
+.mmsns-footer .footer-about a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #878B91;
 }
