@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>baby慕慕SNS个人博客管理系统-首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/css/index.css">
+</head>
+<body>
+#parse("./header.vm")
+<div class="mmsns-cursor layui-carousel" id="mmsnsCursor" lay-filter="mmsnsCursorFilter">
+    <div carousel-item="">
+        <div><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%"></div>
+        <div><img src="http://www.jeesns.cn/res/front/images/banner2.png" width="100%"></div>
+        <div><img src="http://www.jeesns.cn/res/front/images/banner3.png" width="100%"></div>
+    </div>
+</div>
+<div class="mmsns-article">
+    <div class="article-header">
+        精彩文章
+        <span><a>阅读更多</a></span>
+    </div>
+    <div class="article-body">
+        <div class="layui-row">
+            <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
+                <div class="grid-demo grid-demo-bg1">
+                    <div class="article-logo">
+                        <a href="index.vm"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%"
+                                                  height="200px;"></a>
+                    </div>
+                    <div class="article-title">
+                        <h4><a>当福利变成暴力，携程你还能走多远</a></h4>
+                    </div>
+                    <div class="article-media">
+                        <a><i class="layui-icon" style="font-size: 15px; color: #1E9FFF;">&#xe63a;</i><b>12</b></a>
+                        <span>2017-12-07</span>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
+                <div class="grid-demo">
+                    <div class="article-logo">
+                        <a href="index.vm"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%"
+                                                  height="200px;"></a>
+                    </div>
+                    <div class="article-title">
+                        <h4><a>当福利变成暴力，携程你还能走多远</a></h4>
+                    </div>
+                    <div class="article-media">
+                        <a><i class="layui-icon" style="font-size: 15px; color: #1E9FFF;">&#xe63a;</i><b>12</b></a>
+                        <span>2017-12-07</span>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
+                <div class="grid-demo grid-demo-bg1">
+                    <div class="article-logo">
+                        <a href="index.vm"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%"
+                                                  height="200px;"></a>
+                    </div>
+                    <div class="article-title">
+                        <h4><a>当福利变成暴力，携程你还能走多远</a></h4>
+                    </div>
+                    <div class="article-media">
+                        <a><i class="layui-icon" style="font-size: 15px; color: #1E9FFF;">&#xe63a;</i><b>12</b></a>
+                        <span>2017-12-07</span>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
+                <div class="grid-demo">
+                    <div class="article-logo">
+                        <a href="index.vm"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%"
+                                                  height="200px;"></a>
+                    </div>
+                    <div class="article-title">
+                        <h4><a>当福利变成暴力，携程你还能走多远</a></h4>
+                    </div>
+                    <div class="article-media">
+                        <a><i class="layui-icon" style="font-size: 15px; color: #1E9FFF;">&#xe63a;</i><b>12</b></a>
+                        <span>2017-12-07</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mmsns-action">
+    <div class="action-header">
+        热门动弹
+        <span><a>阅读更多</a></span>
+    </div>
+    <div class="action-body">
+        <ul>
+            <li>
+                <div class="action-content">
+                    <a>民生8号-独山私募投资基金管理计划第十四期成立公告</a>
+                </div>
+                <div class="action-media">73阅/0评/1赞 2017-12-07</div>
+            </li>
+            <li>
+                <div class="action-content">
+                    <a>民生8号-独山私募投资基金管理计划第十四期成立公告</a>
+                </div>
+                <div class="action-media">73阅/0评/1赞 2017-12-07</div>
+            </li>
+            <li>
+                <div class="action-content">
+                    <a>民生8号-独山私募投资基金管理计划第十四期成立公告</a>
+                </div>
+                <div class="action-media">73阅/0评/1赞 2017-12-07</div>
+            </li>
+            <li>
+                <div class="action-content">
+                    <a>民生8号-独山私募投资基金管理计划第十四期成立公告</a>
+                </div>
+                <div class="action-media">73阅/0评/1赞 2017-12-07</div>
+            </li>
+            <li>
+                <div class="action-content">
+                    <a>民生8号-独山私募投资基金管理计划第十四期成立公告</a>
+                </div>
+                <div class="action-media">73阅/0评/1赞 2017-12-07</div>
+            </li>
+            <li>
+                <div class="action-content">
+                    <a>民生8号-独山私募投资基金管理计划第十四期成立公告</a>
+                </div>
+                <div class="action-media">73阅/0评/1赞 2017-12-07</div>
+            </li>
+            <li>
+                <div class="action-content">
+                    <a>民生8号-独山私募投资基金管理计划第十四期成立公告</a>
+                </div>
+                <div class="action-media">73阅/0评/1赞 2017-12-07</div>
+            </li>
+            <li>
+                <div class="action-content">
+                    <a>民生8号-独山私募投资基金管理计划第十四期成立公告</a>
+                </div>
+                <div class="action-media">73阅/0评/1赞 2017-12-07</div>
+            </li>
+            <li>
+                <div class="action-content">
+                    <a>民生8号-独山私募投资基金管理计划第十四期成立公告</a>
+                </div>
+                <div class="action-media">73阅/0评/1赞 2017-12-07</div>
+            </li>
+            <li>
+                <div class="action-content">
+                    <a>民生8号-独山私募投资基金管理计划第十四期成立公告</a>
+                </div>
+                <div class="action-media">73阅/0评/1赞 2017-12-07</div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="mmsns-group">
+    <div class="group-header">
+        推荐群组
+        <span><a>阅读更多</a></span>
+    </div>
+    <div class="group-body">
+        <div class="layui-row">
+            <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
+                <div class="grid-demo grid-demo-bg1">
+                    <div class="group-logo">
+                        <a href="index.vm"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="90%"
+                                                  height="200px;"></a>
+                    </div>
+                    <div class="group-name">
+                        <h4><a>javascript</a></h4>
+                    </div>
+                    <div class="group-media">
+                        <span>1 篇文章</span>
+                        <span>10 人关注</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+#parse("./footer.vm")
+</body>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    var clientWidth = document.documentElement.body, mmsnsCursor = null;
+    window.onresize = function () {
+        clientWidth = document.body.clientWidth;
+        var options = {width: clientWidth};
+        mmsnsCursor.reload(options);
+    }
+    layui.use(['element', 'carousel'], function () {
+        var element = layui.element, carousel = layui.carousel;
+        mmsnsCursor = carousel.render({
+            elem: '#mmsnsCursor'
+            , interval: 1800
+            , width: clientWidth + 'px'
+            , anim: 'fade'
+            , height: '400px'
+        });
+    });
+</script>
+</html>

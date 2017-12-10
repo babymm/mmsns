@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>baby慕慕SNS个人博客管理系统-固定底部</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/css/index.css">
+</head>
+<body>
+<div class="mmsns-footer">
+    <div>
+        <p class="footer-about" align="center">
+            <a href="">关于我们</a> <span>|</span>  <a href="">联系我们</a> <span>|</span>  <a href="">付款方式</a> <span>|</span>  <a href="">提交工单</a> <span>|</span>  <a href="">常见问题</a>
+        </p>
+        <p class="footer-copyright" align="center">
+            Copyright © 2007-2017. baby慕慕科技有限公司 版权所有 Power by Mereca  鄂ICP备14007080号-1
+        </p>
+    </div>
+</div>
+</body>
+</html>

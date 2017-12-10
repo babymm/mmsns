@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>baby慕慕SNS个人博客管理系统-固定顶部</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/css/index.css">
+</head>
+<body>
+<div class="mmsns-nav">
+    <div class="nav-logo">
+        <a href="index.vm"><img src="http://img.logonc.com/d/file/logo/20171122/3d4c440981a30b5cc7f88d3558da3f83.jpg"  width="150px" height="60px"></a>
+    </div>
+    <ul class="nav-content layui-nav">
+        #if($mainModular=='article')
+            <li class="layui-nav-item"><a href="">首页</a></li>
+            <li class="layui-nav-item layui-this"><a href="">文章</a></li>
+            <li class="layui-nav-item"><a href="">动弹</a></li>
+            <li class="layui-nav-item"><a href="">群组</a></li>
+            <li class="layui-nav-item"><a href="">资讯</a></li>
+            <li class="layui-nav-item"><a href="">图片</a></li>
+            <li class="layui-nav-item"><a href="">文档</a></li>
+        #elseif($mainModular=='action')
+            <li class="layui-nav-item"><a href="">首页</a></li>
+            <li class="layui-nav-item"><a href="">文章</a></li>
+            <li class="layui-nav-item layui-this"><a href="">动弹</a></li>
+            <li class="layui-nav-item"><a href="">群组</a></li>
+            <li class="layui-nav-item"><a href="">资讯</a></li>
+            <li class="layui-nav-item"><a href="">图片</a></li>
+            <li class="layui-nav-item"><a href="">文档</a></li>
+        #elseif($mainModular=='group')
+            <li class="layui-nav-item"><a href="">首页</a></li>
+            <li class="layui-nav-item"><a href="">文章</a></li>
+            <li class="layui-nav-item"><a href="">动弹</a></li>
+            <li class="layui-nav-item layui-this"><a href="">群组</a></li>
+            <li class="layui-nav-item"><a href="">资讯</a></li>
+            <li class="layui-nav-item"><a href="">图片</a></li>
+            <li class="layui-nav-item"><a href="">文档</a></li>
+        #elseif($mainModular=='news')
+            <li class="layui-nav-item"><a href="">首页</a></li>
+            <li class="layui-nav-item"><a href="">文章</a></li>
+            <li class="layui-nav-item"><a href="">动弹</a></li>
+            <li class="layui-nav-item"><a href="">群组</a></li>
+            <li class="layui-nav-item layui-this"><a href="">资讯</a></li>
+            <li class="layui-nav-item"><a href="">图片</a></li>
+            <li class="layui-nav-item"><a href="">文档</a></li>
+        #elseif($mainModular=='photo')
+            <li class="layui-nav-item"><a href="">首页</a></li>
+            <li class="layui-nav-item"><a href="">文章</a></li>
+            <li class="layui-nav-item"><a href="">动弹</a></li>
+            <li class="layui-nav-item"><a href="">群组</a></li>
+            <li class="layui-nav-item"><a href="">资讯</a></li>
+            <li class="layui-nav-item layui-this"><a href="">图片</a></li>
+            <li class="layui-nav-item"><a href="">文档</a></li>
+        #elseif($mainModular=='doc')
+            <li class="layui-nav-item"><a href="">首页</a></li>
+            <li class="layui-nav-item"><a href="">文章</a></li>
+            <li class="layui-nav-item"><a href="">动弹</a></li>
+            <li class="layui-nav-item"><a href="">群组</a></li>
+            <li class="layui-nav-item"><a href="">资讯</a></li>
+            <li class="layui-nav-item"><a href="">图片</a></li>
+            <li class="layui-nav-item layui-this"><a href="">文档</a></li>
+        #else
+            <li class="layui-nav-item layui-this"><a href="">首页</a></li>
+            <li class="layui-nav-item"><a href="">文章</a></li>
+            <li class="layui-nav-item"><a href="">动弹</a></li>
+            <li class="layui-nav-item"><a href="">群组</a></li>
+            <li class="layui-nav-item"><a href="">资讯</a></li>
+            <li class="layui-nav-item"><a href="">图片</a></li>
+            <li class="layui-nav-item"><a href="">文档</a></li>
+        #end
+    </ul>
+    <ul class="nav-button layui-nav">
+        #if(!$shiro.isUser())
+            <li class="layui-nav-item"><a href="">我的消息</a></li>
+            <li class="layui-nav-item"><a href="">我的空间</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">baby慕慕</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;">修改信息</a></dd>
+                    <dd><a href="javascript:;">安全管理</a></dd>
+                    <dd><a href="javascript:;">退出登录</a></dd>
+                </dl>
+            </li>
+        #else
+            <li class="layui-nav-item"><a href="">登录</a></li>
+            <li class="layui-nav-item"><a href="">注册</a></li>
+        #end
+    </ul>
+</div>
+</body>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+</html>

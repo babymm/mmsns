@@ -5,16 +5,16 @@ body {
 
 .mmsns-nav {
     width: 100%;
-    min-width: 1000px;
+    min-width: 1100px;
     height: 60px;
     background-color: #393D49;
     color: #fff;
 }
 
 .mmsns-nav .nav-logo {
-    width: 15%;
+    width: 200px;
     float: left;
-    min-width: 60px;
+    min-width: 200px;
     padding-right: 0px;
 }
 
@@ -31,9 +31,10 @@ body {
 }
 
 .mmsns-nav .nav-button {
+    padding: 0px;
     float: right;
-    width: 250px;
-    min-width: 250px;
+    width: 300px;
+    min-width: 300px;
 }
 
 .mmsns-cursor {

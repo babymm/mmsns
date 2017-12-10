@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>baby慕慕SNS个人博客管理系统-文章</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/css/article/acticle.css">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+#parse("/header.vm")
+<div class="article-search">
+    <div class="search-logo">
+        <a href="/article" style="display:inline-block;margin-top: 15px;color: #393D49">
+            #*<img src="${request.getContextPath()}/resources/img/article_logo.png" alt="我的文章" width="200px" height="60px">*#
+            <h1>我的文章</h1>
+        </a>
+    </div>
+    <div class="search-input">
+        <form id="searchForm" action="" class="box vertical sec-search" autocomplete="off">
+            <input type="hidden" name="scope" value="blog">
+            <input class="search-text" type="text" name="q" placeholder="请输入搜索内容">
+            <span class="ic-search box vertical" onclick=""></span>
+        </form>
+    </div>
+</div>
+<div class="article-body">
+    <div class="body-content">
+        <div class="content-best">
+            <div class="content-header">
+                <h3>精彩文章</h3>
+            </div>
+            <div class="layui-row">
+                #set($rows=[0 .. 3])
+                #foreach($row in $rows)
+                    <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
+                        <div class="grid-demo grid-demo-bg1">
+                            <div class="article-logo">
+                                <a href="/article/detail/1"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%" height="200px;"></a>
+                            </div>
+                            <div class="article-title">
+                                <h4><a>当福利变成暴力，携程你还能走多远</a></h4>
+                            </div>
+                            <div class="article-media">
+                                <a class="user" href="/article" target="_blank" tabindex="-1">
+                                    <img class="article-person" href="https://static.oschina.net/uploads/user/1832/3665821_50.jpeg?t=1509784085000">
+                                    <span>baby慕慕</span>
+                                </a>
+                                <span class="message">2</span>
+                            </div>
+                        </div>
+                    </div>
+                #end
+            </div>
+        </div>
+        <div class="content-nav">
+            <ul class="layui-nav">
+                <li class="layui-nav-item"><a href=""><h1>最新推荐</h1></a></li>
+                <li class="layui-nav-item"><a href=""><h1>今日热门</h1></a></li>
+                <li class="layui-nav-item"><a href=""><h1>本周热门</h1></a></li>
+                <li class="layui-nav-item"><a href=""><h1>本周热门</h1></a></li>
+                <li class="layui-nav-item"><a href=""><h1>每日一博</h1></a></li>
+                <li class="layui-nav-item"><a href=""><h1>最新文章</h1></a></li>
+            </ul>
+        </div>
+        <div class="article-list">
+            #set($lists=[0 .. 9])
+            #foreach($list in $lists)
+                <div class="article-list-item">
+                    <div class="header">
+                        <a href="/"><img src="https://static.oschina.net/uploads/user/1202/2404202_50.jpeg?t=1483522883000" width="60px" height="60px" style="float: right;"></a>
+                    </div>
+                    <div class="content">
+                        <span><a href="/article/detail/1"><h2>xxx is not in the sudoers file 原</h2></a></span>
+                        <span class="contents"><code>问题 无法使用sudo指令 1. 查找sudoers位置（默认会在/etc/sudoers) [tianshl@tianshl ~]# whereis sudoers sudoers: /etc/sudoers /etc/sudoers.bak /usr/share/man/man5/sudoers.5.gz 2. 切换到root</code> </span>
+                        <span class="publish">tianshl 发布于 1个月前 阅读 214084 点赞 1</span>
+                    </div>
+                </div>
+            #end
+        </div>
+    </div>
+    <div class="body-cateory">
+        <div class="category-classify">
+            <ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline">
+                #set($classifys=['全部','JAVA开发','大数据hadoop',"数据库","NOSQL数据库","云计算","服务端开发"])
+                #foreach($classify in $classifys)
+                    <li class="layui-nav-item">
+                        <a href="">
+                            <i class="fa fa-bars" style="float: left;margin-top: 15px;margin-right: 5px;"></i>
+                            <h1 style="margin-top: 15px;">$classify</h1>
+                        </a>
+                    </li>
+                #end
+            </ul>
+        </div>
+        <div class="category-polular">
+            <h3 style="font-size: 1.125rem;font-weight: 400;line-height: 38px;color: #6a6a6a;box-shadow: inset 0 -1px 0 0 #ddd;">最受欢迎</h3>
+            <hr width="100%" color="red" style="margin: 0px;">
+            <ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" style="margin-top: 15px;">
+                #set($classifys=['baby慕慕','小墨科技','lovecws',"爱你一万年","万精油","爱爱爱爱啊","ksksksksk"])
+                #foreach($classify in $classifys)
+                    <li class="layui-nav-item" style="height: 60px;">
+                        <a href="">
+                            <img src="https://static.oschina.net/uploads/user/1202/2404202_50.jpeg?t=1483522883000" style="float: left;margin-top: 2px;margin-right: 5px;">
+                            <h1 style="margin-top: 5px;margin-bottom: 0px;">$classify</h1>
+                            <span style="float: left;height: 30px;text-align: center;margin-top: -8px;">程序员</span>
+                        </a>
+                    </li>
+                #end
+            </ul>
+        </div>
+        <div class="category-recommend">
+            <h3 style="font-size: 1.125rem;font-weight: 400;line-height: 38px;color: #6a6a6a;box-shadow: inset 0 -1px 0 0 #ddd;">推荐博主</h3>
+            <hr width="100%" color="red" style="margin: 0px;">
+            <ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" style="margin-top: 15px;">
+                #set($classifys=['baby慕慕','小墨科技','lovecws',"爱你一万年","万精油","爱爱爱爱啊","ksksksksk"])
+                #foreach($classify in $classifys)
+                    <li class="layui-nav-item" style="height: 60px;">
+                        <a href="">
+                            <img src="https://static.oschina.net/uploads/user/1202/2404202_50.jpeg?t=1483522883000" style="float: left;margin-top: 2px;margin-right: 5px;">
+                            <h1 style="margin-top: 5px;margin-bottom: 0px;">$classify</h1>
+                            <span style="float: left;height: 30px;text-align: center;margin-top: -8px;">程序员</span>
+                        </a>
+                    </li>
+                #end
+            </ul>
+        </div>
+        <div class="category-bounty">
+            <h3 style="font-size: 1.125rem;font-weight: 400;line-height: 38px;color: #6a6a6a;box-shadow: inset 0 -1px 0 0 #ddd;">赏金榜单</h3>
+            <hr width="100%" color="red" style="margin: 0px;">
+            <ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" style="margin-top: 15px;">
+                #set($classifys=['baby慕慕','小墨科技','lovecws',"爱你一万年","万精油","爱爱爱爱啊","ksksksksk"])
+                #foreach($classify in $classifys)
+                    <li class="layui-nav-item" style="height: 60px;">
+                        <a href="">
+                            <img src="https://static.oschina.net/uploads/user/1202/2404202_50.jpeg?t=1483522883000" style="float: left;margin-top: 2px;margin-right: 5px;">
+                            <h1 style="margin-top: 5px;margin-bottom: 0px;">$classify</h1>
+                            <span style="float: left;height: 30px;text-align: center;margin-top: -8px;">程序员</span>
+                        </a>
+                    </li>
+                #end
+            </ul>
+        </div>
+    </div>
+</div>
+#parse("/footer.vm")
+</body>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element'], function () {
+        var element = layui.element;
+    });
+</script>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>baby慕慕SNS个人博客管理系统-新闻资讯</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/css/news/news.css">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+#parse("/header.vm")
+<div class="news-search">
+    <div class="search-logo">
+        <a href="/action" style="display:inline-block;margin-top: 15px;color: #393D49">
+            <h1>我的资讯</h1>
+        </a>
+    </div>
+    <div class="search-input">
+        <form id="searchForm" action="" class="box vertical sec-search" autocomplete="off">
+            <input type="hidden" name="scope" value="blog">
+            <input class="search-text" type="text" name="q" placeholder="请输入搜索内容">
+            <span class="ic-search box vertical" onclick=""></span>
+        </form>
+    </div>
+</div>
+<div class="news-body">
+    <div class="news-content">
+        <div class="layui-row">
+            #set($newss=[0 .. 8])
+            #foreach($news in $newss)
+                <div class="maincontent layui-col-xs12 layui-col-sm6 layui-col-md6">
+                    <div class="grid-demo">
+                        <div class="news-header">
+                            <h2>JAVA工程师</h2>
+                            <a href="/news/detail/1" style="margin-right: 20px">更多</a>
+                        </div>
+                        <div class="news-article1">
+                            <div class="news-image"><a href="/news/detail/1"><img src="http://www.xiaomoc.top/group1/M00/00/02/eE0NXVkjpJeAVYsGAAGfKZ7BqmE159.png" width="180" height="120"></a></div>
+                            <div class="news-content">
+                                <a href="/news/detail/1">
+                                    <span><h3 style="margin-right: 20px">千万富翁当共享单车维运工 中国富豪退休</h3></span>
+                                    <span style="margin-top: 3px;margin-right: 20px">退休富豪们，也该学习这种士绅精神。走出对财富的痴迷、走出无所事事，做慈善、参与公共事务，履行精英群体该负担的社会义务。</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="news-article">
+                            <a href="/news/detail/1">
+                                <span class="artilce-title"><h3>千万富翁当共享单车维运工 中国富豪退休</h3></span>
+                                <span class="article-date" style="margin-right: 20px">2017-12-12</span>
+                            </a>
+                        </div>
+                        <div class="news-article">
+                            <a href="/news/detail/1">
+                                <span class="artilce-title"><h3>千万富翁当共享单车维运工 中国富豪退休</h3></span>
+                                <span class="article-date" style="margin-right: 20px">2017-12-12</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            #end
+        </div>
+    </div>
+    <div class="news-category">
+        <div class="news-recommend">
+            <h2>新闻推荐</h2>
+            <ul>
+                #set($recommendnews=[0 .. 9])
+                #foreach($recommendnew in $recommendnews)
+                    <li>
+                        <div class="news-title"><a href="/news/detail/1"><h3>千万富翁当共享单车维运工 中国富豪退休</h3></a></div>
+                        <div class="news-media">阅读 214084 点赞 1</div>
+                    </li>
+                #end
+            </ul>
+        </div>
+        <div class="news-hot">
+            <h2>热门新闻</h2>
+            <ul>
+                #set($hotnews=[0 .. 9])
+                #foreach($hotnew in $hotnews)
+                    <li>
+                        <div class="news-title"><a href="/news/detail/1"><h3>千万富翁当共享单车维运工 中国富豪退休</h3></a></div>
+                        <div class="news-media">阅读 214084 点赞 1</div>
+                    </li>
+                #end
+            </ul>
+        </div>
+    </div>
+</div>
+#parse("/footer.vm")
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element'], function () {
+        var element = layui.element;
+    });
+</script>
+</body>
+</html>

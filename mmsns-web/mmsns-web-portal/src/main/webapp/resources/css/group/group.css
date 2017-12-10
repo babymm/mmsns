@@ -1,0 +1,131 @@
+.group-search{
+    float: left;
+    width: 100%;
+    height: 70px;
+    background-color:aliceblue;
+    min-width: 1100px;
+    margin: 0px;
+    padding:0px;
+}
+.group-search .search-logo{
+    width: 70%;
+    height: 60px;
+    text-align: left;
+    margin-left: 30px;
+    float: left;
+}
+.group-search .search-input{
+    width: 250px;
+    height: 40px;
+    float: left;
+    margin-top: 20px;
+}
+.group-search .search-input .sec-search{
+    position: relative;
+    margin: 0;
+}
+.group-search .search-input .sec-search .search-text{
+    font-size: .875rem;
+    width: 200px;
+    height: 30px;
+    padding: 0 50px 0 14px;
+    -webkit-transition: -webkit-box-shadow .2s;
+    transition: -webkit-box-shadow .2s;
+    transition: box-shadow .2s;
+    transition: box-shadow .2s,-webkit-box-shadow .2s;
+    color: #111;
+    border: none;
+    border-radius: 1.5em;
+    outline: 0;
+    background: rgba(255,255,255,.6);
+    -webkit-box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
+}
+.group-search .search-input .sec-search .ic-search{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 30px;
+    padding: 0;
+    cursor: pointer;
+    -webkit-transition: background .2s;
+    transition: background .2s;
+    border: none;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    outline: 0;
+    background: url(https://www.oschina.net/build/oschina/components/imgs/icon/ic_search.svg) center center no-repeat;
+    background-size: 16px 16px;
+}
+.group-body{
+    float: left;
+    width: 98%;
+    padding: 0px;
+    margin: 0px 15px 15px 15px;
+}
+.group-body .group-content{
+    float: left;
+    width: 100%;
+}
+.group-body .group-content .layui-row .maincontent{
+    float: left;
+    height: 206px;
+    margin-bottom: 20px;
+    min-width: 400px;
+}
+.group-body .group-content .layui-row .maincontent .grid-demo{
+    margin: 20px;
+}
+.group-body .group-content .layui-row .maincontent .grid-demo .group-header{
+    float: left;
+    width: 100%;
+}
+.group-body .group-content .layui-row .maincontent .grid-demo .group-header h2{
+    float: left;
+}
+.group-body .group-content .layui-row .maincontent .grid-demo .group-header a{
+    float: right;
+}
+.group-body .group-content .layui-row .maincontent .grid-demo .group-article1{
+    float: left;
+    width: 100%;
+}
+.group-body .group-content .layui-row .maincontent .grid-demo .group-article1 .group-image{
+    float: left;
+}
+.group-body .group-content .layui-row .maincontent .grid-demo .group-article1 .group-content{
+    float: left;
+    width: 360px;
+    min-width: 360px;
+    height: 120px;
+}
+.group-body .group-content .layui-row .maincontent .grid-demo .group-article1 .group-content a span{
+    float: left;
+    width: 100%;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    color: #5e5e5e;
+    padding-left: 5px;
+}
+.group-body .group-content .layui-row .maincontent .grid-demo .group-article{
+    float: left;
+    width: 100%;
+}
+.group-body .group-content .layui-row .maincontent .grid-demo .group-article a .artilce-title{
+    float: left;
+    margin-top: 5px;
+}
+.group-body .group-content .layui-row .maincontent .grid-demo .group-article a .article-date{
+    float: right;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.group-body .group-category{
+    float: left;
+    width: 20%;
+}

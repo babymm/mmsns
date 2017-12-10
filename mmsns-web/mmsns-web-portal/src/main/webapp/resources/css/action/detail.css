@@ -1,0 +1,100 @@
+body{
+    float: left;
+    width: 100%;
+}
+.detail-body{
+    width: 1100px;
+    margin: 0 auto;
+}
+.detail-body .detail-breadcrumb{
+    font-size: 16px;
+    font-weight: 400;
+    margin: 22px 0 30px;
+}
+.detail-body .detail-breadcrumb a{
+    font-size: 18px;
+    font-weight: 400;
+    margin: 22px 0 30px;
+    color: #49ab4f;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+    text-decoration: none;
+    outline: 0;
+}
+.detail-body .action-detail{
+    float: left;
+    width: 100%;
+}
+.detail-body .action-detail .li-image{
+    float: left;
+    width: 60px;
+    height:100%;
+    display: block;
+}
+.detail-body .action-detail .li-info{
+    float: left;
+    width: 90%;
+}
+.detail-body .action-detail .li-info .info{
+    float: left;
+    width: 100%;
+    margin-top: 4px;
+}
+.detail-body .action-detail .li-info .info-reprint{
+    float: left;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+.detail-body .action-detail .li-info .info-reprint .reprintinfo{
+    float: left;
+    width: 100%;
+    margin-top: 4px;
+}
+.detail-body .action-detail .li-info .info-command{
+    float: right;
+    margin-top: 20px;
+    height: 40px;
+    width: 180px;
+}
+.detail-body .action-detail .li-info .info-command span{
+    margin-left: 10px;
+}
+.detail-body .detail-reply{
+    float: left;
+    width: 100%;
+}
+.detail-body .detail-reply .textarea-publish{
+    float: right;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.detail-body .detail-reply .textarea-publish button{
+    width: 72px;
+    background-color: #ffa300;
+    font-size: 14px;
+    line-height: 26px;
+    width: 72px;
+    height: 26px;
+    color: #fff;
+}
+
+.detail-body .detail-comments ul li{
+    float: left;
+    margin-top: 20px;
+    width: 100%;
+}
+.detail-body .detail-comments ul li .comment-image{
+    float: left;
+    width: 50px;
+}
+.detail-body .detail-comments ul li .comment-profile{
+    float: left;
+}
+.detail-body .detail-comments ul li .comment-profile span{
+    float: left;
+    width: 100%;
+}
+.detail-body .detail-comments ul li .comment-reply{
+    float: right;
+    margin-bottom: 50px;
+}

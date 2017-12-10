@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>baby慕慕SNS个人博客管理系统-动弹详情</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/css/action/detail.css" media="all">
+</head>
+<body>
+#parse("/header.vm")
+<div class="detail-body">
+    <div class="detail-breadcrumb">
+        <span class="layui-breadcrumb">
+          <a href="/action" style="">动弹</a>
+          <a href="javascript:void(0)">详情</a>
+        </span>
+    </div>
+    <div class="action-detail">
+        <div class="li-image">
+            <a href="/action/detail/1"><img src="https://static.oschina.net/uploads/user/1245/2491310_50.jpeg?t=1505841698000" width="40" height="40" style="border-radius: 50%"></a>
+        </div>
+        <div class="li-info">
+            <span class="info"><a href="/action/detail/1">林青OSC</a></span>
+            <span class="info">再来5只，这下子应该就差个大的了！</span>
+            #set($hasPhoto='false')
+            #if($hasPhoto=='true')
+                <span class="info"><img src="https://static.oschina.net/uploads/space/2017/1209/181127_WKtn_3567396(V).jpg" width="250" height="120"></span>
+            #end
+            #set($hasReprint='true')
+            #if($hasReprint=='true')
+                <div class="info-reprint">
+                    <span class="reprintinfo"><a href="/action/detail/1">@开源中国首席屌炸天</a></span>
+                    <span class="reprintinfo">男理发师和男健身私教早就趋向牛郎化了。理发师温柔地聆听你所有牢骚</span>
+                    #set($childrenHasPhoto='true')
+                    #if($childrenHasPhoto=='true')
+                        <span class="reprintinfo"><img src="https://static.oschina.net/uploads/space/2017/1209/181127_WKtn_3567396(V).jpg" width="260" height="200"></span>
+                    #end
+                    <span class="reprintinfo"><a href="/action/detail/1">查看原文</a></span>
+                </div>
+            #end
+            <span class="info-command">
+            <span><a href="/action/detail/1"><i class="fa fa-thumbs-up"></i>1</a> </span>
+            <span><a href="/action/detail/1"><i class="fa fa-reply"></i>2</a> </span>
+            <span><a href="/action/detail/1"><i class="fa fa-comment">3</i></a> </span>
+            <span><a href="/action/detail/1">详细信息</span>
+         </span>
+        </div>
+    </div>
+    <div class="detail-reply">
+        <textarea id="actionContentTextArea" style="display: none;"></textarea>
+        <div class="textarea-publish">
+            <span>0/160</span>
+            <span><button>回复</button></span>
+        </div>
+    </div>
+    <div class="detail-comments">
+        <ul>
+            #set($comments=[0 .. 9])
+            #foreach($comment in $comments)
+                <li>
+                    <div class="comment-image">
+                        <a href="/article/detail/1">
+                            <img src="https://static.oschina.net/uploads/user/106/212080_50.jpg?t=1395912810000" width="40" height="40">
+                        </a>
+                    </div>
+                    <div class="comment-profile">
+                        <span><a href="/article/detail/1">陈阳阳阳</a></span>
+                        <span>1楼 2017/12/08 15:28</span>
+                    </div>
+                    <div class="comment-reply"><a href="/article/detail/1" style="margin-right: 5px;">回复</a></div>
+                    <hr>
+                </li>
+            #end
+        </ul>
+    </div>
+</div>
+
+#parse("/footer.vm")
+</body>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element','layedit'], function () {
+        var element = layui.element ,layedit = layui.layedit;
+        layedit.build('actionContentTextArea',{
+            height:150
+        });
+    });
+</script>
+</html>

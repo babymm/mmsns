@@ -1,0 +1,171 @@
+.news-search{
+    float: left;
+    width: 100%;
+    height: 70px;
+    background-color:aliceblue;
+    min-width: 1100px;
+    margin: 0px;
+    padding:0px;
+}
+.news-search .search-logo{
+    width: 70%;
+    height: 60px;
+    text-align: left;
+    margin-left: 30px;
+    float: left;
+}
+.news-search .search-input{
+    width: 250px;
+    height: 40px;
+    float: left;
+    margin-top: 20px;
+}
+.news-search .search-input .sec-search{
+    position: relative;
+    margin: 0;
+}
+.news-search .search-input .sec-search .search-text{
+    font-size: .875rem;
+    width: 200px;
+    height: 30px;
+    padding: 0 50px 0 14px;
+    -webkit-transition: -webkit-box-shadow .2s;
+    transition: -webkit-box-shadow .2s;
+    transition: box-shadow .2s;
+    transition: box-shadow .2s,-webkit-box-shadow .2s;
+    color: #111;
+    border: none;
+    border-radius: 1.5em;
+    outline: 0;
+    background: rgba(255,255,255,.6);
+    -webkit-box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
+}
+.news-search .search-input .sec-search .ic-search{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 30px;
+    padding: 0;
+    cursor: pointer;
+    -webkit-transition: background .2s;
+    transition: background .2s;
+    border: none;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    outline: 0;
+    background: url(https://www.oschina.net/build/oschina/components/imgs/icon/ic_search.svg) center center no-repeat;
+    background-size: 16px 16px;
+}
+.news-body{
+    float: left;
+    width: 98%;
+    padding: 0px;
+    margin: 0px 15px 15px 15px;
+}
+.news-body .news-content{
+    float: left;
+    width: 78%;
+}
+.news-body .news-content .layui-row .maincontent{
+    float: left;
+    height: 240px;
+    margin-bottom: 30px;
+    min-width: 400px;
+}
+.news-body .news-content .layui-row .maincontent .grid-demo{
+    margin: 20px;
+}
+.news-body .news-content .layui-row .maincontent .grid-demo .news-header{
+    float: left;
+    width: 100%;
+}
+.news-body .news-content .layui-row .maincontent .grid-demo .news-header h2{
+    float: left;
+}
+.news-body .news-content .layui-row .maincontent .grid-demo .news-header a{
+    float: right;
+}
+.news-body .news-content .layui-row .maincontent .grid-demo .news-article1{
+    float: left;
+    width: 100%;
+}
+.news-body .news-content .layui-row .maincontent .grid-demo .news-article1 .news-image{
+    float: left;
+}
+.news-body .news-content .layui-row .maincontent .grid-demo .news-article1 .news-content{
+    float: left;
+    width: 300px;
+    height: 120px;
+}
+.news-body .news-content .layui-row .maincontent .grid-demo .news-article1 .news-content a span{
+    float: left;
+    width: 100%;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    color: #5e5e5e;
+    padding-left: 5px;
+}
+.news-body .news-content .layui-row .maincontent .grid-demo .news-article{
+    float: left;
+    width: 100%;
+}
+.news-body .news-content .layui-row .maincontent .grid-demo .news-article a .artilce-title{
+    float: left;
+    margin-top: 5px;
+}
+.news-body .news-content .layui-row .maincontent .grid-demo .news-article a .article-date{
+    float: right;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.news-body .news-category{
+    float: right;
+    width: 20%;
+}
+.news-body .news-category .news-recommend{
+    float: left;
+    width: 100%;
+    margin-top: 18px;
+}
+.news-body .news-category .news-recommend ul li{
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.news-body .news-category .news-recommend ul li .news-title{
+    float: left;
+    width: 100%;
+    margin-top: 6px;
+}
+.news-body .news-category .news-recommend ul li .news-media{
+    float: right;
+    width: 100%;
+    margin-top: 6px;
+}
+
+.news-body .news-category .news-hot{
+    float: left;
+    width: 100%;
+    margin-top: 18px;
+}
+.news-body .news-category .news-hot ul li{
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.news-body .news-category .news-hot ul li .news-title{
+    float: left;
+    width: 100%;
+    margin-top: 6px;
+}
+.news-body .news-category .news-hot ul li .news-media{
+    float: right;
+    width: 100%;
+    margin-top: 6px;
+}

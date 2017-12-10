@@ -1,0 +1,198 @@
+.action-search{
+    width: 100%;
+    height: 70px;
+    background-color:aliceblue;
+    min-width: 1100px;
+    margin: 0px;
+    padding:0px;
+}
+.action-search .search-logo{
+    width: 70%;
+    height: 60px;
+    text-align: left;
+    margin-left: 30px;
+    float: left;
+}
+.action-search .search-input{
+    width: 250px;
+    height: 40px;
+    float: left;
+    margin-top: 20px;
+}
+.action-search .search-input .sec-search{
+    position: relative;
+    margin: 0;
+}
+.action-search .search-input .sec-search .search-text{
+    font-size: .875rem;
+    width: 200px;
+    height: 30px;
+    padding: 0 50px 0 14px;
+    -webkit-transition: -webkit-box-shadow .2s;
+    transition: -webkit-box-shadow .2s;
+    transition: box-shadow .2s;
+    transition: box-shadow .2s,-webkit-box-shadow .2s;
+    color: #111;
+    border: none;
+    border-radius: 1.5em;
+    outline: 0;
+    background: rgba(255,255,255,.6);
+    -webkit-box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
+}
+.action-search .search-input .sec-search .ic-search{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 30px;
+    padding: 0;
+    cursor: pointer;
+    -webkit-transition: background .2s;
+    transition: background .2s;
+    border: none;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    outline: 0;
+    background: url(https://www.oschina.net/build/oschina/components/imgs/icon/ic_search.svg) center center no-repeat;
+    background-size: 16px 16px;
+}
+.action-body{
+    margin: 0px;
+    padding:0px;
+    width: 98%;
+    float: left;
+    padding-left: 20px;
+}
+.action-body .action-content{
+    width: 70%;
+    float: left;
+}
+.action-body .action-content .content-textarea{
+    float: left;
+    width: 100%;
+}
+.action-body .action-content .content-textarea .textarea-publish{
+    float: right;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.action-body .action-content .content-textarea .textarea-publish button{
+    width: 72px;
+    background-color: #ffa300;
+    font-size: 14px;
+    line-height: 26px;
+    width: 72px;
+    height: 26px;
+    color: #fff;
+}
+.action-body .action-content .content-list{
+    float: left;
+    width: 100%;
+}
+.action-body .action-content .content-list ul{
+    margin-top: 30px;
+    float: left;
+}
+.action-body .action-content .content-list ul li{
+    float: left;
+    margin-bottom: 30px;
+}
+.action-body .action-content .content-list ul li .li-image{
+    float: left;
+    width: 60px;
+    height:100%;
+    display: block;
+}
+.action-body .action-content .content-list ul li .li-info{
+    float: left;
+    width: 80%;
+}
+.action-body .action-content .content-list ul li .li-info .info{
+    float: left;
+    width: 100%;
+    margin-top: 4px;
+}
+.action-body .action-content .content-list ul li .li-info .info-reprint{
+    float: left;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+.action-body .action-content .content-list ul li .li-info .info-reprint .reprintinfo{
+    float: left;
+    width: 100%;
+    margin-top: 4px;
+}
+.action-body .action-content .content-list ul li .li-info .info-command{
+    float: left;
+    margin-top: 20px;
+    height: 40px;
+    width: 200px;
+}
+.action-body .action-content .content-list ul li .li-info .info-command span a{
+    margin-top: 10px;
+    margin-right: 15px;
+}
+.action-body .action-category{
+    width: 30%;
+    float: left;
+}
+.action-body .action-category .category-hotaction{
+    float: left;
+}
+.action-body .action-category .category-hotaction ul{
+    float: left;
+    margin-top: 30px;
+}
+.action-body .action-category .category-hotaction ul li{
+    float: left;
+    margin-bottom: 30px;
+    padding-left: 15px;
+}
+.action-body .action-category .category-hotaction ul li .li-image{
+    float: left;
+    width: 60px;
+    height:100%;
+    display: block;
+}
+.action-body .action-category .category-hotaction ul li .li-info{
+    float: left;
+    width: 80%;
+}
+.action-body .action-category .category-hotaction ul li .li-info .info{
+    float: left;
+    width: 100%;
+    margin-top: 4px;
+}
+.action-body .action-category .category-hotaction ul li .li-info .info-command{
+    float: left;
+    margin-top: 10px;
+    height: 40px;
+    width: 200px;
+}
+.action-body .action-category .category-hotaction ul li .li-info .info-command span a{
+    margin-right: 15px;
+}
+.action-body .action-category .category-hottopic{
+    float: left;
+}
+.action-body .action-category .category-hottopic ul{
+    float: left;
+}
+
+.action-body .action-category .category-hottopic ul li a{
+    float: left;
+    font-size: 14px;
+    line-height: 38px;
+    display: inline-block;
+    overflow: hidden;
+    max-width: 200px;
+    height: 36px;
+    margin: 0 15px 15px 0;
+    padding: 0 15px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #4a4a4a;
+    border-radius: 3em;
+    background: #f5f5f5;
+}
