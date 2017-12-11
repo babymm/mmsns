@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>baby慕慕SNS个人博客-文章分类</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="$request.getContextPath()/plugins/layui/css/layui.css" media="all">
+    <style type="text/css">
+        .layui-body{overflow-y: scroll;}
+        .layui-form{ margin-top: 0px;}
+        .layui-breadcrumb{
+            float: left;
+            min-height: 40px;
+            width: 99%;
+            font-family: 'DejaVu Serif', Georgia, "Times New Roman", Times, serif;
+            background-color: aliceblue;
+            padding-left: 5px;
+        }
+        .layui-breadcrumb a{
+            color:aquamarine;
+            line-height: 40px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body onload="niceScrollOnload()">
+<span class="layui-breadcrumb">
+  <a href="javascript:void(0)">我的文章</a>
+  <a href="/manager/article/classify">分类管理</a>
+</span>
+<div class="layui-btn-group articleclassify-table" style="margin-top: 1px;float: left;width: 100%">
+    <button class="layui-btn layui-btn-sm" data-type="getCheckData">新增</button>
+    <button class="layui-btn layui-btn-sm" data-type="getCheckLength">导出</button>
+    <button class="layui-btn layui-btn-sm" data-type="getCheckLength">统计</button>
+</div>
+<table class="layui-table" id="articleClassifyTable" style="min-width: 860px;width: 860px;margin: 0px"></table>
+<script type="text/html" id="articleClassifyTableBar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+</body>
+<script type="text/javascript" src="$request.getContextPath()/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="$request.getContextPath()/plugins/scroll/jquery.nicescroll.js" charset="utf-8"></script>
+<script type="text/javascript" src="$request.getContextPath()/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="$request.getContextPath()/resources/js/common/common.js" charset="utf-8"></script>
+<script>
+    layui.use(['table','element'], function(){
+        var table = layui.table;
+        table.render({
+            id: 'articleClassifyTableReload'
+            ,elem: '#articleClassifyTable'
+            ,url:'/manager/article/classify/data'
+            ,cellMinWidth: 80
+            ,cols: [[
+                {field:'id', title: 'ID', sort: true}
+                ,{field:'username', title: '用户名'} //width 支持：数字、百分比和不填写。你还可以通过 minWidth 参数局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                ,{field:'sex', title: '性别', sort: true}
+                ,{field:'city', title: '城市'}
+                ,{field:'sign', title: '签名'}
+                ,{field:'classify', title: '职业', align: 'center'} //单元格内容水平居中
+                ,{field:'experience', title: '积分', sort: true, align: 'right'} //单元格内容水平居中
+                ,{field:'score', title: '评分', sort: true, align: 'right'}
+                ,{field:'wealth', title: '财富', sort: true, align: 'right'}
+                ,{field:'toolbar', title: '操作',width:200,align:'center',toolbar: '#articleClassifyTableBar'}
+            ]]
+            ,page: true
+            ,skin: 'row'
+        });
+        table.on('tool(articleClassifyTableBar)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'detail'){
+                layer.msg('ID：'+ data.id + ' 的查看操作');
+            } else if(obj.event === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    obj.del();
+                    layer.close(index);
+                });
+            } else if(obj.event === 'edit'){
+                layer.alert('编辑行：<br>'+ JSON.stringify(data))
+            }
+        });
+        /*window.onresize=function () {
+            table.reload('articleClassifyTableReload');
+        }*/
+    });
+</script>
+</html>
