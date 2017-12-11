@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>baby慕慕SNS个人博客-后台管理系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="$request.getContextPath()/plugins/layui/css/layui.css" media="all">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo"><a href="/manager" style="color:aquamarine;line-height: 40px;font-size: 19px;">baby慕慕SNS个人博客</a></div>
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="">控制台</a></li>
+            <li class="layui-nav-item"><a href="">我的文章</a></li>
+            <li class="layui-nav-item"><a href="">我的动弹</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">我的群组</a></dd>
+                    <dd><a href="">新闻资讯</a></dd>
+                    <dd><a href="">我的图库</a></dd>
+                    <dd><a href="">我的文档</a></dd>
+                    <dd><a href="">个人中心</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item"><a href="">消息<span class="layui-badge">9</span></a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;"><img src="http://t.cn/RCzsdCq" class="layui-nav-img">baby慕慕</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                    <dd><a href="">退出登录</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed" id="elebill_center"><a class="" href="javascript:;" onclick="changeFrameSrc('/manager/main','main',false)">主页</a></li>
+                <li class="layui-nav-item" id="ticketing_center">
+                    <a class="" href="javascript:;">我的文章</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:void(0);" onclick="changeFrameSrc('/manager/article/classify','article',false)">&nbsp;&nbsp;分类管理</a></dd>
+                        <dd><a href="javascript:void(0);" onclick="changeFrameSrc('/manager/bill/ticket/saling','article',false)">&nbsp;&nbsp;文章审核</a></dd>
+                        <dd><a href="javascript:void(0);" onclick="changeFrameSrc('/manager/bill/ticket/saling','article',false)">&nbsp;&nbsp;文章管理</a></dd>
+                        <dd><a href="javascript:void(0);" onclick="changeFrameSrc('/manager/bill/ticket/reserve','article',false)">&nbsp;&nbsp;帖子管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="ticket_taker_center">
+                    <a href="javascript:;">我的动弹</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:void(0);" onclick="changeFrameSrc('/manager/bill/taker/authing','taker',false)">&nbsp;&nbsp;动弹审核</a></dd>
+                        <dd><a href="javascript:void(0);" onclick="changeFrameSrc('/manager/bill/taker/authing','taker',false)">&nbsp;&nbsp;动弹管理</a></dd>
+                        <dd><a href="javascript:void(0);" onclick="changeFrameSrc('/manager/bill/taker/pending','taker',false)">&nbsp;&nbsp;帖子审核</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="auth_center">
+                    <a href="javascript:;">我的群组</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">&nbsp;&nbsp;群组申请</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;群组管理</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;帖子审核</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="manager_setting">
+                    <a href="javascript:;">新闻资讯</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">&nbsp;&nbsp;资讯分类</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;资讯任务</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;资讯计划</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;资讯列表</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="user_setting">
+                    <a href="javascript:;">我的图库</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">&nbsp;&nbsp;图库审核</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;相册管理</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;图库管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="user_setting">
+                    <a href="javascript:;">我的文档</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">&nbsp;&nbsp;文档分类</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;文档管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="user_setting">
+                    <a href="javascript:;">权限管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">&nbsp;&nbsp;组织机构</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;用户群组</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;用户管理</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;角色管理</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;菜单管理</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;权限管理</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;导出管理</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;日志管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item" id="personal_setting">
+                    <a href="javascript:;">个人中心</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">&nbsp;&nbsp;基本资料</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;安全设置</a></dd>
+                        <dd><a href="javascript:;">&nbsp;&nbsp;修改密码</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <iframe name="iframepage" id="iframepage" scrolling="yes" frameborder="0" src="$request.getContextPath()/manager/main" onload="changeFrameHeight()" style="width: 100%;"></iframe>
+    </div>
+    #parse("/manager/footer.vm")
+</div>
+<script type="text/javascript" src="$request.getContextPath()/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="$request.getContextPath()/plugins/scroll/jquery.nicescroll.js" charset="utf-8"></script>
+<script type="text/javascript" src="$request.getContextPath()/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="$request.getContextPath()/resources/js/common/common.js" charset="utf-8"></script>
+<script type="text/javascript" src="$request.getContextPath()/resources/js/index.js" charset="utf-8"></script>
+</body>
+</html>
