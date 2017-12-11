@@ -23,8 +23,14 @@ public class MMSnsPortalNewsController {
         return "/portal/news/news";
     }
 
+    @RequestMapping(value = "/{classify}",method = RequestMethod.GET)
+    public String classify(@PathVariable String classify,HttpServletRequest request) {
+        request.setAttribute("mainModular", "news");
+        return "/portal/news/classify";
+    }
+
     @RequestMapping(value = "/detail/{newsId}", method = RequestMethod.GET)
-    public String detail(@PathVariable int groupId, HttpServletRequest request) {
+    public String detail(@PathVariable int newsId, HttpServletRequest request) {
         request.setAttribute("mainModular", "news");
         return "/portal/news/detail";
     }

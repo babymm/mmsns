@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>baby慕慕SNS个人博客管理系统-固定底部</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/css/news/classify.css" media="all">
+</head>
+<body>
+#parse("/header.vm")
+<div class="newslist-body">
+    <div class="newslist-breadcrumb">
+        <span class="layui-breadcrumb">
+          <a href="/news" style="">新闻资讯</a>
+          <a href="/news/java" style="">JAVA工程师</a>
+        </span>
+    </div>
+    <div class="newslist-content">
+        <ul>
+            #set($newslists=[0 .. 9])
+            #foreach($newslist in $newslists)
+                <li>
+                    <span class="news-title"><h2><a href="/news/detail/1">一肩难挑数职 泓德基金大股东卸任基金经理</a></h2></span>
+                    <span class="news-sumary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;今年6月，《每日经济新闻》记者曾报道过《自然人大股东亲自操盘 新公募变身阳光私募》，说的是泓德基金公司第一大股东、副董事长、总经理王德晓亲自出任旗下首只公募产品泓德优选成长的基金经理，开创了基金经理身份的先河。不过，就在上周，管理该基金近6个月后，王德晓却选择辞去基金经理一职。</span>
+                    <span class="news-info">
+                    <span class="news-from">[基金新闻] 0次阅读</span>
+                    <span class="news-time">2017-11-13 07:44:00</span>
+                </span>
+                    <hr>
+                </li>
+            #end
+        </ul>
+    </div>
+</div>
+<div class="newslist-category">
+    <div class="category-aboutarticle">
+        <h2>相关资讯</h2><hr>
+        <ul>
+            #set($aboutarticles=[0 .. 9])
+            #foreach($aboutarticle in $aboutarticles)
+                <li><a>深入区分javascript中的作用域和执行环境</a></li>
+            #end
+        </ul>
+    </div>
+    <div class="category-hotarticle">
+        <h2>热门资讯</h2><hr>
+        <ul>
+            #set($aboutarticles=[0 .. 9])
+            #foreach($aboutarticle in $aboutarticles)
+                <li><a>深入区分javascript中的作用域和执行环境</a></li>
+            #end
+        </ul>
+    </div>
+    <div class="category-newarticle">
+        <h2>最新资讯</h2><hr>
+        <ul>
+            #set($aboutarticles=[0 .. 9])
+            #foreach($aboutarticle in $aboutarticles)
+                <li><a>深入区分javascript中的作用域和执行环境</a></li>
+            #end
+        </ul>
+    </div>
+</div>
+#parse("/footer.vm")
+</body>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element', 'carousel', 'code', 'layedit'], function () {
+        var element = layui.element, carousel = layui.carousel, layedit = layui.layedit;
+        layedit.build('newsMessage',{
+            tool:[],
+            height:100
+        });
+    });
+</script>
+</html>

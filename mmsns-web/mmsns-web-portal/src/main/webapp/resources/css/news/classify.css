@@ -1,0 +1,89 @@
+body{
+    float: left;
+    width: 100%;
+    min-width: 1100px;
+    margin: 0px;
+    padding:0px;
+}
+.newslist-body{
+    float: left;
+    width: 70%;
+    margin: 20px 0px 0px 20px;
+}
+.newslist-body .newslist-breadcrumb{
+    font-size: 16px;
+    font-weight: 400;
+    margin: 22px 0 30px;
+}
+.newslist-body .newslist-breadcrumb a{
+    font-size: 18px;
+    font-weight: 400;
+    margin: 22px 0 30px;
+    color: #49ab4f;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+    text-decoration: none;
+    outline: 0;
+}
+.newslist-body .newslist-content{
+    float: left;
+    width: 100%;
+}
+.newslist-body .newslist-content ul{
+    float: left;
+    width: 100%;
+}
+.newslist-body .newslist-content ul li{
+    float: left;
+    width: 100%;
+    line-height: 30px;
+    font-size: 16px;
+    color: #5e5e5e;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.newslist-body .newslist-content ul li .news-title{
+    float: left;
+    width: 100%;
+}
+.newslist-body .newslist-content ul li .news-sumary{
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+    height: 90px;
+}
+.newslist-body .newslist-content ul li .news-info{
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom:20px;
+}
+.newslist-body .newslist-content ul li .news-info .news-from{
+    float: left;
+    width: 200px;
+}
+.newslist-body .newslist-content ul li .news-info .news-time{
+    float: right;
+    width: 200px;
+}
+.newslist-category{
+    width: 25%;
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 88px;
+}
+.newslist-category .category-aboutarticle,
+.newslist-category .category-hotarticle,
+.newslist-category .category-newarticle
+{
+    float: left;
+}
+.newslist-category .category-aboutarticle ul li,
+.newslist-category .category-hotarticle ul li,
+.newslist-category .category-newarticle ul li {
+    margin-bottom: 30px;
+    width: 100%;
+    float: left;
+}

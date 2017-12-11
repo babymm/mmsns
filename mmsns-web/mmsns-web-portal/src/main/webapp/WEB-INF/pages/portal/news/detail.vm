@@ -11,10 +11,165 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="${request.getContextPath()}/resources/css/group/group.css">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/css/news/detail.css">
     <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
 #parse("/header.vm")
+<div class="news-body">
+    <div class="detail-breadcrumb">
+        <span class="layui-breadcrumb">
+          <a href="/news" style="">新闻资讯</a>
+          <a href="/news/classify" style="">JAVA工程师</a>
+          <a href="/news/detail/1">资讯详情</a>
+        </span>
+    </div>
+    <div class="news-title">
+        <h2 align="center">深入区分javascript中的作用域和执行环境</h2>
+        <div class="news-author" align="right">
+            <span><a href="/news/detail/1">龙马行空</a></span>
+            <span>发表于 1天前</span>
+            <span>阅读 359</span>
+            <span>收藏 35</span>
+            <span>点赞 0</span>
+            <span>评论 <a href="/news/detail/1">3</a></span>
+        </div>
+    </div>
+    <div class="news-message">
+        <hr>
+        <section class="content">
+            <p>首先要明确，作用域和执行环境是两个完全不同的概念，我们试图给他俩分别一个明确的定义，发现很难，因为你很难定义一个概念“是什么”，但是我们可以搞清楚他们分别起什么作用。另一个令人迷惑的地方就是js中的this关键字。其实执行环境就是this的值。总的来说，作用域是相对于函数来讲的，因为js里没有块级作用域，只有函数才能形成新的作用域。而且作用域在函数声明时就定义好了。作用域里声明的变量和函数，外部无法访问，注意，是外部。而执行环境在函数被调用时才生成。</p>
+            <h2>执行环境</h2>
+            <p>又叫做执行上下文，根据js高程里的描述：</p>
+            <blockquote>
+                <p>执行环境定义了变量或函数有权访问的其他数据，决定了它们各自的行为。每个执行环境都有一个与之关联的变量对（variable object），环境中定义的所有变量和函数都保存在这个对象中。虽然我们编写的代码无法访问这个对象，但解析器在处理数据时会在后台使用它。</p>
+            </blockquote>
+            <blockquote>
+                <p>每个函数都有自己的执行环境。当执行流进入一个函数时，函数的环境就会被推入一个环境栈中。而在函数执行之后，栈将其环境弹出，把控制权返回给之前的执行环境。ECMAScript 程序中的执行流正是由这个方便的机制控制着。</p>
+            </blockquote>
+            <p>什么意思呢？就是说，当代码被执行的时候，执行环境被创建，当然最先创建的就是全局执行环境。为方便理解，我们举一个小例子。</p>
+            <pre><code>var x = 10
+bar()
+function foo(){
+    console.log(x)
+}
+function bar (){
+    var x = 30
+    foo()
+}
+</code></pre>
+            <p>在代码开始执行时，先创建全局执行环境。不妨理解为创建了一个这样的对象：</p>
+            <pre><code>globalContext={
+    activation object:{
+      x : 10,
+      foo:function,
+      bar:function
+     },
+    scope:null
+}
+</code></pre>
+            <p>在全局的代码中如果遇到了<strong>调用</strong>一个函数，就进入到了这个函数的执行环境,建立了这样一个对象：</p>
+            <pre><code>barContext={
+  activation object:{
+      x:30
+  },
+  Scope:bar.[[scope]]
+}
+</code></pre>
+            <p>当bar函数执行完后，退出它的执行环境，“把控制权返回给之前的执行环境”，也就是全局环境，全局中的代码继续执行下去，直到遇到下一个函数的调用。经过这个例子，我们可以总结一下执行环境到底做了什么事？其实就是这几点：</p>
+            <ul>
+                <li>变量、函数表达式——变量声明，默认赋值为undefined；</li>
+                <li>this——赋值；</li>
+                <li>函数声明——赋值；<br> 这三种数据的准备情况我们称之为“执行上下文”或者“执行上下文环境”。那我试着<strong>给执行环境一个定义：在执行代码之前，把将要用到的所有的变量都事先拿出来，函数声明直接赋值了，变量和函数表达式先用undefined占个空</strong> </li>
+            </ul>
+            <h2>作用域链</h2>
+            <p>当然，作用域是指<strong>变量的使用范围</strong>，但是在js里存在着作用域链，作用域链可以让内部的函数访问到外部函数中的变量。来看看高程里怎么说：</p>
+            <blockquote>
+                <p>当代码在一个环境中执行时，会创建变量对象的一个作用域链（scope chain）。作用域链的用途，是保证对执行环境有权访问的所有变量和函数的有序访问。作用域链的前端，始终都是当前执行的代码所在环境的变量对象。如果这个环境是函数，则将其活动对象（activation object）作为变量对象。活动对象在最开始时只包含一个变量，即 arguments 对象（这个对象在全局环境中是不存在的）。作用域链中的下一个变量对象来自包含（外部）环境，而再下一个变量对象则来自下一个包含环境。这样，一直延续到全局执行环境；全局执行环境的变量对象始终都是作用域链中的最后一个对象。</p>
+            </blockquote>
+            <p>高程就是高程，非常全面的总结啊。它告诉我们，如果是函数调用进入了新的执行环境，那作用域链的最前端，就是函数的活动对象。而函数活动对象最开始包含的变量，就是函数的参数。这个和我理解的<br> <code>function sum(a,b){return a+b}等价于 function(){ var arguments = [a,b] ;return a+b}</code>的观点非常吻合。当然，arguments只是类数组对象，这里这么写只是为了理解方便。<br> 那作用域链是怎么找到外部环境的变量的呢？就是前面例子中的scope属性啊。<br> <code>bar.[[scope]] == globalContext.activation object</code><br> 换句话说，代码在执行时查找变量，首先在自己的执行环境对应的活动对象里找，如果找不到，通过scope找外部环境中的活动对象，如果找不到就再向上找，一直找到全局环境的活动对象，如果还没有，就是undefined，因为全局环境的scope是null了，不能再向上找了。<br> 所以，作用域链是依赖着执行环境，才能够实现的。</p>
+            <p>以上都是我个人的见解，不一定都正确，希望可以收到批评指正。</p>
+        </section>
+    </div>
+    <div class="news-buttons">
+        <ul>
+            <li><a href="/article/detail/1"><i class="icon-svg icon-reward-blog"></i><span>点赞</span></a></li>
+            <li><a href="/article/detail/1"><i class="icon-svg icon-reward-blog"></i><span>收藏</span></a></li>
+            <li><a href="/article/detail/1"><i class="icon-svg icon-reward-blog"></i><span>分享</span></a></li>
+            <li><a href="/article/detail/1"><i class="icon-svg icon-reward-blog"></i><span>打赏</span></a></li>
+            <li><a href="/article/detail/1"><i class="icon-svg icon-reward-blog"></i><span>举报</span></a></li>
+        </ul>
+    </div>
+    <div class="news-comment">
+        <div class="comment-body">
+            <h2>评论 4</h2>
+            <div class="comment-textarea">
+                <textarea id="newsMessage"></textarea>
+                <button>发表评论</button>
+            </div>
+            <div class="comment-list">
+                <ul>
+                    #set($comments=[0 .. 9])
+                    #foreach($comment in $comments)
+                        <li>
+                            <div class="comment-image">
+                                <a href="/article/detail/1">
+                                    <img src="https://static.oschina.net/uploads/user/106/212080_50.jpg?t=1395912810000" width="40" height="40">
+                                </a>
+                            </div>
+                            <div class="comment-profile">
+                                <span><a href="/article/detail/1">陈阳阳阳</a></span>
+                                <span>1楼 2017/12/08 15:28</span>
+                            </div>
+                            <div class="comment-reply"><a href="/article/detail/1">回复</a></div>
+                            <hr>
+                        </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="news-category">
+    <div class="category-aboutarticle">
+        <h2>相关资讯</h2><hr>
+        <ul>
+            #set($aboutarticles=[0 .. 9])
+            #foreach($aboutarticle in $aboutarticles)
+                <li><a>深入区分javascript中的作用域和执行环境</a></li>
+            #end
+        </ul>
+    </div>
+    <div class="category-hotarticle">
+        <h2>热门资讯</h2><hr>
+        <ul>
+            #set($aboutarticles=[0 .. 9])
+            #foreach($aboutarticle in $aboutarticles)
+                <li><a>深入区分javascript中的作用域和执行环境</a></li>
+            #end
+        </ul>
+    </div>
+    <div class="category-newarticle">
+        <h2>最新资讯</h2><hr>
+        <ul>
+            #set($aboutarticles=[0 .. 9])
+            #foreach($aboutarticle in $aboutarticles)
+                <li><a>深入区分javascript中的作用域和执行环境</a></li>
+            #end
+        </ul>
+    </div>
+</div>
+#parse("/footer.vm")
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element', 'carousel', 'code', 'layedit'], function () {
+        var element = layui.element, carousel = layui.carousel, layedit = layui.layedit;
+        layedit.build('newsMessage',{
+            tool:[],
+            height:100
+        });
+    });
+</script>
 </body>
 </html>

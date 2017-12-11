@@ -39,7 +39,7 @@
                     <div class="grid-demo">
                         <div class="news-header">
                             <h2>JAVA工程师</h2>
-                            <a href="/news/detail/1" style="margin-right: 20px">更多</a>
+                            <a href="/news/classify" style="margin-right: 20px">更多</a>
                         </div>
                         <div class="news-article1">
                             <div class="news-image"><a href="/news/detail/1"><img src="http://www.xiaomoc.top/group1/M00/00/02/eE0NXVkjpJeAVYsGAAGfKZ7BqmE159.png" width="180" height="120"></a></div>
