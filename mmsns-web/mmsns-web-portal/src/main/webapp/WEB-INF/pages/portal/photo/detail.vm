@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>baby慕慕SNS个人博客-图库详情</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/css/photo/detail.css">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+#parse("/header.vm")
+<div class="photo-body">
+    <div class="detail-breadcrumb">
+        <span class="layui-breadcrumb">
+          <a href="/photo" style="">我的图库</a>
+          <a href="/photo/detail/1">图库详情</a>
+        </span>
+    </div>
+    <div class="photo-content">
+        <div class="userimg">
+            <img src="http://a2.qpic.cn/psb?/V12fZE7Z2UfmuO/QnSFbVv2kaNgqA4mg2Jzo0BKxLslcoY8HPWUzZN79yc!/c/dGkBAAAAAAAA&ek=1&kp=1&pt=0&bo=fwJwBAAAAAACQG0!&vuin=915827225&tm=1513065600&sce=60-2-2&rf=newphoto&t=5">
+            <div class="usermedia">
+                <span><a href="/photo/detail/1">林青OSC</a></span>
+                <span style="color: #94998a;font-size: 14px">2017年5月26日 13:28</span>
+            </div>
+        </div>
+        <div class="userinfo">
+            <span>再来5只，这下子应该就差个大的了！</span>
+            <div class="site-demo-flow">
+                <img src="https://gw.alicdn.com/bao/uploaded/i2/701696736/TB2PNl5ahQa61Bjy0FhXXaalFXa_!!701696736.jpg_400x400q90.jpg?t=1513063905068">
+                <img src="https://gw.alicdn.com/bao/uploaded/i2/162734861/TB2V5rsX_gc61BjSZFkXXcTkFXa_!!162734861.jpg_400x400q90.jpg?t=1513063905068">
+                <img src="https://gw.alicdn.com/bao/uploaded/i4/69476562/TB2htq4XTka61BjSszfXXXN8pXa_!!69476562.jpg_400x400q90.jpg?t=1513063905068">
+                <img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068">
+                <img src="https://gw.alicdn.com/bao/uploaded/i2/701696736/TB2PNl5ahQa61Bjy0FhXXaalFXa_!!701696736.jpg_400x400q90.jpg?t=1513063905068">
+                <img src="https://gw.alicdn.com/bao/uploaded/i2/162734861/TB2V5rsX_gc61BjSZFkXXcTkFXa_!!162734861.jpg_400x400q90.jpg?t=1513063905068">
+                <img src="https://gw.alicdn.com/bao/uploaded/i4/69476562/TB2htq4XTka61BjSszfXXXN8pXa_!!69476562.jpg_400x400q90.jpg?t=1513063905068">
+                <img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068">
+            </div>
+        </div>
+        <div class="info-command">
+            <span><a href="/photo//detail/1"><i class="fa fa-thumbs-up"></i>1</a> </span>
+            <span><a href="/photo/detail/1"><i class="fa fa-reply"></i>2</a> </span>
+            <span><a href="/photo/detail/1"><i class="fa fa-comment"></i>3</a> </span>
+        </div>
+        <div class="photo-buttons">
+            <ul>
+                <li><a href="/photo/detail/1"><i class="icon-svg icon-reward-blog"></i><span>点赞</span></a></li>
+                <li><a href="/photo/detail/1"><i class="icon-svg icon-reward-blog"></i><span>收藏</span></a></li>
+                <li><a href="/photo/detail/1"><i class="icon-svg icon-reward-blog"></i><span>分享</span></a></li>
+                <li><a href="/photo/detail/1"><i class="icon-svg icon-reward-blog"></i><span>打赏</span></a></li>
+                <li><a href="/photo/detail/1"><i class="icon-svg icon-reward-blog"></i><span>举报</span></a></li>
+            </ul>
+        </div>
+        <div class="photo-comment">
+            <div class="comment-body">
+                <h2>评论 4</h2>
+                <div class="comment-textarea">
+                    <textarea id="photoMessage"></textarea>
+                    <button>发表评论</button>
+                </div>
+                <div class="comment-list">
+                    <ul>
+                        #set($comments=[0 .. 5])
+                        #foreach($comment in $comments)
+                            <li>
+                                <div class="comment-image">
+                                    <a href="/article/detail/1">
+                                        <img src="https://static.oschina.net/uploads/user/106/212080_50.jpg?t=1395912810000" width="40" height="40">
+                                    </a>
+                                </div>
+                                <div class="comment-profile">
+                                    <span><a href="/article/detail/1">陈阳阳阳</a></span>
+                                    <span>1楼 2017/12/08 15:28</span>
+                                </div>
+                                <div class="comment-reply"><a href="/article/detail/1">回复</a></div>
+                                <hr>
+                            </li>
+                        #end
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="photo-right">
+        <div class="photo-recommend">
+            <h2>精彩推荐</h2>
+            <ul>
+                #set($recommendnews=[0 .. 4])
+                #foreach($recommendnew in $recommendnews)
+                    <li>
+                        <div class="userimg">
+                            <img src="http://a2.qpic.cn/psb?/V12fZE7Z2UfmuO/QnSFbVv2kaNgqA4mg2Jzo0BKxLslcoY8HPWUzZN79yc!/c/dGkBAAAAAAAA&ek=1&kp=1&pt=0&bo=fwJwBAAAAAACQG0!&vuin=915827225&tm=1513065600&sce=60-2-2&rf=newphoto&t=5">
+                            <div class="usermedia">
+                                <span><a href="/photo/detail/1">林青OSC</a></span>
+                                <span style="color: #94998a;font-size: 14px">2017年5月26日 13:28</span>
+                            </div>
+                        </div>
+                        <div class="userinfo">
+                            <span>再来5只，这下子应该就差个大的了！</span>
+                            <div class="site-flow">
+                                <img src="https://gw.alicdn.com/bao/uploaded/i2/701696736/TB2PNl5ahQa61Bjy0FhXXaalFXa_!!701696736.jpg_400x400q90.jpg?t=1513063905068">
+                                <img src="https://gw.alicdn.com/bao/uploaded/i2/162734861/TB2V5rsX_gc61BjSZFkXXcTkFXa_!!162734861.jpg_400x400q90.jpg?t=1513063905068">
+                                <img src="https://gw.alicdn.com/bao/uploaded/i4/69476562/TB2htq4XTka61BjSszfXXXN8pXa_!!69476562.jpg_400x400q90.jpg?t=1513063905068">
+                                <img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068">
+                                <img src="https://gw.alicdn.com/bao/uploaded/i2/701696736/TB2PNl5ahQa61Bjy0FhXXaalFXa_!!701696736.jpg_400x400q90.jpg?t=1513063905068">
+                                <img src="https://gw.alicdn.com/bao/uploaded/i2/162734861/TB2V5rsX_gc61BjSZFkXXcTkFXa_!!162734861.jpg_400x400q90.jpg?t=1513063905068">
+                            </div>
+                        </div>
+                        <div class="info-command">
+                            <span><a href="/photo/detail/1"><i class="fa fa-thumbs-up"></i>1</a> </span>
+                            <span><a href="/photo/detail/1"><i class="fa fa-reply"></i>2</a> </span>
+                            <span><a href="/photo/detail/1"><i class="fa fa-comment">3</i></a> </span>
+                            <span><a href="/photo/detail/1">详细信息</a></span>
+                        </div>
+                    </li>
+                #end
+            </ul>
+        </div>
+    </div>
+</div>
+#parse("/footer.vm")
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element', 'carousel', 'code', 'layedit'], function () {
+        var element = layui.element, carousel = layui.carousel, layedit = layui.layedit;
+        layedit.build('photoMessage',{
+            tool:[],
+            height:100
+        });
+    });
+</script>
+</body>
+</html>

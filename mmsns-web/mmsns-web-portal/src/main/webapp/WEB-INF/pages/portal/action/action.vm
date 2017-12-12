@@ -68,11 +68,11 @@
                                 </div>
                             #end
                             <span class="info-command">
-                            <span><a href="/action/detail/1"><i class="fa fa-thumbs-up"></i>1</a> </span>
-                            <span><a href="/action/detail/1"><i class="fa fa-reply"></i>2</a> </span>
-                            <span><a href="/action/detail/1"><i class="fa fa-comment">3</i></a> </span>
-                            <span><a href="/action/detail/1">详细信息</span>
-                        </span>
+                                <span><a href="/action/detail/1"><i class="fa fa-thumbs-up"></i>1</a> </span>
+                                <span><a href="/action/detail/1"><i class="fa fa-reply"></i>2</a> </span>
+                                <span><a href="/action/detail/1"><i class="fa fa-comment">3</i></a> </span>
+                                <span><a href="/action/detail/1">详细信息</a></span>
+                            </span>
                         </div>
                     </li>
                 #end
@@ -100,7 +100,7 @@
                                 <span><a href="/action/detail/1"><i class="fa fa-thumbs-up"></i>1</a> </span>
                                 <span><a href="/action/detail/1"><i class="fa fa-reply"></i>2</a> </span>
                                 <span><a href="/action/detail/1"><i class="fa fa-comment">3</i></a> </span>
-                                <span><a href="/action/detail/1">详细信息</span>
+                                <span><a href="/action/detail/1">详细信息</a></span>
                             </span>
                         </div>
                     </li>

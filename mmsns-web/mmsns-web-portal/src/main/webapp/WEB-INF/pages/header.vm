@@ -28,7 +28,7 @@
             <li class="layui-nav-item"><a href="/action">动弹</a></li>
             <li class="layui-nav-item"><a href="/group">群组</a></li>
             <li class="layui-nav-item"><a href="/news">资讯</a></li>
-            <li class="layui-nav-item"><a href="/photo">图片</a></li>
+            <li class="layui-nav-item"><a href="/photo">图库</a></li>
             <li class="layui-nav-item"><a href="/doc">文档</a></li>
         #elseif($mainModular=='action')
             <li class="layui-nav-item"><a href="/">首页</a></li>
@@ -36,7 +36,7 @@
             <li class="layui-nav-item layui-this"><a href="/action">动弹</a></li>
             <li class="layui-nav-item"><a href="/group">群组</a></li>
             <li class="layui-nav-item"><a href="/news">资讯</a></li>
-            <li class="layui-nav-item"><a href="/photo">图片</a></li>
+            <li class="layui-nav-item"><a href="/photo">图库</a></li>
             <li class="layui-nav-item"><a href="/doc">文档</a></li>
         #elseif($mainModular=='group')
             <li class="layui-nav-item"><a href="/">首页</a></li>
@@ -44,7 +44,7 @@
             <li class="layui-nav-item"><a href="/action">动弹</a></li>
             <li class="layui-nav-item layui-this"><a href="/group">群组</a></li>
             <li class="layui-nav-item"><a href="/news">资讯</a></li>
-            <li class="layui-nav-item"><a href="/photo">图片</a></li>
+            <li class="layui-nav-item"><a href="/photo">图库</a></li>
             <li class="layui-nav-item"><a href="/doc">文档</a></li>
         #elseif($mainModular=='news')
             <li class="layui-nav-item"><a href="/">首页</a></li>
@@ -52,7 +52,7 @@
             <li class="layui-nav-item"><a href="/action">动弹</a></li>
             <li class="layui-nav-item"><a href="/group">群组</a></li>
             <li class="layui-nav-item layui-this"><a href="/news">资讯</a></li>
-            <li class="layui-nav-item"><a href="/photo">图片</a></li>
+            <li class="layui-nav-item"><a href="/photo">图库</a></li>
             <li class="layui-nav-item"><a href="/doc">文档</a></li>
         #elseif($mainModular=='photo')
             <li class="layui-nav-item"><a href="/">首页</a></li>
@@ -60,7 +60,7 @@
             <li class="layui-nav-item"><a href="/action">动弹</a></li>
             <li class="layui-nav-item"><a href="/group">群组</a></li>
             <li class="layui-nav-item"><a href="/news">资讯</a></li>
-            <li class="layui-nav-item layui-this"><a href="/photo">图片</a></li>
+            <li class="layui-nav-item layui-this"><a href="/photo">图库</a></li>
             <li class="layui-nav-item"><a href="/doc">文档</a></li>
         #elseif($mainModular=='doc')
             <li class="layui-nav-item"><a href="/">首页</a></li>
@@ -68,7 +68,7 @@
             <li class="layui-nav-item"><a href="/action">动弹</a></li>
             <li class="layui-nav-item"><a href="/group">群组</a></li>
             <li class="layui-nav-item"><a href="/news">资讯</a></li>
-            <li class="layui-nav-item"><a href="/photo">图片</a></li>
+            <li class="layui-nav-item"><a href="/photo">图库</a></li>
             <li class="layui-nav-item layui-this"><a href="/doc">文档</a></li>
         #else
             <li class="layui-nav-item layui-this"><a href="/">首页</a></li>
@@ -76,7 +76,7 @@
             <li class="layui-nav-item"><a href="/action">动弹</a></li>
             <li class="layui-nav-item"><a href="/group">群组</a></li>
             <li class="layui-nav-item"><a href="/news">资讯</a></li>
-            <li class="layui-nav-item"><a href="/photo">图片</a></li>
+            <li class="layui-nav-item"><a href="/photo">图库</a></li>
             <li class="layui-nav-item"><a href="/doc">文档</a></li>
         #end
     </ul>

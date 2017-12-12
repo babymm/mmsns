@@ -11,6 +11,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="${request.getContextPath()}/resources/css/photo/photo.css">
 </head>
 <body>
@@ -31,13 +32,16 @@
 </div>
 <div class="photo-body">
     <div class="photo-main">
-        <ul>
-            #set($photos=[0 .. 3])
+        <ul class="flow-default" id="photoFlowUL">
+            #set($photos=[1 .. 2])
             #foreach($photo in $photos)
                 <li>
                     <div class="userimg">
-                        <img src="http://a2.qpic.cn/psb?/V12fZE7Z2UfmuO/QnSFbVv2kaNgqA4mg2Jzo0BKxLslcoY8HPWUzZN79yc!/c/dGkBAAAAAAAA&ek=1&kp=1&pt=0&bo=fwJwBAAAAAACQG0!&vuin=915827225&tm=1513065600&sce=60-2-2&rf=newphoto&t=5" width="40" height="40" style="border-radius: 50%">
-                        <span>林青OSC 1分钟前</span>
+                        <img src="http://a2.qpic.cn/psb?/V12fZE7Z2UfmuO/QnSFbVv2kaNgqA4mg2Jzo0BKxLslcoY8HPWUzZN79yc!/c/dGkBAAAAAAAA&ek=1&kp=1&pt=0&bo=fwJwBAAAAAACQG0!&vuin=915827225&tm=1513065600&sce=60-2-2&rf=newphoto&t=5">
+                        <div class="usermedia">
+                            <span><a href="/photo/detail/1">林青OSC</a></span>
+                            <span style="color: #94998a;font-size: 14px">2017年5月26日 13:28</span>
+                        </div>
                     </div>
                     <div class="userinfo">
                         <span>再来5只，这下子应该就差个大的了！</span>
@@ -52,11 +56,52 @@
                             <img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068">
                         </div>
                     </div>
+                    <div class="info-command">
+                        <span><a href="/photo/detail/1"><i class="fa fa-thumbs-up"></i>1</a> </span>
+                        <span><a href="/photo/detail/1"><i class="fa fa-reply"></i>2</a> </span>
+                        <span><a href="/photo/detail/1"><i class="fa fa-comment">3</i></a> </span>
+                        <span><a href="/photo/detail/1">详细信息</a></span>
+                    </div>
                 </li>
             #end
         </ul>
     </div>
-    <div class="photo-right"></div>
+    <div class="photo-right">
+        <div class="photo-recommend">
+            <h2>精彩推荐</h2>
+            <ul>
+                #set($recommendnews=[0 .. 4])
+                #foreach($recommendnew in $recommendnews)
+                    <li>
+                        <div class="userimg">
+                            <img src="http://a2.qpic.cn/psb?/V12fZE7Z2UfmuO/QnSFbVv2kaNgqA4mg2Jzo0BKxLslcoY8HPWUzZN79yc!/c/dGkBAAAAAAAA&ek=1&kp=1&pt=0&bo=fwJwBAAAAAACQG0!&vuin=915827225&tm=1513065600&sce=60-2-2&rf=newphoto&t=5">
+                            <div class="usermedia">
+                                <span><a href="/photo/detail/1">林青OSC</a></span>
+                                <span style="color: #94998a;font-size: 14px">2017年5月26日 13:28</span>
+                            </div>
+                        </div>
+                        <div class="userinfo">
+                            <span>再来5只，这下子应该就差个大的了！</span>
+                            <div class="site-demo-flow">
+                                <img src="https://gw.alicdn.com/bao/uploaded/i2/701696736/TB2PNl5ahQa61Bjy0FhXXaalFXa_!!701696736.jpg_400x400q90.jpg?t=1513063905068">
+                                <img src="https://gw.alicdn.com/bao/uploaded/i2/162734861/TB2V5rsX_gc61BjSZFkXXcTkFXa_!!162734861.jpg_400x400q90.jpg?t=1513063905068">
+                                <img src="https://gw.alicdn.com/bao/uploaded/i4/69476562/TB2htq4XTka61BjSszfXXXN8pXa_!!69476562.jpg_400x400q90.jpg?t=1513063905068">
+                                <img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068">
+                                <img src="https://gw.alicdn.com/bao/uploaded/i2/701696736/TB2PNl5ahQa61Bjy0FhXXaalFXa_!!701696736.jpg_400x400q90.jpg?t=1513063905068">
+                                <img src="https://gw.alicdn.com/bao/uploaded/i2/162734861/TB2V5rsX_gc61BjSZFkXXcTkFXa_!!162734861.jpg_400x400q90.jpg?t=1513063905068">
+                            </div>
+                        </div>
+                        <div class="info-command">
+                            <span><a href="/photo/detail/1"><i class="fa fa-thumbs-up"></i>1</a> </span>
+                            <span><a href="/photo/detail/1"><i class="fa fa-reply"></i>2</a> </span>
+                            <span><a href="/photo/detail/1"><i class="fa fa-comment">3</i></a> </span>
+                            <span><a href="/photo/detail/1">详细信息</span>
+                        </div>
+                    </li>
+                #end
+            </ul>
+        </div>
+    </div>
 </div>
 </body>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
@@ -64,10 +109,44 @@
 <script type="text/javascript">
     layui.use(['element', 'flow'], function () {
         var element = layui.element, flow = layui.flow;
-        /*flow.lazyimg({
-            elem: '.site-demo-flow img'
-            ,scrollElem: '.site-demo-flow'
-        });*/
+        flow.load({
+            elem: '#photoFlowUL'
+            ,isAuto:true
+            ,isLazyimg:true
+            ,done: function(page, next){
+                var lis = [];
+                for(var i = 0; i < 2; i++){
+                    lis.push('<li><div class="userimg">\n' +
+                            '                            <img src="http://a2.qpic.cn/psb?/V12fZE7Z2UfmuO/QnSFbVv2kaNgqA4mg2Jzo0BKxLslcoY8HPWUzZN79yc!/c/dGkBAAAAAAAA&ek=1&kp=1&pt=0&bo=fwJwBAAAAAACQG0!&vuin=915827225&tm=1513065600&sce=60-2-2&rf=newphoto&t=5">\n' +
+                            '                            <div class="usermedia">\n' +
+                            '                                <span><a href="/photo/detail/1">林青OSC</a></span>\n' +
+                            '                                <span style="color: #94998a;font-size: 14px">2017年5月26日 13:28</span>\n' +
+                            '                            </div>\n' +
+                            '                        </div>\n' +
+                            '                        <div class="userinfo">\n' +
+                            '                            <span>再来5只，这下子应该就差个大的了！</span>\n' +
+                            '                            <div class="site-demo-flow">\n' +
+                            '                                <img lay-src="https://gw.alicdn.com/bao/uploaded/i2/701696736/TB2PNl5ahQa61Bjy0FhXXaalFXa_!!701696736.jpg_400x400q90.jpg?t=1513063905068">\n' +
+                            '                                <img lay-src="https://gw.alicdn.com/bao/uploaded/i2/162734861/TB2V5rsX_gc61BjSZFkXXcTkFXa_!!162734861.jpg_400x400q90.jpg?t=1513063905068">\n' +
+                            '                                <img lay-src="https://gw.alicdn.com/bao/uploaded/i4/69476562/TB2htq4XTka61BjSszfXXXN8pXa_!!69476562.jpg_400x400q90.jpg?t=1513063905068">\n' +
+                            '                                <img lay-src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068">\n' +
+                            '                                <img lay-src="https://gw.alicdn.com/bao/uploaded/i2/701696736/TB2PNl5ahQa61Bjy0FhXXaalFXa_!!701696736.jpg_400x400q90.jpg?t=1513063905068">\n' +
+                            '                                <img lay-src="https://gw.alicdn.com/bao/uploaded/i2/162734861/TB2V5rsX_gc61BjSZFkXXcTkFXa_!!162734861.jpg_400x400q90.jpg?t=1513063905068">\n' +
+                            '                                <img lay-src="https://gw.alicdn.com/bao/uploaded/i2/162734861/TB2V5rsX_gc61BjSZFkXXcTkFXa_!!162734861.jpg_400x400q90.jpg?t=1513063905068">\n' +
+                            '                                <img lay-src="https://gw.alicdn.com/bao/uploaded/i2/162734861/TB2V5rsX_gc61BjSZFkXXcTkFXa_!!162734861.jpg_400x400q90.jpg?t=1513063905068">\n' +
+                            '                            </div>\n' +
+                            '                        </div>\n' +
+                            '                        <div class="info-command">\n' +
+                            '                            <span><a href="/photo/detail/1"><i class="fa fa-thumbs-up"></i>1</a> </span>\n' +
+                            '                            <span><a href="/photo/detail/1"><i class="fa fa-reply"></i>2</a> </span>\n' +
+                            '                            <span><a href="/photo/detail/1"><i class="fa fa-comment">3</i></a> </span>\n' +
+                            '                            <span><a href="/photo/detail/1">详细信息</span>\n' +
+                            '                        </div></li>')
+                }
+                console.log("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+                next(lis.join(''), page < 10);
+            }
+        });
     });
 </script>
 </html>

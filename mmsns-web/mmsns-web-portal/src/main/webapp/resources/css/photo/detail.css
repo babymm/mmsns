@@ -1,0 +1,235 @@
+body{
+    float: left;
+    width: 100%;
+    min-width: 1100px;
+    margin: 0px;
+    padding:0px;
+}
+.photo-body{
+    float: left;
+    width: 98%;
+    margin: 20px 0px 0px 20px;
+}
+.photo-body .detail-breadcrumb{
+    font-size: 16px;
+    font-weight: 400;
+    margin: 22px 0 30px;
+}
+.photo-body .detail-breadcrumb a{
+    font-size: 18px;
+    font-weight: 400;
+    margin: 22px 0 30px;
+    color: #49ab4f;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+    text-decoration: none;
+    outline: 0;
+}
+.photo-body .photo-content{
+    float: left;
+    width: 75%;
+}
+.photo-body .photo-comment{
+    float: left;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.photo-body .photo-comment{
+    float: left;
+    width: 97%;
+    margin-bottom: 50px;
+}
+.photo-body .photo-comment .comment-body{
+    width: 100%;
+}
+.photo-body .photo-comment .comment-body .comment-textarea button{
+    float: right;
+    background-color: #4eaa4c;
+    border-radius: 3px;
+    padding: .4rem .8rem;
+    outline: 0;
+    border: 0;
+    margin: 0;
+    display: inline-block;
+    cursor: pointer;
+}
+.photo-body .photo-comment .comment-body .comment-list ul li{
+    float: left;
+    margin-top: 20px;
+    width: 100%;
+}
+.photo-body .photo-comment .comment-body .comment-list ul li .comment-image{
+    float: left;
+    width: 50px;
+}
+.photo-body .photo-comment .comment-body .comment-list ul li .comment-profile{
+    float: left;
+}
+.photo-body .photo-comment .comment-body .comment-list ul li .comment-profile span{
+    float: left;
+    width: 100%;
+}
+.photo-body .photo-comment .comment-body .comment-list ul li .comment-reply{
+    float: right;
+    margin-bottom: 50px;
+}
+
+.photo-body .photo-buttons{
+    float: left;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.photo-body .photo-buttons ul{
+    width: 780px;
+    margin: 10px auto;
+}
+.photo-body .photo-buttons ul li{
+    float: left;
+    margin-right: 10px;
+}
+.photo-body .photo-buttons ul li a{
+    width: 140px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    padding: 0;
+    display: block;
+    border: 1px solid #5B5C5F;
+    background: #fff;
+    border-radius: 0;
+    color: #5B5C5F;
+    text-align: center;
+}
+.photo-category{
+    width: 25%;
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 186px;
+}
+
+.photo-body .userimg
+{
+    float: left;
+    width: 100%;
+}
+.photo-body .userimg img
+{
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.photo-body .userimg .usermedia{
+    float: left;
+    padding-left: 10px;
+    width: 200px;
+}
+.photo-body .userimg .usermedia span{
+    float: left;
+    width: 100%;
+    color: #31332e;
+    margin-top: 3px;
+    vertical-align: middle;
+    font-size: 15px;
+    line-height: 1.33;
+}
+
+.photo-body .userinfo{
+    float: left;
+    width: 100%;
+    min-width: 400px;
+}
+.photo-body .userinfo span{
+    float: left;
+    width: 100%
+}
+.photo-body .userinfo .site-demo-flow img{
+    /* width: 230px;*/
+    width: 24%;
+    height: 24%;
+    padding-top: 4px;
+    min-width: 200px;
+    min-height: 200px;
+}
+.photo-body .info-command{
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+}
+.photo-body .info-command span a{
+    margin-top: 10px;
+    margin-right: 15px;
+}
+
+.photo-body .photo-right{
+    width: 25%;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+}
+.photo-body .photo-right .photo-recommend
+{
+    float: left;
+}
+.photo-body .photo-right .photo-recommend .userimg
+{
+    float: left;
+    width: 100%;
+}
+.photo-body .photo-right .photo-recommend .userimg img
+{
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.photo-body .photo-right .photo-recommend .userimg .usermedia{
+    float: left;
+    padding-left: 10px;
+    width: 200px;
+}
+.photo-body .photo-right .photo-recommend .userimg .usermedia span{
+    float: left;
+    width: 100%;
+    color: #31332e;
+    margin-top: 3px;
+    vertical-align: middle;
+    font-size: 15px;
+    line-height: 1.33;
+}
+.photo-body .photo-right .photo-recommend ul li .userinfo{
+    float: left;
+    width: 100%;
+    min-width: 400px;
+    max-width: 950px;
+}
+.photo-body .photo-right .photo-recommend ul li{
+    float: left;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    width: 100%;
+}
+.photo-body .photo-right .photo-recommend ul li .userinfo span{
+    float: left;
+    width: 100%
+}
+.photo-body .photo-right .photo-recommend ul li .userinfo .site-flow img{
+    width: 120px;
+    height: 120px;
+    padding-top: 4px;
+}
+.photo-body .photo-content .info-command,
+.photo-body .photo-right .photo-recommend ul li .info-command{
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+}
+.photo-body .photo-content .info-command span a,
+.photo-body .photo-right .photo-recommend ul li .info-command span a{
+    margin-top: 10px;
+    margin-right: 15px;
+}
+
