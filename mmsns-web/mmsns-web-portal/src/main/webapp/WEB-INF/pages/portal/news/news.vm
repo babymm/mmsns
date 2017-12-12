@@ -18,7 +18,7 @@
 #parse("/header.vm")
 <div class="news-search">
     <div class="search-logo">
-        <a href="/action" style="display:inline-block;margin-top: 15px;color: #393D49">
+        <a href="/news" style="display:inline-block;margin-top: 15px;color: #393D49">
             <h1>我的资讯</h1>
         </a>
     </div>
@@ -44,9 +44,9 @@
                         <div class="news-article1">
                             <div class="news-image"><a href="/news/detail/1"><img src="http://www.xiaomoc.top/group1/M00/00/02/eE0NXVkjpJeAVYsGAAGfKZ7BqmE159.png" width="180" height="120"></a></div>
                             <div class="news-content">
-                                <a href="/news/detail/1">
-                                    <span><h3 style="margin-right: 20px">千万富翁当共享单车维运工 中国富豪退休</h3></span>
-                                    <span style="margin-top: 3px;margin-right: 20px">退休富豪们，也该学习这种士绅精神。走出对财富的痴迷、走出无所事事，做慈善、参与公共事务，履行精英群体该负担的社会义务。</span>
+                                <a href="/news/detail/1"style="display: block;float: left;min-width: ">
+                                    <span><h3 class="text-overflow" style="margin-right: 20px;">千万富翁当共享单车维运工 中国富豪退休</h3></span>
+                                    <span style="margin-top: 10px;margin-right: 20px">退休富豪们，也该学习这种士绅精神。走出对财富的痴迷、走出无所事事，做慈善、参与公共事务，履行精英群体该负担的社会义务。</span>
                                 </a>
                             </div>
                         </div>

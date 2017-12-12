@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>baby慕慕SNS个人博客管理系统-固定底部</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/css/photo/photo.css">
+</head>
+<body>
+#parse("/header.vm")
+<div class="photo-search">
+    <div class="search-logo">
+        <a href="/photo" style="display:inline-block;margin-top: 15px;color: #393D49">
+            <h1>我的图库</h1>
+        </a>
+    </div>
+    <div class="search-input">
+        <form id="searchForm" action="" class="box vertical sec-search" autocomplete="off">
+            <input type="hidden" name="scope" value="blog">
+            <input class="search-text" type="text" name="q" placeholder="请输入搜索内容">
+            <span class="ic-search box vertical" onclick=""></span>
+        </form>
+    </div>
+</div>
+<div class="photo-body">
+    <div class="photo-main">
+        <ul>
+            #set($photos=[0 .. 3])
+            #foreach($photo in $photos)
+                <li>
+                    <div class="userimg">
+                        <img src="http://a2.qpic.cn/psb?/V12fZE7Z2UfmuO/QnSFbVv2kaNgqA4mg2Jzo0BKxLslcoY8HPWUzZN79yc!/c/dGkBAAAAAAAA&ek=1&kp=1&pt=0&bo=fwJwBAAAAAACQG0!&vuin=915827225&tm=1513065600&sce=60-2-2&rf=newphoto&t=5" width="40" height="40" style="border-radius: 50%">
+                        <span>林青OSC 1分钟前</span>
+                    </div>
+                    <div class="userinfo">
+                        <span>再来5只，这下子应该就差个大的了！</span>
+                        <div class="site-demo-flow">
+                            <img lay-src="https://gw.alicdn.com/bao/uploaded/i2/701696736/TB2PNl5ahQa61Bjy0FhXXaalFXa_!!701696736.jpg_400x400q90.jpg?t=1513063905068">
+                            <img lay-src="https://gw.alicdn.com/bao/uploaded/i2/162734861/TB2V5rsX_gc61BjSZFkXXcTkFXa_!!162734861.jpg_400x400q90.jpg?t=1513063905068">
+                            <img lay-src="https://gw.alicdn.com/bao/uploaded/i4/69476562/TB2htq4XTka61BjSszfXXXN8pXa_!!69476562.jpg_400x400q90.jpg?t=1513063905068">
+                            <img lay-src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068">
+                            <img lay-src="https://gw.alicdn.com/bao/uploaded/i2/701696736/TB2PNl5ahQa61Bjy0FhXXaalFXa_!!701696736.jpg_400x400q90.jpg?t=1513063905068">
+                            <img lay-src="https://gw.alicdn.com/bao/uploaded/i2/162734861/TB2V5rsX_gc61BjSZFkXXcTkFXa_!!162734861.jpg_400x400q90.jpg?t=1513063905068">
+                            <img lay-src="https://gw.alicdn.com/bao/uploaded/i4/69476562/TB2htq4XTka61BjSszfXXXN8pXa_!!69476562.jpg_400x400q90.jpg?t=1513063905068">
+                            <img lay-src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068">
+                        </div>
+                    </div>
+                </li>
+            #end
+        </ul>
+    </div>
+    <div class="photo-right"></div>
+</div>
+</body>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element', 'flow'], function () {
+        var element = layui.element, flow = layui.flow;
+        flow.lazyimg({
+            elem: '.site-demo-flow img'
+            ,scrollElem: '.site-demo-flow'
+        });
+    });
+</script>
+</html>

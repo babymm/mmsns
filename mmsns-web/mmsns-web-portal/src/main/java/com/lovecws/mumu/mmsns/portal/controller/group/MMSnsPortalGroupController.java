@@ -23,6 +23,12 @@ public class MMSnsPortalGroupController {
         return "/portal/group/group";
     }
 
+    @RequestMapping(value = "/{classify}",method = RequestMethod.GET)
+    public String classify(@PathVariable String classify,HttpServletRequest request) {
+        request.setAttribute("mainModular", "group");
+        return "/portal/group/classify";
+    }
+
     @RequestMapping(value = "/detail/{groupId}", method = RequestMethod.GET)
     public String detail(@PathVariable int groupId, HttpServletRequest request) {
         request.setAttribute("mainModular", "group");

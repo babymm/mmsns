@@ -63,6 +63,7 @@
     width: 98%;
     padding: 0px;
     margin: 0px 15px 15px 15px;
+    min-width: 800px;
 }
 .news-body .news-content{
     float: left;
@@ -72,7 +73,7 @@
     float: left;
     height: 240px;
     margin-bottom: 30px;
-    min-width: 400px;
+    min-width: 540px;
 }
 .news-body .news-content .layui-row .maincontent .grid-demo{
     margin: 20px;
@@ -90,14 +91,16 @@
 .news-body .news-content .layui-row .maincontent .grid-demo .news-article1{
     float: left;
     width: 100%;
+    min-width: 510px;
 }
 .news-body .news-content .layui-row .maincontent .grid-demo .news-article1 .news-image{
     float: left;
 }
 .news-body .news-content .layui-row .maincontent .grid-demo .news-article1 .news-content{
     float: left;
-    width: 300px;
+    width: 330px;
     height: 120px;
+    min-width: 330px;
 }
 .news-body .news-content .layui-row .maincontent .grid-demo .news-article1 .news-content a span{
     float: left;
@@ -168,4 +171,12 @@
     float: right;
     width: 100%;
     margin-top: 6px;
+}
+
+.text-overflow{
+    display:block;
+    word-break:keep-all;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }

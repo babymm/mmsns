@@ -14,6 +14,11 @@
     margin-left: 30px;
     float: left;
 }
+.group-search .search-logo a{
+    display:inline-block;
+    margin-top: 15px;
+    color: #393D49
+}
 .group-search .search-input{
     width: 250px;
     height: 40px;
@@ -63,19 +68,22 @@
     width: 98%;
     padding: 0px;
     margin: 0px 15px 15px 15px;
+    min-width: 1100px;
 }
 .group-body .group-content{
     float: left;
-    width: 100%;
+    width: 75%;
+    min-width: 400px;
 }
 .group-body .group-content .layui-row .maincontent{
     float: left;
-    height: 206px;
+    height: 300px;
     margin-bottom: 20px;
-    min-width: 400px;
+    min-width: 520px;
 }
 .group-body .group-content .layui-row .maincontent .grid-demo{
-    margin: 20px;
+    margin: 10px 20px 20px 20px;
+    min-width: 520px;
 }
 .group-body .group-content .layui-row .maincontent .grid-demo .group-header{
     float: left;
@@ -86,23 +94,32 @@
 }
 .group-body .group-content .layui-row .maincontent .grid-demo .group-header a{
     float: right;
+    text-align: center;
+    margin-top: 7px;
+    margin-right: 20px;
 }
 .group-body .group-content .layui-row .maincontent .grid-demo .group-article1{
     float: left;
     width: 100%;
+    margin-top: 10px;
 }
 .group-body .group-content .layui-row .maincontent .grid-demo .group-article1 .group-image{
     float: left;
 }
 .group-body .group-content .layui-row .maincontent .grid-demo .group-article1 .group-content{
     float: left;
-    width: 360px;
-    min-width: 360px;
-    height: 120px;
+    width: 320px;
+    min-width: 320px;
+    height: 80px;
 }
-.group-body .group-content .layui-row .maincontent .grid-demo .group-article1 .group-content a span{
+.group-body .group-content .layui-row .maincontent .grid-demo .group-article1 .group-content .group-message{
+    float: left;
+    height: 80px;
+}
+.group-body .group-content .layui-row .maincontent .grid-demo .group-article1 .group-content .group-message a{
     float: left;
     width: 100%;
+    height: 80px;
     font-size: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -111,6 +128,12 @@
     -webkit-box-orient: vertical;
     color: #5e5e5e;
     padding-left: 5px;
+}
+.group-body .group-content .layui-row .maincontent .grid-demo .group-article1 .group-content .group-info{
+    float: left;
+}
+.group-body .group-content .layui-row .maincontent .grid-demo .group-article1 .group-content .group-info span{
+    text-align: right;
 }
 .group-body .group-content .layui-row .maincontent .grid-demo .group-article{
     float: left;
@@ -125,7 +148,26 @@
     margin-top: 5px;
     margin-bottom: 10px;
 }
+
 .group-body .group-category{
+    width: 24%;
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 13px;
+}
+.group-body .group-category .category-aboutarticle,
+.group-body .group-category .category-hotarticle,
+.group-body .group-category .category-newarticle
+{
     float: left;
-    width: 20%;
+    width: 100%;
+}
+.group-body .group-category .category-aboutarticle ul li,
+.group-body .group-category .category-hotarticle ul li,
+.group-body .group-category .category-newarticle ul li
+{
+    margin-bottom: 30px;
+    width: 100%;
+    float: left;
 }
