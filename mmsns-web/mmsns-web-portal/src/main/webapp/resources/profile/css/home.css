@@ -1,0 +1,94 @@
+.user-header{
+    width: 100%;
+    float: left;
+    min-width: 1100px;
+    height: 180px;
+    margin: 0px;
+    padding: 0px;
+    border-top: none;
+    border-bottom: none;
+    background-clip: padding-box;
+    background: #E4E1DC;
+}
+.user-header .user-logo{
+    float: left;
+    width: 120px;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.user-header .user-info{
+    float: left;
+    width: 55%;
+    min-width: 600px;
+    margin-top: 30px;
+}
+.user-header .user-info span{
+    float: left;
+    width: 100%;
+}
+.user-header .user-score{
+    float: left;
+    width: 320px;
+    margin-top: 30px;
+}
+.user-header .user-score>span{
+    float: left;
+    width: 80px;
+}
+.user-header .user-score span span{
+    float: left;
+    width: 100%;
+    font-size: 16px;
+    display: inline-block;
+    margin-left: 30px;
+    text-align: center;
+    color: #666;
+}
+.user-header .user-score span span a{
+    font-size: 36px;
+    font-weight: 600;
+    display: block;
+    margin-top: 5px;
+    color: #4eaa4c;
+}
+.user-body{
+    width: 100%;
+    float: left;
+    min-width: 1100px;
+    margin: 0px;
+    padding: 0px;
+    border-top: none;
+    border-bottom: none;
+    background-clip: padding-box;
+}
+.user-body .layout-function{
+    float: left;
+    width: 20%;
+    min-width: 200px;
+    max-width: 300px;
+    background-color:silver;
+    height: auto !important;
+    min-height: 600px;
+}
+.user-body .layout-function ul{
+    float: left;
+    width: 100%;
+    background-color:silver;
+}
+.user-body .layout-function ul li{
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 200;
+    line-height: 30px;
+    margin-top: 10px;
+}
+.user-body .layout-function ul li a{
+    vertical-align: middle;
+    text-align: center;
+}
+.user-body .layout-main{
+    float: left;
+    width: 80%;
+}

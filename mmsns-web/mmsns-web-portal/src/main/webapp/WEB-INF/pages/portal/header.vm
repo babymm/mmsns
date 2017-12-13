@@ -11,7 +11,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="${request.getContextPath()}/resources/css/index.css">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/index.css">
 </head>
 <body>
 <div class="mmsns-nav">
@@ -29,7 +29,7 @@
             <li class="layui-nav-item"><a href="/group">群组</a></li>
             <li class="layui-nav-item"><a href="/news">资讯</a></li>
             <li class="layui-nav-item"><a href="/photo">图库</a></li>
-            <li class="layui-nav-item"><a href="/doc">文档</a></li>
+            <li class="layui-nav-item"><a href="/doc">文库</a></li>
         #elseif($mainModular=='action')
             <li class="layui-nav-item"><a href="/">首页</a></li>
             <li class="layui-nav-item"><a href="/article">文章</a></li>
@@ -37,7 +37,7 @@
             <li class="layui-nav-item"><a href="/group">群组</a></li>
             <li class="layui-nav-item"><a href="/news">资讯</a></li>
             <li class="layui-nav-item"><a href="/photo">图库</a></li>
-            <li class="layui-nav-item"><a href="/doc">文档</a></li>
+            <li class="layui-nav-item"><a href="/doc">文库</a></li>
         #elseif($mainModular=='group')
             <li class="layui-nav-item"><a href="/">首页</a></li>
             <li class="layui-nav-item"><a href="/article">文章</a></li>
@@ -45,7 +45,7 @@
             <li class="layui-nav-item layui-this"><a href="/group">群组</a></li>
             <li class="layui-nav-item"><a href="/news">资讯</a></li>
             <li class="layui-nav-item"><a href="/photo">图库</a></li>
-            <li class="layui-nav-item"><a href="/doc">文档</a></li>
+            <li class="layui-nav-item"><a href="/doc">文库</a></li>
         #elseif($mainModular=='news')
             <li class="layui-nav-item"><a href="/">首页</a></li>
             <li class="layui-nav-item"><a href="/article">文章</a></li>
@@ -53,7 +53,7 @@
             <li class="layui-nav-item"><a href="/group">群组</a></li>
             <li class="layui-nav-item layui-this"><a href="/news">资讯</a></li>
             <li class="layui-nav-item"><a href="/photo">图库</a></li>
-            <li class="layui-nav-item"><a href="/doc">文档</a></li>
+            <li class="layui-nav-item"><a href="/doc">文库</a></li>
         #elseif($mainModular=='photo')
             <li class="layui-nav-item"><a href="/">首页</a></li>
             <li class="layui-nav-item"><a href="/article">文章</a></li>
@@ -61,7 +61,7 @@
             <li class="layui-nav-item"><a href="/group">群组</a></li>
             <li class="layui-nav-item"><a href="/news">资讯</a></li>
             <li class="layui-nav-item layui-this"><a href="/photo">图库</a></li>
-            <li class="layui-nav-item"><a href="/doc">文档</a></li>
+            <li class="layui-nav-item"><a href="/doc">文库</a></li>
         #elseif($mainModular=='doc')
             <li class="layui-nav-item"><a href="/">首页</a></li>
             <li class="layui-nav-item"><a href="/article">文章</a></li>
@@ -69,21 +69,52 @@
             <li class="layui-nav-item"><a href="/group">群组</a></li>
             <li class="layui-nav-item"><a href="/news">资讯</a></li>
             <li class="layui-nav-item"><a href="/photo">图库</a></li>
-            <li class="layui-nav-item layui-this"><a href="/doc">文档</a></li>
-        #else
+            <li class="layui-nav-item layui-this"><a href="/doc">文库</a></li>
+        #elseif($mainModular=='index')
             <li class="layui-nav-item layui-this"><a href="/">首页</a></li>
             <li class="layui-nav-item"><a href="/article">文章</a></li>
             <li class="layui-nav-item"><a href="/action">动弹</a></li>
             <li class="layui-nav-item"><a href="/group">群组</a></li>
             <li class="layui-nav-item"><a href="/news">资讯</a></li>
             <li class="layui-nav-item"><a href="/photo">图库</a></li>
-            <li class="layui-nav-item"><a href="/doc">文档</a></li>
+            <li class="layui-nav-item"><a href="/doc">文库</a></li>
+        #else
+            <li class="layui-nav-item"><a href="/">首页</a></li>
+            <li class="layui-nav-item"><a href="/article">文章</a></li>
+            <li class="layui-nav-item"><a href="/action">动弹</a></li>
+            <li class="layui-nav-item"><a href="/group">群组</a></li>
+            <li class="layui-nav-item"><a href="/news">资讯</a></li>
+            <li class="layui-nav-item"><a href="/photo">图库</a></li>
+            <li class="layui-nav-item"><a href="/doc">文库</a></li>
         #end
     </ul>
     <ul class="nav-button layui-nav">
         #if(!$shiro.isUser())
-            <li class="layui-nav-item"><a href="">我的消息</a></li>
-            <li class="layui-nav-item"><a href="">我的空间</a></li>
+            <li class="layui-nav-item">
+                <a href="">我的消息<span class="layui-badge">9</span></a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">弄点啥</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;">编写文章</a></dd>
+                    <dd><a href="javascript:;">发布动弹</a></dd>
+                    <dd><a href="javascript:;">创建群组</a></dd>
+                    <dd><a href="javascript:;">发布资讯</a></dd>
+                    <dd><a href="javascript:;">上传图库</a></dd>
+                    <dd><a href="javascript:;">上传文档</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="/profile/babymm/home">我的空间</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;">我的文章</a></dd>
+                    <dd><a href="javascript:;">我的动弹</a></dd>
+                    <dd><a href="javascript:;">我的群组</a></dd>
+                    <dd><a href="javascript:;">我的资讯</a></dd>
+                    <dd><a href="javascript:;">我的图库</a></dd>
+                    <dd><a href="javascript:;">我的文档</a></dd>
+                </dl>
+            </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">baby慕慕</a>
                 <dl class="layui-nav-child">

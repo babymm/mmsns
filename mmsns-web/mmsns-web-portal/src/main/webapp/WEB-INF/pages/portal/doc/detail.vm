@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>baby慕慕SNS个人博客-文档详情</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/doc/detail.css">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+#parse("/portal/header.vm")
+<div class="doc-body">
+    <div class="detail-breadcrumb">
+        <span class="layui-breadcrumb">
+          <a href="/doc" style="">我的文库</a>
+          <a href="/doc/list" style="">文库列表</a>
+          <a href="/doc/detail/1">文库详情</a>
+        </span>
+    </div>
+    <div class="doc-title">
+        <h2 align="center">hadoop权威指南</h2>
+        <div class="doc-author" align="right">
+            <span><a href="/doc/detail/1">龙马行空</a></span>
+            <span>发表于 1天前</span>
+            <span>阅读 359</span>
+            <span>收藏 35</span>
+            <span>点赞 0</span>
+            <span>评论 <a href="/doc/detail/1">3</a></span>
+        </div>
+    </div>
+    <div class="doc-message">
+        <hr>
+        <section class="content">
+            <p>首先要明确，作用域和执行环境是两个完全不同的概念，我们试图给他俩分别一个明确的定义，发现很难，因为你很难定义一个概念“是什么”，但是我们可以搞清楚他们分别起什么作用。另一个令人迷惑的地方就是js中的this关键字。其实执行环境就是this的值。总的来说，作用域是相对于函数来讲的，因为js里没有块级作用域，只有函数才能形成新的作用域。而且作用域在函数声明时就定义好了。作用域里声明的变量和函数，外部无法访问，注意，是外部。而执行环境在函数被调用时才生成。</p>
+        </section>
+    </div>
+    <div class="doc-buttons">
+        <ul>
+            <li><a href="/doc/detail/1"><i class="icon-svg icon-reward-blog"></i><span>点赞</span></a></li>
+            <li><a href="/doc/detail/1"><i class="icon-svg icon-reward-blog"></i><span>收藏</span></a></li>
+            <li><a href="/doc/detail/1"><i class="icon-svg icon-reward-blog"></i><span>下载</span></a></li>
+            <li><a href="/doc/view/1" target="_blank"><i class="icon-svg icon-reward-blog"></i><span>阅读</span></a></li>
+            <li><a href="/doc/detail/1"><i class="icon-svg icon-reward-blog"></i><span>举报</span></a></li>
+        </ul>
+    </div>
+    <div class="doc-comment">
+        <div class="comment-body">
+            <h2>评论 4</h2>
+            <div class="comment-textarea">
+                <textarea id="docMessage"></textarea>
+                <button>发表评论</button>
+            </div>
+            <div class="comment-list">
+                <ul>
+                    #set($comments=[0 .. 3])
+                    #foreach($comment in $comments)
+                        <li>
+                            <div class="comment-image">
+                                <a href="/article/detail/1">
+                                    <img src="https://static.oschina.net/uploads/user/106/212080_50.jpg?t=1395912810000" width="40" height="40">
+                                </a>
+                            </div>
+                            <div class="comment-profile">
+                                <span><a href="/article/detail/1">陈阳阳阳</a></span>
+                                <span>1楼 2017/12/08 15:28</span>
+                            </div>
+                            <div class="comment-reply"><a href="/article/detail/1">回复</a></div>
+                            <hr>
+                        </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="doc-category">
+    <div class="category-docrecommend">
+        <h2>推荐文档</h2><hr>
+        <ul>
+            #set($aboutarticles=[0 .. 9])
+            #foreach($aboutarticle in $aboutarticles)
+                <li><a>深入区分javascript中的作用域和执行环境</a></li>
+            #end
+        </ul>
+    </div>
+</div>
+#parse("/portal/footer.vm")
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element','layedit'], function () {
+        var element = layui.element, layedit = layui.layedit;
+        layedit.build('docMessage',{
+            tool:[],
+            height:100
+        });
+    });
+</script>
+</body>
+</html>

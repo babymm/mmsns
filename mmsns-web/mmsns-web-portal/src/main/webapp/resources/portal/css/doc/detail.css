@@ -1,0 +1,131 @@
+body{
+    float: left;
+    width: 100%;
+    min-width: 1100px;
+    margin: 0px;
+    padding:0px;
+}
+.doc-body{
+    float: left;
+    width: 70%;
+    margin: 20px 0px 0px 20px;
+}
+.doc-body .detail-breadcrumb{
+    font-size: 16px;
+    font-weight: 400;
+    margin: 22px 0 30px;
+}
+.doc-body .detail-breadcrumb a{
+    font-size: 18px;
+    font-weight: 400;
+    margin: 22px 0 30px;
+    color: #49ab4f;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+    text-decoration: none;
+    outline: 0;
+}
+.doc-body .doc-title{
+    float: left;
+    width: 100%;
+}
+.doc-body .doc-title .doc-author{
+    float: right;
+    margin-top: 20px;
+}
+.doc-body .doc-message{
+    float: left;
+    margin-top: 30px;
+    padding: 20px 0;
+    font-size: 14px;
+    line-height: 1.78571429;
+}
+.doc-body .doc-comment{
+    float: left;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.doc-body .doc-comment{
+    float: left;
+    width: 100%;
+    margin-bottom: 50px;
+}
+.doc-body .doc-comment .comment-body{
+    width: 100%;
+}
+.doc-body .doc-comment .comment-body .comment-textarea button{
+    float: right;
+    background-color: #4eaa4c;
+    border-radius: 3px;
+    padding: .4rem .8rem;
+    outline: 0;
+    border: 0;
+    margin: 0;
+    display: inline-block;
+    cursor: pointer;
+}
+.doc-body .doc-comment .comment-body .comment-list ul li{
+    float: left;
+    margin-top: 20px;
+    width: 100%;
+}
+.doc-body .doc-comment .comment-body .comment-list ul li .comment-image{
+    float: left;
+    width: 50px;
+}
+.doc-body .doc-comment .comment-body .comment-list ul li .comment-profile{
+    float: left;
+}
+.doc-body .doc-comment .comment-body .comment-list ul li .comment-profile span{
+    float: left;
+    width: 100%;
+}
+.doc-body .doc-comment .comment-body .comment-list ul li .comment-reply{
+    float: right;
+    margin-bottom: 50px;
+}
+
+.doc-body .doc-buttons{
+    float: left;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.doc-body .doc-buttons ul{
+    width: 780px;
+    margin: 10px auto;
+}
+.doc-body .doc-buttons ul li{
+    float: left;
+    margin-right: 10px;
+}
+.doc-body .doc-buttons ul li a{
+    width: 140px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    padding: 0;
+    display: block;
+    border: 1px solid #5B5C5F;
+    background: #fff;
+    border-radius: 0;
+    color: #5B5C5F;
+    text-align: center;
+}
+.doc-category{
+    width: 25%;
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 186px;
+}
+.doc-category .category-docrecommend
+{
+    float: left;
+}
+.doc-category .category-docrecommend ul li{
+    margin-bottom: 30px;
+    width: 100%;
+    float: left;
+}

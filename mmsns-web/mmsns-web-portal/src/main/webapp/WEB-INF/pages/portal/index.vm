@@ -10,30 +10,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="../../plugins/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/index.css">
 </head>
 <body>
-<div class="mmsns-nav">
-    <div class="nav-logo">
-        <a href="index.html"><img src="http://img.logonc.com/d/file/logo/20171122/3d4c440981a30b5cc7f88d3558da3f83.jpg"
-                                  width="150px"
-                                  height="60px"></a>
-    </div>
-    <ul class="nav-content layui-nav">
-        <li class="layui-nav-item layui-this"><a href="">首页</a></li>
-        <li class="layui-nav-item"><a href="">文章</a></li>
-        <li class="layui-nav-item"><a href="">动弹</a></li>
-        <li class="layui-nav-item"><a href="">群组</a></li>
-        <li class="layui-nav-item"><a href="">资讯</a></li>
-        <li class="layui-nav-item"><a href="">图片</a></li>
-        <li class="layui-nav-item"><a href="">文档</a></li>
-    </ul>
-    <ul class="nav-button layui-nav">
-        <li class="layui-nav-item"><a href="">登录</a></li>
-        <li class="layui-nav-item"><a href="">注册</a></li>
-    </ul>
-</div>
+#parse("/portal/header.vm")
 <div class="mmsns-cursor layui-carousel" id="mmsnsCursor" lay-filter="mmsnsCursorFilter">
     <div carousel-item="">
         <div><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%"></div>
@@ -51,8 +32,8 @@
             <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
                 <div class="grid-demo grid-demo-bg1">
                     <div class="article-logo">
-                        <a href="index.html"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%"
-                                                  height="200px;"></a>
+                        <a href="index.vm"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%"
+                                                height="200px;"></a>
                     </div>
                     <div class="article-title">
                         <h4><a>当福利变成暴力，携程你还能走多远</a></h4>
@@ -66,8 +47,8 @@
             <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
                 <div class="grid-demo">
                     <div class="article-logo">
-                        <a href="index.html"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%"
-                                                  height="200px;"></a>
+                        <a href="index.vm"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%"
+                                                height="200px;"></a>
                     </div>
                     <div class="article-title">
                         <h4><a>当福利变成暴力，携程你还能走多远</a></h4>
@@ -81,8 +62,8 @@
             <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
                 <div class="grid-demo grid-demo-bg1">
                     <div class="article-logo">
-                        <a href="index.html"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%"
-                                                  height="200px;"></a>
+                        <a href="index.vm"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%"
+                                                height="200px;"></a>
                     </div>
                     <div class="article-title">
                         <h4><a>当福利变成暴力，携程你还能走多远</a></h4>
@@ -96,8 +77,8 @@
             <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
                 <div class="grid-demo">
                     <div class="article-logo">
-                        <a href="index.html"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%"
-                                                  height="200px;"></a>
+                        <a href="index.vm"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%"
+                                                height="200px;"></a>
                     </div>
                     <div class="article-title">
                         <h4><a>当福利变成暴力，携程你还能走多远</a></h4>
@@ -191,8 +172,8 @@
             <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
                 <div class="grid-demo grid-demo-bg1">
                     <div class="group-logo">
-                        <a href="index.html"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="90%"
-                                                  height="200px;"></a>
+                        <a href="index.vm"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="90%"
+                                                height="200px;"></a>
                     </div>
                     <div class="group-name">
                         <h4><a>javascript</a></h4>
@@ -206,20 +187,10 @@
         </div>
     </div>
 </div>
-<div class="mmsns-footer">
-    <div>
-        <p class="footer-about" align="center">
-            <a href="">关于我们</a> <span>|</span>  <a href="">联系我们</a> <span>|</span>  <a href="">付款方式</a> <span>|</span>  <a href="">提交工单</a> <span>|</span>  <a href="">常见问题</a>
-        </p>
-        <p class="footer-copyright" align="center">
-            Copyright © 2007-2017. baby慕慕科技有限公司 版权所有 Power by Mereca  鄂ICP备14007080号-1
-        </p>
-    </div>
-</div>
+#parse("/portal/footer.vm")
 </body>
-<script type="text/javascript" src="../../plugins/layui/layui.js" charset="utf-8"></script>
-<script type="text/javascript" src="../../plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="../../plugins/scroll/jquery.nicescroll.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
 <script type="text/javascript">
     var clientWidth = document.documentElement.body, mmsnsCursor = null;
     window.onresize = function () {
@@ -237,23 +208,5 @@
             , height: '400px'
         });
     });
-    $(document).ready(
-        function () {
-            $("html").niceScroll({
-                cursorcolor: "#424242", // 改变滚动条颜色，使用16进制颜色值
-                cursoropacitymin: 0, // 当滚动条是隐藏状态时改变透明度, 值范围 1 到 0
-                cursoropacitymax: 1, // 当滚动条是显示状态时改变透明度, 值范围 1 到 0
-                cursorwidth: "2px", // 滚动条的宽度，单位：便素
-                cursorborder: "1px solid #fff", // CSS方式定义滚动条边框
-                cursorborderradius: "5px", // 滚动条圆角（像素）
-                zindex: "auto" | 100, // 改变滚动条的DIV的z-index值
-                scrollspeed: 60, // 滚动速度
-                mousescrollstep: 40, // 鼠标滚轮的滚动速度 (像素)
-                touchbehavior: false, // 激活拖拽滚动
-                hwacceleration: true, // 激活硬件加速
-                boxzoom: false, // 激活放大box的内容
-            });
-        }
-    );
 </script>
 </html>

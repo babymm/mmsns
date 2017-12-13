@@ -1,0 +1,103 @@
+.doc-search{
+    float: left;
+    width: 100%;
+    height: 70px;
+    background-color:aliceblue;
+    min-width: 1100px;
+    margin: 0px;
+    padding:0px;
+}
+.doc-search .search-logo{
+    width: 70%;
+    height: 60px;
+    text-align: left;
+    margin-left: 30px;
+    float: left;
+}
+.doc-search .search-input{
+    width: 250px;
+    height: 40px;
+    float: left;
+    margin-top: 20px;
+}
+.doc-search .search-input .sec-search{
+    position: relative;
+    margin: 0;
+}
+.doc-search .search-input .sec-search .search-text{
+    font-size: .875rem;
+    width: 200px;
+    height: 30px;
+    padding: 0 50px 0 14px;
+    -webkit-transition: -webkit-box-shadow .2s;
+    transition: -webkit-box-shadow .2s;
+    transition: box-shadow .2s;
+    transition: box-shadow .2s,-webkit-box-shadow .2s;
+    color: #111;
+    border: none;
+    border-radius: 1.5em;
+    outline: 0;
+    background: rgba(255,255,255,.6);
+    -webkit-box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
+}
+.doc-search .search-input .sec-search .ic-search{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 30px;
+    padding: 0;
+    cursor: pointer;
+    -webkit-transition: background .2s;
+    transition: background .2s;
+    border: none;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    outline: 0;
+    background: url(https://www.oschina.net/build/oschina/components/imgs/icon/ic_search.svg) center center no-repeat;
+    background-size: 16px 16px;
+}
+.doc-body{
+    float: left;
+    width: 100%;
+    padding: 0px;
+    min-width: 1100px;
+}
+.doc-body .doc-hot,
+.doc-body .doc-latest{
+    float: left;
+    width: 95%;
+    margin-bottom: 50px;
+}
+.doc-body .doc-hot .layui-row .layui-col,
+.doc-body .doc-latest .layui-row .layui-col{
+    float: left;
+    padding-left: 20px;
+    padding-bottom: 20px
+}
+.doc-body .doc-hot .layui-row .grid-demo,
+.doc-body .doc-latest .layui-row .grid-demo{
+    float: left;
+    width: 100%;
+    height: 320px;
+    color: transparent;
+    background-color: #e6e6e6;
+}
+.doc-body .doc-hot .layui-row .grid-demo .doc-content,
+.doc-body .doc-latest .layui-row .grid-demo .doc-content{
+    float: left;
+    margin-bottom: 20px;
+    width: 96%;
+    height: 100%;
+}
+.doc-body .doc-hot .layui-row .grid-demo .doc-content>span,
+.doc-body .doc-latest .layui-row .grid-demo .doc-content>span{
+    float: left;
+}
+.doc-body .doc-hot .layui-row .grid-demo .doc-content a img,
+.doc-body .doc-latest .layui-row .grid-demo .doc-content a img{
+    float: left;
+    width: 100%;
+    height: 90%;
+}

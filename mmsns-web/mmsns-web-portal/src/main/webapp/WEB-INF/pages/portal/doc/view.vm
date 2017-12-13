@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>baby慕慕SNS个人博客-文档预览</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${request.getContextPath()}/portal/resources/css/doc/view.css">
+</head>
+<body>
+<div class="content">
+    <div class="mainpart" id="mainpart">
+        <div class="layout02" id="mainPanel">
+            <div class="commonbox2" id="box1">
+                <div class="doctopic">
+                    <h1>
+                        <img id="thumb" src=""><span id="title"></span>
+                    </h1>
+                    <div style="float:right;padding: 10px 0;color: #999; padding-right:10px;font-size: 14px;">
+                        格式：<span id="suffex"></span><span style="padding: 0 10px;">|</span>
+                        浏览次数：1<span style="padding: 0 10px;">|</span>
+                        上传日期：2017-06-28
+                    </div>
+                </div>
+            </div>
+            <div class="page-view" id="pageContainer"></div>
+        </div>
+    </div>
+</div>
+
+<!--/*******阅读工具条*******/-->
+<div class="reader-tools-bar">
+    <div class="mainpart" style="min-width:900px;">
+        <ul class="left">
+            <li class="paging">
+                <input type="button" title="上一页" class="no-prev" id="prePageButton" />
+                <input type="button" title="下一页" class="nextsmall" id="nextPageButton" />
+            </li>
+            <li class="pages"></li>
+            <li class="text"><input type="text" id="pageNumInput" />&nbsp;/&nbsp;<span id="pageCount"></span></li>
+            <li class="btns"><input type="button" id="gotoPageButton" /></li>
+        </ul>
+        <ul class="right">
+            <li title="放大" class="zoomb" id="zoomInButton"></li>
+            <li title="缩小" class="no-zooms" id="zoomOutButton"></li>
+            <li title="全屏显示" class="fullscreen" id="frscreen"></li>
+        </ul>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/swfobject/swfobject.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/swfobject/scrollFix.js" charset="utf-8"></script>
+<script type="text/javascript">
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return r[2];
+        return null;
+    }
+    var thumb=GetQueryString("thumb");if(thumb){thumb=thumb;}else{thumb = "${request.getContextPath()}/plugins/swfobject/ppt.png";}
+    var title=GetQueryString("title");if(title){title= decodeURIComponent(title);}else{title = "黄金投资途径";}
+    var count=GetQueryString("count");if(!count){count=25;}
+    var swf= GetQueryString("swf");if(swf){swf=swf;}else {swf="${request.getContextPath()}/plugins/swfobject/swf/";}
+    var suffex= GetQueryString("suffex");if(!suffex){suffex="pdf";}
+
+    $("#thumb").attr("src",thumb);
+    $("#title").text(title);
+    $("#pageCount").text(count);
+    $("#suffex").text(suffex);
+    var readerConfig = {
+        allPage: count,
+        productId: "1",
+        flashUrl: swf,
+    };
+</script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/swfobject/view.js" charset="utf-8"></script>
+<script type="text/javascript">
+layui.use(['element'], function(){
+    var element = layui.element;
+});
+</script>
+</html>

@@ -11,10 +11,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="${request.getContextPath()}/resources/css/group/classify.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/group/classify.css" media="all">
 </head>
 <body>
-#parse("/header.vm")
+#parse("/portal/header.vm")
 <div class="grouplist-body">
     <div class="grouplist-breadcrumb">
         <span class="layui-breadcrumb">
@@ -79,7 +79,7 @@
         </ul>
     </div>
 </div>
-#parse("/footer.vm")
+#parse("/portal/footer.vm")
 </body>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>

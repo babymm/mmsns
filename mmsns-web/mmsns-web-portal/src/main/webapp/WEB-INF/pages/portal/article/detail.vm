@@ -12,10 +12,10 @@
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="${request.getContextPath()}/resources/css/article/detail.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/article/detail.css" media="all">
 </head>
 <body>
-#parse("/header.vm")
+#parse("/portal/header.vm")
 <div class="article-content">
     <div class="article-body">
         <div class="article-title">
@@ -173,7 +173,7 @@ function bar (){
         </div>
     </div>
 </div>
-#parse("/footer.vm")
+#parse("/portal/footer.vm")
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js"  charset="utf-8"></script>
 <script type="text/javascript">

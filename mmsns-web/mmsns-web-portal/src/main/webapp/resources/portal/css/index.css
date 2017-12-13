@@ -24,17 +24,16 @@ body {
 }
 
 .mmsns-nav .nav-content {
-    width: 600px;
+    width: 500px;
     float: left;
-    min-width: 600px;
+    min-width: 500px;
     padding-left: 0px;
 }
-
 .mmsns-nav .nav-button {
     padding: 0px;
     float: right;
-    width: 300px;
-    min-width: 300px;
+    width: 400px;
+    min-width: 400px;
 }
 
 .mmsns-cursor {

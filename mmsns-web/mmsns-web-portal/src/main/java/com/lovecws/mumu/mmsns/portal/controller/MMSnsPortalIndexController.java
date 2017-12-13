@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author babymm
  * @version 1.0-SNAPSHOT
@@ -15,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MMSnsPortalIndexController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String index() {
-        return "/index";
+    public String index(HttpServletRequest request) {
+        request.setAttribute("mainModular", "index");
+        return "/portal/index";
     }
 }

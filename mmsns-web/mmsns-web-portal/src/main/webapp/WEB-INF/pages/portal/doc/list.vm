@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>baby慕慕SNS个人博客-文档详情</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/doc/list.css">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+#parse("/portal/header.vm")
+<div class="doc-body">
+    <div class="detail-breadcrumb">
+        <span class="layui-breadcrumb">
+          <a href="/doc" style="">我的文库</a>
+          <a href="/doc/list">文库列表</a>
+            #if($docType=='latest')
+                <a href="/doc/list/latest">最新文档</a>
+            #elseif($docType=='hot')
+                <a href="/doc/list/hot">热门文档</a>
+            #end
+        </span>
+    </div>
+    <div class="layui-row" class="flow-default" id="docFlowUL">
+        #set($docs=[0 .. 11])
+        #foreach($doc in $docs)
+            <div class="layui-col-xs6 layui-col-sm4 layui-col-md3 layui-col">
+                <div class="grid-demo grid-demo-bg1">
+                    <div class="doc-content">
+                        <span style="text-align: center;width: 100%;display: block;color: black"><h4>hadoop权威指南</h4></span>
+                        <span style="text-align: right;width: 100%;display: block;color: black">2017-12-13</span>
+                        <span style="height: 80%"><a href="/doc/detail/1"><img src="http://git.oschina.net/uploads/images/2016/1116/162953_22323def_1198.png"></a></span>
+                        <span><a href="/doc//detail/1">baby慕慕 </a> </span>
+                        <span class="info-command" style="width: 150px;float: right">
+                                <span><a href="/doc//detail/1"><i class="fa fa-thumbs-up"></i>1</a> </span>
+                                <span><a href="/doc/detail/1"><i class="fa fa-reply"></i>2</a> </span>
+                                <span><a href="/doc/detail/1"><i class="fa fa-comment"></i>3</a> </span>
+                                <span><a href="/doc/detail/1">查看详情</a></span>
+                            </span>
+                    </div>
+                </div>
+            </div>
+        #end
+    </div>
+</div>
+#parse("/portal/footer.vm")
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element','flow'], function () {
+        var element = layui.element,flow=layui.flow;
+        flow.load({
+            elem: '#docFlowUL'
+            ,isAuto:true
+            ,isLazyimg:true
+            ,done: function(page, next){
+                var lis = [];
+                for(var i = 0; i < 12; i++){
+                    lis.push('<div class="layui-col-xs6 layui-col-sm4 layui-col-md3 layui-col">'+
+                            '<div class="grid-demo grid-demo-bg1">'+
+                            '<div class="doc-content">'+
+                            '<span style="text-align: center;width: 100%;display: block;color: black"><h4>hadoop权威指南</h4></span>'+
+                            '<span style="text-align: right;width: 100%;display: block;color: black">2017-12-13</span>'+
+                            '<span style="height: 80%"><a href="/doc/detail/1"><img lay-src="http://git.oschina.net/uploads/images/2016/1116/162953_22323def_1198.png"></a></span>'+
+                            '<span><a href="/doc//detail/1">baby慕慕 </a> </span>'+
+                            '<span class="info-command" style="width: 150px;float: right">'+
+                            '<span><a href="/doc//detail/1"><i class="fa fa-thumbs-up"></i>1</a> </span>'+
+                            '<span><a href="/doc/detail/1"><i class="fa fa-reply"></i>2</a> </span>'+
+                            '<span><a href="/doc/detail/1"><i class="fa fa-comment"></i>3</a> </span>'+
+                            '<span><a href="/doc/detail/1">查看详情</a></span>'+
+                            '</span>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>');
+                }
+                next(lis.join(''), page < 10);
+            }
+        });
+    });
+</script>
+</body>
+</html>
