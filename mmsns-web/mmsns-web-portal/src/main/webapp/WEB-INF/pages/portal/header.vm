@@ -18,7 +18,7 @@
     <div class="nav-logo">
         <a href="/">
             #*<img src="http://img.logonc.com/d/file/logo/20171122/3d4c440981a30b5cc7f88d3558da3f83.jpg"  width="150px" height="60px">*#
-            <img src="http://pic.ibaotu.com/00/41/59/36S888piCk8u.jpg-1.jpg!ww700"  width="150px" height="60px">
+            #*<img src="http://pic.ibaotu.com/00/41/59/36S888piCk8u.jpg-1.jpg!ww700"  width="150px" height="60px">*#
         </a>
     </div>
     <ul class="nav-content layui-nav">

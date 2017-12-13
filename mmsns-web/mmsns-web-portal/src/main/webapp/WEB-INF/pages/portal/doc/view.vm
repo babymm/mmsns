@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="${request.getContextPath()}/portal/resources/css/doc/view.css">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/doc/view.css">
 </head>
 <body>
 <div class="content">

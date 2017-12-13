@@ -18,8 +18,8 @@
 }
 .user-header .user-info{
     float: left;
-    width: 55%;
-    min-width: 600px;
+    width: 48%;
+
     margin-top: 30px;
 }
 .user-header .user-info span{
@@ -28,7 +28,7 @@
 }
 .user-header .user-score{
     float: left;
-    width: 320px;
+    width: 400px;
     margin-top: 30px;
 }
 .user-header .user-score>span{
@@ -38,9 +38,9 @@
 .user-header .user-score span span{
     float: left;
     width: 100%;
-    font-size: 16px;
+    font-size: 20px;
     display: inline-block;
-    margin-left: 30px;
+
     text-align: center;
     color: #666;
 }
@@ -49,6 +49,7 @@
     font-weight: 600;
     display: block;
     margin-top: 5px;
+    text-align: center;
     color: #4eaa4c;
 }
 .user-body{
@@ -60,35 +61,120 @@
     border-top: none;
     border-bottom: none;
     background-clip: padding-box;
+    background-color:#E4E1DC;
+    margin-bottom: 50px;
 }
-.user-body .layout-function{
+.user-body .content{
     float: left;
-    width: 20%;
-    min-width: 200px;
-    max-width: 300px;
-    background-color:silver;
-    height: auto !important;
-    min-height: 600px;
+    width: 50%;
+    min-width: 540px;
+    height: 440px;
 }
-.user-body .layout-function ul{
+.user-body .content .layout-content{
+    float: left;
+    width: 95%;
+    height: 95%;
+    margin-left: 2%;
+    margin-top: 2%;
+    background-color:#fffbfd;
+    min-width: 550px;
+}
+.user-body .content .layout-content .contenttitle{
+    float:left;
+    width: 98%
+}
+.user-body .content .layout-content .contenttitle h2{
+    width: 100px;
+    float: left;
+}
+.user-body .content .layout-content .contenttitle span{
+    float: right;
+    width: 60px;
+    margin-top: 6px;
+}
+.user-body .content .layout-content .maincontent{
     float: left;
     width: 100%;
-    background-color:silver;
+    height: 95%;
+    margin-top: 2%;
+    height: 385px;
 }
-.user-body .layout-function ul li{
+.user-body .content .layout-content .maincontent ul li{
     float: left;
+    width: 45%;
+    margin-bottom: 30px;
+    margin-left: 30px;
+}
+.user-body .content .layout-content .maincontent ul li .contentbody{
+    float: left;
+    width: 98%;
+    border: 1px solid silver;
+    border-radius: 1%;height: 160px;
+}
+.user-body .content .layout-content .maincontent ul li .contentbody .logo{
+    width: 40%;
+    float: left;
+}
+.user-body .content .layout-content .maincontent ul li .contentbody .contentinfo{
+    width: 58%;
+    float: left;
+}
+.user-body .content .layout-content .maincontent ul li .contentbody .contentinfo .title{
     width: 100%;
-    text-align: center;
-    font-size: 24px;
-    font-weight: 200;
-    line-height: 30px;
-    margin-top: 10px;
-}
-.user-body .layout-function ul li a{
-    vertical-align: middle;
-    text-align: center;
-}
-.user-body .layout-main{
     float: left;
-    width: 80%;
+    font-size: 16px;
+    color: #111111;
+    line-height: 1.5;
+    word-break: break-all;
+    display: block;
+}
+.user-body .content .layout-content .maincontent ul li .contentbody .contentinfo .body{
+    width: 100%;
+    float: left;
+    font-size: 14px;
+    color: #111111;
+    line-height: 1.5;
+    word-break: break-all;
+    display: block;
+    height: 90px;
+    overflow: hidden;
+    margin-top: 6px;
+}
+.user-body .content .layout-content .maincontent ul li .contentbody .media{
+    width: 100%;
+    float: left;
+    font-size: 12px;
+    color: #9d9d9d;
+    margin-top: 10px
+}
+.user-body .content .layout-content .maincontent ul li .contentbody .media span{
+    margin-right: 10px
+}
+.user-body .content .layout-content .maincontent ul li .contentbody .phototitle{
+    width: 100%;
+    float: left
+}
+.user-body .content .layout-content .maincontent ul li .contentbody .phototitle{
+    width: 100%;
+    float: left
+}
+.user-body .content .layout-content .maincontent ul li .contentbody .phototitle span{
+     width: 100%;
+    float: left;
+    font-size: 16px;
+    color: #111111;
+    line-height: 1.5;
+    word-break: break-all;
+    display: block;
+    text-align: center;
+}
+.user-body .content .layout-content .maincontent ul li .contentbody .photoimg{
+    width: 100%;
+    float: left;
+    height: 100px;
+    margin-top: 6px;
+}
+.user-body .content .layout-content .maincontent ul li .contentbody .photoimg img{
+    width: 30%;
+    height: 100px
 }

@@ -10,75 +10,198 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
-    <link rel="stylesheet" href="${request.getContextPath()}/resources/profile/css/home.css">
 </head>
 <body>
-#parse("/portal/header.vm")
-<div class="user-header">
-    <div class="user-logo">
-        <img src="https://static.oschina.net/uploads/user/1483/2966952_100.jpg?t=1489590626000" width="100" height="100" style="border-radius: 50%">
-    </div>
-    <div class="user-info">
-        <span style="font-size: 24px;color: #111;-webkit-font-smoothing: antialiased;font-weight: 400;">baby慕慕
-            <a href="/profile/babymm/home" style="margin-left: 5px;font-size: 14px;color: #4eaa4c"><i class="fa fa-thumbs-o-up" style="font-size: 18px;" aria-hidden="true"></i>点赞</a>
-            <a href="/profile/babymm/home" style="margin-left: 5px;font-size: 14px;color: #4eaa4c"><i class="fa fa-heart-o" style="font-size: 18px;" aria-hidden="true"></i>关注</a>
-            <a href="/profile/babymm/home" style="margin-left: 5px;font-size: 14px;color: #4eaa4c"><i class="fa fa-comment-o" style="font-size: 18px;padding-bottom: 2px" aria-hidden="true"></i>私信</a>
-        </span>
-        <span style="font-size: 14px;-webkit-font-smoothing: antialiased;font-weight: 400;margin-top: 5px">武汉华四投资顾问有限公司 - 高级程序员 | 甘亮 | 中国-河南省-信阳市 | 男 |1990-7-7</span>
-        <span style="font-size: 14px;-webkit-font-smoothing: antialiased;font-weight: 400;margin-top: 5px">立命之学、改过之法、积善之方、谦德之效</span>
-        <span style="margin-top: 9px"><a href="/admin/" style="color: #4eaa4c;border: 1px solid #66a757;border-radius: 2px;width: 60px;padding: .3rem .8rem;">编辑个人资料</a></span>
-        <span style="margin-top: 5px;color: #999;">加入于 2016/10/19</span>
-    </div>
-    <div class="user-score">
-        <span>
-            <span>点赞</span>
-            <span><a href="/profile/">12</a></span>
-        </span>
-        <span>
-            <span>粉丝</span>
-            <span><a href="/profile/">10</a></span>
-        </span>
-        <span>
-            <span>关注</span>
-            <span><a href="/profile/">12</a></span>
-        </span>
-        <span>
-            <span>积分</span>
-            <span><a href="/profile/">12</a></span>
-        </span>
-    </div>
-</div>
+#parse("/profile/header.vm")
 <div class="user-body">
-    <div class="layout-function">
-        <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo">
-            <li class="layui-nav-item layui-nav-itemed">
-                <a href="javascript:;">我的文章</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="javascript:;">我发布的</a></dd>
-                    <dd><a href="javascript:;">评论列表</a></dd>
-                    <dd><a href="javascript:;">我收藏的</a></dd>
-                    <dd><a href="javascript:;">我点赞的</a></dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item"><a href="javascript:;">我的动弹</a></li>
-            <li class="layui-nav-item"><a href="javascript:;">我的群组</a></li>
-            <li class="layui-nav-item"><a href="javascript:;">我的资讯</a></li>
-            <li class="layui-nav-item"><a href="javascript:;">我的图库</a></li>
-            <li class="layui-nav-item"><a href="javascript:;">我的文档</a></li>
-        </ul>
+    <div class="content">
+        <div class="layout-content">
+            <span class="contenttitle">
+                <h2 style="">我的文章</h2>
+                <span><a href="/profile/babymm/article">查看更多</a></span>
+            </span>
+            <div class="maincontent">
+                <ul>
+                    #set($articles=[0 .. 3])
+                    #foreach($article in $articles)
+                        <li>
+                            <div class="contentbody">
+                                <div class="logo">
+                                    <a href="/profile/"><img src="https://static.oschina.net/uploads/space/2017/0619/101653_Pe5G_2966952.png" width="120px" height="120px" style="border-radius: 1%;"></a>
+                                </div>
+                                <div class="contentinfo">
+                                    <span class="title"><a href="">Jenkins持续化部署</a></span>
+                                    <span class="body">首先要明确，作用域和执行环境是两个完全不同的概念，我们试图给他俩分别一个明确的定义，发现很难，因为你很难定义一个概念“是什么”</span>
+                                </div>
+                                <div class="media">
+                                    <span>浏览123</span>
+                                    <span>评论12</span>
+                                    <span style="float: right;">2017-12-13发布</span>
+                                </div>
+                            </div>
+                        </li>
+                    #end
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="layout-main">
+    <div class="content">
+        <div class="layout-content">
+            <span class="contenttitle">
+                <h2 style="">我的动弹</h2>
+                <span><a href="/profile/babymm/article">查看更多</a></span>
+            </span>
+            <div class="maincontent">
+                <ul>
+                    #set($articles=[0 .. 3])
+                    #foreach($article in $articles)
+                        <li>
+                            <div class="contentbody">
+                                <div class="logo">
+                                    <a href="/profile/"><img src="https://static.oschina.net/uploads/space/2017/0619/101653_Pe5G_2966952.png" width="120px" height="120px" style="border-radius: 1%;"></a>
+                                </div>
+                                <div class="contentinfo">
+                                    <span class="title"><a href="">Jenkins持续化部署</a></span>
+                                    <span class="body">首先要明确，作用域和执行环境是两个完全不同的概念，我们试图给他俩分别一个明确的定义，发现很难，因为你很难定义一个概念“是什么”</span>
+                                </div>
+                                <div class="media">
+                                    <span>浏览123</span>
+                                    <span>评论12</span>
+                                    <span style="float: right;">2017-12-13发布</span>
+                                </div>
+                            </div>
+                        </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="layout-content">
+            <span class="contenttitle">
+                <h2 style="">我的群组</h2>
+                <span><a href="/profile/babymm/article">查看更多</a></span>
+            </span>
+            <div class="maincontent">
+                <ul>
+                    #set($articles=[0 .. 3])
+                    #foreach($article in $articles)
+                        <li>
+                            <div class="contentbody">
+                                <div class="logo">
+                                    <a href="/profile/"><img src="https://static.oschina.net/uploads/space/2017/0619/101653_Pe5G_2966952.png" width="120px" height="120px" style="border-radius: 1%;"></a>
+                                </div>
+                                <div class="contentinfo">
+                                    <span class="title"><a href="">Jenkins持续化部署</a></span>
+                                    <span class="body">首先要明确，作用域和执行环境是两个完全不同的概念，我们试图给他俩分别一个明确的定义，发现很难，因为你很难定义一个概念“是什么”</span>
+                                </div>
+                                <div class="media">
+                                    <span>浏览123</span>
+                                    <span>评论12</span>
+                                    <span style="float: right;">2017-12-13发布</span>
+                                </div>
+                            </div>
+                        </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="layout-content">
+            <span class="contenttitle">
+                <h2 style="">我的资讯</h2>
+                <span><a href="/profile/babymm/article">查看更多</a></span>
+            </span>
+            <div class="maincontent">
+                <ul>
+                    #set($articles=[0 .. 3])
+                    #foreach($article in $articles)
+                        <li>
+                            <div class="contentbody">
+                                <div class="logo">
+                                    <a href="/profile/"><img src="https://static.oschina.net/uploads/space/2017/0619/101653_Pe5G_2966952.png" width="120px" height="120px" style="border-radius: 1%;"></a>
+                                </div>
+                                <div class="contentinfo">
+                                    <span class="title"><a href="">Jenkins持续化部署</a></span>
+                                    <span class="body">首先要明确，作用域和执行环境是两个完全不同的概念，我们试图给他俩分别一个明确的定义，发现很难，因为你很难定义一个概念“是什么”</span>
+                                </div>
+                                <div class="media">
+                                    <span>浏览123</span>
+                                    <span>评论12</span>
+                                    <span style="float: right;">2017-12-13发布</span>
+                                </div>
+                            </div>
+                        </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="layout-content">
+            <span class="contenttitle">
+                <h2 style="">我的图库</h2>
+                <span><a href="/profile/babymm/article">查看更多</a></span>
+            </span>
+            <div class="maincontent">
+                <ul>
+                    #set($articles=[0 .. 3])
+                    #foreach($article in $articles)
+                        <li>
+                            <div class="contentbody" style="float: left;width: 98%;border: 1px solid silver;border-radius: 1%;height: 160px">
+                                <div class="phototitle">
+                                    <span><a href="">Jenkins持续化部署</a></span>
+                                </div>
+                                <div class="photoimg">
+                                    <img src="https://gw.alicdn.com/bao/uploaded/i2/701696736/TB2PNl5ahQa61Bjy0FhXXaalFXa_!!701696736.jpg_400x400q90.jpg?t=1513063905068">
+                                    <img src="https://gw.alicdn.com/bao/uploaded/i2/162734861/TB2V5rsX_gc61BjSZFkXXcTkFXa_!!162734861.jpg_400x400q90.jpg?t=1513063905068">
+                                    <img src="https://gw.alicdn.com/bao/uploaded/i4/69476562/TB2htq4XTka61BjSszfXXXN8pXa_!!69476562.jpg_400x400q90.jpg?t=1513063905068">
+                                </div>
+                                <div class="media">
+                                    <span>浏览123</span>
+                                    <span>评论12</span>
+                                    <span style="float: right;">2017-12-13发布</span>
+                                </div>
+                            </div>
+                        </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="layout-content">
+            <span class="contenttitle">
+                <h2 style="">我的文档</h2>
+                <span><a href="/profile/babymm/article">查看更多</a></span>
+            </span>
+            <div class="maincontent">
+                <ul>
+                    #set($articles=[0 .. 3])
+                    #foreach($article in $articles)
+                        <li>
+                            <div class="contentbody">
+                                <div class="logo">
+                                    <a href="/profile/"><img src="https://static.oschina.net/uploads/space/2017/0619/101653_Pe5G_2966952.png" width="120px" height="120px" style="border-radius: 1%;"></a>
+                                </div>
+                                <div class="contentinfo">
+                                    <span class="title"><a href="">Jenkins持续化部署</a></span>
+                                    <span class="body">首先要明确，作用域和执行环境是两个完全不同的概念，我们试图给他俩分别一个明确的定义，发现很难，因为你很难定义一个概念“是什么”</span>
+                                </div>
+                                <div class="media">
+                                    <span>浏览123</span>
+                                    <span>评论12</span>
+                                    <span style="float: right;">2017-12-13发布</span>
+                                </div>
+                            </div>
+                        </li>
+                    #end
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 #parse("/portal/footer.vm")
-<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
-<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
-<script type="text/javascript">
-    layui.use(['element'], function () {
-        var element = layui.element;
-    });
-</script>
 </body>
 </html>
