@@ -1,0 +1,72 @@
+<title>baby慕慕SNS个人博客-我的文档</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/resources/profile/css/doc/doc.css" media="all">
+#parse("/portal/header.vm")
+<div class="layout-body">
+    #parse("/profile/doc/left.vm")
+    <div class="layout-right">
+        <div class="doc-body">
+            <h2 style="font-size: 30px;font-weight: 400px;color: green;border-radius: 10%">上传文档</h2>
+            <hr>
+            <div class="uploadform">
+                <form class="layui-form" style="width: 100%;float: left;">
+                    <div class="layui-form-item" style="width: 80%;float: left;">
+                        <label class="layui-form-label" style="float: left;width: 60px;text-align: left">标题</label>
+                        <div class="layui-input-inline photo-title" style="float: left;width: 400px;">
+                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入文档标题" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item" style="width: 100px;float: left;">
+                        <div class="layui-input-inline photo-title">
+                            <input type="button" class="layui-btn" id="docUpload" name="title" lay-verify="title" autocomplete="off" value="上传文档" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item" style="width: 100%;float: left;display: none;">
+                        <img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068" width="240" height="200">
+                    </div>
+                    <div class="layui-form-item" style="width: 80%;float: left;">
+                        <textarea id="docTextarea" style="display: none;float: left;"></textarea>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="javascript:void(0)" lay-filter="demo1">立即提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="doc-page" id="docPage"></div>
+    </div>
+</div>
+#parse("/portal/sfooter.vm")
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/resources/common/js/common.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element','form','layedit','upload'], function () {
+        var element = layui.element,form=layui.form,layedit=layui.layedit,upload=layui.upload;
+        //设置文本编辑器 图片上传接口
+        layedit.set({
+            uploadImage: {url: '/common/upload/layedit', type: 'post'}
+        });
+        layedit.build('docTextarea',{
+            height:200,
+            tool: ['strong','italic' ,'underline','del','|','left','center','right']
+        });
+        //文档上传
+        upload.render({
+            elem: '#docUpload'
+            ,url: '/common/upload/layedit'
+            ,multiple: true
+            ,before: function(obj){
+                obj.preview(function(index, file, result){
+
+                });
+            }
+            ,done: function(res){
+                console.log(res);
+            }
+        });
+    });
+</script>

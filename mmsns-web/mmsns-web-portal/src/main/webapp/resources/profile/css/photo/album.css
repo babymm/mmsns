@@ -84,6 +84,7 @@
     width: 70%;
     float: left;
     margin-top: 50px;
+    min-height: 850px;
 }
 .layout-body .layout-right .photo-body{
     width: 100%;
@@ -96,13 +97,13 @@
 }
 .layout-body .layout-right .photo-body .photoimg .imgbody{
     width: 24%;
-    height: 24%;
+    height: 23%;
     float: left;
     margin-bottom: 10px;
 }
 .layout-body .layout-right .photo-body .photoimg .imgbody img{
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     float: left;
 }
 .layout-body .layout-right .photo-body .photoimg .imgbody span{
@@ -111,11 +112,10 @@
     display: block;
     color: rgb(157, 157, 157);;
 }
-
-
 .layout-body .layout-right .photo-page{
     float: left;
     width: 100%;
+    margin-bottom: 20px;
 }
 .layout-bottom{
     margin-top: 10px;

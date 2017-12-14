@@ -1,6 +1,8 @@
 <style type="text/css">
     .mmsns-footer{
-        float: left;
+        position: fixed;
+        right: 0;
+        bottom: 0;
         width: 100%;
         min-width: 1000px;
         height: 80px;

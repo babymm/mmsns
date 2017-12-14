@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>baby慕慕SNS个人博客管理系统-新闻资讯</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/news/news.css">
-    <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
-</head>
-<body>
+<title>baby慕慕SNS个人博客管理系统-新闻资讯</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/news/news.css">
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
 #parse("/portal/header.vm")
 <div class="news-search">
     <div class="search-logo">
@@ -102,5 +89,3 @@
         var element = layui.element;
     });
 </script>
-</body>
-</html>

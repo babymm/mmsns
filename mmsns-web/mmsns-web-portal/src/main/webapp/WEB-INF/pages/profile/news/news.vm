@@ -1,98 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>baby慕慕SNS个人博客-我的资讯</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
-    <link rel="stylesheet" href="${request.getContextPath()}/resources/profile/css/news/news.css" media="all">
-</head>
-<body>
+<title>baby慕慕SNS个人博客-我的资讯</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/resources/profile/css/news/news.css" media="all">
 #parse("/portal/header.vm")
 <div class="layout-body">
-    <div class="layout-left">
-        <div class="news-classify">
-            <div class="user-info">
-                <span class="user-logo"><a href="/profile/babymm/home"><img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068" width="100" height="100" style="border-radius: 50%"></a></span>
-                <span class="user-name"><a href="/profile/babymm/home">baby慕慕</a></span>
-                <span class="user-words">发布120个新闻资讯</span>
-                <span class="user-writenews"><a href="/profile/babymm/news/publish">发布资讯</a></span>
-            </div>
-            <div class="classify-body">
-                <div class="classify-header">
-                    <span class="classifytitle" style="line-height: 30px;font-size: 18px;font-weight: 400">资讯类型</span>
-                    <span class="classifycount">共3篇</span>
-                </div>
-                <hr>
-                <ul>
-                    <li>
-                        <a href="/profile/babymm/news">
-                            <span class="classifytitle">我发布的</span>
-                            <span class="classifycount">3</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/profile/babymm/news">
-                            <span class="classifytitle">我转发的</span>
-                            <span class="classifycount">3</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/profile/babymm/news">
-                            <span class="classifytitle">我点赞的</span>
-                            <span class="classifycount">3</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/profile/babymm/news">
-                            <span class="classifytitle">我收藏的</span>
-                            <span class="classifycount">3</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="classify-body">
-                <div class="classify-header">
-                    <span class="classifytitle" style="line-height: 30px;font-size: 18px;font-weight: 400">资讯分类</span>
-                    <span class="classifycount">共3篇</span>
-                </div>
-                <hr>
-                <ul>
-                    <li>
-                        <a href="/profile/babymm/news">
-                            <span class="classifytitle">大数据资讯</span>
-                            <span class="classifycount">3</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/profile/babymm/news">
-                            <span class="classifytitle">汽车资讯</span>
-                            <span class="classifycount">0</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/profile/babymm/news">
-                            <span class="classifytitle">金融资讯</span>
-                            <span class="classifycount">0</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/profile/babymm/news">
-                            <span class="classifytitle">技术资讯</span>
-                            <span class="classifycount">0</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    #parse("/profile/news/left.vm")
     <div class="layout-right">
         <div class="news-body">
             <h2 style="font-size: 30px;font-weight: 400px;color: green;border-radius: 10%">我的资讯</h2>
@@ -117,10 +29,7 @@
         <div class="news-page" id="newsPage"></div>
     </div>
 </div>
-<div class="layout-bottom">
-</div>
-#parse("/portal/footer.vm")
-</body>
+#parse("/portal/sfooter.vm")
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/resources/common/js/common.js" charset="utf-8"></script>
@@ -136,4 +45,3 @@
         });
     });
 </script>
-</html>

@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>baby慕慕SNS个人博客管理系统-动弹详情</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/action/detail.css" media="all">
-</head>
-<body>
+<title>baby慕慕SNS个人博客管理系统-动弹详情</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/action/detail.css" media="all">
 #parse("/portal/header.vm")
 <div class="detail-body">
     <div class="detail-breadcrumb">
@@ -82,9 +69,7 @@
         </ul>
     </div>
 </div>
-
 #parse("/portal/footer.vm")
-</body>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
 <script type="text/javascript">
@@ -95,4 +80,3 @@
         });
     });
 </script>
-</html>

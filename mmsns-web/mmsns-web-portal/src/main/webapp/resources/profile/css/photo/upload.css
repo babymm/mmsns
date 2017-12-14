@@ -84,6 +84,7 @@
     width: 70%;
     float: left;
     margin-top: 50px;
+    min-height: 750px;
 }
 .layout-body .layout-right .photo-body{
     width: 100%;
@@ -99,7 +100,7 @@
 }
 .layout-body .layout-right .photo-body .uploadform .layui-form .layui-form-item .photo-title{
     float: left;
-    width: 80% !important;
+    width: 400px !important;
     margin-right: 0px;
     margin-bottom: 0px;
 }

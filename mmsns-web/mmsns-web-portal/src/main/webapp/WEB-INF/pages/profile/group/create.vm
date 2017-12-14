@@ -1,65 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>baby慕慕SNS个人博客-创建群组</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
-    <link rel="stylesheet" href="${request.getContextPath()}/resources/profile/css/group/group.css" media="all">
-</head>
-<body>
+<title>baby慕慕SNS个人博客-创建群组</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/resources/profile/css/group/group.css" media="all">
 #parse("/portal/header.vm")
 <div class="layout-body">
-    <div class="layout-left">
-        <div class="group-classify">
-            <div class="user-info">
-                <span class="user-logo"><a href="/profile/username/home"><img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068" width="100" height="100" style="border-radius: 50%"></a></span>
-                <span class="user-name"><a href="/profile/username/home">baby慕慕</a></span>
-                <span class="user-words">发布120个帖子</span>
-                <span class="user-writegroup"><a href="/profile/username/group/create">创建群组</a></span>
-            </div>
-            <div class="classify-body">
-                <div class="classify-header">
-                    <span class="classifytitle" style="line-height: 30px;font-size: 18px;font-weight: 400">群组分类</span>
-                    <span class="classifycount">共3篇</span>
-                </div>
-                <hr>
-                <ul>
-                    <li>
-                        <a href="/profile/username/group">
-                            <span class="classifytitle">我创建的</span>
-                            <span class="classifycount">3</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/profile/username/group">
-                            <span class="classifytitle">我加入的</span>
-                            <span class="classifycount">0</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/profile/username/group">
-                            <span class="classifytitle">我点赞的</span>
-                            <span class="classifycount">0</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/profile/username/group">
-                            <span class="classifytitle">我收藏的</span>
-                            <span class="classifycount">0</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    #parse("/profile/group/left.vm")
     <div class="layout-right">
         <div class="group-body">
             <h2 style="font-size: 30px;font-weight: 400px;color: green;border-radius: 10%">创建群组</h2>
@@ -72,17 +17,16 @@
                             <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入群组名称" class="layui-input">
                         </div>
                     </div>
-                    #*<div class="layui-form-item" style="width: 100px;float: left;">
+                    <div class="layui-form-item" style="width: 100px;float: left;">
                         <div class="layui-input-inline photo-title">
-                            <input type="button" class="layui-btn" id="photoUpload" name="title" lay-verify="title" autocomplete="off" value="群组ICON" class="layui-input">
+                            <input type="button" class="layui-btn" id="groupIconUpload" name="title" lay-verify="title" autocomplete="off" value="群组ICON" class="layui-input">
                         </div>
-                    </div>*#
-                    <div class="layui-form-item" style="width: 100%;float: left;">
+                    </div>
+                    <div class="layui-form-item" style="width: 100%;float: left;display: none">
                         <img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068" width="400" height="200">
                     </div>
                     <div class="layui-form-item" style="width:600px;float: left;">
                         <textarea id="groupTextarea" style="display: none;float: left;width: 90%;"></textarea>
-                        #*<div class="layui-form-mid layui-word-aux">请填写群组描述信息</div>*#
                     </div>
                     <div class="layui-form-item" style="width: 90%;float: left;">
                         <label class="layui-form-label" style="float: left;width: 60px;text-align: left">标签</label>
@@ -93,8 +37,8 @@
                     <div class="layui-form-item"  style="width:100%;float: left;">
                         <label class="layui-form-label" style="float: left;width: 60px;text-align: left">加群审核</label>
                         <div class="layui-input-block">
-                            <input type="radio" name="sex" value="群主审核" title="群主审核">
                             <input type="radio" name="sex" value="不需审核" title="不需审核" checked>
+                            <input type="radio" name="sex" value="群主审核" title="群主审核">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -108,25 +52,32 @@
         <div class="group-page" id="groupPage"></div>
     </div>
 </div>
-<div class="layout-bottom">
-</div>
-#parse("/portal/footer.vm")
-</body>
+#parse("/portal/sfooter.vm")
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/resources/common/js/common.js" charset="utf-8"></script>
 <script type="text/javascript">
-    layui.use(['element','form','layedit'], function () {
-        var element = layui.element,form=layui.form,layedit=layui.layedit;
-        //设置文本编辑器 图片上传接口
-        layedit.set({
-            uploadImage: {url: '/common/upload/layedit', type: 'post'}
-        });
+    layui.use(['element','upload','layedit'], function () {
+        var element = layui.element,upload=layui.upload,layedit=layui.layedit;
+        //设置文本编辑器
         layedit.build('groupTextarea',{
-            height:200,
+            height:150,
             width:200,
             tool: ['strong','italic' ,'underline','del','|','left','center','right']
         });
+        //群组icon图片上传
+        upload.render({
+            elem: '#groupIconUpload'
+            ,url: '/common/upload/layedit'
+            ,multiple: true
+            ,before: function(obj){
+                obj.preview(function(index, file, result){
+                    $('#photoUploadList').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+                });
+            }
+            ,done: function(res){
+                console.log(res);
+            }
+        });
     });
 </script>
-</html>

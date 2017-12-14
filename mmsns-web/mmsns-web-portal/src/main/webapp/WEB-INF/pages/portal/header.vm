@@ -1,19 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>baby慕慕SNS个人博客管理系统-固定顶部</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/index.css">
-</head>
-<body>
+<style type="text/css">
+    .mmsns-nav {
+        width: 100%;
+        min-width: 1100px;
+        height: 60px;
+        background-color: #393D49;
+        color: #fff;
+    }
+    .mmsns-nav .nav-logo {
+        width: 200px;
+        float: left;
+        min-width: 200px;
+        padding-right: 0px;
+    }
+    .mmsns-nav .nav-logo img {
+        float: right;
+        margin-left: 15px;
+    }
+    .mmsns-nav .nav-content {
+        width: 500px;
+        float: left;
+        min-width: 500px;
+        padding-left: 0px;
+    }
+    .mmsns-nav .nav-button {
+        padding: 0px;
+        float: right;
+        width: 400px;
+        min-width: 400px;
+    }
+</style>
 <div class="mmsns-nav">
     <div class="nav-logo">
         <a href="/">
@@ -94,7 +109,7 @@
                 <a href="">我的消息<span class="layui-badge">9</span></a>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;">弄点啥</a>
+                <a href="javascript:;">资料编辑</a>
                 <dl class="layui-nav-child">
                     <dd><a href="/profile/babymm/article/create">编写文章</a></dd>
                     <dd><a href="/profile/babymm/action/publish">发布动弹</a></dd>
@@ -129,6 +144,3 @@
         #end
     </ul>
 </div>
-</body>
-<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
-</html>
