@@ -381,12 +381,6 @@
                 <version>${shiro.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.zbus</groupId>
-                <artifactId>zbus</artifactId>
-                <version>7.2.0</version>
-            </dependency>
-
             <!-- velocity模板 -->
             <dependency>
                 <groupId>org.apache.velocity</groupId>
@@ -432,6 +426,11 @@
             <dependency>
                 <groupId>com.lovecws.mumu</groupId>
                 <artifactId>mumu-redis</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lovecws.mumu</groupId>
+                <artifactId>mumu-fdfs</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
         </dependencies>

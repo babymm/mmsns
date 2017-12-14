@@ -84,8 +84,12 @@
     width: 98%
 }
 .user-body .content .layout-content .contenttitle h2{
-    width: 100px;
+    width: 200px;
     float: left;
+    font-size: 24px;
+    font-weight: 400;
+    color: green;
+    border-radius: 10%
 }
 .user-body .content .layout-content .contenttitle span{
     float: right;
@@ -127,6 +131,9 @@
     line-height: 1.5;
     word-break: break-all;
     display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .user-body .content .layout-content .maincontent ul li .contentbody .contentinfo .body{
     width: 100%;
@@ -136,9 +143,11 @@
     line-height: 1.5;
     word-break: break-all;
     display: block;
-    height: 90px;
+    height: 80px;
     overflow: hidden;
     margin-top: 6px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .user-body .content .layout-content .maincontent ul li .contentbody .media{
     width: 100%;

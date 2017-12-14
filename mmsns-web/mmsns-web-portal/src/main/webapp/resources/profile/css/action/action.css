@@ -1,0 +1,141 @@
+.layout-body{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    min-width: 1100px;
+}
+.layout-body .layout-left{
+    width: 30%;
+    float: left;
+    margin-top: 50px;
+}
+.layout-body .layout-left .action-classify{
+    width: 100%;
+    float: left;
+}
+.layout-body .layout-left .action-classify .user-info{
+    width: 300px;
+    margin: 0 auto;
+}
+.layout-body .layout-left .action-classify .user-info span{
+    width:100%;
+    float: left;
+    text-align: center;
+ }
+.layout-body .layout-left .action-classify .user-info .user-name{
+    font-size: 1.8rem;
+    line-height: 3;
+    height: 70px;
+}
+.layout-body .layout-left .action-classify .user-info .user-words{
+    color: #666;
+}
+.layout-body .layout-left .action-classify .user-info .user-writeaction a{
+    border-radius: 3px;
+    padding: .4rem .8rem;
+    outline: 0;
+    border: 0;
+    margin: 0;
+    background-color: #4eaa4c;
+    display: inline-block;
+    cursor: pointer;
+    width: 100px;
+    color: white;
+    margin-top: 10px;
+}
+.layout-body .layout-left .action-classify .user-info span a{
+    transition: color .3s;
+    text-decoration: none;
+    color: #333;
+    outline: 0;
+ }
+.layout-body .layout-left .action-classify .classify-body{
+    width: 300px;
+    margin: 0 auto;
+}
+.layout-body .layout-left .action-classify .classify-body .classify-header{
+    width: 100%;
+    float: left;
+    margin-top: 50px;
+}
+.layout-body .layout-left .action-classify .classify-body .classifytitle{
+    width: 200px;
+    float: left;
+    word-wrap: break-word;
+    line-height: 30px;
+}
+.layout-body .layout-left .action-classify .classify-body .classifycount{
+    width: 80px;
+    float: right;
+    text-align: right;
+}
+.layout-body .layout-left .action-classify .classify-body ul li{
+    width: 100%;
+    float: left;
+    height: 40px;
+}
+.layout-body .layout-left .action-classify .classify-body ul li a{
+    display: block;
+    width: 100%;
+    float: left;
+    line-height: 28px;
+}
+.layout-body .layout-right{
+    width: 70%;
+    float: left;
+    margin-top: 50px;
+}
+.layout-body .layout-right .action-body{
+    width: 100%;
+    float: left;
+    height: 660px;
+}
+.layout-body .layout-right .action-body ul li{
+    width: 100%;
+    float: left;
+}
+.layout-body .layout-right .action-body ul li .actioncontent{
+    width: 50%;
+    float: left;
+}
+.layout-body .layout-right .action-body ul li .actioncontent span{
+    width: 100%;
+    float: left;
+}
+.layout-body .layout-right .action-body ul li .actioncontent .actiontitle{
+    display: block;
+    font-size: 15px;
+    color: #000;
+    word-break: break-all;
+    height: 40px;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+.layout-body .layout-right .action-body ul li .actioncontent .actionediter{
+    color: #666;
+    margin-top: 6px;
+}
+.layout-body .layout-right .action-body ul li .actioncontent .actionpublish{
+    font-size: 0.9rem;
+    margin-top: 6px;
+}
+.layout-body .layout-right .action-body ul li .actionlogo{
+    width: 50%;
+    float: right;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.layout-body .layout-right .action-body ul li .actionlogo img{
+    border-radius: 50%
+}
+.layout-body .layout-right .action-page{
+    float: left;
+    width: 600px;
+    margin-top: 35px;
+}
+.layout-bottom{
+    margin-top: 10px;
+    margin-bottom: 52px;
+    float: left;
+    width: 100%;
+ }

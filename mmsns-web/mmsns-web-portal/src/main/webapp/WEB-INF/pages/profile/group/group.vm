@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>baby慕慕SNS个人博客-我的群组</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/profile/css/group/group.css" media="all">
+</head>
+<body>
+#parse("/portal/header.vm")
+<div class="layout-body">
+    <div class="layout-left">
+        <div class="group-classify">
+            <div class="user-info">
+                <span class="user-logo"><a href="/profile/username/home"><img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068" width="100" height="100" style="border-radius: 50%"></a></span>
+                <span class="user-name"><a href="/profile/username/home">baby慕慕</a></span>
+                <span class="user-words">发布120个帖子</span>
+                <span class="user-writegroup"><a href="/profile/username/group/create">创建群组</a></span>
+            </div>
+            <div class="classify-body">
+                <div class="classify-header">
+                    <span class="classifytitle" style="line-height: 30px;font-size: 18px;font-weight: 400">分类</span>
+                    <span class="classifycount">共3篇</span>
+                </div>
+                <hr>
+                <ul>
+                    <li>
+                        <a href="/profile/username/group">
+                            <span class="classifytitle">我创建的</span>
+                            <span class="classifycount">3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/profile/username/group">
+                            <span class="classifytitle">我加入的</span>
+                            <span class="classifycount">0</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/profile/username/group">
+                            <span class="classifytitle">我点赞的</span>
+                            <span class="classifycount">0</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/profile/username/group">
+                            <span class="classifytitle">我收藏的</span>
+                            <span class="classifycount">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="layout-right">
+        <div class="group-body">
+            <h2 style="font-size: 30px;font-weight: 400px;color: green;border-radius: 10%">我的群组</h2>
+            <hr>
+            <ul>
+                #set($groups=[0 .. 4])
+                #foreach($group in $groups)
+                    <li>
+                        <div class="groupcontent">
+                            <span class="grouptitle">大数据讨论群组</span>
+                            <span class="groupediter">成员 20 ·帖子 120 ·赞 0 ·收藏 0 ·(<a href="">编辑</a> | <a href="">删除</a>)</span>
+                            <span class="grouppublish">2017/06/19 创建</span>
+                        </div>
+                        <div class="grouplogo">
+                            <a href="/profile/babymm/home"><img src="https://gw.alicdn.com/bao/uploaded/i4/69476562/TB2htq4XTka61BjSszfXXXN8pXa_!!69476562.jpg_400x400q90.jpg?t=1513063905068" width="100" height="100"></a>
+                        </div>
+                        <hr>
+                    </li>
+                #end
+            </ul>
+        </div>
+        <div class="group-page" id="groupPage"></div>
+    </div>
+</div>
+<div class="layout-bottom">
+</div>
+#parse("/portal/footer.vm")
+</body>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/resources/common/js/common.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element','laypage'], function () {
+        var element = layui.element,laypage=layui.laypage;
+        laypage.render({
+            elem: 'groupPage'
+            ,count: 120
+            ,jump: function(obj){
+                console.log(obj)
+            }
+        });
+    });
+</script>
+</html>

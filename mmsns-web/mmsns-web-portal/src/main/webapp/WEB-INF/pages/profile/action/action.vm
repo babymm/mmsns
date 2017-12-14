@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>baby慕慕SNS个人博客-我的动弹</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="${request.getContextPath()}/resources/profile/css/action/action.css" media="all">
+</head>
+<body>
+#parse("/portal/header.vm")
+<div class="layout-body">
+    <div class="layout-left">
+        <div class="action-classify">
+            <div class="user-info">
+                <span class="user-logo"><a href="/profile/babymm/home"><img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068" width="100" height="100" style="border-radius: 50%"></a></span>
+                <span class="user-name"><a href="/profile/babymm/home">baby慕慕</a></span>
+                <span class="user-words">共编写3456文字</span>
+                <span class="user-writeaction"><a href="/profile/babymm/action/publish">发动弹</a></span>
+            </div>
+            <div class="classify-body">
+                <div class="classify-header">
+                    <span class="classifytitle" style="line-height: 30px;font-size: 18px;font-weight: 400">动弹类型</span>
+                    <span class="classifycount">共3类</span>
+                </div>
+                <hr>
+                <ul>
+                    <li>
+                        <a href="/profile/babymm/action">
+                            <span class="classifytitle">我发布的</span>
+                            <span class="classifycount">3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/profile/babymm/action">
+                            <span class="classifytitle">我转发的</span>
+                            <span class="classifycount">3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/profile/babymm/action">
+                            <span class="classifytitle">我点赞的</span>
+                            <span class="classifycount">3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/profile/babymm/action">
+                            <span class="classifytitle">我收藏的</span>
+                            <span class="classifycount">3</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="layout-right">
+        <div class="action-body">
+            <h2 style="font-size: 30px;font-weight: 400px;color: green;border-radius: 10%">我的动弹</h2>
+            <hr>
+            <ul>
+                #set($actions=[0 .. 4])
+                #foreach($action in $actions)
+                    <li>
+                        <div class="actioncontent">
+                            <span class="actiontitle">各位大佬，学信网账号密码忘了，绑定的手机号已经不用了，安全问题也忘记了，邮箱找回显示 邮箱不正确或帐号未绑定找回密码邮箱 ，该怎么办，急急急，在线等啊！！！</span>
+                            <span class="actionediter">阅读 20 ·评论 0 ·赞 0 ·收藏 0 ·(<a href="">编辑</a> | <a href="">删除</a>)</span>
+                            <span class="actionpublish">2017/06/19 发布</span>
+                        </div>
+                        <div class="actionlogo">
+                            <a href="/profile/babymm/home"><img src="https://gw.alicdn.com/bao/uploaded/i4/69476562/TB2htq4XTka61BjSszfXXXN8pXa_!!69476562.jpg_400x400q90.jpg?t=1513063905068" width="100" height="100"></a>
+                        </div>
+                        <hr>
+                    </li>
+                #end
+            </ul>
+        </div>
+        <div class="action-page" id="actionPage"></div>
+    </div>
+</div>
+<div class="layout-bottom">
+</div>
+#parse("/portal/footer.vm")
+</body>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/resources/common/js/common.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element','laypage'], function () {
+        var element = layui.element,laypage=layui.laypage;
+        laypage.render({
+            elem: 'actionPage'
+            ,count: 120
+            ,jump: function(obj){
+                console.log(obj)
+            }
+        });
+    });
+</script>
+</html>

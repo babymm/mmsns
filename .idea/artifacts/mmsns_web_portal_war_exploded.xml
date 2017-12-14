@@ -84,9 +84,16 @@
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.2.4" />
           <element id="library" level="project" name="Maven: org.apache.poi:poi:3.14" />
           <element id="library" level="project" name="Maven: com.lovecws.mumu:mumu-core:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: net.coobird:thumbnailator:0.4.8" />
+          <element id="library" level="project" name="Maven: com.jcraft:jsch:0.1.53" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:fluent-hc:4.3.5" />
+          <element id="library" level="project" name="Maven: com.caucho:hessian:4.0.38" />
+          <element id="library" level="project" name="Maven: org.jboss.marshalling:jboss-marshalling:2.0.2.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.marshalling:jboss-marshalling-serial:2.0.2.Final" />
           <element id="library" level="project" name="Maven: com.lovecws.mumu:mumu-redis:1.0-SNAPSHOT" />
           <element id="library" level="project" name="Maven: com.lovecws.mumu:mumu-security:1.0-SNAPSHOT" />
           <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
+          <element id="library" level="project" name="Maven: com.lovecws.mumu:mumu-fdfs:1.0-SNAPSHOT" />
         </element>
       </element>
       <element id="directory" name="META-INF">

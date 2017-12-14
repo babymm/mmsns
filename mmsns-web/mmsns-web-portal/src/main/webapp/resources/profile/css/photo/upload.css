@@ -1,0 +1,125 @@
+.layout-body{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    min-width: 1100px;
+}
+.layout-body .layout-left{
+    width: 30%;
+    float: left;
+    margin-top: 50px;
+}
+.layout-body .layout-left .photo-classify{
+    width: 100%;
+    float: left;
+}
+.layout-body .layout-left .photo-classify .user-info{
+    width: 300px;
+    margin: 0 auto;
+}
+.layout-body .layout-left .photo-classify .user-info span{
+    width:100%;
+    float: left;
+    text-align: center;
+}
+.layout-body .layout-left .photo-classify .user-info .user-name{
+    font-size: 1.8rem;
+    line-height: 3;
+    height: 70px;
+}
+.layout-body .layout-left .photo-classify .user-info .user-words{
+    color: #666;
+}
+.layout-body .layout-left .photo-classify .user-info .user-writephoto a{
+    border-radius: 3px;
+    padding: .4rem .8rem;
+    outline: 0;
+    border: 0;
+    margin: 0;
+    background-color: #4eaa4c;
+    display: inline-block;
+    cursor: pointer;
+    width: 100px;
+    color: white;
+    margin-top: 10px;
+}
+.layout-body .layout-left .photo-classify .user-info span a{
+    transition: color .3s;
+    text-decoration: none;
+    color: #333;
+    outline: 0;
+}
+.layout-body .layout-left .photo-classify .classify-body{
+    width: 300px;
+    margin: 0 auto;
+}
+.layout-body .layout-left .photo-classify .classify-body .classify-header{
+    width: 100%;
+    float: left;
+    margin-top: 50px;
+}
+.layout-body .layout-left .photo-classify .classify-body .classifytitle{
+    width: 200px;
+    float: left;
+    word-wrap: break-word;
+    line-height: 30px;
+}
+.layout-body .layout-left .photo-classify .classify-body .classifycount{
+    width: 80px;
+    float: right;
+    text-align: right;
+}
+.layout-body .layout-left .photo-classify .classify-body ul li{
+    width: 100%;
+    float: left;
+    height: 40px;
+}
+.layout-body .layout-left .photo-classify .classify-body ul li a{
+    display: block;
+    width: 100%;
+    float: left;
+    line-height: 28px;
+}
+.layout-body .layout-right{
+    width: 70%;
+    float: left;
+    margin-top: 50px;
+}
+.layout-body .layout-right .photo-body{
+    width: 100%;
+    float: left;
+}
+.layout-body .layout-right .photo-body .uploadform{
+    width: 100%;
+    float: left;
+    min-height: 500px;
+}
+.layout-body .layout-right .photo-body .uploadform .layui-form .layui-form-item .layui-form-item{
+    float: left;
+}
+.layout-body .layout-right .photo-body .uploadform .layui-form .layui-form-item .photo-title{
+    float: left;
+    width: 80% !important;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+.layout-body .layout-right .photo-body .uploadform .layui-form .layui-form-item .layui-upload-list{
+    min-height: 420px;
+    float: left;
+    width: 99%;
+    border: 1px solid silver;
+}
+.layout-body .layout-right .photo-body .uploadform .layui-form .layui-form-item .layui-upload-list .layui-upload-img{
+    width:240px;
+    height: 200px;
+    margin: 20px;
+    border: 1px solid silver;
+    border-radius: 10%;
+}
+
+.layout-bottom{
+    margin-top: 10px;
+    margin-bottom: 52px;
+    float: left;
+    width: 100%;
+}

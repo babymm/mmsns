@@ -96,23 +96,23 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">弄点啥</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="javascript:;">编写文章</a></dd>
-                    <dd><a href="javascript:;">发布动弹</a></dd>
-                    <dd><a href="javascript:;">创建群组</a></dd>
-                    <dd><a href="javascript:;">发布资讯</a></dd>
-                    <dd><a href="javascript:;">上传图库</a></dd>
-                    <dd><a href="javascript:;">上传文档</a></dd>
+                    <dd><a href="/profile/babymm/article/create">编写文章</a></dd>
+                    <dd><a href="/profile/babymm/action/publish">发布动弹</a></dd>
+                    <dd><a href="/profile/babymm/group/create">创建群组</a></dd>
+                    <dd><a href="/profile/babymm/news/publish">发布资讯</a></dd>
+                    <dd><a href="/profile/babymm/photo/upload">上传图库</a></dd>
+                    <dd><a href="/profile/babymm/doc/upload">上传文档</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
                 <a href="/profile/babymm/home">我的空间</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="javascript:;">我的文章</a></dd>
-                    <dd><a href="javascript:;">我的动弹</a></dd>
-                    <dd><a href="javascript:;">我的群组</a></dd>
-                    <dd><a href="javascript:;">我的资讯</a></dd>
-                    <dd><a href="javascript:;">我的图库</a></dd>
-                    <dd><a href="javascript:;">我的文档</a></dd>
+                    <dd><a href="/profile/babymm/article">我的文章</a></dd>
+                    <dd><a href="/profile/babymm/action">我的动弹</a></dd>
+                    <dd><a href="/profile/babymm/group">我的群组</a></dd>
+                    <dd><a href="/profile/babymm/news">我的资讯</a></dd>
+                    <dd><a href="/profile/babymm/photo">我的图库</a></dd>
+                    <dd><a href="/profile/babymm/doc">我的文档</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">

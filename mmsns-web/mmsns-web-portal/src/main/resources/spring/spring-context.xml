@@ -19,7 +19,7 @@
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
     <!-- 配置要扫描的包 -->
-    <context:component-scan base-package="com.lovecws.mumu.mmsns.portal"/>
+    <context:component-scan base-package="com.lovecws.mumu.mmsns"/>
 
     <!---加载配置文件-->
     <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
@@ -46,8 +46,8 @@
     <import resource="classpath:spring/spring-dao.xml" />-->
 
     <import resource="classpath:spring/spring-common-redis.xml"/>
-
-    <!--<import resource="classpath:spring/spring-common-fdfs.xml" />
+    <import resource="classpath:spring/spring-common-fdfs.xml" />
+    <!--
     <import resource="classpath:spring/spring-common-email.xml" />
     <import resource="classpath:spring/spring-common-sms.xml" />-->
     <import resource="classpath:spring/spring-shiro.xml"/>

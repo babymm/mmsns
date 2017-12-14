@@ -260,6 +260,10 @@
             <groupId>com.lovecws.mumu</groupId>
             <artifactId>mumu-security</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.lovecws.mumu</groupId>
+            <artifactId>mumu-fdfs</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <finalName>portal</finalName>
@@ -350,9 +354,25 @@
             <properties>
                 <env>test</env>
             </properties>
+        </profile>
+
+        <!-- 公司环境 -->
+        <profile>
+            <id>company</id>
+            <properties>
+                <env>company</env>
+            </properties>
             <activation>
                 <activeByDefault>true</activeByDefault><!--默认启用的是dev环境配置-->
             </activation>
+        </profile>
+
+        <!-- 家庭环境 -->
+        <profile>
+            <id>home</id>
+            <properties>
+                <env>home</env>
+            </properties>
         </profile>
     </profiles>
 </project>
