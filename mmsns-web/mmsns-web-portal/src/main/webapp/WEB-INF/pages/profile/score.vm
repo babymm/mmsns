@@ -1,0 +1,69 @@
+<title>baby慕慕SNS个人博客-个人空间主页-点赞</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/resources/profile/css/score.css">
+#parse("/profile/header.vm")
+<div class="layout-body">
+    <div class="layout-left">
+        <div class="left-content">
+            <div class="left-header">
+                <h2>积分明细</h2>
+                <hr>
+            </div>
+            <div class="left-main">
+                <table class="layui-table" id="userScoreTable"></table>
+            </div>
+        </div>
+    </div>
+    <div class="layout-right">
+        <div class="right-content">
+            <div class="right-header">
+                <h2>积分冠军</h2>
+                <hr>
+            </div>
+            <div class="right-main">
+                <ul>
+                    #set($voteUsers=[0 .. 4])
+                    #foreach($voteUser in $voteUsers)
+                        <li>
+                            <div class="userlogo">
+                                <a href="/profile/babymm/home"><img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068"></a>
+                            </div>
+                            <div class="userinfo">
+                                <span class="username"><a href="/profile/babymm/home">baby慕慕</a></span>
+                                <span class="usertech">积分 213 | 关注 22 | 粉丝 310</span>
+                                <span class="userarea">武汉华四投资顾问有限公司 - 高级程序员 湖北 - 武汉</span>
+                            </div>
+                            <hr>
+                        </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+#parse("/portal/sfooter.vm")
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element','table'], function () {
+        var element = layui.element,table=layui.table;
+        var table = layui.table;
+        table.render({
+            id: 'articleClassifyTableReload'
+            ,elem: '#userScoreTable'
+            ,url:'/profile/babymm/home/score/data'
+            ,cellMinWidth: 80
+            ,cols: [[
+                {field:'id', title: 'ID',width:80, sort: true}
+                ,{field:'scoreChanage',width:120, title: '积分变动'}
+                ,{field:'remark', title: '备注'}
+                ,{field:'createDate',width:200, title: '时间'}
+            ]]
+            ,page: {
+                layout: ['prev', 'page', 'next', 'skip']
+            }
+            ,skin: 'row'
+        });
+    });
+</script>

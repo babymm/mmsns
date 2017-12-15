@@ -106,10 +106,10 @@
     <ul class="nav-button layui-nav">
         #if(!$shiro.isUser())
             <li class="layui-nav-item">
-                <a href="">我的消息<span class="layui-badge">9</span></a>
+                <a href="/admin/babymm/user/inbox">我的消息<span class="layui-badge">9</span></a>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;">资料编辑</a>
+                <a href="/profile/babymm/article/create">资料编辑</a>
                 <dl class="layui-nav-child">
                     <dd><a href="/profile/babymm/article/create">编写文章</a></dd>
                     <dd><a href="/profile/babymm/action/publish">发布动弹</a></dd>
@@ -131,9 +131,9 @@
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;">baby慕慕</a>
+                <a href="/admin/babymm/index">baby慕慕</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="javascript:;">修改信息</a></dd>
+                    <dd><a href="/admin/babymm/index">个人资料</a></dd>
                     <dd><a href="javascript:;">安全管理</a></dd>
                     <dd><a href="javascript:;">退出登录</a></dd>
                 </dl>

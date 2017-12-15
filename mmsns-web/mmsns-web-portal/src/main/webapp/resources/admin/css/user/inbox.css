@@ -1,0 +1,135 @@
+.layout-body{
+    width: 100%;
+    float: left;
+    min-width:1100px;
+    margin: 0px;
+    padding: 0px;
+}
+.layout-body .layout-right{
+    width: 69%;
+    float: left;
+}
+.layout-body .layout-right .right-content{
+    width: 90%;
+    float: left;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
+}
+.layout-body .layout-right .right-content .right-header{
+    width: 100%;
+    float: left;
+}
+.layout-body .layout-right .right-content .right-header .messageheader{
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    display: block;
+    color: #6a6a6a;
+    border-bottom: 1px solid #ddd;
+}
+.layout-body .layout-right .right-content .right-header .messageheader span{
+    margin-right: 20px;
+    color: #4eaa4c;
+}
+/*.layout-body .layout-right .right-content .right-header .messageheader span a{
+    color: #4eaa4c;
+}*/
+.layout-body .layout-right .right-content .right-buttons{
+    width: 100%;
+    float: right;
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+.layout-body .layout-right .right-content .right-buttons a{
+    width: 60px;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 3px 8px !important;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    outline: none;
+    background: #4eaa4c;
+}
+.layout-body .layout-right .right-content .right-main{
+    width: 100%;
+    float: left;
+/*    min-height: 860px;*/
+    min-height: 600px;
+}
+.layout-body .layout-right .right-content .right-main ul li{
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+.layout-body .layout-right .right-content .right-main ul li .userlogo{
+    width: 70px;
+    float: left;
+}
+.layout-body .layout-right .right-content .right-main ul li .userlogo a img{
+    /*width: 60px;
+    height: 60px;
+    border-radius: 50%;*/
+}
+.layout-body .layout-right .right-content .right-main ul li .message{
+    width: calc(100% - 70px);
+    float: left;
+}
+.layout-body .layout-right .right-content .right-main ul li .message>span{
+    width: 100%;
+    float: left;
+    margin-bottom: 3px;
+}
+.layout-body .layout-right .right-content .right-main ul li .message .username a{
+    color: #4eaa4c;
+}
+.layout-body .layout-right .right-content .right-main ul li .message .messagecontent{
+    line-height: 22px;
+}
+.layout-body .layout-right .right-content .right-main ul li .message .messageextra .pubdate{
+    width: 60px;
+    float: left;
+    color: #999;
+}
+.layout-body .layout-right .right-content .right-main ul li .message .messageextra .messagebuttons{
+    width: 200px;
+    float: right;
+    text-align: right;
+}
+.layout-body .layout-right .right-content .right-main ul li .message .messageextra .messagebuttons a{
+    color: #999;
+}
+
+.layout-body .layout-right .right-content .right-form{
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+}
+.layout-body .layout-right .right-content .right-form .formtip{
+    width: 100%;
+    float: left;
+}
+.layout-body .layout-right .right-content .right-form .formtextarea{
+    width: 100%;
+    height: 120px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.layout-body .layout-right .right-content .right-form .formbuttons a{
+    width: 60px;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 3px 8px !important;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    outline: none;
+    background: #4eaa4c;
+}

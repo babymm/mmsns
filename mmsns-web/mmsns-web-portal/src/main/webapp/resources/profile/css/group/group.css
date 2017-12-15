@@ -84,7 +84,7 @@
     width: 70%;
     float: left;
     margin-top: 50px;
-    min-height: 750px;
+    min-height: 850px;
 }
 .layout-body .layout-right .group-body{
     width: 100%;
@@ -134,10 +134,4 @@
     width: 600px;
     margin-top: 35px;
     margin-bottom: 20px;
-}
-.layout-bottom{
-    margin-top: 10px;
-    margin-bottom: 52px;
-    float: left;
-    width: 100%;
 }

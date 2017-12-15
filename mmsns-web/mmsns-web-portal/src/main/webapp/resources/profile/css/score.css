@@ -1,0 +1,88 @@
+.layout-body{
+    float: left;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    min-width: 1100px;
+}
+.layout-body .layout-left{
+    float: left;
+    width: 70%;
+    min-height: 700px;
+}
+.layout-body .layout-left .left-content{
+    float: left;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 20px;
+}
+.layout-body .layout-left .left-content .left-header{
+    float: left;
+    width: 100%;
+}
+.layout-body .layout-left .left-content .left-main{
+    float: left;
+    width: 100%;
+    min-width: 500px;
+}
+.layout-body .layout-left .left-content .left-main .layui-table{
+    min-width: 500px;
+    width: 100%;
+    margin: 0px
+}
+.layout-body .layout-right{
+    float: left;
+    width: 30%;
+    min-height: 700px;
+}
+.layout-body .layout-right .right-content{
+    float: left;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 20px;
+}
+.layout-body .layout-right .right-content .right-header{
+    float: left;
+    width: 100%;
+}
+.layout-body .layout-right .right-content .right-main{
+    float: left;
+    width: 100%;
+}
+.layout-body .layout-right .right-content .right-main ul li{
+    float: left;
+    width: 100%;
+    min-height: 100px;
+}
+.layout-body .layout-right .right-content .right-main ul li .userlogo{
+    float: left;
+    width: 60px;
+}
+.layout-body .layout-right .right-content .right-main li .userlogo a img{
+    float: left;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.layout-body .layout-right .right-content .right-main ul li .userinfo{
+    float: left;
+    width: 60%;
+    min-width: 230px;
+    margin-left: 6px;
+}
+.layout-body .layout-right .right-content .right-main ul li .userinfo span{
+    float: left;
+    width: 100%;
+    margin-bottom: 4px;
+}
+.layout-body .layout-right .right-content .right-main ul li .userinfo .username{
+    font-weight: 500;
+    font-size: 16px;
+    font-style: inherit;
+    color: #333;
+}
+.layout-body .layout-right .right-content .right-main ul li .userinfo .userarea{
+    font-weight: 500;
+    font-size: 14px;
+    color: #999999;
+}

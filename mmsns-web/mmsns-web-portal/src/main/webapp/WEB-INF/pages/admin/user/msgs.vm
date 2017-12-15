@@ -1,0 +1,57 @@
+<title>我的私信-个人设置中心-个人空间-MMSNS个人博客</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/resources/admin/css/user/inbox.css" media="all">
+#parse("/portal/header.vm")
+<div class="layout-body">
+    #parse("/admin/left.vm")
+    <div class="layout-right">
+        <div class="right-content">
+            <div class="right-header">
+                <span class="messageheader"><a href="/admin/babymm/user/inbox">我的私信 </a><small> >> 发送私信</small></span>
+            </div>
+            <div class="right-form">
+                <span class="formtip"><strong>发私信给 <a href="">wenshao</a></strong> </span>
+                <textarea class="formtextarea"></textarea>
+                <span class="formbuttons"><a href="">发送私信</a></span>
+            </div>
+            <div class="right-main">
+                <ul>
+                    #set($usermessages=[0 .. 4])
+                    #foreach($usermessage in $usermessages)
+                        <li>
+                            <div class="userlogo">
+                                <a><img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068" width="60" height="60" style="border-radius: 50%"></a>
+                            </div>
+                            <div class="message">
+                                <span class="username">我发给<a href=""> @baby慕慕</a></span>
+                                <span class="messagecontent">我在 #2017年度最受欢迎中国开源软件评选#活动中给你的开源软件#layui#投了1票，希望继续加油哦欢迎中国开源软件评选#活动中给你的开源软件#layui#投了1票，希望继续加油哦</span>
+                                <span class="messageextra">
+                                    <span class="pubdate">2017-12-15</span>
+                                    <span class="messagebuttons"><a href="">删除</a> </span>
+                                </span>
+                            </div>
+                        </li>
+                    #end
+                </ul>
+            </div>
+            <div class="right-page">
+                <div class="usermessage-page" id="userMessagePage"></div>
+            </div>
+        </div>
+    </div>
+</div>
+#parse("/portal/footer.vm")
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element','laypage'], function () {
+        var element = layui.element,laypage=layui.laypage;
+        laypage.render({
+            elem: 'userMessagePage'
+            ,count: 120
+            ,jump: function(obj){
+                console.log(obj)
+            }
+        });
+    });
+</script>

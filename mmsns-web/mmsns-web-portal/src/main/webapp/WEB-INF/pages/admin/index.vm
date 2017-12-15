@@ -1,0 +1,19 @@
+<title>个人设置中心-个人空间-baby慕慕SNS个人博客</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/resources/admin/css/index.css" media="all">
+#parse("/portal/header.vm")
+<div class="layout-body">
+    #parse("/admin/left.vm")
+    <div class="layout-right">
+
+    </div>
+</div>
+#parse("/portal/footer.vm")
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element'], function () {
+        var element = layui.element;
+    });
+</script>

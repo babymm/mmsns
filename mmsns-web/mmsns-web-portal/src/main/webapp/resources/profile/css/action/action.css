@@ -84,7 +84,7 @@
     width: 70%;
     float: left;
     margin-top: 50px;
-    min-height: 600px;
+    min-height: 850px;
 }
 .layout-body .layout-right .action-body{
     width: 100%;
@@ -135,9 +135,3 @@
     margin-top: 35px;
     margin-bottom: 20px;
 }
-.layout-bottom{
-    margin-top: 10px;
-    margin-bottom: 52px;
-    float: left;
-    width: 100%;
- }

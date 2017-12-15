@@ -1,0 +1,57 @@
+<title>修改登录邮箱-个人空间-MMSNS个人博客</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/resources/admin/css/user/chpwd.css" media="all">
+#parse("/portal/header.vm")
+<div class="layout-body">
+    #parse("/admin/left.vm")
+    <div class="layout-right">
+        <div class="right-content">
+            <div class="right-header">
+                <span>修改登录邮箱</span>
+            </div>
+            <div class="right-chpwdform">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">现在的邮箱</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">登录密码</label>
+                        <div class="layui-input-inline">
+                            <input type="password" name="password" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">新的邮箱地址</label>
+                        <div class="layui-input-inline">
+                            <input type="password" name="password" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <span class="getSMSCode" style="padding-top: -20px;margin-left: 130px;"><a href="" style="color: #4eaa4c;">免费获取邮箱验证码</a></span>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">邮箱验证码</label>
+                        <div class="layui-input-inline">
+                            <input type="password" name="password" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">立即修改</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+#parse("/portal/footer.vm")
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element'], function () {
+        var element = layui.element;
+    });
+</script>

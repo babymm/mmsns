@@ -84,7 +84,7 @@
     width: 70%;
     float: left;
     margin-top: 50px;
-    min-height: 700px;
+    min-height: 900px;
 }
 .layout-body .layout-right .photo-body{
     width: 100%;
@@ -126,12 +126,6 @@
     margin-bottom: 12px;
 }
 .layout-body .layout-right .photo-page{
-    float: left;
-    width: 100%;
-}
-.layout-bottom{
-    margin-top: 10px;
-    margin-bottom: 52px;
     float: left;
     width: 100%;
 }

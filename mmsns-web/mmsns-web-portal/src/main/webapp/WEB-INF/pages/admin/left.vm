@@ -1,0 +1,113 @@
+<style type="text/css">
+    .layout-body .layout-left{
+        width: 25%;
+        float: left;
+        border-right: 1px solid #ddd;
+    }
+    .layout-body .layout-left .left-content{
+        width: 90%;
+        float: left;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 20px;
+    }
+    .layout-body .layout-left .left-content ul{
+        width: 200px;
+        margin: 0 auto;
+    }
+    .layout-body .layout-left .left-content ul li h2{
+        width: 100%;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 30px;
+        display: block;
+        color: #6a6a6a;
+        border-bottom: 1px solid #ddd;
+    }
+    .layout-body .layout-left .left-content ul li ol{
+        float: left;
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 15px;
+        margin-bottom: 10px;
+    }
+    .layout-body .layout-left .left-content ul li ol li{
+        width: 100%;
+        text-align: left;
+        height: 25px;
+    }
+    .layout-body .layout-left .left-content ul li ol li a{
+        transition: color .3s;
+        text-decoration: none;
+        color: #666;
+        border: none;
+        outline: none;
+    }
+</style>
+<div class="layout-left">
+    <div class="left-content">
+        <ul>
+            <li>
+                <h2>个人信息管理</h2>
+                <ol>
+                    <li><a href="/admin/babymm/user/inbox">我的私信</a></li>
+                    <li><a href="/admin/babymm/user/profile">修改个人资料</a></li>
+                    <li><a href="/admin/babymm/user/chpwd">修改登录密码</a></li>
+                    <li><a href="/admin/babymm/user/namespace">空间个性化设置</a></li>
+                    <li><a href="/admin/babymm/user/chemail">修改登录邮箱</a></li>
+                    <li><a href="/admin/babymm/user/chphone">绑定手机</a></li>
+                </ol>
+            </li>
+            <li>
+                <h2>文章管理</h2>
+                <ol>
+                    <li><a href="/admin/babymm/index">发表文章</a></li>
+                    <li><a href="/admin/babymm/index">文章分类</a></li>
+                    <li><a href="/admin/babymm/index">我的文章</a></li>
+                    <li><a href="/admin/babymm/index">文章评论管理</a></li>
+                </ol>
+            </li>
+            <li>
+                <h2>动弹管理</h2>
+                <ol>
+                    <li><a href="/admin/babymm/index">发表动弹</a></li>
+                    <li><a href="/admin/babymm/index">我的动弹</a></li>
+                    <li><a href="/admin/babymm/index">动弹评论管理</a></li>
+                </ol>
+            </li>
+            <li>
+                <h2>群组管理</h2>
+                <ol>
+                    <li><a href="/admin/babymm/index">创建群组</a></li>
+                    <li><a href="/admin/babymm/index">我的群组</a></li>
+                    <li><a href="/admin/babymm/index">群组评论管理</a></li>
+                </ol>
+            </li>
+            <li>
+                <h2>资讯管理</h2>
+                <ol>
+                    <li><a href="/admin/babymm/index">上传资讯</a></li>
+                    <li><a href="/admin/babymm/index">我的资讯</a></li>
+                    <li><a href="/admin/babymm/index">资讯评论管理</a></li>
+                </ol>
+            </li>
+            <li>
+                <h2>图库管理</h2>
+                <ol>
+                    <li><a href="/admin/babymm/photo/upload">上传图库</a></li>
+                    <li><a href="/admin/babymm/index">图库评论管理</a></li>
+                    <li><a href="/admin/babymm/index">我的图库</a></li>
+                    <li><a href="/admin/babymm/index">我的相册</a></li>
+                </ol>
+            </li>
+            <li>
+                <h2>文档管理</h2>
+                <ol>
+                    <li><a href="/admin/babymm/index">上传文档</a></li>
+                    <li><a href="/admin/babymm/index">文档评论管理</a></li>
+                    <li><a href="/admin/babymm/index">我的文档</a></li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+</div>
