@@ -1,0 +1,66 @@
+<title>文章分类-个人空间-MMSNS个人博客</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/resources/admin/css/article/classify.css" media="all">
+#parse("/portal/header.vm")
+<div class="layout-body">
+    #parse("/admin/left.vm")
+    <div class="layout-right">
+        <div class="right-content">
+            <div class="right-header">
+                <span>文章分类</span>
+            </div>
+            <div class="right-buttons">
+                <a href="/admin/babymm/article/classify/create"><span>创建文章分类<span></span></a>
+            </div>
+            <div class="right-articleclassifytable">
+                <table class="layui-table" id="articleClassifyTable"></table>
+                <script type="text/html" id="articleClassifyTableBar">
+                    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail" href="/admin/babymm/article/classify/view">查看</a>
+                    <a class="layui-btn layui-btn-xs" lay-event="edit" href="/admin/babymm/article/classify/edit">编辑</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+#parse("/portal/footer.vm")
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element','table'], function () {
+        var element = layui.element,table=layui.table;
+        table.render({
+            id: 'articleClassifyTableReload'
+            ,elem: '#articleClassifyTable'
+            ,url:'/profile/babymm/home/score/data'
+            ,cellMinWidth: 80
+            ,cols: [[
+                {field:'id', title: '分类ID',width:80}
+                ,{field:'scoreChanage', title: '排序序号',width:80}
+                ,{field:'scoreChanage',width:300, title: '分类名称'}
+                ,{field:'scoreChanage',width:120, title: '文章数量',sort:true}
+                ,{field:'remark', title: '分类描述'}
+                ,{field:'createDate',width:170, title: '创建时间'}
+                ,{field:'toolbar', title: '操作',width:170,align:'center',toolbar: '#articleClassifyTableBar'}
+            ]]
+            ,page: {
+                layout: ['prev', 'page', 'next', 'skip']
+            }
+            ,skin: 'row'
+        });
+        table.on('tool(articleClassifyTableBar)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'detail'){
+                layer.msg('ID：'+ data.id + ' 的查看操作');
+            } else if(obj.event === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    obj.del();
+                    layer.close(index);
+                });
+            } else if(obj.event === 'edit'){
+                layer.alert('编辑行：<br>'+ JSON.stringify(data))
+            }
+        });
+    });
+</script>

@@ -48,7 +48,6 @@
 <script type="text/javascript">
     layui.use(['element','table'], function () {
         var element = layui.element,table=layui.table;
-        var table = layui.table;
         table.render({
             id: 'articleClassifyTableReload'
             ,elem: '#userScoreTable'

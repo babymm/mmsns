@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @author babymm
  * @version 1.0-SNAPSHOT
- * @Description: 后台设置页面
+ * @Description: 后台设置
  * @date 2017-12-15 12:48:
  */
 @Controller

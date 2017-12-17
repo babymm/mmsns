@@ -1,0 +1,85 @@
+.layout-body{
+    width: 100%;
+    float: left;
+    min-width:1100px;
+    margin: 0px;
+    padding: 0px;
+}
+.layout-body .layout-right{
+    width: 69%;
+    float: left;
+}
+.layout-body .layout-right .right-content{
+    width: 90%;
+    float: left;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
+}
+.layout-body .layout-right .right-content .right-header{
+    width: 100%;
+    float: left;
+}
+.layout-body .layout-right .right-content .right-header .articleheader{
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    display: block;
+    color: #6a6a6a;
+    border-bottom: 1px solid #ddd;
+}
+.layout-body .layout-right .right-content .right-header .articleheader span{
+    margin-right: 20px;
+    color: #4eaa4c;
+}
+.layout-body .layout-right .right-content .right-main{
+    width: 100%;
+    float: left;
+    /*    min-height: 860px;*/
+    min-height: 600px;
+}
+.layout-body .layout-right .right-content .right-main ul li{
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+.layout-body .layout-right .right-content .right-main ul li .userlogo{
+    width: 70px;
+    float: left;
+}
+.layout-body .layout-right .right-content .right-main ul li .userlogo a img{
+    /*width: 60px;
+    height: 60px;
+    border-radius: 50%;*/
+}
+.layout-body .layout-right .right-content .right-main ul li .article{
+    width: calc(100% - 70px);
+    float: left;
+}
+.layout-body .layout-right .right-content .right-main ul li .article>span{
+    width: 100%;
+    float: left;
+    margin-bottom: 3px;
+}
+.layout-body .layout-right .right-content .right-main ul li .article .articletitle a{
+    color: #4eaa4c;
+}
+.layout-body .layout-right .right-content .right-main ul li .article .articlecontent{
+    line-height: 22px;
+}
+.layout-body .layout-right .right-content .right-main ul li .article .articleextra .pubdate{
+    width: 60px;
+    float: left;
+    color: #999;
+}
+.layout-body .layout-right .right-content .right-main ul li .article .articleextra .articlebuttons{
+    width: 200px;
+    float: right;
+    text-align: right;
+}
+.layout-body .layout-right .right-content .right-main ul li .article .articleextra .articlebuttons a{
+    color: #999;
+}

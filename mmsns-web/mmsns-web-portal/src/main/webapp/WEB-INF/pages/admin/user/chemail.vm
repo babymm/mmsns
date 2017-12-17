@@ -15,7 +15,7 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">现在的邮箱</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                            <input type="text" name="title" required  disabled value="lovercws@gmail.com" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -24,17 +24,17 @@
                             <input type="password" name="password" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
                         </div>
                     </div>
-                    <div class="layui-form-item">
+                    <div class="layui-form-item" style="margin-bottom: 5px;">
                         <label class="layui-form-label">新的邮箱地址</label>
                         <div class="layui-input-inline">
-                            <input type="password" name="password" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                            <input type="email" name="password" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
                         </div>
                     </div>
-                    <span class="getSMSCode" style="padding-top: -20px;margin-left: 130px;"><a href="" style="color: #4eaa4c;">免费获取邮箱验证码</a></span>
-                    <div class="layui-form-item">
+                    <span style="margin-left: 130px;float: left;"><a href="" style="color: #4eaa4c;display: block;width: 140px;height: 20px;float: left;border: 1px solid #ddd;background-color: #ddd;text-align: center">免费获取邮箱验证码</a></span>
+                    <div class="layui-form-item" style="margin-top:40px;">
                         <label class="layui-form-label">邮箱验证码</label>
                         <div class="layui-input-inline">
-                            <input type="password" name="password" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                            <input type="text" name="password" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">

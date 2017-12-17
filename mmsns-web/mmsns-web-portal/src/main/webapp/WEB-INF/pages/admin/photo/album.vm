@@ -1,0 +1,53 @@
+<title>相册管理-个人空间-MMSNS个人博客</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/resources/admin/css/photo/album.css" media="all">
+#parse("/portal/header.vm")
+<div class="layout-body">
+    #parse("/admin/left.vm")
+    <div class="layout-right">
+        <div class="right-content">
+            <div class="right-header">
+                <span>相册管理</span>
+            </div>
+            <div class="right-buttons">
+                <a href="/admin/babymm/photo/album/create"><span>创建相册<span></span></a>
+            </div>
+            <div class="right-articleclassifytable">
+                <table class="layui-table" id="photoAlbumTable"></table>
+                <script type="text/html" id="photoAlbumTableBar">
+                    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail" href="/admin/babymm/photo/album/view">查看</a>
+                    <a class="layui-btn layui-btn-xs" lay-event="edit" href="/admin/babymm/photo/album/edit">编辑</a>
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+#parse("/portal/footer.vm")
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element','table'], function () {
+        var element = layui.element,table=layui.table;
+        table.render({
+            id: 'photoAlbumTableReload'
+            ,elem: '#photoAlbumTable'
+            ,url:'/profile/babymm/home/score/data'
+            ,cellMinWidth: 80
+            ,cols: [[
+                {field:'id', title: '相册ID',width:80}
+                ,{field:'scoreChanage', title: '排序序号',width:80}
+                ,{field:'scoreChanage',width:300, title: '相册名称'}
+                ,{field:'scoreChanage',width:120, title: '图片数量',sort:true}
+                ,{field:'remark', title: '相册描述'}
+                ,{field:'createDate',width:170, title: '创建时间'}
+                ,{field:'toolbar', title: '操作',width:170,align:'center',toolbar: '#photoAlbumTableBar'}
+            ]]
+            ,page: {
+                layout: ['prev', 'page', 'next', 'skip']
+            }
+            ,skin: 'row'
+        });
+    });
+</script>
