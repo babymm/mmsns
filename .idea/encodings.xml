@@ -4,6 +4,9 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-action" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-article" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mmsns-article/mmsns-article-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mmsns-article/mmsns-article-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mmsns-article/mmsns-article-web" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-group" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-news" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-picture" charset="UTF-8" />

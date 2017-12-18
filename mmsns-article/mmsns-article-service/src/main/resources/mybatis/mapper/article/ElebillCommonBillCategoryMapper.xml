@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiaomoc.elebill.common.bill.dao.impl.ElebillCommonBillCategoryDaoImpl">
+    <resultMap id="ElebillCommonBillCategoryResultMap"
+               type="com.xiaomoc.elebill.common.bill.entity.ElebillCommonBillCategoryEntity">
+
+        <id column="category_id" property="categoryId" jdbcType="INTEGER"/>
+        <result column="category_status" property="categoryStatus" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="DATE"/>
+        <result column="category_name" property="categoryName" jdbcType="VARCHAR"/>
+        <result column="category_logo" property="categoryLogo" jdbcType="VARCHAR"/>
+        <result column="category_desc" property="categoryDesc" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="ElebillCommonBillCategoryColumn">
+		category_id, category_status, create_date, category_name, category_logo, category_desc
+	</sql>
+
+    <!-- 获取票据分类数量 -->
+    <select id="listPageCount" resultType="long" parameterType="map">
+        select count(category_id)
+        from ec_bill_category
+        <where>
+            <if test="categoryStatus!=null and categoryStatus!=''">
+                and category_status=#{categoryStatus}
+            </if>
+        </where>
+    </select>
+
+    <!-- 分页获取票据分类 -->
+    <select id="listPage" resultMap="ElebillCommonBillCategoryResultMap" parameterType="map">
+        select
+        <include refid="ElebillCommonBillCategoryColumn"/>
+        from ec_bill_category
+        <where>
+            <if test="categoryStatus!=null and categoryStatus!=''">
+                and category_status=#{categoryStatus}
+            </if>
+        </where>
+        ORDER BY create_date DESC
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 按照条件获取票据分类 -->
+    <select id="listByColumn" resultMap="ElebillCommonBillCategoryResultMap" parameterType="map">
+        select
+        <include refid="ElebillCommonBillCategoryColumn"/>
+        from ec_bill_category
+    </select>
+
+    <!-- 获取票据分类详情信息-->
+    <select id="selectByPrimaryKey" resultMap="ElebillCommonBillCategoryResultMap" parameterType="java.lang.String">
+        select
+        <include refid="ElebillCommonBillCategoryColumn"/>
+        from ec_bill_category
+        where category_id=#{categoryId}
+    </select>
+
+    <!-- 添加票据分类信息 -->
+    <insert id="insert" parameterType="ElebillCommonBillCategoryEntity" useGeneratedKeys="true"
+            keyProperty="categoryId">
+        insert into ec_bill_category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="categoryStatus!=null">
+                category_status,
+            </if>
+            <if test="createDate!=null">
+                create_date,
+            </if>
+            <if test="categoryName!=null">
+                category_name,
+            </if>
+            <if test="categoryLogo!=null">
+                category_logo,
+            </if>
+            <if test="categoryDesc!=null">
+                category_desc,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="categoryStatus!=null">
+                #{categoryStatus},
+            </if>
+            <if test="createDate!=null">
+                #{createDate},
+            </if>
+            <if test="categoryName!=null">
+                #{categoryName},
+            </if>
+            <if test="categoryLogo!=null">
+                #{categoryLogo},
+            </if>
+            <if test="categoryDesc!=null">
+                #{categoryDesc},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 更新票据分类信息 -->
+    <update id="updateByPrimaryKey" parameterType="ElebillCommonBillCategoryEntity">
+        update ec_bill_category
+        <set>
+            <if test="categoryStatus!=null">
+                category_status=#{categoryStatus},
+            </if>
+            <if test="createDate!=null">
+                create_date=#{createDate},
+            </if>
+            <if test="categoryName!=null">
+                category_name=#{categoryName},
+            </if>
+            <if test="categoryLogo!=null">
+                category_logo=#{categoryLogo},
+            </if>
+            <if test="categoryDesc!=null">
+                category_desc=#{categoryDesc},
+            </if>
+        </set>
+        <where>
+            <if test="categoryId!=null">
+                category_id=#{categoryId}
+            </if>
+        </where>
+    </update>
+
+    <!-- 根据id删除票据分类 -->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from ec_bill_category
+        where category_id=#{categoryId}
+    </delete>
+</mapper>

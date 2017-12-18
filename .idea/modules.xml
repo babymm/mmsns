@@ -5,6 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/mmsns.iml" filepath="$PROJECT_DIR$/mmsns.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmsns-action/mmsns-action.iml" filepath="$PROJECT_DIR$/mmsns-action/mmsns-action.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmsns-article/mmsns-article.iml" filepath="$PROJECT_DIR$/mmsns-article/mmsns-article.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-article/mmsns-article-api/mmsns-article-api.iml" filepath="$PROJECT_DIR$/mmsns-article/mmsns-article-api/mmsns-article-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-article/mmsns-article-service/mmsns-article-service.iml" filepath="$PROJECT_DIR$/mmsns-article/mmsns-article-service/mmsns-article-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-article/mmsns-article-web/mmsns-article-web.iml" filepath="$PROJECT_DIR$/mmsns-article/mmsns-article-web/mmsns-article-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmsns-group/mmsns-group.iml" filepath="$PROJECT_DIR$/mmsns-group/mmsns-group.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmsns-news/mmsns-news.iml" filepath="$PROJECT_DIR$/mmsns-news/mmsns-news.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmsns-picture/mmsns-picture.iml" filepath="$PROJECT_DIR$/mmsns-picture/mmsns-picture.iml" />
