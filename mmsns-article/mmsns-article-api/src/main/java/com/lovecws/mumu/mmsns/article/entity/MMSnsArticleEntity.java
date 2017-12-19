@@ -18,6 +18,7 @@ public class MMSnsArticleEntity extends PersistentEntity {
     private Date articleDate;
 
     private String articleTitle;
+    private String articleSumary;
     private String articleContent;
     private String articleLogo;
     private String articleLabels;

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lovecws.mumu.mmsns.article.dao.impl.MMSnsArticleVoteDaoImpl">
+    <resultMap id="MMSnsArticleVoteResultMap"
+               type="com.lovecws.mumu.mmsns.article.entity.MMSnsArticleVoteEntity">
+
+        <id column="vote_id" property="voteId" jdbcType="INTEGER"/>
+        <result column="vote_status" property="voteStatus" jdbcType="VARCHAR"/>
+        <result column="vote_date" property="voteDate" jdbcType="DATE"/>
+
+        <result column="vote_user_id" property="voteUserId" jdbcType="VARCHAR"/>
+        <result column="article_id" property="articleId" jdbcType="INTEGER"/>
+        <result column="article_user_id" property="articleUserId" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="MMSnsArticleVoteColumn">
+		vote_id,vote_status,vote_date,vote_user_id,article_id,article_user_id
+	</sql>
+
+    <!-- 获取文章点赞数量 -->
+    <select id="listPageCount" resultType="long" parameterType="map">
+        select count(vote_id)
+        from mb_article_vote
+        <where>
+            <if test="voteStatus!=null and voteStatus!=''">
+                and vote_status=#{voteStatus}
+            </if>
+        </where>
+    </select>
+
+    <!-- 分页获取文章点赞 -->
+    <select id="listPage" resultMap="MMSnsArticleVoteResultMap" parameterType="map">
+        select
+        <include refid="MMSnsArticleVoteColumn"/>
+        from mb_article_vote
+        <where>
+            <if test="voteStatus!=null and voteStatus!=''">
+                and vote_status=#{voteStatus}
+            </if>
+        </where>
+        ORDER BY category_order DESC
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 按照条件获取文章点赞 -->
+    <select id="listByColumn" resultMap="MMSnsArticleVoteResultMap" parameterType="map">
+        select
+        <include refid="MMSnsArticleVoteColumn"/>
+        from mb_article_vote
+    </select>
+
+    <!-- 获取文章点赞详情信息-->
+    <select id="selectByPrimaryKey" resultMap="MMSnsArticleVoteResultMap" parameterType="java.lang.String">
+        select
+        <include refid="MMSnsArticleVoteColumn"/>
+        from mb_article_vote
+        where vote_id=#{voteId}
+    </select>
+    
+    <!-- 添加文章点赞信息 -->
+    <insert id="insert" parameterType="MMSnsArticleVoteEntity" useGeneratedKeys="true"
+            keyProperty="voteId">
+        insert into mb_article_vote
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="voteStatus!=null">
+                vote_status,
+            </if>
+            <if test="voteDate!=null">
+                vote_date,
+            </if>
+            <if test="voteUserId!=null">
+                vote_user_id,
+            </if>
+            <if test="articleId!=null">
+                article_id,
+            </if>
+            <if test="articleUserId!=null">
+                article_user_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="voteStatus!=null">
+                #{voteStatus},
+            </if>
+            <if test="voteDate!=null">
+                #{voteDate},
+            </if>
+            <if test="voteUserId!=null">
+                #{voteUserId},
+            </if>
+            <if test="articleId!=null">
+                #{articleId},
+            </if>
+            <if test="articleUserId!=null">
+                #{articleUserId},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 更新文章点赞信息 -->
+    <update id="updateByPrimaryKey" parameterType="MMSnsArticleVoteEntity">
+        update mb_article_vote
+        <set>
+            <if test="voteStatus!=null">
+                vote_status=#{voteStatus},
+            </if>
+            <if test="voteDate!=null">
+                vote_date=#{voteDate},
+            </if>
+            <if test="voteUserId!=null and voteUserId!=0">
+                vote_user_id=#{voteUserId},
+            </if>
+            <if test="articleId!=null and articleId!=0">
+                article_id=#{articleId},
+            </if>
+            <if test="articleUserId!=null and articleUserId!=0">
+                article_user_id=#{articleUserId},
+            </if>
+        </set>
+        <where>
+            <if test="voteId!=null">
+                vote_id=#{voteId}
+            </if>
+        </where>
+    </update>
+
+    <!-- 根据id删除文章点赞 -->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from mb_article_vote
+        where vote_id=#{voteId}
+    </delete>
+</mapper>

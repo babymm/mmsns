@@ -128,7 +128,7 @@
         <!--注入数据库连接池 -->
         <property name="dataSource" ref="multipleDataSource"/>
         <!--配置mybatis全局配置文件:mybatis-config.xml -->
-        <property name="configLocation" value="classpath:mybatis/mybatis-common-config.xml"/>
+        <property name="configLocation" value="classpath:mybatis/mybatis-article-config.xml"/>
     </bean>
 
     <!-- SqlSession模板类实例 -->

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lovecws.mumu.mmsns.article.dao.impl.MMSnsArticleCommentDaoImpl">
+    <resultMap id="MMSnsArticleCommentResultMap"
+               type="com.lovecws.mumu.mmsns.article.entity.MMSnsArticleCommentEntity">
+
+        <id column="comment_id" property="commentId" jdbcType="INTEGER"/>
+        <result column="comment_status" property="commentStatus" jdbcType="VARCHAR"/>
+        <result column="comment_date" property="commentDate" jdbcType="DATE"/>
+
+        <result column="comment_type" property="commentType" jdbcType="VARCHAR"/>
+        <result column="comment_content" property="commentContent" jdbcType="VARCHAR"/>
+        <result column="comment_img" property="commentImg" jdbcType="VARCHAR"/>
+
+        <result column="comment_order" property="commentOrder" jdbcType="INTEGER"/>
+        <result column="article_id" property="articleId" jdbcType="INTEGER"/>
+        <result column="reply_comment_id" property="replyCommentId" jdbcType="INTEGER"/>
+
+        <result column="comment_user_id" property="commentUserId" jdbcType="INTEGER"/>
+        <result column="article_user_id" property="articleUserId" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="MMSnsArticleCommentColumn">
+		comment_id,comment_status,comment_date,comment_type,comment_content,comment_img,comment_order,article_id,reply_comment_id,comment_user_id,article_user_id
+	</sql>
+
+    <!-- 获取文章评论数量 -->
+    <select id="listPageCount" resultType="long" parameterType="map">
+        select count(comment_id)
+        from mb_article_comment
+        <where>
+            <if test="commentStatus!=null and commentStatus!=''">
+                and comment_status=#{commentStatus}
+            </if>
+        </where>
+    </select>
+
+    <!-- 分页获取文章评论 -->
+    <select id="listPage" resultMap="MMSnsArticleCommentResultMap" parameterType="map">
+        select
+        <include refid="MMSnsArticleCommentColumn"/>
+        from mb_article_comment
+        <where>
+            <if test="commentStatus!=null and commentStatus!=''">
+                and comment_status=#{commentStatus}
+            </if>
+        </where>
+        ORDER BY category_order DESC
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 按照条件获取文章评论 -->
+    <select id="listByColumn" resultMap="MMSnsArticleCommentResultMap" parameterType="map">
+        select
+        <include refid="MMSnsArticleCommentColumn"/>
+        from mb_article_comment
+    </select>
+
+    <!-- 获取文章评论详情信息-->
+    <select id="selectByPrimaryKey" resultMap="MMSnsArticleCommentResultMap" parameterType="java.lang.String">
+        select
+        <include refid="MMSnsArticleCommentColumn"/>
+        from mb_article_comment
+        where comment_id=#{commentId}
+    </select>
+
+    <!-- 添加文章评论信息 -->
+    <insert id="insert" parameterType="MMSnsArticleCommentEntity" useGeneratedKeys="true"
+            keyProperty="commentId">
+        insert into mb_article_comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="commentStatus!=null">
+                comment_status,
+            </if>
+            <if test="commentDate!=null">
+                comment_date,
+            </if>
+            <if test="commentType!=null">
+                comment_type,
+            </if>
+            <if test="commentContent!=null">
+                comment_content,
+            </if>
+            <if test="commentImg!=null">
+                comment_img,
+            </if>
+            <if test="commentOrder!=null">
+                comment_order,
+            </if>
+            <if test="articleId!=null">
+                article_id,
+            </if>
+            <if test="replyCommentId!=null">
+                reply_comment_id,
+            </if>
+            <if test="commentUserId!=null">
+                comment_user_id,
+            </if>
+            <if test="articleUserId!=null">
+                article_user_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="commentStatus!=null">
+                #{commentStatus},
+            </if>
+            <if test="commentDate!=null">
+                #{commentDate},
+            </if>
+            <if test="commentType!=null">
+                #{commentType},
+            </if>
+            <if test="commentContent!=null">
+                #{commentContent},
+            </if>
+            <if test="commentImg!=null">
+                #{commentImg},
+            </if>
+            <if test="commentOrder!=null">
+                #{commentOrder},
+            </if>
+            <if test="articleId!=null">
+                #{articleId},
+            </if>
+            <if test="replyCommentId!=null">
+                #{replyCommentId},
+            </if>
+            <if test="commentUserId!=null">
+                #{commentUserId},
+            </if>
+            <if test="articleUserId!=null">
+                #{articleUserId},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 更新文章评论信息 -->
+    <update id="updateByPrimaryKey" parameterType="MMSnsArticleCommentEntity">
+        update mb_article_comment
+        <set>
+            <if test="commentStatus!=null">
+                comment_status=#{commentStatus},
+            </if>
+            <if test="commentDate!=null">
+                comment_date=#{commentDate},
+            </if>
+            <if test="commentType!=null">
+                comment_type=#{commentType},
+            </if>
+            <if test="commentContent!=null">
+                comment_content=#{commentContent},
+            </if>
+            <if test="commentImg!=null">
+                comment_img=#{commentImg},
+            </if>
+            <if test="commentOrder!=null and commentOrder!=0">
+                comment_order=#{commentOrder},
+            </if>
+            <if test="articleId!=null and articleId!=0">
+                article_id=#{articleId},
+            </if>
+            <if test="replyCommentId!=null and replyCommentId!=0">
+                reply_comment_id=#{replyCommentId},
+            </if>
+            <if test="commentUserId!=null and commentUserId!=0">
+                comment_user_id=#{commentUserId},
+            </if>
+            <if test="articleUserId!=null and articleUserId!=0">
+                article_user_id=#{articleUserId},
+            </if>
+        </set>
+        <where>
+            <if test="commentId!=null">
+                comment_id=#{commentId}
+            </if>
+        </where>
+    </update>
+
+    <!-- 根据id删除文章评论 -->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from mb_article_comment
+        where comment_id=#{commentId}
+    </delete>
+</mapper>

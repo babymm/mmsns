@@ -25,6 +25,7 @@ public class MMSnsArticleCategoryEntity extends PersistentEntity {
     private int systemUserId;//如果是system分类类型，则是系统用户的用户id
 
     private String categoryName;//分类名称
+    private String categoryIcon;//分类icon
     private String categoryDesc;//分类描述
     private int categoryOrder;//分类排序
     private int articleCount;//分类下文章数量

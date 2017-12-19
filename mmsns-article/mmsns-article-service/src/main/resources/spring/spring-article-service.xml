@@ -17,10 +17,8 @@
     <context:annotation-config/>
 
     <!-- 配置要扫描的包 -->
-    <context:component-scan base-package="com.lovecws.mumu.mmsns"/>
+    <context:component-scan base-package="com.lovecws.mumu.mmsns.article"/>
 
-    <bean id="commonMapperScanApplication" class="com.lovecws.mumu.core.dao.MapperScanApplication" init-method="init">
-        <property name="configLocation" value="mybatis/mybatis-common-config.xml"/>
-        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
-    </bean>
+    <import resource="classpath:spring/spring-article-mdao.xml"/>
+
 </beans>

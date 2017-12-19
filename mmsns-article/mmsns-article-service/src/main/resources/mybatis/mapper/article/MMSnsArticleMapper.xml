@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lovecws.mumu.mmsns.article.dao.impl.MMSnsArticleDaoImpl">
+    <resultMap id="MMSnsArticleResultMap"
+               type="com.lovecws.mumu.mmsns.article.entity.MMSnsArticleEntity">
+
+        <id column="article_id" property="articleId" jdbcType="INTEGER"/>
+        <result column="article_status" property="articleStatus" jdbcType="VARCHAR"/>
+        <result column="article_date" property="articleDate" jdbcType="DATE"/>
+
+        <result column="article_title" property="articleTitle" jdbcType="VARCHAR"/>
+        <result column="article_sumary" property="articleSumary" jdbcType="VARCHAR"/>
+        <result column="article_content" property="articleContent" jdbcType="VARCHAR"/>
+        <result column="article_logo" property="articleLogo" jdbcType="VARCHAR"/>
+        <result column="article_labels" property="articleLabels" jdbcType="VARCHAR"/>
+        <result column="word_count" property="wordCount" jdbcType="INTEGER"/>
+
+        <result column="sys_category_id" property="sysCategoryId" jdbcType="INTEGER"/>
+        <result column="user_category_id" property="userCategoryId" jdbcType="INTEGER"/>
+
+        <result column="read_count" property="readCount" jdbcType="INTEGER"/>
+        <result column="collect_count" property="collectCount" jdbcType="INTEGER"/>
+        <result column="vote_count" property="voteCount" jdbcType="INTEGER"/>
+        <result column="relay_count" property="relayCount" jdbcType="INTEGER"/>
+        <result column="article_count" property="articleCount" jdbcType="INTEGER"/>
+
+        <result column="article_type" property="articleType" jdbcType="VARCHAR"/>
+        <result column="publisher_article_id" property="publisherArticleId" jdbcType="INTEGER"/>
+        <result column="relay_article_id" property="relayArticleId" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="MMSnsArticleColumn">
+		article_id,article_status,article_date,article_title,article_sumary,article_logo,article_labels,word_count,sys_category_id,user_category_id,read_count,collect_count,vote_count,relay_count,article_count,article_type,publisher_article_id,relay_article_id
+	</sql>
+
+    <!-- 获取文章评论数量 -->
+    <select id="listPageCount" resultType="long" parameterType="map">
+        select count(article_id)
+        from mb_article
+        <where>
+            <if test="articleStatus!=null and articleStatus!=''">
+                and article_status=#{articleStatus}
+            </if>
+        </where>
+    </select>
+
+    <!-- 分页获取文章评论 -->
+    <select id="listPage" resultMap="MMSnsArticleResultMap" parameterType="map">
+        select
+        <include refid="MMSnsArticleColumn"/>
+        from mb_article
+        <where>
+            <if test="articleStatus!=null and articleStatus!=''">
+                and article_status=#{articleStatus}
+            </if>
+        </where>
+        ORDER BY category_order DESC
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 按照条件获取文章评论 -->
+    <select id="listByColumn" resultMap="MMSnsArticleResultMap" parameterType="map">
+        select
+        <include refid="MMSnsArticleColumn"/>
+        from mb_article
+    </select>
+
+    <!-- 获取文章评论详情信息-->
+    <select id="selectByPrimaryKey" resultMap="MMSnsArticleResultMap" parameterType="java.lang.String">
+        select
+        <include refid="MMSnsArticleColumn"/>
+        from mb_article
+        where article_id=#{articleId}
+    </select>
+
+    <!-- 添加文章评论信息 -->
+    <insert id="insert" parameterType="MMSnsArticleEntity" useGeneratedKeys="true"
+            keyProperty="articleId">
+        insert into mb_article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="articleStatus!=null">
+                article_status,
+            </if>
+            <if test="articleDate!=null">
+                article_date,
+            </if>
+            <if test="articleTitle!=null">
+                article_title,
+            </if>
+            <if test="articleSumary!=null">
+                article_sumary,
+            </if>
+            <if test="articleLogo!=null">
+                article_logo,
+            </if>
+            <if test="articleLabels!=null">
+                article_labels,
+            </if>
+            <if test="wordCount!=null">
+                word_count,
+            </if>
+            <if test="sysCategoryId!=null">
+                sys_category_id,
+            </if>
+            <if test="userCategoryId!=null">
+                user_category_id,
+            </if>
+            <if test="readCount!=null">
+                read_count,
+            </if>
+            <if test="collectCount!=null">
+                collect_count,
+            </if>
+            <if test="voteCount!=null">
+                vote_count,
+            </if>
+            <if test="relayCount!=null">
+                relay_count,
+            </if>
+            <if test="articleCount!=null">
+                article_count,
+            </if>
+            <if test="articleType!=null">
+                article_type,
+            </if>
+            <if test="publisherArticleId!=null">
+                publisher_article_id,
+            </if>
+            <if test="relayArticleId!=null">
+                relay_article_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="articleStatus!=null">
+                #{articleStatus},
+            </if>
+            <if test="articleDate!=null">
+                #{articleDate},
+            </if>
+            <if test="articleTitle!=null">
+                #{articleTitle},
+            </if>
+            <if test="articleSumary!=null">
+                #{articleSumary},
+            </if>
+            <if test="articleLogo!=null">
+                #{articleLogo},
+            </if>
+            <if test="articleLabels!=null">
+                #{articleLabels},
+            </if>
+            <if test="wordCount!=null">
+                #{wordCount},
+            </if>
+            <if test="sysCategoryId!=null">
+                #{sysCategoryId},
+            </if>
+            <if test="userCategoryId!=null">
+                #{userCategoryId},
+            </if>
+            <if test="readCount!=null">
+                #{readCount},
+            </if>
+            <if test="collectCount!=null">
+                #{collectCount},
+            </if>
+            <if test="voteCount!=null">
+                #{voteCount},
+            </if>
+            <if test="relayCount!=null">
+                #{relayCount},
+            </if>
+            <if test="articleCount!=null">
+                #{articleCount},
+            </if>
+            <if test="articleType!=null">
+                #{articleType},
+            </if>
+            <if test="publisherArticleId!=null">
+                #{publisherArticleId},
+            </if>
+            <if test="relayArticleId!=null">
+                #{relayArticleId},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 更新文章评论信息 -->
+    <update id="updateByPrimaryKey" parameterType="MMSnsArticleEntity">
+        update mb_article
+        <set>
+            <if test="articleStatus!=null">
+                article_status=#{articleStatus},
+            </if>
+            <if test="articleDate!=null">
+                article_date=#{articleDate},
+            </if>
+            <if test="articleTitle!=null">
+                article_title=#{articleTitle},
+            </if>
+            <if test="articleSumary!=null">
+                article_sumary=#{articleSumary},
+            </if>
+            <if test="articleLogo!=null">
+                article_logo=#{articleLogo},
+            </if>
+            <if test="articleLabels!=null">
+                article_labels=#{articleLabels},
+            </if>
+            <if test="wordCount!=null and wordCount!=0">
+                word_count=#{wordCount},
+            </if>
+            <if test="sysCategoryId!=null and sysCategoryId!=0">
+                sys_category_id=#{sysCategoryId},
+            </if>
+            <if test="userCategoryId!=null and userCategoryId!=0">
+                user_category_id=#{userCategoryId},
+            </if>
+            <if test="readCount!=null and readCount!=0">
+                read_count=#{readCount},
+            </if>
+            <if test="collectCount!=null and collectCount!=0">
+                collect_count=#{collectCount},
+            </if>
+            <if test="voteCount!=null and voteCount!=0">
+                vote_count=#{voteCount},
+            </if>
+            <if test="relayCount!=null and relayCount!=0">
+                relay_count=#{relayCount},
+            </if>
+            <if test="articleCount!=null and articleCount!=0">
+                article_count=#{articleCount},
+            </if>
+            <if test="articleType!=null">
+                article_type=#{articleType},
+            </if>
+            <if test="publisherArticleId!=null and publisherArticleId!=0">
+                publisher_article_id=#{publisherArticleId},
+            </if>
+            <if test="relayArticleId!=null and relayArticleId!=0">
+                relay_article_id=#{relayArticleId},
+            </if>
+        </set>
+        <where>
+            <if test="articleId!=null">
+                article_id=#{articleId}
+            </if>
+        </where>
+    </update>
+
+    <!-- 根据id删除文章评论 -->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from mb_article
+        where article_id=#{articleId}
+    </delete>
+</mapper>

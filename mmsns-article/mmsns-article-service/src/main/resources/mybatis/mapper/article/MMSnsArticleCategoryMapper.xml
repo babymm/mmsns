@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lovecws.mumu.mmsns.article.dao.impl.MMSnsArticleCategoryDaoImpl">
+    <resultMap id="MMSnsArticleCategoryResultMap"
+               type="com.lovecws.mumu.mmsns.article.entity.MMSnsArticleCategoryEntity">
+
+        <id column="category_id" property="categoryId" jdbcType="INTEGER"/>
+        <result column="category_status" property="categoryStatus" jdbcType="VARCHAR"/>
+        <result column="category_date" property="categoryDate" jdbcType="DATE"/>
+
+        <result column="category_type" property="categoryType" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="system_user_id" property="systemUserId" jdbcType="INTEGER"/>
+
+        <result column="category_name" property="categoryName" jdbcType="VARCHAR"/>
+        <result column="category_icon" property="categoryIcon" jdbcType="VARCHAR"/>
+        <result column="category_desc" property="categoryDesc" jdbcType="VARCHAR"/>
+
+        <result column="category_order" property="categoryOrder" jdbcType="INTEGER"/>
+        <result column="article_count" property="articleCount" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="MMSnsArticleCategoryColumn">
+		category_id,category_status,category_date,category_type,user_id,system_user_id, category_name,category_icon,category_desc,category_order,article_count
+	</sql>
+
+    <!-- 获取文章分类数量 -->
+    <select id="listPageCount" resultType="long" parameterType="map">
+        select count(category_id)
+        from mb_article_category
+        <where>
+            <if test="categoryStatus!=null and categoryStatus!=''">
+                and category_status=#{categoryStatus}
+            </if>
+        </where>
+    </select>
+
+    <!-- 分页获取文章分类 -->
+    <select id="listPage" resultMap="MMSnsArticleCategoryResultMap" parameterType="map">
+        select
+        <include refid="MMSnsArticleCategoryColumn"/>
+        from mb_article_category
+        <where>
+            <if test="categoryStatus!=null and categoryStatus!=''">
+                and category_status=#{categoryStatus}
+            </if>
+        </where>
+        ORDER BY category_order DESC
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 按照条件获取文章分类 -->
+    <select id="listByColumn" resultMap="MMSnsArticleCategoryResultMap" parameterType="map">
+        select
+        <include refid="MMSnsArticleCategoryColumn"/>
+        from mb_article_category
+    </select>
+
+    <!-- 获取文章分类详情信息-->
+    <select id="selectByPrimaryKey" resultMap="MMSnsArticleCategoryResultMap" parameterType="java.lang.String">
+        select
+        <include refid="MMSnsArticleCategoryColumn"/>
+        from mb_article_category
+        where category_id=#{categoryId}
+    </select>
+
+    <!-- 添加文章分类信息 -->
+    <insert id="insert" parameterType="MMSnsArticleCategoryEntity" useGeneratedKeys="true"
+            keyProperty="categoryId">
+        insert into mb_article_category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="categoryStatus!=null">
+                category_status,
+            </if>
+            <if test="categoryDate!=null">
+                category_date,
+            </if>
+            <if test="categoryType!=null">
+                category_type,
+            </if>
+            <if test="userId!=null">
+                user_id,
+            </if>
+            <if test="systemUserId!=null">
+                system_user_id,
+            </if>
+            <if test="categoryName!=null">
+                category_name,
+            </if>
+            <if test="categoryIcon!=null">
+                category_icon,
+            </if>
+            <if test="categoryDesc!=null">
+                category_desc,
+            </if>
+            <if test="categoryOrder!=null and categoryOrder!=0">
+                category_order,
+            </if>
+            <if test="articleCount!=null and articleCount!=0">
+                article_count,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="categoryStatus!=null">
+                #{categoryStatus},
+            </if>
+            <if test="categoryDate!=null">
+                #{categoryDate},
+            </if>
+            <if test="categoryType!=null">
+                #{categoryType},
+            </if>
+            <if test="userId!=null">
+                #{userId},
+            </if>
+            <if test="systemUserId!=null">
+                #{systemUserId},
+            </if>
+            <if test="categoryName!=null">
+                #{categoryName},
+            </if>
+            <if test="categoryIcon!=null">
+                #{categoryIcon},
+            </if>
+            <if test="categoryDesc!=null">
+                #{categoryDesc},
+            </if>
+            <if test="categoryOrder!=null and categoryOrder!=0">
+                #{categoryOrder},
+            </if>
+            <if test="articleCount!=null and articleCount!=0">
+                #{articleCount},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 更新文章分类信息 -->
+    <update id="updateByPrimaryKey" parameterType="MMSnsArticleCategoryEntity">
+        update mb_article_category
+        <set>
+            <if test="categoryStatus!=null">
+                category_status=#{categoryStatus},
+            </if>
+            <if test="categoryDate!=null">
+                category_date=#{categoryDate},
+            </if>
+            <if test="categoryType!=null">
+                category_type=#{categoryType},
+            </if>
+            <if test="userId!=null and userId!=0">
+                user_id=#{userId},
+            </if>
+            <if test="systemUserId!=null and systemUserId!=0">
+                system_user_id=#{systemUserId},
+            </if>
+            <if test="categoryName!=null">
+                category_name=#{categoryName},
+            </if>
+            <if test="categoryIcon!=null">
+                category_icon=#{categoryIcon},
+            </if>
+            <if test="categoryDesc!=null">
+                category_desc=#{categoryDesc},
+            </if>
+            <if test="categoryOrder!=null and categoryOrder!=0">
+                category_order=#{categoryOrder},
+            </if>
+            <if test="articleCount!=null and articleCount!=0">
+                article_count=#{articleCount},
+            </if>
+        </set>
+        <where>
+            <if test="categoryId!=null">
+                category_id=#{categoryId}
+            </if>
+        </where>
+    </update>
+
+    <!-- 根据id删除文章分类 -->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from mb_article_category
+        where category_id=#{categoryId}
+    </delete>
+</mapper>

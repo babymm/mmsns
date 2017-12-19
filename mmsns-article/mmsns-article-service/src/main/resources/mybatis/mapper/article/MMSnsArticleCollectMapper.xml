@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lovecws.mumu.mmsns.article.dao.impl.MMSnsArticleCollectDaoImpl">
+    <resultMap id="MMSnsArticleCollectResultMap"
+               type="com.lovecws.mumu.mmsns.article.entity.MMSnsArticleCollectEntity">
+
+        <id column="collect_id" property="collectId" jdbcType="INTEGER"/>
+        <result column="collect_status" property="collectStatus" jdbcType="VARCHAR"/>
+        <result column="collect_date" property="collectDate" jdbcType="DATE"/>
+
+        <result column="collect_user_id" property="collectUserId" jdbcType="VARCHAR"/>
+        <result column="article_id" property="articleId" jdbcType="INTEGER"/>
+        <result column="article_user_id" property="articleUserId" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="MMSnsArticleCollectColumn">
+		collect_id,collect_status,collect_date,collect_user_id,article_id,article_user_id
+	</sql>
+
+    <!-- 获取文章收藏数量 -->
+    <select id="listPageCount" resultType="long" parameterType="map">
+        select count(collect_id)
+        from mb_article_collect
+        <where>
+            <if test="collectStatus!=null and collectStatus!=''">
+                and collect_status=#{collectStatus}
+            </if>
+        </where>
+    </select>
+
+    <!-- 分页获取文章收藏 -->
+    <select id="listPage" resultMap="MMSnsArticleCollectResultMap" parameterType="map">
+        select
+        <include refid="MMSnsArticleCollectColumn"/>
+        from mb_article_collect
+        <where>
+            <if test="collectStatus!=null and collectStatus!=''">
+                and collect_status=#{collectStatus}
+            </if>
+        </where>
+        ORDER BY category_order DESC
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 按照条件获取文章收藏 -->
+    <select id="listByColumn" resultMap="MMSnsArticleCollectResultMap" parameterType="map">
+        select
+        <include refid="MMSnsArticleCollectColumn"/>
+        from mb_article_collect
+    </select>
+
+    <!-- 获取文章收藏详情信息-->
+    <select id="selectByPrimaryKey" resultMap="MMSnsArticleCollectResultMap" parameterType="java.lang.String">
+        select
+        <include refid="MMSnsArticleCollectColumn"/>
+        from mb_article_collect
+        where collect_id=#{collectId}
+    </select>
+    
+    <!-- 添加文章收藏信息 -->
+    <insert id="insert" parameterType="MMSnsArticleCollectEntity" useGeneratedKeys="true"
+            keyProperty="collectId">
+        insert into mb_article_collect
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="collectStatus!=null">
+                collect_status,
+            </if>
+            <if test="collectDate!=null">
+                collect_date,
+            </if>
+            <if test="collectUserId!=null">
+                collect_user_id,
+            </if>
+            <if test="articleId!=null">
+                article_id,
+            </if>
+            <if test="articleUserId!=null">
+                article_user_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="collectStatus!=null">
+                #{collectStatus},
+            </if>
+            <if test="collectDate!=null">
+                #{collectDate},
+            </if>
+            <if test="collectUserId!=null">
+                #{collectUserId},
+            </if>
+            <if test="articleId!=null">
+                #{articleId},
+            </if>
+            <if test="articleUserId!=null">
+                #{articleUserId},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 更新文章收藏信息 -->
+    <update id="updateByPrimaryKey" parameterType="MMSnsArticleCollectEntity">
+        update mb_article_collect
+        <set>
+            <if test="collectStatus!=null">
+                collect_status=#{collectStatus},
+            </if>
+            <if test="collectDate!=null">
+                collect_date=#{collectDate},
+            </if>
+            <if test="collectUserId!=null and collectUserId!=0">
+                collect_user_id=#{collectUserId},
+            </if>
+            <if test="articleId!=null and articleId!=0">
+                article_id=#{articleId},
+            </if>
+            <if test="articleUserId!=null and articleUserId!=0">
+                article_user_id=#{articleUserId},
+            </if>
+        </set>
+        <where>
+            <if test="collectId!=null">
+                collect_id=#{collectId}
+            </if>
+        </where>
+    </update>
+
+    <!-- 根据id删除文章收藏 -->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from mb_article_collect
+        where collect_id=#{collectId}
+    </delete>
+</mapper>

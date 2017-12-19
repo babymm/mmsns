@@ -33,10 +33,6 @@
       <module name="mmsns-web-manager" target="1.8" />
       <module name="mmsns-web-portal" target="1.8" />
       <module name="mmsns-web-root" target="1.8" />
-      <module name="mmsns-weibo" target="1.8" />
-      <module name="mumu-article-api" target="1.8" />
-      <module name="mumu-article-service" target="1.8" />
-      <module name="mumu-article-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
