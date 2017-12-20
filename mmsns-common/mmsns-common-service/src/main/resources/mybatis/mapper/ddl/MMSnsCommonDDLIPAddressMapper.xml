@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lovecws.mumu.mmsns.common.ddl.dao.impl.MMSnsCommonDDLIPAddressDaoImpl">
+    <resultMap id="MMSnsCommonDDLIPAddressResultMap"
+               type="com.lovecws.mumu.mmsns.common.ddl.entity.MMSnsCommonDDLIPAddressEntity">
+        <id column="start_ip" property="startIp"/>
+        <result column="end_ip" property="endIp"/>
+        <result column="city_name" property="cityName" jdbcType="VARCHAR"/>
+        <result column="company_name" property="companyName" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="MMSnsCommonDDLIPAddressColumn">
+		start_ip, end_ip, city_name, company_name
+	</sql>
+
+    <!-- 获取所有的ip地址信息 -->
+    <!--
+        and inet_aton(#{ip}) between inet_aton(start_ip) and inet_aton(end_ip)
+        and STRCMP(#{ip},start_ip)>=0 and STRCMP(end_ip,#{ip})>=0
+     -->
+    <select id="listBy" resultMap="MMSnsCommonDDLIPAddressResultMap"
+            parameterType="map">
+        select
+        <include refid="MMSnsCommonDDLIPAddressColumn"/>
+        from mc_ddl_ipaddr
+        <where>
+            <if test="ip!=null">
+                <![CDATA[and eip>#{ip} and sip<=#{ip}]]>
+            </if>
+            <if test="address!=null">
+                and city_name like CONCAT('%',#{address},'%')
+            </if>
+        </where>
+        order by start_ip desc
+    </select>
+
+    <!-- 批量插入数据 -->
+    <insert id="batchInsert" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+        insert into mc_ddl_ipaddr(sip,start_ip,eip,end_ip,city_name,company_name)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.sip},#{item.startIp},#{item.eip},#{item.endIp},#{item.cityName},#{item.companyName})
+        </foreach>
+    </insert>
+</mapper>

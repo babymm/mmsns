@@ -18,7 +18,7 @@
 
     <!-- 配置要扫描的包 -->
     <context:component-scan base-package="com.lovecws.mumu.mmsns.manager"/>
-    <!--<import resource="classpath:spring/spring-dao.xml"/>-->
+    <!--<import resource="classpath:spring/sprentity-dao.xml"/>-->
 
     <!--<import resource="classpath:spring/spring-dubbo-consumer.xml"/>-->
 

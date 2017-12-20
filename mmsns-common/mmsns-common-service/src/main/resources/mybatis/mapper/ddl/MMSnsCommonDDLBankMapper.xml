@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lovecws.mumu.mmsns.common.ddl.dao.impl.MMSnsCommonDDLBankDaoImpl">
+
+    <resultMap id="MMSnsCommonDDLBankResultMap"
+               type="com.lovecws.mumu.mmsns.common.ddl.entity.MMSnsCommonDDLBankEntity">
+        <id column="bank_id" property="bankId" jdbcType="INTEGER"/>
+        <result column="bank_status" property="bankStatus" jdbcType="VARCHAR"/>
+
+        <result column="bank_name" property="bankName" jdbcType="VARCHAR"/>
+        <result column="logo" property="logo" jdbcType="VARCHAR"/>
+        <result column="background_img" property="backgroundImage" jdbcType="VARCHAR"/>
+        <result column="initial" property="initial" jdbcType="VARCHAR"/>
+        <result column="is_hot" property="isHot" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="MMSnsCommonDDLBankBankColumn">
+		bank_id,bank_status,bank_name,logo,background_img,initial,is_hot
+	</sql>
+
+    <!-- 数量 -->
+    <select id="listPageCount" resultType="long" parameterType="map">
+        select count(bank_id)
+        from mc_ddl_bank
+        <where>
+            <if test="bankStatus!=null and bankStatus!=''">
+                and bank_status=#{bankStatus}
+            </if>
+        </where>
+    </select>
+
+    <!-- 分页 -->
+    <select id="listPage" resultMap="MMSnsCommonDDLBankResultMap" parameterType="map">
+        select
+        <include refid="MMSnsCommonDDLBankBankColumn"/>
+        from mc_ddl_bank
+        <where>
+            <if test="bankStatus!=null and bankStatus!=''">
+                and bank_status=#{bankStatus}
+            </if>
+        </where>
+        ORDER BY initial ASC
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 获取列表 -->
+    <select id="listByColumn" resultMap="MMSnsCommonDDLBankResultMap" parameterType="map">
+        select
+        <include refid="MMSnsCommonDDLBankBankColumn"/>
+        from mc_ddl_bank
+        <where>
+            <if test="bankStatus!=null and bankStatus!=''">
+                and bank_status=#{bankStatus}
+            </if>
+            <if test="isHot!=null and isHot!=''">
+                and is_hot=#{isHot}
+            </if>
+        </where>
+        ORDER BY initial ASC
+    </select>
+
+    <!-- 根据id单个查询-->
+    <select id="selectByPrimaryKey" resultMap="MMSnsCommonDDLBankResultMap" parameterType="java.lang.String">
+        select
+        <include refid="MMSnsCommonDDLBankBankColumn"/>
+        from mc_ddl_bank
+        where bank_id=#{id}
+    </select>
+</mapper>

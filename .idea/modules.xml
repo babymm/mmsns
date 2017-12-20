@@ -8,6 +8,10 @@
       <module fileurl="file://$PROJECT_DIR$/mmsns-article/mmsns-article-api/mmsns-article-api.iml" filepath="$PROJECT_DIR$/mmsns-article/mmsns-article-api/mmsns-article-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmsns-article/mmsns-article-service/mmsns-article-service.iml" filepath="$PROJECT_DIR$/mmsns-article/mmsns-article-service/mmsns-article-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmsns-article/mmsns-article-web/mmsns-article-web.iml" filepath="$PROJECT_DIR$/mmsns-article/mmsns-article-web/mmsns-article-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-common/mmsns-common.iml" filepath="$PROJECT_DIR$/mmsns-common/mmsns-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-common/mmsns-common-api/mmsns-common-api.iml" filepath="$PROJECT_DIR$/mmsns-common/mmsns-common-api/mmsns-common-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-common/mmsns-common-service/mmsns-common-service.iml" filepath="$PROJECT_DIR$/mmsns-common/mmsns-common-service/mmsns-common-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-common/mmsns-common-web/mmsns-common-web.iml" filepath="$PROJECT_DIR$/mmsns-common/mmsns-common-web/mmsns-common-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmsns-group/mmsns-group.iml" filepath="$PROJECT_DIR$/mmsns-group/mmsns-group.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmsns-news/mmsns-news.iml" filepath="$PROJECT_DIR$/mmsns-news/mmsns-news.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmsns-picture/mmsns-picture.iml" filepath="$PROJECT_DIR$/mmsns-picture/mmsns-picture.iml" />

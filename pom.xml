@@ -12,6 +12,7 @@
         <module>mmsns-action</module>
         <module>mmsns-picture</module>
         <module>mmsns-web</module>
+        <module>mmsns-common</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -10,6 +10,9 @@
         <module name="mmsns-article-api" />
         <module name="mmsns-article-service" />
         <module name="mmsns-article-web" />
+        <module name="mmsns-common-api" />
+        <module name="mmsns-common-service" />
+        <module name="mmsns-common-web" />
         <module name="mmsns-group" />
         <module name="mmsns-news" />
         <module name="mmsns-picture" />
@@ -26,6 +29,10 @@
       <module name="mmsns-article-api" target="1.8" />
       <module name="mmsns-article-service" target="1.8" />
       <module name="mmsns-article-web" target="1.8" />
+      <module name="mmsns-common" target="1.8" />
+      <module name="mmsns-common-api" target="1.8" />
+      <module name="mmsns-common-service" target="1.8" />
+      <module name="mmsns-common-web" target="1.8" />
       <module name="mmsns-group" target="1.8" />
       <module name="mmsns-news" target="1.8" />
       <module name="mmsns-picture" target="1.8" />

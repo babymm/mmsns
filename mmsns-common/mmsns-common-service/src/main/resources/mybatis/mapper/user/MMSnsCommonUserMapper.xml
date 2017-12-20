@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lovecws.mumu.mmsns.common.user.dao.impl.MMSnsCommonUserDaoImpl">
+    <resultMap id="ElebillCommonUserResultMap"
+               type="com.lovecws.mumu.mmsns.common.user.entity.MMSnsCommonUserEntity">
+
+        <id column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="user_status" property="userStatus" jdbcType="VARCHAR"/>
+        <result column="create_ip" property="createIp" jdbcType="DATE"/>
+        <result column="create_date" property="createDate" jdbcType="VARCHAR"/>
+        <result column="create_area" property="createArea" jdbcType="VARCHAR"/>
+
+        <result column="edit_ip" property="editIp" jdbcType="VARCHAR"/>
+        <result column="edit_date" property="editDate" jdbcType="VARCHAR"/>
+        <result column="edit_area" property="editArea" jdbcType="VARCHAR"/>
+
+        <result column="last_login_time" property="lastLoginTime" jdbcType="VARCHAR"/>
+        <result column="last_login_ip" property="lastLoginIp" jdbcType="VARCHAR"/>
+        <result column="last_login_area" property="lastLoginArea" jdbcType="VARCHAR"/>
+
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="real_name" property="realName" jdbcType="VARCHAR"/>
+        <result column="user_password" property="userPassword" jdbcType="VARCHAR"/>
+        <result column="user_salt" property="userSalt" jdbcType="VARCHAR"/>
+        <result column="user_sex" property="userSex" jdbcType="VARCHAR"/>
+        <result column="user_birthday" property="userBirthday" jdbcType="VARCHAR"/>
+
+        <result column="user_phone" property="userPhone" jdbcType="VARCHAR"/>
+        <result column="phone_active" property="phoneActive" jdbcType="VARCHAR"/>
+        <result column="avator" property="avator" jdbcType="VARCHAR"/>
+        <result column="thumb" property="thumb" jdbcType="VARCHAR"/>
+
+        <result column="user_email" property="userEmail" jdbcType="VARCHAR"/>
+        <result column="email_active" property="emailActive" jdbcType="VARCHAR"/>
+
+        <result column="province" property="province" jdbcType="VARCHAR"/>
+        <result column="city" property="city" jdbcType="VARCHAR"/>
+        <result column="area" property="area" jdbcType="VARCHAR"/>
+        <result column="detail_area" property="detailArea" jdbcType="VARCHAR"/>
+
+        <result column="register_type" property="registerType" jdbcType="VARCHAR"/>
+        <result column="thirdLogin_token" property="thirdLoginToken" jdbcType="VARCHAR"/>
+
+        <result column="wexin" property="wexin" jdbcType="VARCHAR"/>
+        <result column="company" property="company" jdbcType="VARCHAR"/>
+        <result column="positional" property="positional" jdbcType="VARCHAR"/>
+
+        <result column="user_auth" property="userAuth" jdbcType="VARCHAR"/>
+        <result column="idcard" property="idcard" jdbcType="VARCHAR"/>
+        <result column="idcard_img" property="idcardImg" jdbcType="VARCHAR"/>
+        <result column="idcardbg_img" property="idcardbgImg" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="ElebillCommonUserColumn">
+        user_id,user_status,create_ip,create_date,create_area,edit_ip,edit_date,edit_area,last_login_time,last_login_ip,last_login_area,user_name,real_name,user_password,user_salt,user_sex,user_birthday,
+        user_phone,phone_active,avator,thumb,user_email,email_active,province,city,area,detail_area,register_type,thirdLogin_token,wexin,company,positional,user_auth,idcard,idcard_img,idcardbg_img
+    </sql>
+
+    <!-- 获取用户数量 -->
+    <select id="listPageCount" resultType="long" parameterType="map">
+        select count(user_id)
+        from ec_user
+        <where>
+            <if test="userStatus!=null and userStatus!=''">
+                and user_status=#{userStatus}
+            </if>
+        </where>
+    </select>
+
+    <!-- 分页获取用户 -->
+    <select id="listPage" resultMap="ElebillCommonUserResultMap" parameterType="map">
+        select
+        <include refid="ElebillCommonUserColumn"/>
+        from ec_user
+        <where>
+            <if test="userStatus!=null and userStatus!=''">
+                and user_status=#{userStatus}
+            </if>
+        </where>
+        ORDER BY create_date DESC
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 按照条件获取用户 -->
+    <select id="listByColumn" resultMap="ElebillCommonUserResultMap" parameterType="map">
+        select
+        <include refid="ElebillCommonUserColumn"/>
+        from ec_user
+        <where>
+            <if test="userName!=null and userName!=''">
+                and user_name=#{userName}
+            </if>
+            <if test="userPhone!=null and userPhone!=''">
+                and user_phone=#{userPhone}
+            </if>
+        </where>
+    </select>
+
+    <!-- 获取用户详情信息-->
+    <select id="selectByPrimaryKey" resultMap="ElebillCommonUserResultMap" parameterType="java.lang.String">
+        select
+        <include refid="ElebillCommonUserColumn"/>
+        from ec_user
+        where user_id=#{userId}
+    </select>
+
+    <!-- 添加用户信息 -->
+    <insert id="insert" parameterType="MMSnsCommonUserEntity" useGeneratedKeys="true"
+            keyProperty="userId">
+        insert into ec_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userStatus!=null">
+                user_status,
+            </if>
+            <if test="createIp!=null">
+                create_ip,
+            </if>
+            <if test="createDate!=null">
+                create_date,
+            </if>
+            <if test="createArea!=null">
+                create_area,
+            </if>
+            <if test="editIp!=null">
+                edit_ip,
+            </if>
+            <if test="editDate!=null">
+                edit_date,
+            </if>
+            <if test="editArea!=null">
+                edit_area,
+            </if>
+            <if test="lastLoginTime!=null">
+                last_login_time,
+            </if>
+            <if test="lastLoginIp!=null">
+                last_login_ip,
+            </if>
+            <if test="lastLoginArea!=null">
+                last_login_area,
+            </if>
+            <if test="userName!=null">
+                user_name,
+            </if>
+            <if test="realName!=null">
+                real_name,
+            </if>
+            <if test="userPassword!=null">
+                user_password,
+            </if>
+            <if test="userSalt!=null">
+                user_salt,
+            </if>
+            <if test="userSex!=null">
+                user_sex,
+            </if>
+            <if test="userBirthday!=null">
+                user_birthday,
+            </if>
+            <if test="userPhone!=null">
+                user_phone,
+            </if>
+            <if test="phoneActive!=null">
+                phone_active,
+            </if>
+            <if test="avator!=null">
+                avator,
+            </if>
+            <if test="thumb!=null">
+                thumb,
+            </if>
+            <if test="userEmail!=null">
+                user_email,
+            </if>
+            <if test="emailActive!=null">
+                email_active,
+            </if>
+            <if test="province!=null">
+                province,
+            </if>
+            <if test="city!=null">
+                city,
+            </if>
+            <if test="area!=null">
+                area,
+            </if>
+            <if test="detailArea!=null">
+                detail_area,
+            </if>
+            <if test="registerType!=null">
+                register_type,
+            </if>
+            <if test="thirdLoginToken!=null">
+                thirdLogin_token,
+            </if>
+            <if test="wexin!=null">
+                wexin,
+            </if>
+            <if test="company!=null">
+                company,
+            </if>
+            <if test="positional!=null">
+                positional,
+            </if>
+            <if test="userAuth!=null">
+                user_auth,
+            </if>
+            <if test="idcard!=null">
+                idcard,
+            </if>
+            <if test="idcardImg!=null">
+                idcard_img,
+            </if>
+            <if test="idcardbgImg!=null">
+                idcardbg_img,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userStatus!=null">
+                #{userStatus},
+            </if>
+            <if test="createIp!=null">
+                #{createIp},
+            </if>
+            <if test="createDate!=null">
+                #{createDate},
+            </if>
+            <if test="createArea!=null">
+                #{createArea},
+            </if>
+            <if test="editIp!=null">
+                #{editIp},
+            </if>
+            <if test="editDate!=null">
+                #{editDate},
+            </if>
+            <if test="editArea!=null">
+                #{editArea},
+            </if>
+            <if test="lastLoginTime!=null">
+                #{lastLoginTime},
+            </if>
+            <if test="lastLoginIp!=null">
+                #{lastLoginIp},
+            </if>
+            <if test="lastLoginArea!=null">
+                #{lastLoginArea},
+            </if>
+            <if test="userName!=null">
+                #{userName},
+            </if>
+            <if test="realName!=null">
+                #{realName},
+            </if>
+            <if test="userPassword!=null">
+                #{userPassword},
+            </if>
+            <if test="userSalt!=null">
+                #{userSalt},
+            </if>
+            <if test="userSex!=null">
+                #{userSex},
+            </if>
+            <if test="userBirthday!=null">
+                #{userBirthday},
+            </if>
+            <if test="userPhone!=null">
+                #{userPhone},
+            </if>
+            <if test="phoneActive!=null">
+                #{phoneActive},
+            </if>
+            <if test="avator!=null">
+                #{avator},
+            </if>
+            <if test="thumb!=null">
+                #{thumb},
+            </if>
+            <if test="userEmail!=null">
+                #{userEmail},
+            </if>
+            <if test="emailActive!=null">
+                #{emailActive},
+            </if>
+            <if test="province!=null">
+                #{province},
+            </if>
+            <if test="city!=null">
+                #{city},
+            </if>
+            <if test="area!=null">
+                #{area},
+            </if>
+            <if test="detailArea!=null">
+                #{detailArea},
+            </if>
+            <if test="registerType!=null">
+                #{registerType},
+            </if>
+            <if test="thirdLoginToken!=null">
+                #{thirdLoginToken},
+            </if>
+            <if test="wexin!=null">
+                #{wexin},
+            </if>
+            <if test="company!=null">
+                #{company},
+            </if>
+            <if test="positional!=null">
+                #{positional},
+            </if>
+            <if test="userAuth!=null">
+                #{user_auth},
+            </if>
+            <if test="idcard!=null">
+                #{idcard},
+            </if>
+            <if test="idcardImg!=null">
+                #{idcardImg},
+            </if>
+            <if test="idcardbgImg!=null">
+                #{idcardbgImg},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 更新用户信息 -->
+    <update id="updateByPrimaryKey" parameterType="MMSnsCommonUserEntity">
+        update ec_user
+        <set>
+            <if test="userStatus!=null">
+                user_status=#{userStatus},
+            </if>
+            <if test="createIp!=null">
+                create_ip=#{createIp},
+            </if>
+            <if test="createDate!=null">
+                create_date=#{createDate},
+            </if>
+            <if test="createArea!=null">
+                create_area=#{createArea},
+            </if>
+            <if test="editIp!=null">
+                edit_ip=#{editIp},
+            </if>
+            <if test="editDate!=null">
+                edit_date=#{editDate},
+            </if>
+            <if test="editArea!=null">
+                edit_area=#{editArea},
+            </if>
+            <if test="lastLoginTime!=null">
+                last_login_time=#{lastLoginTime},
+            </if>
+            <if test="lastLoginIp!=null">
+                last_login_ip=#{lastLoginIp},
+            </if>
+            <if test="lastLoginArea!=null">
+                last_login_area=#{lastLoginArea},
+            </if>
+            <if test="userName!=null">
+                user_name=#{userName},
+            </if>
+            <if test="realName!=null">
+                real_name=#{realName},
+            </if>
+            <if test="userPassword!=null">
+                user_password=#{userPassword},
+            </if>
+            <if test="userSalt!=null">
+                user_salt=#{userSalt},
+            </if>
+            <if test="userSex!=null">
+                user_sex=#{userSex},
+            </if>
+            <if test="userBirthday!=null">
+                user_birthday=#{userBirthday},
+            </if>
+            <if test="userPhone!=null">
+                user_phone=#{userPhone},
+            </if>
+            <if test="phoneActive!=null">
+                phone_active=#{phoneActive},
+            </if>
+            <if test="avator!=null">
+                avator=#{avator},
+            </if>
+            <if test="thumb!=null">
+                thumb=#{thumb},
+            </if>
+            <if test="userEmail!=null">
+                user_email=#{userEmail},
+            </if>
+            <if test="emailActive!=null">
+                email_active=#{emailActive},
+            </if>
+            <if test="province!=null">
+                province=#{province},
+            </if>
+            <if test="city!=null">
+                city=#{city},
+            </if>
+            <if test="area!=null">
+                area=#{area},
+            </if>
+            <if test="detailArea!=null">
+                detail_area=#{detailArea},
+            </if>
+            <if test="registerType!=null">
+                register_type=#{registerType},
+            </if>
+            <if test="thirdLoginToken!=null">
+                thirdLogin_token=#{thirdLoginToken},
+            </if>
+            <if test="wexin!=null">
+                wexin=#{wexin},
+            </if>
+            <if test="company!=null">
+                company=#{company},
+            </if>
+            <if test="positional!=null">
+                positional=#{positional},
+            </if>
+            <if test="userAuth!=null">
+                user_auth=#{userAuth},
+            </if>
+            <if test="idcardImg!=null">
+                idcard_img=#{idcardImg},
+            </if>
+            <if test="idcard!=null">
+                idcard=#{idcard},
+            </if>
+            <if test="idcardbgImg!=null">
+                idcardbg_img=#{idcardbgImg},
+            </if>
+        </set>
+        <where>
+            <if test="userId!=null">
+                user_id=#{userId}
+            </if>
+        </where>
+    </update>
+
+    <!-- 根据id删除用户 -->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from ec_user
+        where user_id=#{userId}
+    </delete>
+</mapper>

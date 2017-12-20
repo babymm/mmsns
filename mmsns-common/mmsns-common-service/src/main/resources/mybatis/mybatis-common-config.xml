@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--配置全局属性 -->
+    <settings>
+        <!-- 开启全局缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+        <!--使用jdbc的getGeneratekeys获取自增主键值 -->
+        <setting name="useGeneratedKeys" value="true"/>
+        <!--使用列别名替换别名 默认true -->
+        <setting name="useColumnLabel" value="true"/>
+        <!--开启驼峰命名转换Table:create_time到 Entity(createTime) -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <!-- 配置方言 -->
+    <typeAliases>
+        <!-- 数据字典 -->
+        <typeAlias type="com.xiaomoc.elebill.common.ddl.entity.ElebillCommonDDLAreaEntity"
+                   alias="ElebillCommonDDLAreaEntity"/>
+        <typeAlias type="com.xiaomoc.elebill.common.ddl.entity.ElebillCommonDDLCityEntity"
+                   alias="ElebillCommonDDLCityEntity"/>
+        <typeAlias type="com.xiaomoc.elebill.common.ddl.entity.ElebillCommonDDLIPAddressEntity"
+                   alias="ElebillCommonDDLIPAddressEntity"/>
+        <typeAlias type="com.xiaomoc.elebill.common.ddl.entity.ElebillCommonDDLProvinceEntity"
+                   alias="ElebillCommonDDLProvinceEntity"/>
+        <typeAlias type="com.xiaomoc.elebill.common.ddl.entity.ElebillCommonDDLBankEntity"
+                   alias="ElebillCommonDDLBankEntity"/>
+
+        <!-- 票据 -->
+        <typeAlias type="com.xiaomoc.elebill.common.bill.entity.ElebillCommonBillCategoryEntity"
+                   alias="ElebillCommonBillCategoryEntity"/>
+        <typeAlias type="com.xiaomoc.elebill.common.bill.entity.ElebillCommonBillEntity"
+                   alias="ElebillCommonBillEntity"/>
+        <typeAlias type="com.xiaomoc.elebill.common.bill.entity.ElebillCommonBillQuoteEntity"
+                   alias="ElebillCommonBillQuoteEntity"/>
+
+        <!-- 用户个人中心 -->
+        <typeAlias type="com.xiaomoc.elebill.common.user.entity.ElebillCommonUserEntity"
+                   alias="ElebillCommonUserEntity"/>
+
+        <!-- 消息中心 -->
+        <typeAlias type="com.xiaomoc.elebill.common.message.entity.ElebillCommonMessageEntity"
+                   alias="ElebillCommonMessageEntity"/>
+        <typeAlias type="com.xiaomoc.elebill.common.message.entity.ElebillCommonMessageContainerEntity"
+                   alias="ElebillCommonMessageContainerEntity"/>
+    </typeAliases>
+
+    <!-- 设置mybatis拦截器 -->
+    <plugins>
+        <plugin interceptor="com.lovecws.mumu.core.dao.mdatasource.MultipleMybatisInteInterceptor"/>
+    </plugins>
+
+    <!-- 配置映射文件 -->
+    <mappers>
+        <!-- 数据字典 -->
+        <mapper resource="mybatis/mapper/ddl/ElebillCommonDDLAreaMapper.xml"/>
+        <mapper resource="mybatis/mapper/ddl/ElebillCommonDDLCityMapper.xml"/>
+        <mapper resource="mybatis/mapper/ddl/ElebillCommonDDLIPAddressMapper.xml"/>
+        <mapper resource="mybatis/mapper/ddl/ElebillCommonDDLProvinceMapper.xml"/>
+        <mapper resource="mybatis/mapper/ddl/ElebillCommonDDLBankMapper.xml"/>
+
+        <!-- 票据 -->
+        <mapper resource="mybatis/mapper/bill/ElebillCommonBillCategoryMapper.xml"/>
+        <mapper resource="mybatis/mapper/bill/ElebillCommonBillMapper.xml"/>
+        <mapper resource="mybatis/mapper/bill/ElebillCommonBillQuoteMapper.xml"/>
+
+        <!-- 用户个人中心 -->
+        <mapper resource="mybatis/mapper/user/ElebillCommonUserMapper.xml"/>
+
+        <!-- 消息中心 -->
+        <mapper resource="mybatis/mapper/message/ElebillCommonMessageMapper.xml"/>
+        <mapper resource="mybatis/mapper/message/ElebillCommonMessageContainerMapper.xml"/>
+    </mappers>
+</configuration>

@@ -43,7 +43,7 @@
     <!--<import resource="classpath*:spring/spring-system-service.xml" />-->
     <!--<import resource="classpath*:spring/spring-system-context.xml" />
     <import resource="classpath*:spring/spring-data-context.xml" />
-    <import resource="classpath:spring/spring-dao.xml" />-->
+    <import resource="classpath:spring/sprentity-dao.xml" />-->
 
     <import resource="classpath:spring/spring-common-redis.xml"/>
     <import resource="classpath:spring/spring-common-fdfs.xml" />
