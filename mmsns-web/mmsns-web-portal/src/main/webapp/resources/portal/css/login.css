@@ -1,0 +1,190 @@
+body{
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    position:absolute;
+    background-color: #dce4e6;
+    /*background-image: url("/resources/portal/images/bg.jpg");*/
+    /*background: url("/resources/portal/images/logo.jpg") no-repeat;
+    background-size:100% 100%;*/
+}
+.layout-body{
+    width: 100%;
+    height: 100%;
+    min-width: 1100px;
+    padding: 0px;
+    margin: 0px;
+    float: left;
+    min-height: 600px;
+}
+.layout-body .layout-center{
+    width: 600px;
+    height: 500px;
+    margin: 0 auto;
+    border:1px solid #ddd;
+    margin-top: 50px;
+    background-color: white;
+}
+.layout-body .layout-center .layout-header{
+    font-size: 1.375rem;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #666;
+    margin-top: 15px;
+}
+.layout-body .layout-center .layout-form{
+    width: 500px;
+    margin-top: 30px;
+    margin: 0 auto;
+}
+.layout-body .layout-center .layout-form .form-item{
+    font-size: .875rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    width: 450px;
+    float: left;
+}
+.layout-body .layout-center .layout-form .form-item input{
+    font-size: .875rem;
+    line-height: 1.6;
+    padding: 12px 20px;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    color: #666;
+    border: 1px solid #dce4e6;
+    border-radius: 3px;
+    outline: 0;
+    background: #f3f6f8;
+    width: 100%;
+}
+.layout-body .layout-center .layout-form .form-item .form-captchacode{
+    font-size: .875rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    width: 355px;
+    float: left;
+}
+.layout-body .layout-center .layout-form .form-item .form-captchaimg{
+    float: right;
+    font-size: .875rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    width: 48px;
+}
+.layout-body .layout-center .layout-form .form-item .form-captchaimg .captchaimg{
+    width: 92px;
+    height: 48px;
+}
+.layout-body .layout-center .layout-form .form-smscode{
+    width: 355px;
+    float: left;
+}
+.layout-body .layout-center .layout-form .form-sendbutton{
+    width: 48px;
+    height: 46px;
+    float: right;
+    padding-left: 10px;
+}
+.layout-body .layout-center .layout-form .form-sendbutton button{
+    background: #31b968;
+    float: left;
+    width: 92px;
+    height: 100%;
+    font-size: .875rem;
+    line-height: 1.6;
+}
+.layout-body .layout-center .layout-form .form-item .form-remember{
+    font-size: .875rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    width: 100%;
+    float: left;
+}
+.layout-body .layout-center .layout-form .form-item .form-remember label{
+    width: 120px;
+    float: left;
+    line-height: 1;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    cursor: pointer;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 16px;
+    line-height: 16px;
+}
+.layout-body .layout-center .layout-form .form-item .form-remember label input{
+    width: 15px;
+    float: left;
+    margin-right: 4px;
+}
+
+.layout-body .layout-center .layout-form .form-item .login-button,
+.layout-body .layout-center .layout-form .form-item .register-button
+{
+    background: #31b968;
+    color: white;
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    width: 500px;
+    margin: 0 auto;
+    line-height: 16px;
+    cursor: pointer;
+}
+.layout-body .layout-center .layout-form .form-item .login-button{
+    background: #31b968;
+    color: white;
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    width: 500px;
+    margin: 0 auto;
+    line-height: 16px;
+}
+.layout-body .layout-center .layout-form .form-item .form-ul{
+    width: 500px;
+    float: left;
+    display: block;
+}
+/*.layout-body .layout-center .layout-form .form-item .form-ul .form-buttons{
+    width: 133px;
+    float: right;
+}*/
+.layout-body .layout-center .layout-form .form-item .form-ul .form-buttons a{
+    color: #31b968;
+    font-size: 16px;
+}
+.layout-body .layout-center .layout-form .form-item .form-logintip{
+    width: 100px;
+    float: left;
+    line-height:22px;
+    font-size: 14px;
+    text-align: left;
+    height: 32px;
+    vertical-align: middle;
+    color: rgb(157, 157, 157);
+}
+.layout-body .layout-center .layout-form .form-item .form-logintip span{
+    width: 100px;
+    float: left;
+    line-height:22px;
+    font-size: 14px;
+    text-align: left;
+    height: 32px;
+    vertical-align: middle;
+    margin-top: 6px;
+}
+.layout-body .layout-center .layout-form .form-item .form-otherlogin{
+    width: 120px;
+    float: left;
+}
+.layout-body .layout-center .layout-form .form-item .form-otherlogin a img{
+    width: 28px;
+    height: 28px;
+}

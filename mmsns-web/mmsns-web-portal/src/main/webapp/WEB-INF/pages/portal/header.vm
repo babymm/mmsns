@@ -28,6 +28,12 @@
         width: 400px;
         min-width: 400px;
     }
+    .mmsns-nav .nav-unlogin-button {
+        padding: 0px;
+        float: right;
+        width: 150px;
+        min-width: 150px;
+    }
 </style>
 <div class="mmsns-nav">
     <div class="nav-logo">
@@ -103,8 +109,8 @@
             <li class="layui-nav-item"><a href="/doc">文库</a></li>
         #end
     </ul>
-    <ul class="nav-button layui-nav">
-        #if(!$shiro.isUser())
+    #if($shiro.isUser())
+        <ul class="nav-button layui-nav">
             <li class="layui-nav-item">
                 <a href="/admin/babymm/user/inbox">我的消息<span class="layui-badge">9</span></a>
             </li>
@@ -138,9 +144,11 @@
                     <dd><a href="javascript:;">退出登录</a></dd>
                 </dl>
             </li>
-        #else
-            <li class="layui-nav-item"><a href="">登录</a></li>
-            <li class="layui-nav-item"><a href="">注册</a></li>
-        #end
-    </ul>
+        </ul>
+    #else
+        <ul class="nav-unlogin-button layui-nav">
+            <li class="layui-nav-item"><a href="/login">登录</a></li>
+            <li class="layui-nav-item"><a href="/register/phone">注册</a></li>
+        </ul>
+    #end
 </div>

@@ -1,0 +1,40 @@
+<title>用户登录-MMSNS博客系统</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/register.css">
+#parse("/portal/header.vm")
+<div class="layout-body">
+   <div class="layout-center">
+       <div class="layout-header" style="margin-top: 15px;">
+           <h2>注  册</h2>
+       </div>
+        <div class="layout-content">
+            <ul>
+                <li>
+                    <div class="content-left">
+                        <h3 class="title">
+                            <span class="text">通过 手机号码</span>
+                        </h3>
+                        <p class="notice">使用你的手机号码来注册</p>
+                    </div>
+                    <div class="content-right">
+                        <a href="/register/phone">立即注册</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="content-left">
+                        <h3 class="title">
+                            <span class="text">通过 邮箱账号</span>
+                        </h3>
+                        <p class="notice">使用你的邮箱来注册</p>
+                    </div>
+                    <div class="content-right">
+                        <a href="/register/phone">立即注册</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+   </div>
+</div>
+
+#parse("/portal/sfooter.vm")
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>

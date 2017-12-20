@@ -1,0 +1,48 @@
+<title>手机注册-MMSNS博客系统</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/login.css">
+#parse("/portal/header.vm")
+<div class="layout-body">
+   <div class="layout-center">
+       <div class="layout-header">
+           <h2>手机注册</h2>
+       </div>
+        <form class="layout-form" action="/login" method="post" enctype="application/x-www-form-urlencoded">
+            <div class="form-item">
+                <input type="text" name="userName" placeholder="用户名称">
+            </div>
+            <div class="form-item">
+                <input type="text" name="userPassword" placeholder="手机号码">
+            </div>
+            <div class="form-item">
+                <div class="form-smscode">
+                    <input type="text" name="captchacode" placeholder="短信验证码">
+                </div>
+                <div class="form-sendbutton">
+                    <button type="button">发送</button>
+                </div>
+            </div>
+            <div class="form-item">
+                <input type="text" name="userPassword" placeholder="注册密码">
+            </div>
+            <div class="form-item">
+                <input type="text" name="userPassword" placeholder="重复输入注册密码">
+            </div>
+            <div class="form-item">
+                <input type="submit" class="register-button" value="立即注册"/>
+            </div>
+            <div class="form-item">
+                <div class="form-ul">
+                    <div class="form-buttons" style="width: 200px;float: right;">
+                        <a href="/login">账户登录</a>
+                        <a href="/iforget">忘记密码</a>
+                        <a href="/register/email">邮箱注册</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+   </div>
+</div>
+
+#parse("/portal/sfooter.vm")
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>

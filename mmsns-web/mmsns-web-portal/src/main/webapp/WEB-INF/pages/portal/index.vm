@@ -1,4 +1,4 @@
-<title>baby慕慕SNS个人博客管理系统-首页</title>
+<title>首页-MMSNS博客系统</title>
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/index.css">
 #parse("/portal/header.vm")

@@ -1,0 +1,51 @@
+<title>找回密码-MMSNS博客系统</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/register.css">
+#parse("/portal/header.vm")
+<div class="layout-body">
+   <div class="layout-center">
+       <div class="layout-header">
+           <h2>找回密码</h2>
+       </div>
+        <div class="layout-content">
+            <ul>
+                <li>
+                    <div class="content-left">
+                        <h3 class="title">
+                            <span class="text">通过 手机号码</span>
+                        </h3>
+                        <p class="notice">使用你的手机号码来找回密码</p>
+                    </div>
+                    <div class="content-right">
+                        <a href="/iforget/phone">找回密码</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="content-left">
+                        <h3 class="title">
+                            <span class="text">通过 邮箱账号</span>
+                        </h3>
+                        <p class="notice">使用你的邮箱来找回密码</p>
+                    </div>
+                    <div class="content-right">
+                        <a href="/iforget/email">找回密码</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="content-left">
+                        <h3 class="title">
+                            <span class="text">通过 人工服务</span>
+                        </h3>
+                        <p class="notice">使用你的邮箱来找回密码</p>
+                    </div>
+                    <div class="content-right">
+                        <a href="/iforget/service">找回密码</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+   </div>
+</div>
+
+#parse("/portal/sfooter.vm")
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
