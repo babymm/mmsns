@@ -1,7 +1,5 @@
 package com.lovecws.mumu.mmsns.controller.portal.index;
 
-import com.lovecws.mumu.common.sms.exception.SMSException;
-import com.lovecws.mumu.common.sms.service.JPushSMSService;
 import com.lovecws.mumu.core.response.ResponseEntity;
 import com.lovecws.mumu.core.utils.DateUtils;
 import com.lovecws.mumu.core.utils.ValidateUtils;
@@ -9,6 +7,8 @@ import com.lovecws.mumu.mmsns.common.user.entity.MMSnsCommonUserEntity;
 import com.lovecws.mumu.mmsns.common.user.service.MMSnsCommonUserService;
 import com.lovecws.mumu.security.entity.BaseRealm;
 import com.lovecws.mumu.security.utils.PasswordHelper;
+import com.lovecws.mumu.sms.exception.SMSException;
+import com.lovecws.mumu.sms.service.JPushSMSService;
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;

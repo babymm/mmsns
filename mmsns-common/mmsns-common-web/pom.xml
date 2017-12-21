@@ -308,33 +308,4 @@
             </resource>
         </resources>
     </build>
-
-    <profiles>
-        <!-- 开发环境，默认激活 -->
-        <profile>
-            <id>dev</id>
-            <properties>
-                <env>dev</env>
-            </properties>
-        </profile>
-
-        <!-- 生产环境 -->
-        <profile>
-            <id>pro</id>
-            <properties>
-                <env>pro</env>
-            </properties>
-        </profile>
-
-        <!-- 测试环境 -->
-        <profile>
-            <id>test</id>
-            <properties>
-                <env>test</env>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault><!--默认启用的是dev环境配置-->
-            </activation>
-        </profile>
-    </profiles>
 </project>

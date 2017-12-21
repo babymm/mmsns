@@ -289,7 +289,7 @@
         </dependency>
         <dependency>
             <groupId>com.lovecws.mumu</groupId>
-            <artifactId>mumu-common-sms</artifactId>
+            <artifactId>mumu-sms</artifactId>
         </dependency>
 
         <dependency>
@@ -375,50 +375,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <!-- 开发环境，默认激活 -->
-        <profile>
-            <id>dev</id>
-            <properties>
-                <env>dev</env>
-            </properties>
-        </profile>
-
-        <!-- 生产环境 -->
-        <profile>
-            <id>pro</id>
-            <properties>
-                <env>pro</env>
-            </properties>
-        </profile>
-
-        <!-- 测试环境 -->
-        <profile>
-            <id>test</id>
-            <properties>
-                <env>test</env>
-            </properties>
-        </profile>
-
-        <!-- 公司环境 -->
-        <profile>
-            <id>company</id>
-            <properties>
-                <env>company</env>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault><!--默认启用的是dev环境配置-->
-            </activation>
-        </profile>
-
-        <!-- 家庭环境 -->
-        <profile>
-            <id>home</id>
-            <properties>
-                <env>home</env>
-            </properties>
-
-        </profile>
-    </profiles>
 </project>

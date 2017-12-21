@@ -1,5 +1,6 @@
 package com.lovecws.mumu.mmsns.controller.profile.index;
 
+
 import com.lovecws.mumu.mmsns.common.user.entity.MMSnsCommonUserEntity;
 import com.lovecws.mumu.mmsns.common.user.service.MMSnsCommonUserService;
 import org.springframework.beans.factory.annotation.Autowired;
