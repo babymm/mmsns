@@ -18,34 +18,20 @@
     <!-- 配置方言 -->
     <typeAliases>
         <!-- 数据字典 -->
-        <typeAlias type="com.xiaomoc.elebill.common.ddl.entity.ElebillCommonDDLAreaEntity"
-                   alias="ElebillCommonDDLAreaEntity"/>
-        <typeAlias type="com.xiaomoc.elebill.common.ddl.entity.ElebillCommonDDLCityEntity"
-                   alias="ElebillCommonDDLCityEntity"/>
-        <typeAlias type="com.xiaomoc.elebill.common.ddl.entity.ElebillCommonDDLIPAddressEntity"
-                   alias="ElebillCommonDDLIPAddressEntity"/>
-        <typeAlias type="com.xiaomoc.elebill.common.ddl.entity.ElebillCommonDDLProvinceEntity"
-                   alias="ElebillCommonDDLProvinceEntity"/>
-        <typeAlias type="com.xiaomoc.elebill.common.ddl.entity.ElebillCommonDDLBankEntity"
-                   alias="ElebillCommonDDLBankEntity"/>
-
-        <!-- 票据 -->
-        <typeAlias type="com.xiaomoc.elebill.common.bill.entity.ElebillCommonBillCategoryEntity"
-                   alias="ElebillCommonBillCategoryEntity"/>
-        <typeAlias type="com.xiaomoc.elebill.common.bill.entity.ElebillCommonBillEntity"
-                   alias="ElebillCommonBillEntity"/>
-        <typeAlias type="com.xiaomoc.elebill.common.bill.entity.ElebillCommonBillQuoteEntity"
-                   alias="ElebillCommonBillQuoteEntity"/>
+        <typeAlias type="com.lovecws.mumu.mmsns.common.ddl.entity.MMSnsCommonDDLAreaEntity"
+                   alias="MMSnsCommonDDLAreaEntity"/>
+        <typeAlias type="com.lovecws.mumu.mmsns.common.ddl.entity.MMSnsCommonDDLBankEntity"
+                   alias="MMSnsCommonDDLBankEntity"/>
+        <typeAlias type="com.lovecws.mumu.mmsns.common.ddl.entity.MMSnsCommonDDLCityEntity"
+                   alias="MMSnsCommonDDLCityEntity"/>
+        <typeAlias type="com.lovecws.mumu.mmsns.common.ddl.entity.MMSnsCommonDDLIPAddressEntity"
+                   alias="MMSnsCommonDDLIPAddressEntity"/>
+        <typeAlias type="com.lovecws.mumu.mmsns.common.ddl.entity.MMSnsCommonDDLProvinceEntity"
+                   alias="MMSnsCommonDDLProvinceEntity"/>
 
         <!-- 用户个人中心 -->
-        <typeAlias type="com.xiaomoc.elebill.common.user.entity.ElebillCommonUserEntity"
-                   alias="ElebillCommonUserEntity"/>
-
-        <!-- 消息中心 -->
-        <typeAlias type="com.xiaomoc.elebill.common.message.entity.ElebillCommonMessageEntity"
-                   alias="ElebillCommonMessageEntity"/>
-        <typeAlias type="com.xiaomoc.elebill.common.message.entity.ElebillCommonMessageContainerEntity"
-                   alias="ElebillCommonMessageContainerEntity"/>
+        <typeAlias type="com.lovecws.mumu.mmsns.common.user.entity.MMSnsCommonUserEntity"
+                   alias="MMSnsCommonUserEntity"/>
     </typeAliases>
 
     <!-- 设置mybatis拦截器 -->
@@ -56,22 +42,13 @@
     <!-- 配置映射文件 -->
     <mappers>
         <!-- 数据字典 -->
-        <mapper resource="mybatis/mapper/ddl/ElebillCommonDDLAreaMapper.xml"/>
-        <mapper resource="mybatis/mapper/ddl/ElebillCommonDDLCityMapper.xml"/>
-        <mapper resource="mybatis/mapper/ddl/ElebillCommonDDLIPAddressMapper.xml"/>
-        <mapper resource="mybatis/mapper/ddl/ElebillCommonDDLProvinceMapper.xml"/>
-        <mapper resource="mybatis/mapper/ddl/ElebillCommonDDLBankMapper.xml"/>
-
-        <!-- 票据 -->
-        <mapper resource="mybatis/mapper/bill/ElebillCommonBillCategoryMapper.xml"/>
-        <mapper resource="mybatis/mapper/bill/ElebillCommonBillMapper.xml"/>
-        <mapper resource="mybatis/mapper/bill/ElebillCommonBillQuoteMapper.xml"/>
+        <mapper resource="mybatis/mapper/ddl/MMSnsCommonDDLAreaMapper.xml"/>
+        <mapper resource="mybatis/mapper/ddl/MMSnsCommonDDLBankMapper.xml"/>
+        <mapper resource="mybatis/mapper/ddl/MMSnsCommonDDLCityMapper.xml"/>
+        <mapper resource="mybatis/mapper/ddl/MMSnsCommonDDLIPAddressMapper.xml"/>
+        <mapper resource="mybatis/mapper/ddl/MMSnsCommonDDLProvinceMapper.xml"/>
 
         <!-- 用户个人中心 -->
-        <mapper resource="mybatis/mapper/user/ElebillCommonUserMapper.xml"/>
-
-        <!-- 消息中心 -->
-        <mapper resource="mybatis/mapper/message/ElebillCommonMessageMapper.xml"/>
-        <mapper resource="mybatis/mapper/message/ElebillCommonMessageContainerMapper.xml"/>
+        <mapper resource="mybatis/mapper/user/MMSnsCommonUserMapper.xml"/>
     </mappers>
 </configuration>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:motan="http://api.weibo.com/schema/motan"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+   http://api.weibo.com/schema/motan http://api.weibo.com/schema/motan.xsd">
+
+    <!--
+        service implemention bean
+        这些服务都已经通过@Service注解进行初始化了
+    -->
+    <!--<bean id="commonDDLProvinceService" class="com.lovecws.mumu.mmsns.common.ddl.service.impl.MMSnsCommonDDLProvinceServiceImpl" />
+    <bean id="commonDDLCityService" class="com.lovecws.mumu.mmsns.common.ddl.service.impl.MMSnsCommonDDLCityServiceImpl" />
+    <bean id="commonDDLAreaService" class="com.lovecws.mumu.mmsns.common.ddl.service.impl.MMSnsCommonDDLAreaServiceImpl" />
+    <bean id="commonDDLBankService" class="com.lovecws.mumu.mmsns.common.ddl.service.impl.MMSnsCommonDDLBankServiceImpl" />
+    <bean id="commonDDLIPAddressService" class="com.lovecws.mumu.mmsns.common.ddl.service.impl.MMSnsCommonDDLIPAddressServiceImpl" />-->
+
+    <!-- protocol -->
+    <motan:protocol id="motanProtocol"
+                    default="true"
+                    name="motan"
+                    requestTimeout="${motan.protocol.requestTimeout}"
+                    maxServerConnection="${motan.protocol.maxServerConnection}"
+                    maxContentLength="${motan.protocol.maxContentLength}"
+                    maxWorkerThread="${motan.protocol.maxWorkerThread}" minWorkerThread="${motan.protocol.minWorkerThread}"/>
+
+    <!--注册中心 -->
+    <motan:registry regProtocol="${motan.registery.regProtocol}"
+                    default="true"
+                    name="motanRegistry"
+                    address="${motan.registery.address}"/>
+
+    <motan:basicService id="motanBasicService"
+                        export="motanProtocol:${motan.basicService.export}"
+                        connectTimeout="${motan.basicService.connectTimeout}"
+                        check="${motan.basicService.check}"
+                        registry="motanRegistry"
+                        throwException="${motan.basicService.throwException}"
+                        group="${motan.basicService.group}"
+                        module="${motan.basicService.module}"
+                        shareChannel="${motan.basicService.shareChannel}"/>
+
+    <!-- exporting service by motan -->
+    <motan:service interface="com.lovecws.mumu.mmsns.common.ddl.service.MMSnsCommonDDLProvinceService" ref="MMSnsCommonDDLProvinceServiceImpl" basicService="motanBasicService"/>
+    <motan:service interface="com.lovecws.mumu.mmsns.common.ddl.service.MMSnsCommonDDLCityService" ref="MMSnsCommonDDLCityServiceImpl" basicService="motanBasicService"/>
+    <motan:service interface="com.lovecws.mumu.mmsns.common.ddl.service.MMSnsCommonDDLAreaService" ref="MMSnsCommonDDLAreaServiceImpl" basicService="motanBasicService"/>
+    <motan:service interface="com.lovecws.mumu.mmsns.common.ddl.service.MMSnsCommonDDLBankService" ref="MMSnsCommonDDLBankServiceImpl" basicService="motanBasicService"/>
+    <motan:service interface="com.lovecws.mumu.mmsns.common.ddl.service.MMSnsCommonDDLIPAddressService" ref="MMSnsCommonDDLIPAddressServiceImpl" basicService="motanBasicService"/>
+</beans>
