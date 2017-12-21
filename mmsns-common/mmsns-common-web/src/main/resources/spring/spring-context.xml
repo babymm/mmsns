@@ -24,6 +24,6 @@
 
     <!--<import resource="classpath:spring/spring-dubbo-consumer.xml"/>-->
 
-    <import resource="spring-rpc-motan.xml"/>
+    <import resource="spring-motan-provider.xml"/>
 
 </beans>

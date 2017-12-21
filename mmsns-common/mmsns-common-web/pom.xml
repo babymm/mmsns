@@ -11,10 +11,6 @@
     <name>mmsns-common-web Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
-    <properties>
-        <motan.version>0.3.0</motan.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -273,28 +269,23 @@
         <dependency>
             <groupId>com.weibo</groupId>
             <artifactId>motan-core</artifactId>
-            <version>${motan.version}</version>
         </dependency>
         <dependency>
             <groupId>com.weibo</groupId>
             <artifactId>motan-transport-netty</artifactId>
-            <version>${motan.version}</version>
         </dependency>
         <dependency>
             <groupId>com.weibo</groupId>
             <artifactId>motan-registry-consul</artifactId>
-            <version>${motan.version}</version>
         </dependency>
         <dependency>
             <groupId>com.weibo</groupId>
             <artifactId>motan-registry-zookeeper</artifactId>
-            <version>${motan.version}</version>
         </dependency>
         <!-- dependencies blow were only needed for spring-based features -->
         <dependency>
             <groupId>com.weibo</groupId>
             <artifactId>motan-springsupport</artifactId>
-            <version>${motan.version}</version>
         </dependency>
     </dependencies>
     <build>

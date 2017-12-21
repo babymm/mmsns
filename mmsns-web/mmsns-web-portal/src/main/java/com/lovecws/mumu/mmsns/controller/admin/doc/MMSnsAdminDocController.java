@@ -21,8 +21,8 @@ public class MMSnsAdminDocController {
     @Autowired
     private HttpServletRequest request;
 
-    @RequestMapping(value = {"/{userName}/doc/comment"}, method = RequestMethod.GET)
-    public String docComment(@PathVariable String userName) {
+    @RequestMapping(value = {"/{individuation}/doc/comment"}, method = RequestMethod.GET)
+    public String docComment(@PathVariable String individuation) {
         request.setAttribute("adminModular", "docComment");
         return "/admin/doc/comments";
     }

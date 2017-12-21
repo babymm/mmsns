@@ -21,8 +21,8 @@ public class MMSnsAdminNewsController {
     @Autowired
     private HttpServletRequest request;
 
-    @RequestMapping(value = {"/{userName}/news/comment"}, method = RequestMethod.GET)
-    public String newsComment(@PathVariable String userName) {
+    @RequestMapping(value = {"/{individuation}/news/comment"}, method = RequestMethod.GET)
+    public String newsComment(@PathVariable String individuation) {
         request.setAttribute("adminModular", "newsComment");
         return "/admin/news/comments";
     }

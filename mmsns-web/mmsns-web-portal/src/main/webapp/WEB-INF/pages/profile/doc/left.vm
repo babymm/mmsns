@@ -1,10 +1,10 @@
 <div class="layout-left">
     <div class="doc-classify">
         <div class="user-info">
-            <span class="user-logo"><a href="/profile/babymm/home"><img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068" width="100" height="100" style="border-radius: 50%"></a></span>
-            <span class="user-name"><a href="/profile/babymm/home">baby慕慕</a></span>
+            <span class="user-logo"><a href="/profile/$individuation/home"><img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068" width="100" height="100" style="border-radius: 50%"></a></span>
+            <span class="user-name"><a href="/profile/$individuation/home">baby慕慕</a></span>
             <span class="user-words">上传120个文档</span>
-            <span class="user-writedoc"><a href="/profile/babymm/doc/upload">上传文档</a></span>
+            <span class="user-writedoc"><a href="/profile/$individuation/doc/upload">上传文档</a></span>
         </div>
         <div class="classify-body">
             <div class="classify-header">
@@ -14,19 +14,19 @@
             <hr>
             <ul>
                 <li>
-                    <a href="/profile/babymm/doc">
+                    <a href="/profile/$individuation/doc">
                         <span class="classifytitle">我上传的</span>
                         <span class="classifycount">3</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/profile/babymm/doc">
+                    <a href="/profile/$individuation/doc">
                         <span class="classifytitle">我点赞的</span>
                         <span class="classifycount">0</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/profile/babymm/doc">
+                    <a href="/profile/$individuation/doc">
                         <span class="classifytitle">我收藏的</span>
                         <span class="classifycount">0</span>
                     </a>

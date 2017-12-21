@@ -17,18 +17,18 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/profile")
 public class MMSnsPortalProfilePhotoController {
 
-    @RequestMapping(value = "/{userName}/photo", method = RequestMethod.GET)
-    public String photo(@PathVariable String userName, HttpServletRequest request) {
+    @RequestMapping(value = "/{individuation}/photo", method = RequestMethod.GET)
+    public String photo(@PathVariable String individuation, HttpServletRequest request) {
         return "/profile/photo/photo";
     }
 
-    @RequestMapping(value = "/{userName}/photo/upload", method = RequestMethod.GET)
-    public String upload(@PathVariable String userName, HttpServletRequest request) {
+    @RequestMapping(value = "/{individuation}/photo/upload", method = RequestMethod.GET)
+    public String upload(@PathVariable String individuation, HttpServletRequest request) {
         return "/profile/photo/upload";
     }
 
-    @RequestMapping(value = "/{userName}/photo/album", method = RequestMethod.GET)
-    public String album(@PathVariable String userName, HttpServletRequest request) {
+    @RequestMapping(value = "/{individuation}/photo/album", method = RequestMethod.GET)
+    public String album(@PathVariable String individuation, HttpServletRequest request) {
         return "/profile/photo/album";
     }
 }

@@ -21,14 +21,14 @@ public class MMSnsAdminArticleController {
     @Autowired
     private HttpServletRequest request;
 
-    @RequestMapping(value = {"/{userName}/article/classify"}, method = RequestMethod.GET)
-    public String articleClassify(@PathVariable String userName) {
+    @RequestMapping(value = {"/{individuation}/article/classify"}, method = RequestMethod.GET)
+    public String articleClassify(@PathVariable String individuation) {
         request.setAttribute("adminModular", "articleClassify");
         return "/admin/article/classify";
     }
 
-    @RequestMapping(value = {"/{userName}/article/classify/{operation}"}, method = RequestMethod.GET)
-    public String articleClassifyCreate(@PathVariable String userName, @PathVariable String operation) {
+    @RequestMapping(value = {"/{individuation}/article/classify/{operation}"}, method = RequestMethod.GET)
+    public String articleClassifyCreate(@PathVariable String individuation, @PathVariable String operation) {
         String articleClassifyTitle = null;
         if ("view".equals(operation)) {
             articleClassifyTitle = "文章分类详情";
@@ -43,8 +43,8 @@ public class MMSnsAdminArticleController {
         return "/admin/article/classify_create";
     }
 
-    @RequestMapping(value = {"/{userName}/article/comment"}, method = RequestMethod.GET)
-    public String articleComment(@PathVariable String userName) {
+    @RequestMapping(value = {"/{individuation}/article/comment"}, method = RequestMethod.GET)
+    public String articleComment(@PathVariable String individuation) {
         request.setAttribute("adminModular", "articleComment");
         return "/admin/article/comments";
     }

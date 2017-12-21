@@ -1,5 +1,6 @@
 package com.lovecws.mumu.mmsns.common.user.service.impl;
 
+import com.lovecws.mumu.core.utils.ValidateUtils;
 import com.lovecws.mumu.mmsns.common.user.dao.MMSnsCommonUserDao;
 import com.lovecws.mumu.mmsns.common.user.entity.MMSnsCommonUserEntity;
 import com.lovecws.mumu.mmsns.common.user.service.MMSnsCommonUserService;
@@ -27,10 +28,12 @@ public class MMSnsCommonUserServiceImpl implements MMSnsCommonUserService {
     private MMSnsCommonUserDao commonUserDao;
 
     @Override
-    public List<MMSnsCommonUserEntity> getCommonUserByCondition(final String userPhone, final String userName) {
+    public List<MMSnsCommonUserEntity> getCommonUserByCondition(final String userName, final String userPhone,final String userEmail,final String individuation) {
         Map<String, Object> paramMap = new HashMap<String, Object>();
-        paramMap.put("userPhone", userPhone);
         paramMap.put("userName", userName);
+        paramMap.put("userPhone", userPhone);
+        paramMap.put("userEmail", userEmail);
+        paramMap.put("individuation", individuation);
         return commonUserDao.listByColumn(paramMap);
     }
 

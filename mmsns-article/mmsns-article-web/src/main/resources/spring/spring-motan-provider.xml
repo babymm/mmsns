@@ -22,7 +22,8 @@
                     requestTimeout="${motan.protocol.requestTimeout}"
                     maxServerConnection="${motan.protocol.maxServerConnection}"
                     maxContentLength="${motan.protocol.maxContentLength}"
-                    maxWorkerThread="${motan.protocol.maxWorkerThread}" minWorkerThread="${motan.protocol.minWorkerThread}"/>
+                    maxWorkerThread="${motan.protocol.maxWorkerThread}"
+                    minWorkerThread="${motan.protocol.minWorkerThread}"/>
 
     <!--注册中心 -->
     <motan:registry regProtocol="${motan.registery.regProtocol}"
@@ -41,9 +42,9 @@
                         shareChannel="${motan.basicService.shareChannel}"/>
 
     <!-- exporting service by motan -->
-    <motan:service interface="com.lovecws.mumu.mmsns.common.ddl.service.MMSnsCommonDDLProvinceService" ref="MMSnsCommonDDLProvinceServiceImpl" basicService="motanBasicService"/>
-    <motan:service interface="com.lovecws.mumu.mmsns.common.ddl.service.MMSnsCommonDDLCityService" ref="MMSnsCommonDDLCityServiceImpl" basicService="motanBasicService"/>
-    <motan:service interface="com.lovecws.mumu.mmsns.common.ddl.service.MMSnsCommonDDLAreaService" ref="MMSnsCommonDDLAreaServiceImpl" basicService="motanBasicService"/>
-    <motan:service interface="com.lovecws.mumu.mmsns.common.ddl.service.MMSnsCommonDDLBankService" ref="MMSnsCommonDDLBankServiceImpl" basicService="motanBasicService"/>
-    <motan:service interface="com.lovecws.mumu.mmsns.common.ddl.service.MMSnsCommonDDLIPAddressService" ref="MMSnsCommonDDLIPAddressServiceImpl" basicService="motanBasicService"/>
+    <motan:service interface="com.lovecws.mumu.mmsns.article.service.MMSnsArticleCategoryService" ref="MMSnsArticleCategoryServiceImpl" basicService="motanBasicService"/>
+    <motan:service interface="com.lovecws.mumu.mmsns.article.service.MMSnsArticleService" ref="MMSnsArticleServiceImpl" basicService="motanBasicService"/>
+    <motan:service interface="com.lovecws.mumu.mmsns.article.service.MMSnsArticleCollectService" ref="MMSnsArticleCollectServiceImpl" basicService="motanBasicService"/>
+    <motan:service interface="com.lovecws.mumu.mmsns.article.service.MMSnsArticleCommentService" ref="MMSnsArticleCommentServiceImpl" basicService="motanBasicService"/>
+    <motan:service interface="com.lovecws.mumu.mmsns.article.service.MMSnsArticleVoteService" ref="MMSnsArticleVoteServiceImpl" basicService="motanBasicService"/>
 </beans>

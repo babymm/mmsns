@@ -25,7 +25,7 @@
     </bean>
 
     <!-- 自定义的user Realm实现 -->
-    <bean id="userRealm" class="com.lovecws.mumu.security.realm.BaseUserRealm">
+    <bean id="userRealm" class="com.lovecws.mumu.mmsns.configuration.MMSnsPortalUserRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
         <property name="cachingEnabled" value="${cache.shiro.releam.cachingEnabled}"/>
         <property name="authorizationCachingEnabled" value="${cache.shiro.releam.authorizationCachingEnabled}"/>

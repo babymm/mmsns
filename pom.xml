@@ -48,6 +48,8 @@
         <thumbnailator.version>0.4.8</thumbnailator.version>
         <jsch.version>0.1.53</jsch.version>
         <shiro.version>1.2.5</shiro.version>
+
+        <motan.version>0.3.0</motan.version>
     </properties>
 
     <dependencyManagement>
@@ -414,6 +416,34 @@
                 <version>2.8.1</version>
             </dependency>
 
+            <!-- weibo motan rpc -->
+            <dependency>
+                <groupId>com.weibo</groupId>
+                <artifactId>motan-core</artifactId>
+                <version>${motan.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.weibo</groupId>
+                <artifactId>motan-transport-netty</artifactId>
+                <version>${motan.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.weibo</groupId>
+                <artifactId>motan-registry-consul</artifactId>
+                <version>${motan.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.weibo</groupId>
+                <artifactId>motan-registry-zookeeper</artifactId>
+                <version>${motan.version}</version>
+            </dependency>
+            <!-- dependencies blow were only needed for spring-based features -->
+            <dependency>
+                <groupId>com.weibo</groupId>
+                <artifactId>motan-springsupport</artifactId>
+                <version>${motan.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.lovecws.mumu</groupId>
                 <artifactId>mumu-core</artifactId>
@@ -511,6 +541,11 @@
                 <groupId>com.lovecws.mumu</groupId>
                 <artifactId>mumu-fdfs</artifactId>
                 <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lovecws.mumu</groupId>
+                <artifactId>mumu-common-sms</artifactId>
+                <version>1.1-RELEASE</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -27,7 +27,7 @@
                     #foreach($voteUser in $voteUsers)
                         <li>
                             <div class="userlogo">
-                                <a href="/profile/babymm/home"><img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068"></a>
+                                <a href="/profile/$individuation/home"><img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068"></a>
                             </div>
                             <div class="userinfo">
                                 <span class="username"><a href="/profile/babymm/home">baby慕慕</a></span>

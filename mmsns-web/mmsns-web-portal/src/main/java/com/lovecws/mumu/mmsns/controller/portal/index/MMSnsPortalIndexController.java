@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2017-12-08 20:20:15
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping
 public class MMSnsPortalIndexController {
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/index"},method = RequestMethod.GET)
     public String index(HttpServletRequest request) {
         request.setAttribute("mainModular", "index");
         return "/portal/index";

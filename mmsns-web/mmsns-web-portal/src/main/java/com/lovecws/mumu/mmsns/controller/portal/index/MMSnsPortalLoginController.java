@@ -1,10 +1,7 @@
 package com.lovecws.mumu.mmsns.controller.portal.index;
 
 import com.lovecws.mumu.security.exception.AccountUnActiveException;
-import org.apache.shiro.authc.DisabledAccountException;
-import org.apache.shiro.authc.ExcessiveAttemptsException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,7 +50,10 @@ public class MMSnsPortalLoginController {
             error = "账户被锁定，请联系管理员";
         } else if (AccountUnActiveException.class.equals(exceptionClassName)) {
             error = "账户未激活，请登录邮箱激活账号！";
-        } else if (exceptionClassName != null) {
+        } else if(AuthenticationException.class.equals(exceptionClassName)){
+            error = "未知错误!";
+        }
+        else if (exceptionClassName != null) {
             error = "错误提示：" + exceptionClassName;
         }
         Map<String, String> map = new HashMap<String, String>();
@@ -67,6 +67,6 @@ public class MMSnsPortalLoginController {
         map.put("code", "200");
         map.put("msg", "success");
         map.put("data", "登录成功");
-        return new ModelAndView("redirect:/login",map);
+        return new ModelAndView("redirect:/inde",map);
     }
 }

@@ -8,7 +8,7 @@
         <div class="layout-content">
             <span class="contenttitle">
                 <h2 style="">我的文章</h2>
-                <span><a href="/profile/babymm/article">查看更多</a></span>
+                <span><a href="/profile/$individuation/article">查看更多</a></span>
             </span>
             <div class="maincontent">
                 <ul>
@@ -17,7 +17,7 @@
                         <li>
                             <div class="contentbody">
                                 <div class="logo">
-                                    <a href="/profile/"><img src="https://gw.alicdn.com/bao/uploaded/i2/701696736/TB2PNl5ahQa61Bjy0FhXXaalFXa_!!701696736.jpg_400x400q90.jpg?t=1513063905068" width="120px" height="120px" style="border-radius: 1%;"></a>
+                                    <a href="/article/detail/1"><img src="https://gw.alicdn.com/bao/uploaded/i2/701696736/TB2PNl5ahQa61Bjy0FhXXaalFXa_!!701696736.jpg_400x400q90.jpg?t=1513063905068" width="120px" height="120px" style="border-radius: 1%;"></a>
                                 </div>
                                 <div class="contentinfo">
                                     <span class="title"><a href="">Jenkins持续化部署</a></span>
@@ -39,7 +39,7 @@
         <div class="layout-content">
             <span class="contenttitle">
                 <h2>我的动弹</h2>
-                <span><a href="/profile/babymm/action">查看更多</a></span>
+                <span><a href="/profile/$individuation/action">查看更多</a></span>
             </span>
             <div class="maincontent">
                 <ul>
@@ -70,7 +70,7 @@
         <div class="layout-content">
             <span class="contenttitle">
                 <h2 style="">我的群组</h2>
-                <span><a href="/profile/babymm/group">查看更多</a></span>
+                <span><a href="/profile/$individuation/group">查看更多</a></span>
             </span>
             <div class="maincontent">
                 <ul>
@@ -101,7 +101,7 @@
         <div class="layout-content">
             <span class="contenttitle">
                 <h2 style="">我的资讯</h2>
-                <span><a href="/profile/babymm/news">查看更多</a></span>
+                <span><a href="/profile/$individuation/news">查看更多</a></span>
             </span>
             <div class="maincontent">
                 <ul>
@@ -132,7 +132,7 @@
         <div class="layout-content">
             <span class="contenttitle">
                 <h2 style="">我的图库</h2>
-                <span><a href="/profile/babymm/photo">查看更多</a></span>
+                <span><a href="/profile/$individuation/photo">查看更多</a></span>
             </span>
             <div class="maincontent">
                 <ul>
@@ -164,7 +164,7 @@
         <div class="layout-content">
             <span class="contenttitle">
                 <h2 style="">我的文档</h2>
-                <span><a href="/profile/babymm/doc">查看更多</a></span>
+                <span><a href="/profile/$individuation/doc">查看更多</a></span>
             </span>
             <div class="maincontent">
                 <ul>

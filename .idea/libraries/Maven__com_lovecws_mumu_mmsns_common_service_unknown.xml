@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.lovecws.mumu:mmsns-common-service:unknown">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/lovecws/mumu/mmsns-common-service/unknown/mmsns-common-service-unknown.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/lovecws/mumu/mmsns-common-service/unknown/mmsns-common-service-unknown-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/lovecws/mumu/mmsns-common-service/unknown/mmsns-common-service-unknown-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

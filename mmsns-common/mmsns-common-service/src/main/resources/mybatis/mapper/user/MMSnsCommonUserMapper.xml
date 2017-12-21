@@ -49,16 +49,20 @@
         <result column="idcard" property="idcard" jdbcType="VARCHAR"/>
         <result column="idcard_img" property="idcardImg" jdbcType="VARCHAR"/>
         <result column="idcardbg_img" property="idcardbgImg" jdbcType="VARCHAR"/>
+
+        <result column="individuation" property="individuation" jdbcType="VARCHAR"/>
+        <result column="isindivid" property="isindivid" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="ElebillCommonUserColumn">
         user_id,user_status,create_ip,create_date,create_area,edit_ip,edit_date,edit_area,last_login_time,last_login_ip,last_login_area,user_name,real_name,user_password,user_salt,user_sex,user_birthday,
-        user_phone,phone_active,avator,thumb,user_email,email_active,province,city,area,detail_area,register_type,thirdLogin_token,wexin,company,positional,user_auth,idcard,idcard_img,idcardbg_img
+        user_phone,phone_active,avator,thumb,user_email,email_active,province,city,area,detail_area,register_type,thirdLogin_token,wexin,company,positional,user_auth,idcard,idcard_img,idcardbg_img,
+        individuation,isindivid
     </sql>
 
     <!-- 获取用户数量 -->
     <select id="listPageCount" resultType="long" parameterType="map">
         select count(user_id)
-        from ec_user
+        from mc_user
         <where>
             <if test="userStatus!=null and userStatus!=''">
                 and user_status=#{userStatus}
@@ -70,7 +74,7 @@
     <select id="listPage" resultMap="ElebillCommonUserResultMap" parameterType="map">
         select
         <include refid="ElebillCommonUserColumn"/>
-        from ec_user
+        from mc_user
         <where>
             <if test="userStatus!=null and userStatus!=''">
                 and user_status=#{userStatus}
@@ -86,13 +90,19 @@
     <select id="listByColumn" resultMap="ElebillCommonUserResultMap" parameterType="map">
         select
         <include refid="ElebillCommonUserColumn"/>
-        from ec_user
+        from mc_user
         <where>
             <if test="userName!=null and userName!=''">
                 and user_name=#{userName}
             </if>
             <if test="userPhone!=null and userPhone!=''">
                 and user_phone=#{userPhone}
+            </if>
+            <if test="userEmail!=null and userEmail!=''">
+                and user_email=#{userEmail}
+            </if>
+            <if test="individuation!=null and individuation!=''">
+                and individuation=#{individuation}
             </if>
         </where>
     </select>
@@ -101,14 +111,14 @@
     <select id="selectByPrimaryKey" resultMap="ElebillCommonUserResultMap" parameterType="java.lang.String">
         select
         <include refid="ElebillCommonUserColumn"/>
-        from ec_user
+        from mc_user
         where user_id=#{userId}
     </select>
 
     <!-- 添加用户信息 -->
     <insert id="insert" parameterType="MMSnsCommonUserEntity" useGeneratedKeys="true"
             keyProperty="userId">
-        insert into ec_user
+        insert into mc_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userStatus!=null">
                 user_status,
@@ -214,6 +224,12 @@
             </if>
             <if test="idcardbgImg!=null">
                 idcardbg_img,
+            </if>
+            <if test="individuation!=null">
+                individuation,
+            </if>
+            <if test="isindivid!=null">
+                isindivid,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -322,12 +338,18 @@
             <if test="idcardbgImg!=null">
                 #{idcardbgImg},
             </if>
+            <if test="individuation!=null">
+                #{individuation},
+            </if>
+            <if test="isindivid!=null">
+                #{isindivid},
+            </if>
         </trim>
     </insert>
 
     <!-- 更新用户信息 -->
     <update id="updateByPrimaryKey" parameterType="MMSnsCommonUserEntity">
-        update ec_user
+        update mc_user
         <set>
             <if test="userStatus!=null">
                 user_status=#{userStatus},
@@ -434,6 +456,12 @@
             <if test="idcardbgImg!=null">
                 idcardbg_img=#{idcardbgImg},
             </if>
+            <if test="individuation!=null">
+                individuation=#{individuation},
+            </if>
+            <if test="isindivid!=null">
+                isindivid=#{isindivid},
+            </if>
         </set>
         <where>
             <if test="userId!=null">
@@ -445,7 +473,7 @@
     <!-- 根据id删除用户 -->
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete
-        from ec_user
+        from mc_user
         where user_id=#{userId}
     </delete>
 </mapper>

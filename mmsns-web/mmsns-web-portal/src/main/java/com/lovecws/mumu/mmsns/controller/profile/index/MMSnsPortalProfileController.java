@@ -1,5 +1,8 @@
 package com.lovecws.mumu.mmsns.controller.profile.index;
 
+import com.lovecws.mumu.mmsns.common.user.entity.MMSnsCommonUserEntity;
+import com.lovecws.mumu.mmsns.common.user.service.MMSnsCommonUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,39 +19,53 @@ import java.util.*;
 @RequestMapping("/profile")
 public class MMSnsPortalProfileController {
 
-    @RequestMapping(value = {"/{userName}/home", "/{userName}"}, method = RequestMethod.GET)
-    public String home(@PathVariable String userName, HttpServletRequest request) {
+    @Autowired
+    private HttpServletRequest request;
+    @Autowired(required = false)
+    private MMSnsCommonUserService commonUserService;
+    @Autowired
+    private MMSnsVisitUserContainer visitUserContainer;
+
+    @RequestMapping(value = {"/{individuation}/home", "/{individuation}"}, method = RequestMethod.GET)
+    public String home(@PathVariable String individuation) {
+        visitUserContainer.visitUser(individuation);
+
         return "/profile/home";
     }
 
-    @RequestMapping(value = "/{userName}/home/vote", method = RequestMethod.GET)
-    public String vote(@PathVariable String userName, HttpServletRequest request) {
+    @RequestMapping(value = "/{individuation}/home/vote", method = RequestMethod.GET)
+    public String vote(@PathVariable String individuation) {
+        visitUserContainer.visitUser(individuation);
         return "/profile/vote";
     }
 
-    @RequestMapping(value = "/{userName}/home/fans", method = RequestMethod.GET)
-    public String fans(@PathVariable String userName, HttpServletRequest request) {
+    @RequestMapping(value = "/{individuation}/home/fans", method = RequestMethod.GET)
+    public String fans(@PathVariable String individuation) {
+        visitUserContainer.visitUser(individuation);
         return "/profile/fans";
     }
 
-    @RequestMapping(value = "/{userName}/home/fellow", method = RequestMethod.GET)
-    public String fellow(@PathVariable String userName, HttpServletRequest request) {
+    @RequestMapping(value = "/{individuation}/home/fellow", method = RequestMethod.GET)
+    public String fellow(@PathVariable String individuation) {
+        visitUserContainer.visitUser(individuation);
         return "/profile/fellow";
     }
 
-    @RequestMapping(value = "/{userName}/home/access", method = RequestMethod.GET)
-    public String access(@PathVariable String userName, HttpServletRequest request) {
+    @RequestMapping(value = "/{individuation}/home/access", method = RequestMethod.GET)
+    public String access(@PathVariable String individuation) {
+        visitUserContainer.visitUser(individuation);
         return "/profile/access";
     }
 
-    @RequestMapping(value = "/{userName}/home/score", method = RequestMethod.GET)
-    public String score(@PathVariable String userName, HttpServletRequest request) {
+    @RequestMapping(value = "/{individuation}/home/score", method = RequestMethod.GET)
+    public String score(@PathVariable String individuation) {
+        visitUserContainer.visitUser(individuation);
         return "/profile/score";
     }
 
     @ResponseBody
-    @RequestMapping(value = "/{userName}/home/score/data", method = RequestMethod.GET)
-    public Object scoreData(@PathVariable String userName,
+    @RequestMapping(value = "/{individuation}/home/score/data", method = RequestMethod.GET)
+    public Object scoreData(@PathVariable String individuation,
                             @RequestParam(name = "page", required = false, defaultValue = "1") int page,
                             @RequestParam(name = "limit", required = false, defaultValue = "10") int limit,
                             HttpServletRequest request) {

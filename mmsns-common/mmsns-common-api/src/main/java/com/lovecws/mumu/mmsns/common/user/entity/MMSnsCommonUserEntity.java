@@ -17,7 +17,7 @@ public class MMSnsCommonUserEntity extends PersistentEntity {
     public static final String USER_STATUS_FORBIT="forbit";//被禁止登录
     public static final String USER_STATUS_DELETE="delete";//删除
 
-    public static final String ELEBILL_COMMON_USER="ELEBILL_COMMON_USER";
+    public static final String MMSNS_COMMON_USER="MMSNS_COMMON_USER";
 
     private Integer userId;//用户id
     private String userStatus;//用户状态
@@ -67,4 +67,310 @@ public class MMSnsCommonUserEntity extends PersistentEntity {
     private String idcardImg;//身份证图片信息
     private String idcardbgImg;//身份证图片信息
 
+    private String individuation;//个性化名称
+    private String isindivid;//个性化设置时间
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
+    }
+
+    public String getCreateIp() {
+        return createIp;
+    }
+
+    public void setCreateIp(String createIp) {
+        this.createIp = createIp;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getCreateArea() {
+        return createArea;
+    }
+
+    public void setCreateArea(String createArea) {
+        this.createArea = createArea;
+    }
+
+    public String getEditIp() {
+        return editIp;
+    }
+
+    public void setEditIp(String editIp) {
+        this.editIp = editIp;
+    }
+
+    public Date getEditDate() {
+        return editDate;
+    }
+
+    public void setEditDate(Date editDate) {
+        this.editDate = editDate;
+    }
+
+    public String getEditArea() {
+        return editArea;
+    }
+
+    public void setEditArea(String editArea) {
+        this.editArea = editArea;
+    }
+
+    public String getLastLoginIp() {
+        return lastLoginIp;
+    }
+
+    public void setLastLoginIp(String lastLoginIp) {
+        this.lastLoginIp = lastLoginIp;
+    }
+
+    public Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
+    public String getLastLoginArea() {
+        return lastLoginArea;
+    }
+
+    public void setLastLoginArea(String lastLoginArea) {
+        this.lastLoginArea = lastLoginArea;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public String getUserSalt() {
+        return userSalt;
+    }
+
+    public void setUserSalt(String userSalt) {
+        this.userSalt = userSalt;
+    }
+
+    public String getUserSex() {
+        return userSex;
+    }
+
+    public void setUserSex(String userSex) {
+        this.userSex = userSex;
+    }
+
+    public Date getUserBirthday() {
+        return userBirthday;
+    }
+
+    public void setUserBirthday(Date userBirthday) {
+        this.userBirthday = userBirthday;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public String getPhoneActive() {
+        return phoneActive;
+    }
+
+    public void setPhoneActive(String phoneActive) {
+        this.phoneActive = phoneActive;
+    }
+
+    public String getAvator() {
+        return avator;
+    }
+
+    public void setAvator(String avator) {
+        this.avator = avator;
+    }
+
+    public String getThumb() {
+        return thumb;
+    }
+
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getEmailActive() {
+        return emailActive;
+    }
+
+    public void setEmailActive(String emailActive) {
+        this.emailActive = emailActive;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getDetailArea() {
+        return detailArea;
+    }
+
+    public void setDetailArea(String detailArea) {
+        this.detailArea = detailArea;
+    }
+
+    public String getRegisterType() {
+        return registerType;
+    }
+
+    public void setRegisterType(String registerType) {
+        this.registerType = registerType;
+    }
+
+    public String getThirdLoginToken() {
+        return thirdLoginToken;
+    }
+
+    public void setThirdLoginToken(String thirdLoginToken) {
+        this.thirdLoginToken = thirdLoginToken;
+    }
+
+    public String getWexin() {
+        return wexin;
+    }
+
+    public void setWexin(String wexin) {
+        this.wexin = wexin;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getPositional() {
+        return positional;
+    }
+
+    public void setPositional(String positional) {
+        this.positional = positional;
+    }
+
+    public String getUserAuth() {
+        return userAuth;
+    }
+
+    public void setUserAuth(String userAuth) {
+        this.userAuth = userAuth;
+    }
+
+    public String getIdcard() {
+        return idcard;
+    }
+
+    public void setIdcard(String idcard) {
+        this.idcard = idcard;
+    }
+
+    public String getIdcardImg() {
+        return idcardImg;
+    }
+
+    public void setIdcardImg(String idcardImg) {
+        this.idcardImg = idcardImg;
+    }
+
+    public String getIdcardbgImg() {
+        return idcardbgImg;
+    }
+
+    public void setIdcardbgImg(String idcardbgImg) {
+        this.idcardbgImg = idcardbgImg;
+    }
+
+    public String getIndividuation() {
+        return individuation;
+    }
+
+    public void setIndividuation(String individuation) {
+        this.individuation = individuation;
+    }
+
+    public String isIsindivid() {
+        return isindivid;
+    }
+
+    public void setIsindivid(String isindivid) {
+        this.isindivid = isindivid;
+    }
 }

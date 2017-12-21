@@ -23,10 +23,10 @@
                 </div>
             </div>
             <div class="form-item">
-                <input type="text" name="userPassword" placeholder="注册密码">
+                <input type="password" name="userPassword" placeholder="注册密码">
             </div>
             <div class="form-item">
-                <input type="text" name="userPassword" placeholder="重复输入注册密码">
+                <input type="password" name="userPassword" placeholder="重复输入注册密码">
             </div>
             <div class="form-item">
                 <input type="submit" class="register-button" value="立即注册"/>

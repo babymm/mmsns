@@ -21,20 +21,20 @@ public class MMSnsAdminPhotoController {
     @Autowired
     private HttpServletRequest request;
 
-    @RequestMapping(value = {"/{userName}/photo/comment"}, method = RequestMethod.GET)
-    public String photoComment(@PathVariable String userName) {
+    @RequestMapping(value = {"/{individuation}/photo/comment"}, method = RequestMethod.GET)
+    public String photoComment(@PathVariable String individuation) {
         request.setAttribute("adminModular", "photoComment");
         return "/admin/photo/comments";
     }
 
-    @RequestMapping(value = {"/{userName}/photo/album"}, method = RequestMethod.GET)
-    public String photoAlbum(@PathVariable String userName) {
+    @RequestMapping(value = {"/{individuation}/photo/album"}, method = RequestMethod.GET)
+    public String photoAlbum(@PathVariable String individuation) {
         request.setAttribute("adminModular", "photoAlbum");
         return "/admin/photo/album";
     }
 
-    @RequestMapping(value = {"/{userName}/photo/album/{operation}"}, method = RequestMethod.GET)
-    public String photoAlbumCreate(@PathVariable String userName, @PathVariable String operation) {
+    @RequestMapping(value = {"/{individuation}/photo/album/{operation}"}, method = RequestMethod.GET)
+    public String photoAlbumCreate(@PathVariable String individuation, @PathVariable String operation) {
         String photoAlbumTitle = null;
         if ("view".equals(operation)) {
             photoAlbumTitle = "相册详情";

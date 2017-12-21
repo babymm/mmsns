@@ -19,6 +19,6 @@
     <!-- 配置要扫描的包 -->
     <context:component-scan base-package="com.lovecws.mumu.mmsns.article"/>
 
-    <import resource="classpath:spring/spring-article-mdao.xml"/>
+    <import resource="classpath:spring/spring-article-dao.xml"/>
 
 </beans>

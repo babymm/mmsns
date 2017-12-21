@@ -136,6 +136,9 @@ body{
     margin: 0 auto;
     line-height: 16px;
     cursor: pointer;
+    height: 42px;
+    padding-bottom: 0px;
+    padding-top: 0px;
 }
 .layout-body .layout-center .layout-form .form-item .login-button{
     background: #31b968;

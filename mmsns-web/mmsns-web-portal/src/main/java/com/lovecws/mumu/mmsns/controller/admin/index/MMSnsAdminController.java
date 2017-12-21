@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/admin")
 public class MMSnsAdminController {
 
-    @RequestMapping(value = {"/{userName}/index", "/{userName}"}, method = RequestMethod.GET)
-    public String admin(@PathVariable String userName, HttpServletRequest request) {
+    @RequestMapping(value = {"/{individuation}/index", "/{individuation}"}, method = RequestMethod.GET)
+    public String admin(@PathVariable String individuation, HttpServletRequest request) {
         return "/admin/index";
     }
 }

@@ -248,6 +248,29 @@
             <version>3.14</version>
         </dependency>
 
+        <!-- weibo motan rpc -->
+        <dependency>
+            <groupId>com.weibo</groupId>
+            <artifactId>motan-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.weibo</groupId>
+            <artifactId>motan-transport-netty</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.weibo</groupId>
+            <artifactId>motan-registry-consul</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.weibo</groupId>
+            <artifactId>motan-registry-zookeeper</artifactId>
+        </dependency>
+        <!-- dependencies blow were only needed for spring-based features -->
+        <dependency>
+            <groupId>com.weibo</groupId>
+            <artifactId>motan-springsupport</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.lovecws.mumu</groupId>
             <artifactId>mumu-core</artifactId>
@@ -263,6 +286,28 @@
         <dependency>
             <groupId>com.lovecws.mumu</groupId>
             <artifactId>mumu-fdfs</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lovecws.mumu</groupId>
+            <artifactId>mumu-common-sms</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lovecws.mumu</groupId>
+            <artifactId>mmsns-common-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.lovecws.mumu</groupId>
+            <artifactId>mmsns-article-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.belerweb/pinyin4j -->
+        <dependency>
+            <groupId>com.belerweb</groupId>
+            <artifactId>pinyin4j</artifactId>
+            <version>2.5.1</version>
         </dependency>
     </dependencies>
     <build>

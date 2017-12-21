@@ -21,44 +21,44 @@ public class MMSnsAdminUserController {
     @Autowired
     private HttpServletRequest request;
 
-    @RequestMapping(value = {"/{userName}/user/inbox"}, method = RequestMethod.GET)
-    public String userInbox(@PathVariable String userName) {
+    @RequestMapping(value = {"/{individuation}/user/inbox"}, method = RequestMethod.GET)
+    public String userInbox(@PathVariable String individuation) {
         request.setAttribute("adminModular", "userInbox");
         return "/admin/user/inbox";
     }
 
-    @RequestMapping(value = {"/{userName}/user/msgs"}, method = RequestMethod.GET)
-    public String userInboxMsgs(@PathVariable String userName) {
+    @RequestMapping(value = {"/{individuation}/user/msgs"}, method = RequestMethod.GET)
+    public String userInboxMsgs(@PathVariable String individuation) {
         request.setAttribute("adminModular", "userInbox");
         return "/admin/user/msgs";
     }
 
-    @RequestMapping(value = {"/{userName}/user/chpwd"}, method = RequestMethod.GET)
-    public String userChpwd(@PathVariable String userName) {
+    @RequestMapping(value = {"/{individuation}/user/chpwd"}, method = RequestMethod.GET)
+    public String userChpwd(@PathVariable String individuation) {
         request.setAttribute("adminModular", "userChpwd");
         return "/admin/user/chpwds";
     }
 
-    @RequestMapping(value = {"/{userName}/user/namespace"}, method = RequestMethod.GET)
-    public String userNamespace(@PathVariable String userName) {
-        request.setAttribute("adminModular", "userNamespace");
+    @RequestMapping(value = {"/{individuation}/user/namespace"}, method = RequestMethod.GET)
+    public String individuationspace(@PathVariable String individuation) {
+        request.setAttribute("adminModular", "individuationspace");
         return "/admin/user/namespace";
     }
 
-    @RequestMapping(value = {"/{userName}/user/profile"}, method = RequestMethod.GET)
-    public String userProfile(@PathVariable String userName) {
+    @RequestMapping(value = {"/{individuation}/user/profile"}, method = RequestMethod.GET)
+    public String userProfile(@PathVariable String individuation) {
         request.setAttribute("adminModular", "userProfile");
         return "/admin/user/profile";
     }
 
-    @RequestMapping(value = {"/{userName}/user/chemail"}, method = RequestMethod.GET)
-    public String userChemail(@PathVariable String userName) {
+    @RequestMapping(value = {"/{individuation}/user/chemail"}, method = RequestMethod.GET)
+    public String userChemail(@PathVariable String individuation) {
         request.setAttribute("adminModular", "userChemail");
         return "/admin/user/chemail";
     }
 
-    @RequestMapping(value = {"/{userName}/user/chphone"}, method = RequestMethod.GET)
-    public String userChphone(@PathVariable String userName) {
+    @RequestMapping(value = {"/{individuation}/user/chphone"}, method = RequestMethod.GET)
+    public String userChphone(@PathVariable String individuation) {
         request.setAttribute("adminModular", "userChphone");
         return "/admin/user/chphone";
     }

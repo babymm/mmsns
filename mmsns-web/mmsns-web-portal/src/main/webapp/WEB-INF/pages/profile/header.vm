@@ -57,7 +57,7 @@
 </style>
 <div class="user-header">
     <div class="user-logo">
-        <a href="/profile/babymm/home"><img src="https://static.oschina.net/uploads/user/1483/2966952_100.jpg?t=1489590626000" width="100" height="100" style="border-radius: 50%"></a>
+        <a href="/profile/$individuation/home"><img src="https://static.oschina.net/uploads/user/1483/2966952_100.jpg?t=1489590626000" width="100" height="100" style="border-radius: 50%"></a>
     </div>
     <div class="user-info">
         <span style="font-size: 24px;color: #111;-webkit-font-smoothing: antialiased;font-weight: 400;"><a href="/profile/babymm/home">baby慕慕</a></span>
@@ -69,32 +69,32 @@
             <span style="margin-top: 5px;color: #999;">加入于 2016/10/19</span>
         #else
             <span style="margin-top: 30px">
-                <a href="/profile/babymm/home" style="margin-left: 5px;font-size: 14px;color: #4eaa4c"><i class="fa fa-thumbs-o-up" style="font-size: 18px;" aria-hidden="true"></i>点赞</a>
-                <a href="/profile/babymm/home" style="margin-left: 5px;font-size: 14px;color: #4eaa4c"><i class="fa fa-heart-o" style="font-size: 18px;" aria-hidden="true"></i>关注</a>
-                <a href="/profile/babymm/home" style="margin-left: 5px;font-size: 14px;color: #4eaa4c"><i class="fa fa-comment-o" style="font-size: 18px;padding-bottom: 2px" aria-hidden="true"></i>私信</a>
+                <a href="/profile/$!individuation/home" style="margin-left: 5px;font-size: 14px;color: #4eaa4c"><i class="fa fa-thumbs-o-up" style="font-size: 18px;" aria-hidden="true"></i>点赞</a>
+                <a href="/profile/$!individuation/home" style="margin-left: 5px;font-size: 14px;color: #4eaa4c"><i class="fa fa-heart-o" style="font-size: 18px;" aria-hidden="true"></i>关注</a>
+                <a href="/profile/$!individuation/home" style="margin-left: 5px;font-size: 14px;color: #4eaa4c"><i class="fa fa-comment-o" style="font-size: 18px;padding-bottom: 2px" aria-hidden="true"></i>私信</a>
             </span>
         #end
     </div>
     <div class="user-score">
         <span>
             <span>点赞</span>
-            <span><a href="/profile/babymm/home/vote">12</a></span>
+            <span><a href="/profile/$!individuation/home/vote">12</a></span>
         </span>
         <span>
             <span>粉丝</span>
-            <span><a href="/profile/babymm/home/fans">10</a></span>
+            <span><a href="/profile/$!individuation/home/fans">10</a></span>
         </span>
         <span>
             <span>关注</span>
-            <span><a href="/profile/babymm/home/fellow">12</a></span>
+            <span><a href="/profile/$!individuation/home/fellow">12</a></span>
         </span>
         <span>
             <span>积分</span>
-            <span><a href="/profile/babymm/home/score">12</a></span>
+            <span><a href="/profile/$!individuation/home/score">12</a></span>
         </span>
         <span>
             <span>访问量</span>
-            <span><a href="/profile/babymm/home/access">10000</a></span>
+            <span><a href="/profile/$!individuation/home/access">10000</a></span>
         </span>
     #if($isowner=='false')
         <div style="width: 350px;float: right;text-align: right;margin-top: 30px;color: #999;">加入于 2017/03/21 最近登录：昨天 23:46</div>

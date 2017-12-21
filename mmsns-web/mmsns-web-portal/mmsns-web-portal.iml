@@ -120,6 +120,21 @@
     <orderEntry type="library" name="Maven: org.apache.commons:commons-pool2:2.4.2" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.2.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi:3.14" level="project" />
+    <orderEntry type="library" name="Maven: com.weibo:motan-core:0.3.0" level="project" />
+    <orderEntry type="library" name="Maven: commons-pool:commons-pool:1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.caucho:hessian:4.0.38" level="project" />
+    <orderEntry type="library" name="Maven: com.codahale.metrics:metrics-core:3.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.squareup:javapoet:1.8.0" level="project" />
+    <orderEntry type="library" name="Maven: com.weibo:motan-transport-netty:0.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.jboss.netty:netty:3.2.5.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.weibo:motan-registry-consul:0.3.0" level="project" />
+    <orderEntry type="library" name="Maven: com.ecwid.consul:consul-api:1.1.4" level="project" />
+    <orderEntry type="library" name="Maven: com.weibo:motan-registry-zookeeper:0.3.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.zookeeper:zookeeper:3.4.8" level="project" />
+    <orderEntry type="library" name="Maven: jline:jline:0.9.94" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty:3.7.0.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.101tec:zkclient:0.3" level="project" />
+    <orderEntry type="library" name="Maven: com.weibo:motan-springsupport:0.3.0" level="project" />
     <orderEntry type="library" name="Maven: com.lovecws.mumu:mumu-core:1.0-RELEASE" level="project" />
     <orderEntry type="library" name="Maven: net.coobird:thumbnailator:0.4.8" level="project" />
     <orderEntry type="library" name="Maven: com.jcraft:jsch:0.1.53" level="project" />
@@ -127,5 +142,10 @@
     <orderEntry type="library" name="Maven: com.lovecws.mumu:mumu-security:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
     <orderEntry type="library" name="Maven: com.lovecws.mumu:mumu-fdfs:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.lovecws.mumu:mumu-common-sms:1.1-RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:fluent-hc:4.3.5" level="project" />
+    <orderEntry type="module" module-name="mmsns-common-api" />
+    <orderEntry type="module" module-name="mmsns-article-api" />
+    <orderEntry type="library" name="Maven: com.belerweb:pinyin4j:2.5.1" level="project" />
   </component>
 </module>

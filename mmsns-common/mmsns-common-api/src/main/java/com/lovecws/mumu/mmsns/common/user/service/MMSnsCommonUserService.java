@@ -16,9 +16,11 @@ public interface MMSnsCommonUserService {
      *
      * @param userPhone 用户手机号码
      * @param userName  用户名称
+     * @param userEmail  用户邮箱
+     * @param individuation  用户个性化空间名称
      * @return
      */
-    public List<MMSnsCommonUserEntity> getCommonUserByCondition(String userPhone, String userName);
+    public List<MMSnsCommonUserEntity> getCommonUserByCondition(String userName,String userPhone, String userEmail,String individuation);
 
     /**
      * 添加用户

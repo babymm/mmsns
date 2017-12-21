@@ -112,36 +112,36 @@
     #if($shiro.isUser())
         <ul class="nav-button layui-nav">
             <li class="layui-nav-item">
-                <a href="/admin/babymm/user/inbox">我的消息<span class="layui-badge">9</span></a>
+                <a href="/admin/$!MMSNS_COMMON_USER.individuation/user/inbox">我的消息<span class="layui-badge">9</span></a>
             </li>
             <li class="layui-nav-item">
-                <a href="/profile/babymm/article/create">资料编辑</a>
+                <a href="/profile/$!MMSNS_COMMON_USER.individuation/article/create">资料编辑</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="/profile/babymm/article/create">编写文章</a></dd>
-                    <dd><a href="/profile/babymm/action/publish">发布动弹</a></dd>
-                    <dd><a href="/profile/babymm/group/create">创建群组</a></dd>
-                    <dd><a href="/profile/babymm/news/publish">发布资讯</a></dd>
-                    <dd><a href="/profile/babymm/photo/upload">上传图库</a></dd>
-                    <dd><a href="/profile/babymm/doc/upload">上传文档</a></dd>
+                    <dd><a href="/profile/$!MMSNS_COMMON_USER.individuation/article/create">编写文章</a></dd>
+                    <dd><a href="/profile/$!MMSNS_COMMON_USER.individuation/action/publish">发布动弹</a></dd>
+                    <dd><a href="/profile/$!MMSNS_COMMON_USER.individuation/group/create">创建群组</a></dd>
+                    <dd><a href="/profile/$!MMSNS_COMMON_USER.individuation/news/publish">发布资讯</a></dd>
+                    <dd><a href="/profile/$!MMSNS_COMMON_USER.individuation/photo/upload">上传图库</a></dd>
+                    <dd><a href="/profile/$!MMSNS_COMMON_USER.individuation/doc/upload">上传文档</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="/profile/babymm/home">我的空间</a>
+                <a href="/profile/$!MMSNS_COMMON_USER.individuation/home">我的空间</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="/profile/babymm/article">我的文章</a></dd>
-                    <dd><a href="/profile/babymm/action">我的动弹</a></dd>
-                    <dd><a href="/profile/babymm/group">我的群组</a></dd>
-                    <dd><a href="/profile/babymm/news">我的资讯</a></dd>
-                    <dd><a href="/profile/babymm/photo">我的图库</a></dd>
-                    <dd><a href="/profile/babymm/doc">我的文档</a></dd>
+                    <dd><a href="/profile/$!MMSNS_COMMON_USER.individuation/article">我的文章</a></dd>
+                    <dd><a href="/profile/$!MMSNS_COMMON_USER.individuation/action">我的动弹</a></dd>
+                    <dd><a href="/profile/$!MMSNS_COMMON_USER.individuation/group">我的群组</a></dd>
+                    <dd><a href="/profile/$!MMSNS_COMMON_USER.individuation/news">我的资讯</a></dd>
+                    <dd><a href="/profile/$!MMSNS_COMMON_USER.individuation/photo">我的图库</a></dd>
+                    <dd><a href="/profile/$!MMSNS_COMMON_USER.individuation/doc">我的文档</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="/admin/babymm/index">baby慕慕</a>
+                <a href="/admin/$!MMSNS_COMMON_USER.individuation/index">$!MMSNS_COMMON_USER.userName</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="/admin/babymm/index">个人资料</a></dd>
+                    <dd><a href="/admin/$!MMSNS_COMMON_USER.individuation/index">个人资料</a></dd>
                     <dd><a href="javascript:;">安全管理</a></dd>
-                    <dd><a href="javascript:;">退出登录</a></dd>
+                    <dd><a href="/logout">退出登录</a></dd>
                 </dl>
             </li>
         </ul>

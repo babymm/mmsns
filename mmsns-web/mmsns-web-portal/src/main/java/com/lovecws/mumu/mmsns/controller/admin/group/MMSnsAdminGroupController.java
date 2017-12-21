@@ -21,8 +21,8 @@ public class MMSnsAdminGroupController {
     @Autowired
     private HttpServletRequest request;
 
-    @RequestMapping(value = {"/{userName}/group/comment"}, method = RequestMethod.GET)
-    public String groupComment(@PathVariable String userName) {
+    @RequestMapping(value = {"/{individuation}/group/comment"}, method = RequestMethod.GET)
+    public String groupComment(@PathVariable String individuation) {
         request.setAttribute("adminModular", "groupComment");
         return "/admin/group/comments";
     }

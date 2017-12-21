@@ -17,13 +17,13 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/profile")
 public class MMSnsPortalProfileArticleController {
 
-    @RequestMapping(value = "/{userName}/article", method = RequestMethod.GET)
-    public String article(@PathVariable String userName, HttpServletRequest request) {
+    @RequestMapping(value = "/{individuation}/article", method = RequestMethod.GET)
+    public String article(@PathVariable String individuation, HttpServletRequest request) {
         return "/profile/article/article";
     }
     
-    @RequestMapping(value = "/{userName}/article/create", method = RequestMethod.GET)
-    public String create(@PathVariable String userName, HttpServletRequest request) {
+    @RequestMapping(value = "/{individuation}/article/create", method = RequestMethod.GET)
+    public String create(@PathVariable String individuation, HttpServletRequest request) {
         return "/profile/article/create";
     }
 }
