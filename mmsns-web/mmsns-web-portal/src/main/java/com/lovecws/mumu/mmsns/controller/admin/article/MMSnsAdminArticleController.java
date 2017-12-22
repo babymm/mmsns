@@ -54,7 +54,8 @@ public class MMSnsAdminArticleController {
     public Object scoreData(@PathVariable String individuation,
                             @RequestParam(name = "page", required = false, defaultValue = "1") int page,
                             @RequestParam(name = "limit", required = false, defaultValue = "10") int limit) {
-        PageBean<MMSnsArticleCategoryEntity> pageBean = articleCategoryService.getArticleClassifyByCondition(MMSnsArticleCategoryEntity.ARTICLE_CATEGORY_TYPE_USER, null, null, page, limit);
+        MMSnsCommonUserEntity sessionCommonUser = (MMSnsCommonUserEntity) SecurityUtils.getSubject().getSession(true).getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
+        PageBean<MMSnsArticleCategoryEntity> pageBean = articleCategoryService.getArticleClassifyByCondition(MMSnsArticleCategoryEntity.ARTICLE_CATEGORY_TYPE_USER, String.valueOf(sessionCommonUser.getUserId()), null, page, limit);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("data", pageBean.getRecordList());
         resultMap.put("code", 0);
@@ -106,8 +107,8 @@ public class MMSnsAdminArticleController {
         articleCategoryEntity.setCategoryStatus(PublicEnum.NORMAL.value());
         articleCategoryEntity.setCategoryDate(new Date());
         articleCategoryEntity.setCategoryType(MMSnsArticleCategoryEntity.ARTICLE_CATEGORY_TYPE_USER);
-        MMSnsCommonUserEntity commonUserEntity = (MMSnsCommonUserEntity) SecurityUtils.getSubject().getSession(true).getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
-        articleCategoryEntity.setUserId(commonUserEntity.getUserId());
+        MMSnsCommonUserEntity sessionCommonUser = (MMSnsCommonUserEntity) SecurityUtils.getSubject().getSession(true).getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
+        articleCategoryEntity.setUserId(sessionCommonUser.getUserId());
         articleCategoryEntity.setCategoryName(categoryName);
         articleCategoryEntity.setCategoryIcon(categoryIcon);
         articleCategoryEntity.setCategoryDesc(categoryDesc);
