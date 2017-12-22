@@ -61,116 +61,116 @@
                 <h2>个人信息管理</h2>
                 <ol>
                     #if($adminModular=='userInbox')
-                        <li><a class="active" href="/admin/babymm/user/inbox">我的私信</a></li>
+                        <li><a class="active" href="/admin/$individuation/user/inbox">我的私信</a></li>
                     #else
-                        <li><a href="/admin/babymm/user/inbox">我的私信</a></li>
+                        <li><a href="/admin/$individuation/user/inbox">我的私信</a></li>
                     #end
                     #if($adminModular=='userProfile')
-                        <li><a class="active" href="/admin/babymm/user/profile">修改个人资料</a></li>
+                        <li><a class="active" href="/admin/$individuation/user/profile">修改个人资料</a></li>
                     #else
-                        <li><a href="/admin/babymm/user/profile">修改个人资料</a></li>
+                        <li><a href="/admin/$individuation/user/profile">修改个人资料</a></li>
                     #end
                     #if($adminModular=='userChpwd')
-                        <li><a class="active" href="/admin/babymm/user/chpwd">修改登录密码</a></li>
+                        <li><a class="active" href="/admin/$individuation/user/chpwd">修改登录密码</a></li>
                     #else
-                        <li><a href="/admin/babymm/user/chpwd">修改登录密码</a></li>
+                        <li><a href="/admin/$individuation/user/chpwd">修改登录密码</a></li>
                     #end
                     #if($adminModular=='userNamespace')
-                        <li><a class="active" href="/admin/babymm/user/namespace">空间个性化设置</a></li>
+                        <li><a class="active" href="/admin/$individuation/user/namespace">空间个性化设置</a></li>
                     #else
-                        <li><a href="/admin/babymm/user/namespace">空间个性化设置</a></li>
+                        <li><a href="/admin/$individuation/user/namespace">空间个性化设置</a></li>
                     #end
                     #if($adminModular=='userChemail')
-                        <li><a class="active" href="/admin/babymm/user/chemail">修改登录邮箱</a></li>
+                        <li><a class="active" href="/admin/$individuation/user/chemail">修改登录邮箱</a></li>
                     #else
-                        <li><a href="/admin/babymm/user/chemail">修改登录邮箱</a></li>
+                        <li><a href="/admin/$individuation/user/chemail">修改登录邮箱</a></li>
                     #end
                     #if($adminModular=='userChphone')
-                        <li><a class="active" href="/admin/babymm/user/chphone">绑定手机</a></li>
+                        <li><a class="active" href="/admin/$individuation/user/chphone">绑定手机</a></li>
                     #else
-                        <li><a href="/admin/babymm/user/chphone">绑定手机</a></li>
+                        <li><a href="/admin/$individuation/user/chphone">绑定手机</a></li>
                     #end
                 </ol>
             </li>
             <li>
                 <h2>文章管理</h2>
                 <ol>
-                    <li><a href="/profile/babymm/article/create">发表文章</a></li>
-                    <li><a href="/profile/babymm/article">我的文章</a></li>
+                    <li><a href="/profile/$individuation/article/create">发表文章</a></li>
+                    <li><a href="/profile/$individuation/article">我的文章</a></li>
                     #if($adminModular=='articleClassify')
-                        <li><a class="active" href="/admin/babymm/article/classify">文章分类</a></li>
+                        <li><a class="active" href="/admin/$individuation/article/classify">文章分类</a></li>
                     #else
-                        <li><a href="/admin/babymm/article/classify">文章分类</a></li>
+                        <li><a href="/admin/$individuation/article/classify">文章分类</a></li>
                     #end
                     #if($adminModular=='articleComment')
-                        <li><a class="active" href="/admin/babymm/article/comment">文章评论管理</a></li>
+                        <li><a class="active" href="/admin/$individuation/article/comment">文章评论管理</a></li>
                     #else
-                        <li><a href="/admin/babymm/article/comment">文章评论管理</a></li>
+                        <li><a href="/admin/$individuation/article/comment">文章评论管理</a></li>
                     #end
                 </ol>
             </li>
             <li>
                 <h2>动弹管理</h2>
                 <ol>
-                    <li><a href="/profile/babymm/action/publish">发表动弹</a></li>
-                    <li><a href="/profile/babymm/action">我的动弹</a></li>
+                    <li><a href="/profile/$individuation/action/publish">发表动弹</a></li>
+                    <li><a href="/profile/$individuation/action">我的动弹</a></li>
                     #if($adminModular=='actionComment')
-                        <li><a class="active" href="/admin/babymm/action/comment">动弹评论管理</a></li>
+                        <li><a class="active" href="/admin/$individuation/action/comment">动弹评论管理</a></li>
                     #else
-                        <li><a href="/admin/babymm/action/comment">动弹评论管理</a></li>
+                        <li><a href="/admin/$individuation/action/comment">动弹评论管理</a></li>
                     #end
                 </ol>
             </li>
             <li>
                 <h2>群组管理</h2>
                 <ol>
-                    <li><a href="/profile/babymm/group/create">创建群组</a></li>
-                    <li><a href="/profile/babymm/group">我的群组</a></li>
+                    <li><a href="/profile/$individuation/group/create">创建群组</a></li>
+                    <li><a href="/profile/$individuation/group">我的群组</a></li>
                     #if($adminModular=='groupComment')
-                        <li><a class="active" href="/admin/babymm/group/comment">群组评论管理</a></li>
+                        <li><a class="active" href="/admin/$individuation/group/comment">群组评论管理</a></li>
                     #else
-                        <li><a href="/admin/babymm/group/comment">群组评论管理</a></li>
+                        <li><a href="/admin/$individuation/group/comment">群组评论管理</a></li>
                     #end
                 </ol>
             </li>
             <li>
                 <h2>资讯管理</h2>
                 <ol>
-                    <li><a href="/profile/babymm/news/publish">上传资讯</a></li>
-                    <li><a href="/profile/babymm/news">我的资讯</a></li>
+                    <li><a href="/profile/$individuation/news/publish">上传资讯</a></li>
+                    <li><a href="/profile/$individuation/news">我的资讯</a></li>
                     #if($adminModular=='newsComment')
-                        <li><a class="active" href="/admin/babymm/news/comment">资讯评论管理</a></li>
+                        <li><a class="active" href="/admin/$individuation/news/comment">资讯评论管理</a></li>
                     #else
-                        <li><a href="/admin/babymm/news/comment">资讯评论管理</a></li>
+                        <li><a href="/admin/$individuation/news/comment">资讯评论管理</a></li>
                     #end
                 </ol>
             </li>
             <li>
                 <h2>图库管理</h2>
                 <ol>
-                    <li><a href="/profile/babymm/photo/upload">上传图库</a></li>
-                    <li><a href="/profile/babymm/photo">我的图库</a></li>
+                    <li><a href="/profile/$individuation/photo/upload">上传图库</a></li>
+                    <li><a href="/profile/$individuation/photo">我的图库</a></li>
                     #if($adminModular=='photoAlbum')
-                        <li><a class="active" href="/admin/babymm/photo/album">我的相册</a></li>
+                        <li><a class="active" href="/admin/$individuation/photo/album">我的相册</a></li>
                     #else
-                        <li><a href="/admin/babymm/photo/album">相册管理</a></li>
+                        <li><a href="/admin/$individuation/photo/album">相册管理</a></li>
                     #end
                     #if($adminModular=='photoComment')
-                        <li><a class="active" href="/admin/babymm/photo/comment">图库评论管理</a></li>
+                        <li><a class="active" href="/admin/$individuation/photo/comment">图库评论管理</a></li>
                     #else
-                        <li><a href="/admin/babymm/photo/comment">图库评论管理</a></li>
+                        <li><a href="/admin/$individuation/photo/comment">图库评论管理</a></li>
                     #end
                 </ol>
             </li>
             <li>
                 <h2>文档管理</h2>
                 <ol>
-                    <li><a href="/profile/babymm/doc/upload">上传文档</a></li>
-                    <li><a href="/profile/babymm/doc">我的文档</a></li>
+                    <li><a href="/profile/$individuation/doc/upload">上传文档</a></li>
+                    <li><a href="/profile/$individuation/doc">我的文档</a></li>
                     #if($adminModular=='docComment')
-                        <li><a class="active" href="/admin/babymm/doc/comment">文档评论管理</a></li>
+                        <li><a class="active" href="/admin/$individuation/doc/comment">文档评论管理</a></li>
                     #else
-                        <li><a href="/admin/babymm/doc/comment">文档评论管理</a></li>
+                        <li><a href="/admin/$individuation/doc/comment">文档评论管理</a></li>
                     #end
                 </ol>
             </li>

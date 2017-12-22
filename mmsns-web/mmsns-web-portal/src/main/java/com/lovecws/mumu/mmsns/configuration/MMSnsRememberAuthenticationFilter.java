@@ -48,7 +48,7 @@ public class MMSnsRememberAuthenticationFilter extends UserFilter {
                 MMSnsCommonUserEntity commonUser = (MMSnsCommonUserEntity) session.getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
                 //如果session不保存用户信息；则从数据库中获取
                 if (commonUser == null) {
-                    List<MMSnsCommonUserEntity> commonUsers = commonUserService.getCommonUserByCondition(principal.toString(), principal.toString(),principal.toString(),null);
+                    List<MMSnsCommonUserEntity> commonUsers = commonUserService.getCommonUserByCondition(principal.toString(), principal.toString(),principal.toString(),null,null);
                     if (commonUser != null && commonUsers.size() > 0) {
                         session.setAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER, commonUsers.get(0));
                     }

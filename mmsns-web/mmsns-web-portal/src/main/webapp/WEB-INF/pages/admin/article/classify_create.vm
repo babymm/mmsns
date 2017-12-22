@@ -8,35 +8,42 @@
     <div class="layout-right">
         <div class="right-content">
             <div class="right-articleclassifyheader">
-                <span class="articleheader"><a href="/admin/babymm/article/classify">文章分类</a><small>>> ${articleClassifyTitle}</small></span>
+                <span class="articleheader"><a href="/admin/$individuation/article/classify">文章分类</a><small>>> ${articleClassifyTitle}</small></span>
             </div>
             <div class="right-createArticleClassifyFrom">
                 <form class="layui-form" action="">
+                    <input type="hidden" name="categoryId" value="$!articleCategory.categoryId">
                     <div class="layui-form-item">
                         <label class="layui-form-label">分类名称</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="title" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                            <input type="text" name="categoryName" value="$!articleCategory.categoryName" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">分类图标</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="categoryIcon" value="$!articleCategory.categoryIcon" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">排序序号</label>
                         <div class="layui-input-inline">
-                            <input type="number" name="title" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                            <input type="number" name="categoryOrder" value="$!articleCategory.categoryOrder" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">分类描述</label>
                         <div class="layui-input-inline">
-                            <textarea style="width: 400px;height: 200px;"></textarea>
+                            <textarea style="width: 400px;height: 200px;" name="categoryDesc">$!articleCategory.categoryDesc</textarea>
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
                             #if($articleClassifyOperation=='create')
-                                <button class="layui-btn" lay-submit lay-filter="formDemo">创建分类</button>
+                                <button class="layui-btn" lay-submit lay-filter="createArticleCategory">创建分类</button>
                             #elseif($articleClassifyOperation=='view')
                             #elseif($articleClassifyOperation=='edit')
-                                <button class="layui-btn" lay-submit lay-filter="formDemo">修改分类</button>
+                                <button class="layui-btn" lay-submit lay-filter="editArticleCategory">修改分类</button>
                             #end
                         </div>
                     </div>
@@ -49,7 +56,39 @@
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript">
-    layui.use(['element'], function () {
-        var element = layui.element;
+    layui.use(['element', 'form'], function () {
+        var element = layui.element, form = layui.form;
+        //添加文章分类
+        form.on('submit(createArticleCategory)', function (data) {
+            $.post("/admin/$individuation/article/classify/create", data.field, function (respData) {
+                if(respData.code==200){
+                    layer.msg('添加文章分类操作成功', {
+                        icon: 1,
+                        time: 2000
+                    }, function () {
+                        top.window.location.href = "/admin/$individuation/article/classify";
+                    });
+                } else {
+                    layer.alert(respData.data, {icon: 5});
+                }
+            })
+            return false;
+        });
+        //编辑文章分类
+        form.on('submit(editArticleCategory)', function (data) {
+            $.post("/admin/$individuation/article/classify/edit", data.field, function (respData) {
+                if(respData.code==200){
+                    layer.msg('编辑文章分类操作成功', {
+                        icon: 1,
+                        time: 2000
+                    }, function () {
+                        top.window.location.href = "/admin/$individuation/article/classify";
+                    });
+                } else {
+                    layer.alert(respData.data, {icon: 5});
+                }
+            })
+            return false;
+        });
     });
 </script>

@@ -89,10 +89,11 @@ body{
 .layout-body .layout-center .layout-form .form-sendbutton button{
     background: #31b968;
     float: left;
-    width: 92px;
     height: 100%;
+    width: 92px;
     font-size: .875rem;
     line-height: 1.6;
+    color: white;
 }
 .layout-body .layout-center .layout-form .form-item .form-remember{
     font-size: .875rem;

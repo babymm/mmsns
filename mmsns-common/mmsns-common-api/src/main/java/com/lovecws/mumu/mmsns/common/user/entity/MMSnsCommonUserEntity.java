@@ -69,6 +69,7 @@ public class MMSnsCommonUserEntity extends PersistentEntity {
 
     private String individuation;//个性化名称
     private String isindivid;//个性化设置时间
+    private String motto;//人生格言
 
     public Integer getUserId() {
         return userId;
@@ -366,11 +367,19 @@ public class MMSnsCommonUserEntity extends PersistentEntity {
         this.individuation = individuation;
     }
 
-    public String isIsindivid() {
+    public void setIsindivid(String isindivid) {
+        this.isindivid = isindivid;
+    }
+
+    public String getIsindivid() {
         return isindivid;
     }
 
-    public void setIsindivid(String isindivid) {
-        this.isindivid = isindivid;
+    public String getMotto() {
+        return motto;
+    }
+
+    public void setMotto(String motto) {
+        this.motto = motto;
     }
 }

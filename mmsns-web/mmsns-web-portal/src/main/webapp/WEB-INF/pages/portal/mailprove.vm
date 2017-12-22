@@ -1,0 +1,7 @@
+<title>邮箱激活-MMSNS博客系统</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+#parse("/portal/header.vm")
+<div style="width: 300px;margin: 0 auto;margin-top: 100px;">
+    <h2 style="color: green;">$msg</h2>
+</div>
+#parse("/portal/sfooter.vm")

@@ -23,43 +23,35 @@ public class MMSnsPortalProfileController {
     private HttpServletRequest request;
     @Autowired(required = false)
     private MMSnsCommonUserService commonUserService;
-    @Autowired
-    private MMSnsVisitUserContainer visitUserContainer;
 
     @RequestMapping(value = {"/{individuation}/home", "/{individuation}"}, method = RequestMethod.GET)
     public String home(@PathVariable String individuation) {
-        visitUserContainer.visitUser(individuation);
 
         return "/profile/home";
     }
 
     @RequestMapping(value = "/{individuation}/home/vote", method = RequestMethod.GET)
     public String vote(@PathVariable String individuation) {
-        visitUserContainer.visitUser(individuation);
         return "/profile/vote";
     }
 
     @RequestMapping(value = "/{individuation}/home/fans", method = RequestMethod.GET)
     public String fans(@PathVariable String individuation) {
-        visitUserContainer.visitUser(individuation);
         return "/profile/fans";
     }
 
     @RequestMapping(value = "/{individuation}/home/fellow", method = RequestMethod.GET)
     public String fellow(@PathVariable String individuation) {
-        visitUserContainer.visitUser(individuation);
         return "/profile/fellow";
     }
 
     @RequestMapping(value = "/{individuation}/home/access", method = RequestMethod.GET)
     public String access(@PathVariable String individuation) {
-        visitUserContainer.visitUser(individuation);
         return "/profile/access";
     }
 
     @RequestMapping(value = "/{individuation}/home/score", method = RequestMethod.GET)
     public String score(@PathVariable String individuation) {
-        visitUserContainer.visitUser(individuation);
         return "/profile/score";
     }
 

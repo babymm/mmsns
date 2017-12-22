@@ -106,6 +106,9 @@
           <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
           <element id="library" level="project" name="Maven: com.lovecws.mumu:mumu-fdfs:1.0-SNAPSHOT" />
           <element id="library" level="project" name="Maven: com.lovecws.mumu:mumu-sms:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.lovecws.mumu:mumu-email:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: javax.mail:mail:1.5.0-b01" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
           <element id="archive" name="mmsns-common-api-1.0-SNAPSHOT.jar">
             <element id="module-output" name="mmsns-common-api" />
           </element>

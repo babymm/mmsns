@@ -7,26 +7,27 @@
        <div class="layout-header">
            <h2>手机找回密码</h2>
        </div>
-        <form class="layout-form" action="/login" method="post" enctype="application/x-www-form-urlencoded">
+        <form class="layout-form" method="post" enctype="application/x-www-form-urlencoded">
             <div class="form-item">
-                <input type="email" name="userPassword" placeholder="手机号码">
+                <input type="phone" name="phone" placeholder="手机号码">
             </div>
             <div class="form-item">
                 <div class="form-smscode">
-                    <input type="text" name="captchacode" placeholder="短信验证码">
+                    <input type="text" name="code" placeholder="短信验证码">
+                    <input type="hidden" name="smsId" value="">
                 </div>
                 <div class="form-sendbutton">
-                    <button type="button">发送</button>
+                    <button id="sendMessageBtn" type="button" onclick="sendPhoneMessage()">发送</button>
                 </div>
             </div>
             <div class="form-item">
-                <input type="text" name="userPassword" placeholder="输入新密码">
+                <input type="password" name="password" placeholder="输入新密码">
             </div>
             <div class="form-item">
-                <input type="text" name="userPassword" placeholder="重复新密码">
+                <input type="password" name="repassword" placeholder="重复新密码">
             </div>
             <div class="form-item">
-                <input type="submit" class="register-button" value="重设密码"/>
+                <input type="button" class="register-button" onclick="iforgetPhone()" value="重设密码"/>
             </div>
             <div class="form-item">
                 <div class="form-ul">
@@ -40,6 +41,7 @@
         </form>
    </div>
 </div>
-
 #parse("/portal/sfooter.vm")
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layer/layer.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/resources/portal/js/login.js" charset="utf-8"></script>

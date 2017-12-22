@@ -20,7 +20,7 @@ public interface MMSnsCommonUserService {
      * @param individuation  用户个性化空间名称
      * @return
      */
-    public List<MMSnsCommonUserEntity> getCommonUserByCondition(String userName,String userPhone, String userEmail,String individuation);
+    public List<MMSnsCommonUserEntity> getCommonUserByCondition(String userName,String userPhone, String userEmail,String individuation,String userStatus);
 
     /**
      * 添加用户
@@ -41,8 +41,8 @@ public interface MMSnsCommonUserService {
     /**
      * 更新用户信息
      *
-     * @param elebillCommonUserEntity 用户实体
+     * @param commonUserEntity 用户实体
      * @return
      */
-    public MMSnsCommonUserEntity updateCommonUser(MMSnsCommonUserEntity elebillCommonUserEntity);
+    public MMSnsCommonUserEntity updateCommonUser(MMSnsCommonUserEntity commonUserEntity);
 }

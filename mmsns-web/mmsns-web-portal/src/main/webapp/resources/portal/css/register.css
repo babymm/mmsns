@@ -43,7 +43,9 @@ body{
 .layout-body .layout-center .layout-content ul li{
     width: 100%;
     border: 1px solid #b3b3b3;
+    /*border: 1px solid rgb(49, 185, 104);*/
     margin-bottom: 10px;
+    border-radius: 2px;
     height: 70px;
     padding: 20px;
 }
@@ -71,22 +73,21 @@ body{
     float: right;
 }
 .layout-body .layout-center .layout-content ul li .content-right a{
-     float: right;
-     margin-top: 15px;
-     line-height: 26px;
-     height: 26px;
-     width: 120px;
-     background-color: #f40;
-     border: 1px solid #f40;
-     display: inline-block;
-     text-align: center;
-     text-decoration: none;
-     vertical-align: middle;
-     cursor: pointer;
-     font-size: 14px;
-     font-weight: 700;
-     border-radius: 2px;
-     padding: 0 20px;
-     background-image: none;
-     color: #fff;
+    float: right;
+    margin-top: 15px;
+    line-height: 26px;
+    height: 26px;
+    width: 120px;
+    background-color: rgb(49, 185, 104);
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 2px;
+    padding: 0 20px;
+    background-image: none;
+    color: #fff;
 }

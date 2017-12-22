@@ -7,26 +7,26 @@
        <div class="layout-header">
            <h2>邮箱找回密码</h2>
        </div>
-        <form class="layout-form" action="/login" method="post" enctype="application/x-www-form-urlencoded">
+        <form class="layout-form" method="post" enctype="application/x-www-form-urlencoded">
             <div class="form-item">
-                <input type="email" name="userPassword" placeholder="邮箱账号">
+                <input type="email" name="email" placeholder="邮箱账号">
             </div>
             <div class="form-item">
                 <div class="form-smscode">
-                    <input type="text" name="captchacode" placeholder="邮箱验证码">
+                    <input type="text" name="code" placeholder="邮箱验证码">
                 </div>
                 <div class="form-sendbutton">
-                    <button type="button">发送</button>
+                    <button id="sendEmailBtn" type="button" onclick="sendEmailMessage()">发送</button>
                 </div>
             </div>
             <div class="form-item">
-                <input type="text" name="userPassword" placeholder="输入新密码">
+                <input type="password" name="password" placeholder="输入新密码">
             </div>
             <div class="form-item">
-                <input type="text" name="userPassword" placeholder="重复新密码">
+                <input type="password" name="repassword" placeholder="重复新密码">
             </div>
             <div class="form-item">
-                <input type="submit" class="register-button" value="重设密码"/>
+                <input type="button" class="register-button" onclick="iforgetEmail()" value="重设密码"/>
             </div>
             <div class="form-item">
                 <div class="form-ul">
@@ -40,6 +40,7 @@
         </form>
    </div>
 </div>
-
 #parse("/portal/sfooter.vm")
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layer/layer.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/resources/portal/js/login.js" charset="utf-8"></script>

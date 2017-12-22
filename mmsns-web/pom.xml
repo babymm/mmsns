@@ -21,4 +21,42 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.lovecws.mumu</groupId>
+                <artifactId>mmsns-common-service</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.lovecws.mumu</groupId>
+                        <artifactId>mmsns-article-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.lovecws.mumu</groupId>
+                <artifactId>mmsns-common-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.lovecws.mumu</groupId>
+                <artifactId>mmsns-article-service</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.lovecws.mumu</groupId>
+                        <artifactId>mmsns-article-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.lovecws.mumu</groupId>
+                <artifactId>mmsns-article-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

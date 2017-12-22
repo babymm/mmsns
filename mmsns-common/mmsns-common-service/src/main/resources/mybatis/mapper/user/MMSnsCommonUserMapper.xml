@@ -52,11 +52,12 @@
 
         <result column="individuation" property="individuation" jdbcType="VARCHAR"/>
         <result column="isindivid" property="isindivid" jdbcType="VARCHAR"/>
+        <result column="motto" property="motto" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="ElebillCommonUserColumn">
         user_id,user_status,create_ip,create_date,create_area,edit_ip,edit_date,edit_area,last_login_time,last_login_ip,last_login_area,user_name,real_name,user_password,user_salt,user_sex,user_birthday,
         user_phone,phone_active,avator,thumb,user_email,email_active,province,city,area,detail_area,register_type,thirdLogin_token,wexin,company,positional,user_auth,idcard,idcard_img,idcardbg_img,
-        individuation,isindivid
+        individuation,isindivid,motto
     </sql>
 
     <!-- 获取用户数量 -->
@@ -93,16 +94,19 @@
         from mc_user
         <where>
             <if test="userName!=null and userName!=''">
-                and user_name=#{userName}
+                OR user_name=#{userName}
             </if>
             <if test="userPhone!=null and userPhone!=''">
-                and user_phone=#{userPhone}
+                OR user_phone=#{userPhone}
             </if>
             <if test="userEmail!=null and userEmail!=''">
-                and user_email=#{userEmail}
+                OR user_email=#{userEmail}
             </if>
             <if test="individuation!=null and individuation!=''">
-                and individuation=#{individuation}
+                OR individuation=#{individuation}
+            </if>
+            <if test="userStatus!=null and userStatus!=''">
+                AND user_status=#{userStatus}
             </if>
         </where>
     </select>
@@ -231,6 +235,9 @@
             <if test="isindivid!=null">
                 isindivid,
             </if>
+            <if test="motto!=null">
+                motto,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="userStatus!=null">
@@ -343,6 +350,9 @@
             </if>
             <if test="isindivid!=null">
                 #{isindivid},
+            </if>
+            <if test="motto!=null">
+                #{motto},
             </if>
         </trim>
     </insert>
@@ -461,6 +471,9 @@
             </if>
             <if test="isindivid!=null">
                 isindivid=#{isindivid},
+            </if>
+            <if test="motto!=null">
+                motto=#{motto},
             </if>
         </set>
         <where>

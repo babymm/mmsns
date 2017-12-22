@@ -28,12 +28,13 @@ public class MMSnsCommonUserServiceImpl implements MMSnsCommonUserService {
     private MMSnsCommonUserDao commonUserDao;
 
     @Override
-    public List<MMSnsCommonUserEntity> getCommonUserByCondition(final String userName, final String userPhone,final String userEmail,final String individuation) {
+    public List<MMSnsCommonUserEntity> getCommonUserByCondition(final String userName, final String userPhone,final String userEmail,final String individuation,final String userStatus) {
         Map<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("userName", userName);
         paramMap.put("userPhone", userPhone);
         paramMap.put("userEmail", userEmail);
         paramMap.put("individuation", individuation);
+        paramMap.put("userStatus", userStatus);
         return commonUserDao.listByColumn(paramMap);
     }
 

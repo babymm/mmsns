@@ -17,49 +17,7 @@
 <body>
 #parse("/portal/header.vm")
 <div class="layout-body">
-    <div class="layout-left">
-        <div class="action-classify">
-            <div class="user-info">
-                <span class="user-logo"><a href="/profile/$individuation/home"><img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068" width="100" height="100" style="border-radius: 50%"></a></span>
-                <span class="user-name"><a href="/profile/$individuation/home">baby慕慕</a></span>
-                <span class="user-words">共编写3456文字</span>
-                <span class="user-writeaction"><a href="/profile/$individuation/action/publish">发动弹</a></span>
-            </div>
-            <div class="classify-body">
-                <div class="classify-header">
-                    <span class="classifytitle" style="line-height: 30px;font-size: 18px;font-weight: 400">动弹类型</span>
-                    <span class="classifycount">共3类</span>
-                </div>
-                <hr>
-                <ul>
-                    <li>
-                        <a href="/profile/$individuation/action">
-                            <span class="classifytitle">我发布的</span>
-                            <span class="classifycount">3</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/profile/$individuation/action">
-                            <span class="classifytitle">我转发的</span>
-                            <span class="classifycount">3</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/profile/$individuation/action">
-                            <span class="classifytitle">我点赞的</span>
-                            <span class="classifycount">3</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/profile/$individuation/action">
-                            <span class="classifytitle">我收藏的</span>
-                            <span class="classifycount">3</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    #parse("/profile/action/left.vm")
     <div class="layout-right">
         <div class="action-body">
             <h2 style="font-size: 30px;font-weight: 400px;color: green;border-radius: 10%">发布动弹</h2>

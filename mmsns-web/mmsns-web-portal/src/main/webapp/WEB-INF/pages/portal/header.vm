@@ -112,7 +112,7 @@
     #if($shiro.isUser())
         <ul class="nav-button layui-nav">
             <li class="layui-nav-item">
-                <a href="/admin/$!MMSNS_COMMON_USER.individuation/user/inbox">我的消息<span class="layui-badge">9</span></a>
+                <a href="/admin/$!MMSNS_COMMON_USER.individuation/user/inbox">我的消息#*<span class="layui-badge">9</span>*#</a>
             </li>
             <li class="layui-nav-item">
                 <a href="/profile/$!MMSNS_COMMON_USER.individuation/article/create">资料编辑</a>
@@ -139,8 +139,9 @@
             <li class="layui-nav-item">
                 <a href="/admin/$!MMSNS_COMMON_USER.individuation/index">$!MMSNS_COMMON_USER.userName</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="/admin/$!MMSNS_COMMON_USER.individuation/index">个人资料</a></dd>
-                    <dd><a href="javascript:;">安全管理</a></dd>
+                    <dd><a href="/admin/$!MMSNS_COMMON_USER.individuation/user/profile">个人资料</a></dd>
+                    <dd><a href="/admin/$!MMSNS_COMMON_USER.individuation/user/chpwd">修改密码</a></dd>
+                    <dd><a href="/admin/$!MMSNS_COMMON_USER.individuation/user/chphone">安全管理</a></dd>
                     <dd><a href="/logout">退出登录</a></dd>
                 </dl>
             </li>

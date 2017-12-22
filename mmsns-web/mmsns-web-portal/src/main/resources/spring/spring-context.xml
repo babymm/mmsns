@@ -49,8 +49,8 @@
     <import resource="classpath:spring/spring-common-redis.xml"/>
     <import resource="classpath:spring/spring-common-fdfs.xml" />
     <import resource="classpath:spring/spring-common-sms.xml" />
-    <!--
-    <import resource="classpath:spring/spring-common-email.xml" />-->
+    <import resource="classpath:spring/spring-common-email.xml" />
+
     <import resource="classpath:spring/spring-motan-client.xml"/>
     <import resource="classpath:spring/spring-shiro.xml"/>
 </beans>

@@ -9,7 +9,7 @@
        </div>
         <form class="layout-form" method="post" enctype="application/x-www-form-urlencoded">
             <div class="form-item">
-                <input type="text" name="username" placeholder="用户昵称">
+                <input type="text" name="username" placeholder="用户昵称(6-12)">
             </div>
             <div class="form-item">
                 <input type="text" name="phone" placeholder="手机号码">
@@ -20,14 +20,14 @@
                     <input type="hidden" name="smsId" value="">
                 </div>
                 <div class="form-sendbutton">
-                    <button id="sendMessageBtn" type="button" onclick="sendPhoneMessage()" >发送</button>
+                    <button id="sendMessageBtn" type="button" onclick="sendPhoneMessage()">发送</button>
                 </div>
             </div>
             <div class="form-item">
                 <input type="password" name="password" placeholder="注册密码">
             </div>
             <div class="form-item">
-                <input type="password" name="repassword" placeholder="重复输入注册密码">
+                <input type="password" name="repassword" placeholder="重复注册密码">
             </div>
             <div class="form-item">
                 <input type="button" class="register-button" onclick="registerPhone()" value="立即注册"/>

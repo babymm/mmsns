@@ -11,13 +11,13 @@
                 <span>文章分类</span>
             </div>
             <div class="right-buttons">
-                <a href="/admin/babymm/article/classify/create"><span>创建文章分类<span></span></a>
+                <a href="/admin/$individuation/article/classify/create"><span>创建文章分类<span></span></a>
             </div>
             <div class="right-articleclassifytable">
-                <table class="layui-table" id="articleClassifyTable"></table>
+                <table class="layui-table" id="articleClassifyTable" lay-filter="articleClassifyTableFilter"></table>
                 <script type="text/html" id="articleClassifyTableBar">
-                    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail" href="/admin/babymm/article/classify/view">查看</a>
-                    <a class="layui-btn layui-btn-xs" lay-event="edit" href="/admin/babymm/article/classify/edit">编辑</a>
+                    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+                    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
                     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
                 </script>
             </div>
@@ -30,36 +30,48 @@
 <script type="text/javascript">
     layui.use(['element','table'], function () {
         var element = layui.element,table=layui.table;
+        var page={
+            layout: ['prev', 'page', 'next', 'skip']
+        };
         table.render({
-            id: 'articleClassifyTableReload'
-            ,elem: '#articleClassifyTable'
-            ,url:'/profile/babymm/home/score/data'
+            elem: '#articleClassifyTable'
+            ,url:'/admin/$individuation/article/classify/data'
             ,cellMinWidth: 80
             ,cols: [[
-                {field:'id', title: '分类ID',width:80}
-                ,{field:'scoreChanage', title: '排序序号',width:80}
-                ,{field:'scoreChanage',width:300, title: '分类名称'}
-                ,{field:'scoreChanage',width:120, title: '文章数量',sort:true}
-                ,{field:'remark', title: '分类描述'}
-                ,{field:'createDate',width:170, title: '创建时间'}
+                {field:'categoryId', title: '分类ID',width:80}
+                ,{field:'categoryOrder', title: '排序序号',width:90}
+                ,{field:'categoryName',width:300, title: '分类名称'}
+                ,{field:'articleCount',width:120, title: '文章数量',sort:true}
+                ,{field:'categoryDesc', title: '分类描述'}
+                ,{field:'categoryDate',width:170, title: '创建时间'}
                 ,{field:'toolbar', title: '操作',width:170,align:'center',toolbar: '#articleClassifyTableBar'}
             ]]
-            ,page: {
-                layout: ['prev', 'page', 'next', 'skip']
-            }
+            ,page:page
             ,skin: 'row'
         });
-        table.on('tool(articleClassifyTableBar)', function(obj){
+        table.on('tool(articleClassifyTableFilter)', function(obj){
             var data = obj.data;
+            console.log(data);
             if(obj.event === 'detail'){
-                layer.msg('ID：'+ data.id + ' 的查看操作');
+                window.location.href="/admin/$individuation/article/classify/view?categoryId="+data.categoryId;
             } else if(obj.event === 'del'){
-                layer.confirm('真的删除行么', function(index){
-                    obj.del();
-                    layer.close(index);
+                layer.confirm('你确定要删除文章分类['+data.categoryName+']吗？', function(index){
+                    $.post("/admin/$individuation/article/classify/delete", {categoryId:data.categoryId,_method:'delete'}, function (respData) {
+                        if(respData.code==200){
+                            layer.msg('删除文章分类操作成功', {
+                                icon: 1,
+                                time: 2000
+                            }, function () {
+                                obj.del();
+                                layer.close(index);
+                            });
+                        } else {
+                            layer.alert(respData.data, {icon: 5});
+                        }
+                    })
                 });
             } else if(obj.event === 'edit'){
-                layer.alert('编辑行：<br>'+ JSON.stringify(data))
+                window.location.href="/admin/$individuation/article/classify/edit?categoryId="+data.categoryId;
             }
         });
     });

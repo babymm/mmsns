@@ -1,8 +1,8 @@
 <div class="layout-left">
     <div class="photo-classify">
         <div class="user-info">
-            <span class="user-logo"><a href="/profile/$individuation/home"><img src="https://gw.alicdn.com/bao/uploaded/i1/180558071/TB2sy6jXMQc61BjSZFGXXa1DFXa_!!180558071.jpg_400x400q90.jpg?t=1513063905068" width="100" height="100" style="border-radius: 50%"></a></span>
-            <span class="user-name"><a href="/profile/$individuation/home">baby慕慕</a></span>
+            <span class="user-logo"><a href="/profile/$individuation/home"><img src="$VISIT_USER.avator" width="100" height="100" style="border-radius: 50%"></a></span>
+            <span class="user-name"><a href="/profile/$individuation/home">$VISIT_USER.userName</a></span>
             <span class="user-words">发布120个帖子</span>
             <span class="user-writephoto"><a href="/profile/$individuation/photo/upload">上传图库</a></span>
         </div>

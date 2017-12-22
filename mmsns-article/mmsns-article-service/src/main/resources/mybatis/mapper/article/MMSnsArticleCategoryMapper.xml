@@ -28,6 +28,15 @@
         select count(category_id)
         from mb_article_category
         <where>
+            <if test="categoryType!=null and categoryType!=''">
+                and category_type=#{categoryType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and user_id=#{userId}
+            </if>
+            <if test="systemUserId!=null and systemUserId!=''">
+                and system_user_id=#{systemUserId}
+            </if>
             <if test="categoryStatus!=null and categoryStatus!=''">
                 and category_status=#{categoryStatus}
             </if>
@@ -40,11 +49,20 @@
         <include refid="MMSnsArticleCategoryColumn"/>
         from mb_article_category
         <where>
+            <if test="categoryType!=null and categoryType!=''">
+                and category_type=#{categoryType}
+            </if>
+            <if test="userId!=null and userId!=''">
+                and user_id=#{userId}
+            </if>
+            <if test="systemUserId!=null and systemUserId!=''">
+                and system_user_id=#{systemUserId}
+            </if>
             <if test="categoryStatus!=null and categoryStatus!=''">
                 and category_status=#{categoryStatus}
             </if>
         </where>
-        ORDER BY category_order DESC
+        ORDER BY category_order ASC
         <if test="beginIndex!=null and numPerPage!=null">
             limit #{beginIndex},#{numPerPage}
         </if>
