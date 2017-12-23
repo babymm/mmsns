@@ -11,6 +11,15 @@
         <result column="vote_user_id" property="voteUserId" jdbcType="VARCHAR"/>
         <result column="article_id" property="articleId" jdbcType="INTEGER"/>
         <result column="article_user_id" property="articleUserId" jdbcType="INTEGER"/>
+
+        <result column="article_title" property="articleTitle" jdbcType="VARCHAR"/>
+        <result column="article_logo" property="articleLogo" jdbcType="VARCHAR"/>
+        <result column="article_date" property="articleDate" jdbcType="DATE"/>
+        <result column="read_count" property="readCount" jdbcType="INTEGER"/>
+        <result column="collect_count" property="collectCount" jdbcType="INTEGER"/>
+        <result column="vote_count" property="voteCount" jdbcType="INTEGER"/>
+        <result column="relay_count" property="relayCount" jdbcType="INTEGER"/>
+        <result column="comment_count" property="commentCount" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="MMSnsArticleVoteColumn">
 		vote_id,vote_status,vote_date,vote_user_id,article_id,article_user_id
@@ -21,23 +30,37 @@
         select count(vote_id)
         from mb_article_vote
         <where>
+            <if test="articleId!=null and articleId!=''">
+                and article_id=#{articleId}
+            </if>
+            <if test="voteUserId!=null and voteUserId!=''">
+                and vote_user_id=#{voteUserId}
+            </if>
             <if test="voteStatus!=null and voteStatus!=''">
                 and vote_status=#{voteStatus}
             </if>
         </where>
     </select>
 
-    <!-- 分页获取文章点赞 -->
+    <!-- 分页获取文章点赞分页信息 -->
     <select id="listPage" resultMap="MMSnsArticleVoteResultMap" parameterType="map">
         select
-        <include refid="MMSnsArticleVoteColumn"/>
-        from mb_article_vote
+        av.vote_id,av.vote_date,av.article_id,
+        a.article_title,a.article_logo,a.read_count,a.collect_count,a.vote_count,a.relay_count,a.comment_count,a.article_date
+        from mb_article_vote av
+        INNER JOIN mb_article a on(a.article_id=av.article_id)
         <where>
+            <if test="articleId!=null and articleId!=''">
+                and av.article_id=#{articleId}
+            </if>
+            <if test="voteUserId!=null and voteUserId!=''">
+                and av.vote_user_id=#{voteUserId}
+            </if>
             <if test="voteStatus!=null and voteStatus!=''">
-                and vote_status=#{voteStatus}
+                and av.vote_status=#{voteStatus}
             </if>
         </where>
-        ORDER BY category_order DESC
+        ORDER BY av.vote_date DESC
         <if test="beginIndex!=null and numPerPage!=null">
             limit #{beginIndex},#{numPerPage}
         </if>
@@ -57,7 +80,7 @@
         from mb_article_vote
         where vote_id=#{voteId}
     </select>
-    
+
     <!-- 添加文章点赞信息 -->
     <insert id="insert" parameterType="MMSnsArticleVoteEntity" useGeneratedKeys="true"
             keyProperty="voteId">

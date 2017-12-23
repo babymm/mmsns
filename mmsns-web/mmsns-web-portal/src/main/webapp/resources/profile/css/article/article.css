@@ -63,6 +63,7 @@
     float: left;
     word-wrap: break-word;
     line-height: 30px;
+    margin-top: 2px;
 }
 .layout-body .layout-left .article-classify .classify-body .classifycount{
     width: 80px;
@@ -72,7 +73,7 @@
 .layout-body .layout-left .article-classify .classify-body ul li{
     width: 100%;
     float: left;
-    height: 40px;
+    height: 35px;
 }
 .layout-body .layout-left .article-classify .classify-body ul li a{
     display: block;
@@ -84,12 +85,41 @@
     width: 70%;
     float: left;
     margin-top: 50px;
-    min-height: 800px;
+    min-height: 840px;
 }
 .layout-body .layout-right .article-body{
     width: 100%;
     float: left;
     height: 660px;
+}
+.layout-body .layout-right .article-body h2{
+    font-size: 30px;
+    font-weight: 400;
+    color: green;
+    border-radius: 10%
+}
+.layout-body .layout-right .article-body .uploadform,
+.layout-body .layout-right .article-body .layui-form{
+    width: 100%;
+    float: left;
+}
+.layout-body .layout-right .article-body .layui-form .layui-form-item{
+    width: 80%;
+    float: left;
+}
+.layout-body .layout-right .article-body .layui-form .layui-form-item .layui-form-label{
+    float: left;
+    width: 60px;
+    text-align: left;
+}
+.layout-body .layout-right .article-body .layui-form .layui-form-item .layui-input-inline{
+    float: left;
+    width: calc(100% - 100px) !important;
+}
+.layout-body .layout-right .article-body .layui-form .layui-form-item #articleTextarea{
+    display: none;
+    float: left;
+    width: 100%;
 }
 .layout-body .layout-right .article-body ul li{
     width: 100%;
@@ -99,7 +129,7 @@
     width: 50%;
     float: left;
 }
-.layout-body .layout-right .article-body ul li .articlecontent span{
+.layout-body .layout-right .article-body ul li .articlecontent>span{
     width: 100%;
     float: left;
 }
@@ -112,9 +142,27 @@
     overflow: hidden;
     white-space: nowrap;
 }
+.layout-body .layout-right .article-body ul li .articlecontent .articletype{
+    border-color: #51BAE3;
+    color: #51BAE3;
+    border: 2px solid #51BAE3;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    vertical-align: text-bottom;
+    text-align: center;
+    font-size: 16px;
+    line-height: 26px;
+    float: left;
+    display: inline-block;
+    margin-right: 5px;
+}
 .layout-body .layout-right .article-body ul li .articlecontent .articleediter{
     color: #666;
     margin-top: 6px;
+}
+.layout-body .layout-right .article-body ul li .articlecontent .articleediter a{
+    color: #4eaa4c;
 }
 .layout-body .layout-right .article-body ul li .articlecontent .articlepublish{
     font-size: 0.9rem;
@@ -134,9 +182,3 @@
     width: 600px;
     margin-top: 35px;
 }
-.layout-bottom{
-    margin-top: 10px;
-    margin-bottom: 52px;
-    float: left;
-    width: 100%;
- }

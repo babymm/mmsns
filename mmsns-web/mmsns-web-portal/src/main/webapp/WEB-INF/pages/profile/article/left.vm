@@ -1,64 +1,77 @@
 <div class="layout-left">
     <div class="article-classify">
         <div class="user-info">
-            <span class="user-logo"><a href="/profile/$individuation/home"><img src="$VISIT_USER.avator" width="100" height="100" style="border-radius: 50%"></a></span>
+            <span class="user-logo"><a href="/profile/$individuation/home">
+                #if($!VISIT_USER.avator)
+                    <img src="$!VISIT_USER.avator" width="100" height="100" style="border-radius: 50%">
+                #else
+                    <img src="/resources/portal/images/logo.jpg" width="100" height="100" style="border-radius: 50%">
+                #end
+            </a>
+            </span>
             <span class="user-name"><a href="/profile/$individuation/home">$VISIT_USER.userName</a></span>
             <span class="user-words">共编写3456文字</span>
-            <span class="user-writearticle"><a href="/profile/$individuation/article/create">编写文章</a></span>
+            #if($individuation==$MMSNS_COMMON_USER.individuation)
+                <span class="user-writearticle"><a href="/profile/$individuation/article/create">编写文章</a></span>
+            #end
         </div>
         <div class="classify-body">
             <div class="classify-header">
                 <span class="classifytitle" style="line-height: 30px;font-size: 18px;font-weight: 400">文章类型</span>
-                <span class="classifycount">共3篇</span>
+                #set($totalCount=$!originalArticleCount+$!reprintArticleCount+$!voteArticleCount+$!collectArticleCount)
+                <span class="classifycount">共$totalCount篇</span>
             </div>
             <hr>
             <ul>
-                <li>
-                    <a href="/profile/$individuation/article">
+                <li id="original">
+                    <a href="/profile/$individuation/article/original">
                         <span class="classifytitle">我发布的</span>
-                        <span class="classifycount">3</span>
+                        <span class="classifycount">$!originalArticleCount</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/profile/$individuation/article">
+                <li id="reprint">
+                    <a href="/profile/$individuation/article/reprint">
                         <span class="classifytitle">我转发的</span>
-                        <span class="classifycount">3</span>
+                        <span class="classifycount">$!reprintArticleCount</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/profile/$individuation/article">
+                <li id="vote">
+                    <a href="/profile/$individuation/article/vote">
                         <span class="classifytitle">我点赞的</span>
-                        <span class="classifycount">3</span>
+                        <span class="classifycount">$!voteArticleCount</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/profile/$individuation/article">
+                <li id="collect">
+                    <a href="/profile/$individuation/article/collect">
                         <span class="classifytitle">我收藏的</span>
-                        <span class="classifycount">3</span>
+                        <span class="classifycount">$!collectArticleCount</span>
                     </a>
                 </li>
             </ul>
         </div>
-        <div class="classify-body">
+        <div class="classify-body" style="margin-top: 10px;">
             <div class="classify-header">
                 <span class="classifytitle" style="line-height: 30px;font-size: 18px;font-weight: 400">文章分类</span>
-                <span class="classifycount">共3篇</span>
+                <span class="classifycount">共$!originalArticleCount篇</span>
             </div>
             <hr>
             <ul>
-                <li>
-                    <a href="/profile/$individuation/article">
-                        <span class="classifytitle">hadoop大数据</span>
-                        <span class="classifycount">3</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/profile/$individuation/article">
-                        <span class="classifytitle">java技术内幕</span>
-                        <span class="classifycount">3</span>
-                    </a>
-                </li>
+                #foreach($articleCategory in $!articleCategorys)
+                    <li id="$articleCategory.categoryId">
+                        <a href="/profile/$individuation/article/$articleCategory.categoryId">
+                            <span class="classifytitle">$articleCategory.categoryName</span>
+                            <span class="classifycount">$articleCategory.articleCount</span>
+                        </a>
+                    </li>
+                #end
             </ul>
         </div>
     </div>
 </div>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    var operation="$!operation";
+    if(operation){
+        $("#"+operation).css("background","silver");
+    }
+</script>

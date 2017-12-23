@@ -1,4 +1,4 @@
-<title>baby慕慕SNS个人博客-我的文章</title>
+<title>我的文章-baby慕慕SNS个人博客-MMSNS博客系统</title>
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/resources/profile/css/article/article.css" media="all">
@@ -10,16 +10,36 @@
             <h2 style="font-size: 30px;font-weight: 400px;color: green;border-radius: 10%">我的文章</h2>
             <hr>
             <ul>
-                #set($articles=[0 .. 4])
-                #foreach($article in $articles)
+                #foreach($article in $!articlePageBean.recordList)
                     <li>
                         <div class="articlecontent">
-                            <span class="articletitle">Jenkins持续化部署</span>
-                            <span class="articleediter">阅读 20 ·评论 0 ·赞 0 ·收藏 0 ·(<a href="">编辑</a> | <a href="">删除</a>)</span>
-                            <span class="articlepublish">2017/06/19 发布</span>
+                            <span>
+                                #if($operation=='vote')
+                                    <span class="articletype">赞</span>
+                                #elseif($operation=='collect')
+                                    <span class="articletype">藏</span>
+                                #elseif($article.articleType=='original')
+                                    <span class="articletype">原</span>
+                                #elseif($article.articleType=='reprint')
+                                    <span class="articletype">转</span>
+                                #end
+                                <a href="/article/detail/$article.articleId"><span class="articletitle">$article.articleTitle</span></a>
+                            </span>
+                            <span class="articleediter">阅读 $article.readCount ·评论 $article.commentCount ·赞 $article.voteCount ·收藏 $article.collectCount ·转发 $article.relayCount ·
+                                #if($individuation==$MMSNS_COMMON_USER.individuation)
+                                    #if($operation=='vote')
+                                        (<a href="javascript:void(0)">取消赞</a>)
+                                    #elseif($operation=='collect')
+                                        (<a href="javascript:void(0)">取消收藏</a>)
+                                    #else
+                                        (<a href="/profile/$individuation/article/edit/$article.articleId">编辑</a> | <a href="javascript:void(0)" onclick="articleDelete('$!article.articleTitle','$!article.articleId')" class="articleDelete">删除</a>)
+                                    #end
+                                #end
+                            </span>
+                            <span class="articlepublish">$date.format("yyyy-MM-dd",$article.articleDate)</span>
                         </div>
                         <div class="articlelogo">
-                            <a href="/profile/$individuation/home"><img src="https://gw.alicdn.com/bao/uploaded/i4/69476562/TB2htq4XTka61BjSszfXXXN8pXa_!!69476562.jpg_400x400q90.jpg?t=1513063905068" width="100" height="100"></a>
+                            <a href="/article/detail/$article.articleId"><img src="$article.articleLogo" width="100" height="100"></a>
                         </div>
                         <hr>
                     </li>
@@ -29,21 +49,43 @@
         <div class="article-page" id="articlePage"></div>
     </div>
 </div>
-<div class="layout-bottom">
-</div>
 #parse("/portal/sfooter.vm")
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
-<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="${request.getContextPath()}/resources/common/js/common.js" charset="utf-8"></script>
 <script type="text/javascript">
-    layui.use(['element','laypage'], function () {
-        var element = layui.element,laypage=layui.laypage;
-        laypage.render({
-            elem: 'articlePage'
-            ,count: 120
-            ,jump: function(obj){
-                console.log(obj)
-            }
-        });
+    layui.use(['element','laypage','layer'], function () {
+        var element = layui.element,laypage=layui.laypage,layer=layui.layer;
+        var articleTotalCount='$!articlePageBean.totalCount';
+        var articleCurrentPage='$!articlePageBean.currentPage';
+        if(articleTotalCount>5){
+            laypage.render({
+                elem: 'articlePage'
+                ,count:articleTotalCount
+                ,limit:5
+                ,curr:articleCurrentPage
+                ,jump: function(obj,first){
+                    if(!first){
+                        window.location.href="/profile/$individuation/article/$!operation?page="+obj.curr;
+                    }
+                }
+            });
+        }
     });
+    //文章删除
+    function articleDelete(articleTitle,articleId) {
+        layer.confirm('你确定要删除文章['+articleTitle+']吗？',{icon:3,title:'警告'}, function(index){
+            $.post("/profile/$individuation/article/delete", {articleId:articleId,_method:'delete'}, function (respData) {
+                if(respData.code==200){
+                    layer.msg('删除文章操作成功', {
+                        icon: 1,
+                        time: 2000
+                    }, function () {
+                        layer.close(index);
+                        window.location.reload();
+                    });
+                } else {
+                    layer.alert(respData.data, {icon: 5});
+                }
+            })
+        });
+    }
 </script>

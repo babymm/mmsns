@@ -1,4 +1,4 @@
-<title>baby慕慕SNS个人博客-个人空间主页</title>
+<title>个人空间主页-MMSNS博客系统</title>
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/resources/profile/css/home.css">

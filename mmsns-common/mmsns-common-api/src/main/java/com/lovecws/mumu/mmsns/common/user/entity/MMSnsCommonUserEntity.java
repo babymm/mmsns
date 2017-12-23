@@ -18,6 +18,7 @@ public class MMSnsCommonUserEntity extends PersistentEntity {
     public static final String USER_STATUS_DELETE="delete";//删除
 
     public static final String MMSNS_COMMON_USER="MMSNS_COMMON_USER";
+    public static final String VISIT_USER="VISIT_USER";
 
     private Integer userId;//用户id
     private String userStatus;//用户状态

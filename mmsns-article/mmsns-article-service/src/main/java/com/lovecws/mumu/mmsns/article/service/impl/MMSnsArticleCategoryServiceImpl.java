@@ -30,7 +30,7 @@ public class MMSnsArticleCategoryServiceImpl implements MMSnsArticleCategoryServ
     private MMSnsArticleCategoryDao articleCategoryDao;
 
     @Override
-    public PageBean<MMSnsArticleCategoryEntity> getArticleClassifyByCondition(String categoryType, String userId, String systemUserId, int page, int limit) {
+    public PageBean<MMSnsArticleCategoryEntity> getArticleCategoryPageBean(String categoryType, String userId, String systemUserId, int page, int limit) {
         Map<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("categoryType", categoryType);
         paramMap.put("userId", userId);
@@ -61,5 +61,15 @@ public class MMSnsArticleCategoryServiceImpl implements MMSnsArticleCategoryServ
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public void deleteArticleCategory(String categoryId) {
         articleCategoryDao.delete(categoryId);
+    }
+
+    @Override
+    public List<MMSnsArticleCategoryEntity> getArticleCategoryList(String categoryType, String userId, String systemUserId) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("categoryType", categoryType);
+        paramMap.put("userId", userId);
+        paramMap.put("systemUserId", systemUserId);
+        paramMap.put("categoryStatus", PublicEnum.NORMAL.value());
+        return articleCategoryDao.selectList("listPage", paramMap);
     }
 }

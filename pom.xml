@@ -552,6 +552,11 @@
                 <artifactId>mumu-email</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>1.5.0-b01</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -663,9 +668,6 @@
             <properties>
                 <env>company</env>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault><!--默认启用的是dev环境配置-->
-            </activation>
         </profile>
 
         <!-- 家庭环境 -->
@@ -674,6 +676,9 @@
             <properties>
                 <env>home</env>
             </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault><!--默认启用的是dev环境配置-->
+            </activation>
         </profile>
     </profiles>
 </project>

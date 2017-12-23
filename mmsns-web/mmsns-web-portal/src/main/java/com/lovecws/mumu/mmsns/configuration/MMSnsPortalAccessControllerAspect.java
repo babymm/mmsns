@@ -125,7 +125,7 @@ public class MMSnsPortalAccessControllerAspect {
         }
         visitMap.put(individuation, commonUserEntity);
         request.getSession().setAttribute("VISIT_USERS_MAP", visitMap);
-        request.setAttribute("VISIT_USER", commonUserEntity);
+        request.getSession().setAttribute(MMSnsCommonUserEntity.VISIT_USER, commonUserEntity);
         //如果用户不存在 则跳转到404页面
         if (commonUserEntity == null) {
             return "/common/error/404";

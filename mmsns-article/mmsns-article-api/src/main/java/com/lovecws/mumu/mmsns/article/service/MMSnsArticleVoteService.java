@@ -1,5 +1,8 @@
 package com.lovecws.mumu.mmsns.article.service;
 
+import com.lovecws.mumu.core.page.PageBean;
+import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleVoteEntity;
+
 /**
  * @author babymm
  * @version 1.0-SNAPSHOT
@@ -7,4 +10,22 @@ package com.lovecws.mumu.mmsns.article.service;
  * @date 2017-12-18 17:11:
  */
 public interface MMSnsArticleVoteService {
+
+    /**
+     * 获取点赞文章数量
+     *
+     * @param sessionUserId
+     * @return
+     */
+    public int getVoteArticleCountByCondition(String sessionUserId);
+
+    /**
+     * 获取我发布的文章
+     *
+     * @param sessionUserId
+     * @param page
+     * @param limit
+     * @return
+     */
+    public PageBean<MMSnsArticleVoteEntity> listVoteArticlePage(String sessionUserId, int page, int limit);
 }

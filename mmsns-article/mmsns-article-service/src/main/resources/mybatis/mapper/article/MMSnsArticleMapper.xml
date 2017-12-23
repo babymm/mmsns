@@ -22,15 +22,20 @@
         <result column="collect_count" property="collectCount" jdbcType="INTEGER"/>
         <result column="vote_count" property="voteCount" jdbcType="INTEGER"/>
         <result column="relay_count" property="relayCount" jdbcType="INTEGER"/>
-        <result column="article_count" property="articleCount" jdbcType="INTEGER"/>
+        <result column="comment_count" property="commentCount" jdbcType="INTEGER"/>
 
         <result column="article_type" property="articleType" jdbcType="VARCHAR"/>
         <result column="publisher_article_id" property="publisherArticleId" jdbcType="INTEGER"/>
         <result column="relay_article_id" property="relayArticleId" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+
+        <result column="article_count" property="articleCount" jdbcType="INTEGER"/>
+        <result column="category_name" property="categoryName" jdbcType="INTEGER"/>
+        <result column="category_id" property="categoryId" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="MMSnsArticleColumn">
-		article_id,article_status,article_date,article_title,article_sumary,article_logo,article_labels,word_count,sys_category_id,user_category_id,read_count,collect_count,vote_count,relay_count,article_count,article_type,publisher_article_id,relay_article_id
+		article_id,article_status,article_date,article_title,article_sumary,article_content,article_logo,article_labels,word_count,sys_category_id,user_category_id,read_count,collect_count,vote_count,relay_count,comment_count,article_type,publisher_article_id,relay_article_id,user_id
 	</sql>
 
     <!-- 获取文章评论数量 -->
@@ -38,6 +43,15 @@
         select count(article_id)
         from mb_article
         <where>
+            <if test="userId!=null and userId!=''">
+                and user_id=#{userId}
+            </if>
+            <if test="articleType!=null and articleType!=''">
+                and article_type=#{articleType}
+            </if>
+            <if test="userCategoryId!=null and userCategoryId!=''">
+                and user_category_id=#{userCategoryId}
+            </if>
             <if test="articleStatus!=null and articleStatus!=''">
                 and article_status=#{articleStatus}
             </if>
@@ -47,17 +61,51 @@
     <!-- 分页获取文章评论 -->
     <select id="listPage" resultMap="MMSnsArticleResultMap" parameterType="map">
         select
-        <include refid="MMSnsArticleColumn"/>
+        article_id,article_title,article_logo,read_count,collect_count,vote_count,relay_count,comment_count,article_date,article_type
         from mb_article
         <where>
+            <if test="userId!=null and userId!=''">
+                and user_id=#{userId}
+            </if>
+            <if test="articleType!=null and articleType!=''">
+                and article_type=#{articleType}
+            </if>
+            <if test="userCategoryId!=null and userCategoryId!=''">
+                and user_category_id=#{userCategoryId}
+            </if>
             <if test="articleStatus!=null and articleStatus!=''">
                 and article_status=#{articleStatus}
             </if>
         </where>
-        ORDER BY category_order DESC
+        ORDER BY article_date DESC
         <if test="beginIndex!=null and numPerPage!=null">
             limit #{beginIndex},#{numPerPage}
         </if>
+    </select>
+
+    <!-- 获取用户下按照文章类型分组的文章数量-->
+    <select id="groupArticleCountByUserId" resultMap="MMSnsArticleResultMap" parameterType="map">
+        select article_type,count(article_id) article_count
+        from mb_article
+        <where>
+            <if test="userId!=null and userId!=''">
+                and user_id=#{userId}
+            </if>
+            <if test="articleStatus!=null and articleStatus!=''">
+                and article_status=#{articleStatus}
+            </if>
+        </where>
+        GROUP BY article_type
+    </select>
+
+    <!-- 获取用户下原创文章中 各个用户分类下的文章数量 -->
+    <select id="groupArticleCountByCategory" resultMap="MMSnsArticleResultMap" parameterType="map">
+        select ac.category_name,ac.category_id,count(article_id) article_count
+        from mb_article_category ac
+        LEFT JOIN mb_article a on(ac.category_id=a.user_category_id and a.user_id=#{userId} and a.article_type=#{articleType} and a.article_status=#{articleStatus})
+        WHERE ac.user_id=#{categoryUserId} and ac.category_status=#{categoryStatus}
+        GROUP BY ac.category_id
+        ORDER BY ac.category_order ASC
     </select>
 
     <!-- 按照条件获取文章评论 -->
@@ -92,6 +140,9 @@
             <if test="articleSumary!=null">
                 article_sumary,
             </if>
+            <if test="articleContent!=null">
+                article_content,
+            </if>
             <if test="articleLogo!=null">
                 article_logo,
             </if>
@@ -119,8 +170,8 @@
             <if test="relayCount!=null">
                 relay_count,
             </if>
-            <if test="articleCount!=null">
-                article_count,
+            <if test="commentCount!=null">
+                comment_count,
             </if>
             <if test="articleType!=null">
                 article_type,
@@ -130,6 +181,9 @@
             </if>
             <if test="relayArticleId!=null">
                 relay_article_id,
+            </if>
+            <if test="userId!=null">
+                user_id,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -144,6 +198,9 @@
             </if>
             <if test="articleSumary!=null">
                 #{articleSumary},
+            </if>
+            <if test="articleContent!=null">
+                #{articleContent},
             </if>
             <if test="articleLogo!=null">
                 #{articleLogo},
@@ -172,8 +229,8 @@
             <if test="relayCount!=null">
                 #{relayCount},
             </if>
-            <if test="articleCount!=null">
-                #{articleCount},
+            <if test="commentCount!=null">
+                #{commentCount},
             </if>
             <if test="articleType!=null">
                 #{articleType},
@@ -183,6 +240,9 @@
             </if>
             <if test="relayArticleId!=null">
                 #{relayArticleId},
+            </if>
+            <if test="userId!=null">
+                #{userId},
             </if>
         </trim>
     </insert>
@@ -202,6 +262,9 @@
             </if>
             <if test="articleSumary!=null">
                 article_sumary=#{articleSumary},
+            </if>
+            <if test="articleContent!=null">
+                article_content=#{articleContent},
             </if>
             <if test="articleLogo!=null">
                 article_logo=#{articleLogo},
@@ -230,8 +293,8 @@
             <if test="relayCount!=null and relayCount!=0">
                 relay_count=#{relayCount},
             </if>
-            <if test="articleCount!=null and articleCount!=0">
-                article_count=#{articleCount},
+            <if test="commentCount!=null and commentCount!=0">
+                comment_count=#{commentCount},
             </if>
             <if test="articleType!=null">
                 article_type=#{articleType},
@@ -241,6 +304,9 @@
             </if>
             <if test="relayArticleId!=null and relayArticleId!=0">
                 relay_article_id=#{relayArticleId},
+            </if>
+            <if test="userId!=null and userId!=0">
+                user_id=#{userId},
             </if>
         </set>
         <where>

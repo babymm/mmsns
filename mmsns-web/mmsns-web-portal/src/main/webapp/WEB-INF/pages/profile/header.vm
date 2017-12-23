@@ -56,7 +56,11 @@
 </style>
 <div class="user-header">
     <div class="user-logo">
-        <a href="/profile/$individuation/home"><img src="$VISIT_USER.avator" width="100" height="100" style="border-radius: 50%"></a>
+        #if($!VISIT_USER.avator)
+            <a href="/profile/$individuation/home"><img src="$VISIT_USER.avator" width="100" height="100" style="border-radius: 50%"></a>
+        #else
+            <a href="/profile/$individuation/home"><img src="/resources/portal/images/logo.jpg" width="100" height="100" style="border-radius: 50%"></a>
+        #end
     </div>
     <div class="user-info">
         <span style="font-size: 24px;color: #111;-webkit-font-smoothing: antialiased;font-weight: 400;"><a href="/profile/$individuation/home">$VISIT_USER.userName</a></span>

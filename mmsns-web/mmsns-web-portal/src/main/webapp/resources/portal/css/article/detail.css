@@ -1,12 +1,14 @@
 .body{
-    margin: 0px;
-    padding: 0px;
-}
-.article-content{
     width: 100%;
     min-width: 1100px;
     margin: 0px;
     padding: 0px;
+}
+.article-content{
+    width: 95%;
+    margin-left: 1%;
+    margin-right: 2.5%;
+    min-width: 1045px;
  }
 .article-content .article-body{
     float: left;
@@ -14,33 +16,73 @@
     margin: 0px;
     padding: 0px;
 }
+.article-content .article-body .detail-breadcrumb{
+    font-size: 16px;
+    font-weight: 400;
+    margin: 22px 0 30px;
+}
+.article-content .article-body .detail-breadcrumb a{
+    font-size: 18px;
+    font-weight: 400;
+    margin: 22px 0 30px;
+    color: #49ab4f;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+    text-decoration: none;
+    outline: 0;
+}
 .article-content .article-body .article-title{
     width: 100%;
     height: 100px;
 }
 .article-content .article-body .article-title h2{
-    text-align: center;
+    /*text-align: center;*/
     font-size: 28px;
     word-break: break-all;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 .article-content .article-body .article-title .article-author{
-    float: right;
+    width: 550px;
+    float: left;
 }
 .article-content .article-body .article-title .article-author span{
-    float: right;
+    float: left;
+    margin-right: 8px;
+    line-height: 20px;
+    font-size: 16px;
 }
 .article-content .article-body .article-message{
-    padding: 20px 0;
+    padding: 10px 0;
     font-size: 14px;
     line-height: 1.78571429;
-    margin-left: 50px;
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+}
+.article-content .article-body .article-message .article-abstract{
+    margin: 23px 0 45px;
+    line-height: 28px;
+    word-break: break-all;
+    color: #666;
+    font-size: 18px;
+    font-style: italic;
+    font-family: Baskerville,Georgia,"Liberation Serif","Kaiti SC",STKaiti,"AR PL UKai CN","AR PL UKai HK","AR PL UKai TW","AR PL UKai TW MBE","AR PL KaitiM GB",KaiTi,KaiTi_GB2312,"TW\-Kai",serif;
+}
+.article-content .article-body .article-message .article-maincontent{
+    font-size: 16px;
+    font-family: "Pingfang SC",STHeiti,"Lantinghei SC","Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",SimSun,sans-serif;
+    color: #3d464d;
+    line-height: 28px;
+    text-align: left;
+    word-wrap: break-word;
+    -moz-text-size-adjust: 100%;
+    display: block;
 }
 .article-content .article-body .article-extra{
     float: right;
     width: 100%;
     height: 140px;
+    border-bottom: 1px solid #ddd;
 }
 .article-content .article-body .article-extra .article-license,
 .article-content .article-body .article-extra .article-classify,
@@ -69,7 +111,7 @@
     width: 100%;
 }
 .article-content .article-body .article-buttons ul{
-    width: 780px;
+    width: 760px;
     margin: 10px auto;
 }
 .article-content .article-body .article-buttons ul li{
@@ -77,7 +119,7 @@
     margin-right: 10px;
 }
 .article-content .article-body .article-buttons ul li a{
-    width: 140px;
+    width: 130px;
     height: 50px;
     line-height: 50px;
     font-size: 18px;
@@ -94,7 +136,7 @@
     width: 100%;
 }
 .article-content .article-body .article-users .article-usermessage{
-    width: 780px;
+    width: 100%;
     margin: 50px auto;
 }
 .article-content .article-body .article-users .article-usermessage .user-image{
@@ -108,20 +150,21 @@
 }
 .article-content .article-body .article-users .article-usermessage .user-message{
     float: left;
+    margin-left: 5px;
 }
 .article-content .article-body .article-users .article-usermessage .user-message span{
     float: left;
     width: 100%;
 }
 .article-content .article-body .article-users .article-usermessage .user-message span a{
-     color: #40E23B;
-     overflow: hidden;
-     text-overflow: ellipsis;
-     white-space: nowrap;
-     font-size: 22px;
-     line-height: 40px;
-     padding: 0!important;
-    padding-top: 5px;
+    color: #40E23B;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 22px;
+    line-height: 35px;
+    padding: 0!important;
+    padding-top: 2px;
     margin-right: 30px;
 }
 .article-content .article-body .article-comment{
@@ -130,7 +173,7 @@
     margin-bottom: 50px;
 }
 .article-content .article-body .article-comment .comment-body{
-    width: 780px;
+    width: 100%;
     margin: 50px auto;
 }
 .article-content .article-body .article-comment .comment-body .comment-textarea button{
@@ -165,7 +208,7 @@
     margin-bottom: 50px;
 }
 .article-content .article-category{
-    width: 28%;
+    width: 25%;
     float: right;
     margin: 0px;
     padding: 0px;

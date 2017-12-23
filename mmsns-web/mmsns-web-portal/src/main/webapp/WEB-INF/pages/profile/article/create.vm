@@ -1,53 +1,82 @@
-<title>baby慕慕SNS个人博客-编写文章</title>
+<title>$!pageArticleTitle-baby慕慕SNS个人博客-MMSNS博客系统</title>
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/resources/profile/css/article/article.css" media="all">
 #parse("/portal/header.vm")
 <div class="layout-body">
     #parse("/profile/article/left.vm")
-    <div class="layout-right">
+    <div class="layout-right" style="min-height: 950px;">
         <div class="article-body">
-            <h2 style="font-size: 30px;font-weight: 400px;color: green;border-radius: 10%">编写文章</h2>
+            <h2>$!pageArticleTitle</h2>
             <hr>
-            <div class="uploadform" style="width: 100%;float: left;">
-                <form class="layui-form" style="width: 100%;float: left;">
-                    <div class="layui-form-item" style="width: 100%;float: left;">
-                        <label class="layui-form-label" style="float: left;width: 60px;text-align: left">标题</label>
-                        <div class="layui-input-inline photo-title"  style="float: left;width: 400px;">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            <div class="uploadform">
+                <form class="layui-form">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">标题</label>
+                        <div class="layui-input-inline photo-title">
+                            <input type="text" name="articleTitle" lay-verify="required" value="$!articleEntity.articleTitle" autocomplete="off" placeholder="请输入文章标题" class="layui-input">
                         </div>
                     </div>
-                    <div class="layui-form-item" style="width: 100%;float: left;">
-                        <label class="layui-form-label" style="float: left;width: 60px;text-align: left">分类</label>
-                        <div class="layui-input-inline"  style="float: left;width: 400px">
-                            <select name="interest" lay-filter="aihao">
-                                <option value="0">hadoop大数据</option>
-                                <option value="2">java技术内幕</option>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">摘要</label>
+                        <div class="layui-input-inline photo-title">
+                            <input type="text" name="articleSumary" lay-verify="required" value="$!articleEntity.articleSumary" autocomplete="off" placeholder="请输入文章摘要" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">分类</label>
+                        <div class="layui-input-inline">
+                            <select name="userCategoryId" lay-filter="aihao">
+                                #if($userArticleCategorys.size()>0)
+                                    #foreach($userArticleCategory in $userArticleCategorys)
+                                        #if($!userArticleCategory.categoryId==$!articleEntity.userCategoryId)
+                                            <option value="$userArticleCategory.categoryId" selected="selected">$userArticleCategory.categoryName</option>
+                                        #else
+                                            <option value="$userArticleCategory.categoryId">$userArticleCategory.categoryName</option>
+                                        #end
+                                    #end
+                                #else
+                                    <option value="0">添加系统分类</option>
+                                #end
                             </select>
                         </div>
                     </div>
-                    <div class="layui-form-item" style="width: 80%;float: left;">
-                        <textarea id="articleTextarea" style="display: none;float: left;width: 100%;"></textarea>
+                    <div class="layui-form-item">
+                        <textarea id="articleTextarea" name="articleContent">$!articleEntity.articleContent</textarea>
                     </div>
-                    <div class="layui-form-item" style="width: 90%;float: left;">
-                        <label class="layui-form-label" style="float: left;width: 60px;text-align: left">标签</label>
-                        <div class="layui-input-inline photo-title"  style="float: left;width: 400px;">
-                            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入关键词，多个以空格分隔" class="layui-input">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">标签</label>
+                        <div class="layui-input-inline photo-title">
+                            <input type="text" name="articleLabels" lay-verify="required" value="$!articleEntity.articleLabels" autocomplete="off" placeholder="请输入关键词，多个以空格分隔" class="layui-input">
                         </div>
                     </div>
-                    <div class="layui-form-item" style="width: 100%;float: left;">
-                        <label class="layui-form-label" style="float: left;width: 60px;text-align: left">系统分类</label>
-                        <div class="layui-input-inline"  style="float: left;width: 400px">
-                            <select name="interest" lay-filter="aihao">
-                                <option value="0">hadoop大数据</option>
-                                <option value="2">java技术内幕</option>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">系统分类</label>
+                        <div class="layui-input-inline">
+                            <select name="sysCategoryId" lay-filter="aihao">
+                                #if($userArticleCategorys.size()>0)
+                                    #foreach($systemArticleCategory in $systemArticleCategorys)
+                                        #if($!systemArticleCategory.categoryId==$!articleEntity.sysCategoryId)
+                                            <option value="$systemArticleCategory.categoryId" selected="selected">$systemArticleCategory.categoryName</option>
+                                        #else
+                                            <option value="$systemArticleCategory.categoryId">$systemArticleCategory.categoryName</option>
+                                        #end
+                                    #end
+                                #else
+                                    <option value="0">添加用户分类</option>
+                                #end
                             </select>
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            #if($!pageArticleType=='create')
+                                <button class="layui-btn" lay-submit lay-filter="createArticleFilter">创建文章</button>
+                                <input type="hidden" name="articleId" value="-1">
+                            #elseif($!pageArticleType=='edit')
+                                <button class="layui-btn" lay-submit lay-filter="editArticleFilter">保存更新</button>
+                                <input type="hidden" name="articleId" value="$!articleEntity.articleId">
+                            #end
                         </div>
                     </div>
                 </form>
@@ -57,8 +86,6 @@
 </div>
 #parse("/portal/sfooter.vm")
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
-<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="${request.getContextPath()}/resources/common/js/common.js" charset="utf-8"></script>
 <script type="text/javascript">
     layui.use(['element','form','layedit'], function () {
         var element = layui.element,form=layui.form,layedit=layui.layedit;
@@ -66,8 +93,43 @@
         layedit.set({
             uploadImage: {url: '/common/upload/layedit', type: 'post'}
         });
-        layedit.build('articleTextarea',{
+        var articleTextareaIndex=layedit.build('articleTextarea',{
             height:400
+        });
+        //创建文章
+        form.on('submit(createArticleFilter)', function (data) {
+            data.field.articleContent=layedit.getContent(articleTextareaIndex);
+            $.post("/profile/$individuation/article/create", data.field, function (respData) {
+                if(respData.code==200){
+                    layer.msg('添加文章操作成功', {
+                        icon: 1,
+                        time: 2000
+                    }, function () {
+                        window.location.href = "/profile/$individuation/article";
+                    });
+                } else {
+                    layer.alert(respData.data, {icon: 5});
+                }
+            })
+            return false;
+        });
+        //更新文章
+        form.on('submit(editArticleFilter)', function (data) {
+            data.field.articleContent=layedit.getContent(articleTextareaIndex);
+            data.field._method='put';
+            $.post("/profile/$individuation/article/edit", data.field, function (respData) {
+                if(respData.code==200){
+                    layer.msg('更新文章操作成功', {
+                        icon: 1,
+                        time: 2000
+                    }, function () {
+                        window.location.href = "/profile/$individuation/article";
+                    });
+                } else {
+                    layer.alert(respData.data, {icon: 5});
+                }
+            })
+            return false;
         });
     });
 </script>

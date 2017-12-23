@@ -11,6 +11,15 @@
         <result column="collect_user_id" property="collectUserId" jdbcType="VARCHAR"/>
         <result column="article_id" property="articleId" jdbcType="INTEGER"/>
         <result column="article_user_id" property="articleUserId" jdbcType="INTEGER"/>
+
+        <result column="article_title" property="articleTitle" jdbcType="VARCHAR"/>
+        <result column="article_logo" property="articleLogo" jdbcType="VARCHAR"/>
+        <result column="article_date" property="articleDate" jdbcType="DATE"/>
+        <result column="read_count" property="readCount" jdbcType="INTEGER"/>
+        <result column="collect_count" property="collectCount" jdbcType="INTEGER"/>
+        <result column="vote_count" property="voteCount" jdbcType="INTEGER"/>
+        <result column="relay_count" property="relayCount" jdbcType="INTEGER"/>
+        <result column="comment_count" property="commentCount" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="MMSnsArticleCollectColumn">
 		collect_id,collect_status,collect_date,collect_user_id,article_id,article_user_id
@@ -21,6 +30,9 @@
         select count(collect_id)
         from mb_article_collect
         <where>
+            <if test="collectUserId!=null and collectUserId!=''">
+                and collect_user_id=#{collectUserId}
+            </if>
             <if test="collectStatus!=null and collectStatus!=''">
                 and collect_status=#{collectStatus}
             </if>
@@ -30,14 +42,19 @@
     <!-- 分页获取文章收藏 -->
     <select id="listPage" resultMap="MMSnsArticleCollectResultMap" parameterType="map">
         select
-        <include refid="MMSnsArticleCollectColumn"/>
-        from mb_article_collect
+        ac.collect_id,ac.collect_date,ac.article_id,
+        a.article_title,a.article_logo,a.read_count,a.collect_count,a.vote_count,a.relay_count,a.comment_count,a.article_date
+        from mb_article_collect ac
+        INNER JOIN mb_article a on(a.article_id=ac.article_id)
         <where>
+            <if test="collectUserId!=null and collectUserId!=''">
+                and ac.collect_user_id=#{collectUserId}
+            </if>
             <if test="collectStatus!=null and collectStatus!=''">
-                and collect_status=#{collectStatus}
+                and ac.collect_status=#{collectStatus}
             </if>
         </where>
-        ORDER BY category_order DESC
+        ORDER BY ac.collect_date DESC
         <if test="beginIndex!=null and numPerPage!=null">
             limit #{beginIndex},#{numPerPage}
         </if>

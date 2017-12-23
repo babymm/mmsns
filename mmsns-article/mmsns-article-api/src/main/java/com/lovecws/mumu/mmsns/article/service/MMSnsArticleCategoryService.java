@@ -23,7 +23,7 @@ public interface MMSnsArticleCategoryService {
      * @param limit        一页大小
      * @return
      */
-    public PageBean<MMSnsArticleCategoryEntity> getArticleClassifyByCondition(String categoryType, String userId, String systemUserId, int page, int limit);
+    public PageBean<MMSnsArticleCategoryEntity> getArticleCategoryPageBean(String categoryType, String userId, String systemUserId, int page, int limit);
 
     /**
      * 添加文章
@@ -54,4 +54,13 @@ public interface MMSnsArticleCategoryService {
      * @param categoryId
      */
     public void deleteArticleCategory(String categoryId);
+
+    /**
+     * 获取文章分类列表
+     * @param categoryType 文章分类类型
+     * @param userId       用户id
+     * @param systemUserId 系统用户id
+     * @return
+     */
+    public List<MMSnsArticleCategoryEntity> getArticleCategoryList(String categoryType, String userId, String systemUserId);
 }

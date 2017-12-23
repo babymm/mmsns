@@ -31,9 +31,9 @@
     </typeAliases>
 
     <!-- 设置mybatis拦截器 -->
-    <plugins>
+    <!--<plugins>
         <plugin interceptor="com.lovecws.mumu.core.dao.mdatasource.MultipleMybatisInteInterceptor"/>
-    </plugins>
+    </plugins>-->
 
     <!-- 配置映射文件 -->
     <mappers>

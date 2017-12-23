@@ -55,7 +55,7 @@ public class MMSnsAdminArticleController {
                             @RequestParam(name = "page", required = false, defaultValue = "1") int page,
                             @RequestParam(name = "limit", required = false, defaultValue = "10") int limit) {
         MMSnsCommonUserEntity sessionCommonUser = (MMSnsCommonUserEntity) SecurityUtils.getSubject().getSession(true).getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
-        PageBean<MMSnsArticleCategoryEntity> pageBean = articleCategoryService.getArticleClassifyByCondition(MMSnsArticleCategoryEntity.ARTICLE_CATEGORY_TYPE_USER, String.valueOf(sessionCommonUser.getUserId()), null, page, limit);
+        PageBean<MMSnsArticleCategoryEntity> pageBean = articleCategoryService.getArticleCategoryPageBean(MMSnsArticleCategoryEntity.ARTICLE_CATEGORY_TYPE_USER, String.valueOf(sessionCommonUser.getUserId()), null, page, limit);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("data", pageBean.getRecordList());
         resultMap.put("code", 0);
@@ -129,7 +129,7 @@ public class MMSnsAdminArticleController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = {"/{individuation}/article/classify/edit"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/{individuation}/article/classify/edit"}, method = RequestMethod.PUT)
     public ResponseEntity editArticleClassify(@PathVariable String individuation, int categoryId, String categoryName, String categoryIcon, Integer categoryOrder, String categoryDesc) {
         request.setAttribute("adminModular", "articleClassify");
         MMSnsArticleCategoryEntity articleCategoryEntity = new MMSnsArticleCategoryEntity();

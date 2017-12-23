@@ -76,6 +76,7 @@
         });
         //编辑文章分类
         form.on('submit(editArticleCategory)', function (data) {
+            data.field._method='put';
             $.post("/admin/$individuation/article/classify/edit", data.field, function (respData) {
                 if(respData.code==200){
                     layer.msg('编辑文章分类操作成功', {

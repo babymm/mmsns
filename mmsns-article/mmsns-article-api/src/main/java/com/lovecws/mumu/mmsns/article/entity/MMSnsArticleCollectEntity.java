@@ -20,4 +20,125 @@ public class MMSnsArticleCollectEntity extends PersistentEntity {
     private int collectUserId;//收藏用户id
     private int articleId;//收藏的文章id
     private int articleUserId;//文章用户id
+
+    public int getCollectId() {
+        return collectId;
+    }
+
+    public void setCollectId(int collectId) {
+        this.collectId = collectId;
+    }
+
+    public String getCollectStatus() {
+        return collectStatus;
+    }
+
+    public void setCollectStatus(String collectStatus) {
+        this.collectStatus = collectStatus;
+    }
+
+    public Date getCollectDate() {
+        return collectDate;
+    }
+
+    public void setCollectDate(Date collectDate) {
+        this.collectDate = collectDate;
+    }
+
+    public int getCollectUserId() {
+        return collectUserId;
+    }
+
+    public void setCollectUserId(int collectUserId) {
+        this.collectUserId = collectUserId;
+    }
+
+    public int getArticleId() {
+        return articleId;
+    }
+
+    public void setArticleId(int articleId) {
+        this.articleId = articleId;
+    }
+
+    public int getArticleUserId() {
+        return articleUserId;
+    }
+
+    public void setArticleUserId(int articleUserId) {
+        this.articleUserId = articleUserId;
+    }
+
+    private Date articleDate;
+    private String articleTitle;
+    private String articleLogo;
+    private int readCount;
+    private int collectCount;
+    private int voteCount;
+    private int relayCount;
+    private int commentCount;
+
+    public Date getArticleDate() {
+        return articleDate;
+    }
+
+    public void setArticleDate(Date articleDate) {
+        this.articleDate = articleDate;
+    }
+
+    public String getArticleTitle() {
+        return articleTitle;
+    }
+
+    public void setArticleTitle(String articleTitle) {
+        this.articleTitle = articleTitle;
+    }
+
+    public String getArticleLogo() {
+        return articleLogo;
+    }
+
+    public void setArticleLogo(String articleLogo) {
+        this.articleLogo = articleLogo;
+    }
+
+    public int getReadCount() {
+        return readCount;
+    }
+
+    public void setReadCount(int readCount) {
+        this.readCount = readCount;
+    }
+
+    public int getCollectCount() {
+        return collectCount;
+    }
+
+    public void setCollectCount(int collectCount) {
+        this.collectCount = collectCount;
+    }
+
+    public int getVoteCount() {
+        return voteCount;
+    }
+
+    public void setVoteCount(int voteCount) {
+        this.voteCount = voteCount;
+    }
+
+    public int getRelayCount() {
+        return relayCount;
+    }
+
+    public void setRelayCount(int relayCount) {
+        this.relayCount = relayCount;
+    }
+
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
+    }
 }
