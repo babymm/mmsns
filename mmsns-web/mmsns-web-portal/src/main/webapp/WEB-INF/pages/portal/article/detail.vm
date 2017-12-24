@@ -35,7 +35,7 @@
         </div>
         <div class="article-extra">
             <div class="article-license"><span style="color: #999;">© 著作权归作者所有</span></div>
-            <div  class="article-classify"><span style="">分类：<a href="/article/detail/1">系列-VUE</a>  字数：1120</span></div>
+            <div  class="article-classify"><span style="">分类：<a href="/article/detail/1">系列-VUE</a>  字数：$!article.wordCount</span></div>
             <div class="article-labels">
                 <span>标签：
                 #foreach($articleLabel in $!article.articleLabels.split(" "))

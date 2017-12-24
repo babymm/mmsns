@@ -149,7 +149,7 @@ public class MMSnsPortalProfileArticleController {
         articleEntity.setArticleDate(new Date());
         String articleContent = articleEntity.getArticleContent();
         articleEntity.setArticleLogo(getFacadeImageFromContent(articleContent));
-        articleEntity.setWordCount(articleContent.length());
+        articleEntity.setWordCount(wordCount(articleContent));
         articleEntity.setArticleType(MMSnsArticleEntity.ARTICLE_TYPE_ORIGINAL);
         MMSnsCommonUserEntity commonUserEntity = (MMSnsCommonUserEntity) SecurityUtils.getSubject().getSession().getAttribute(MMSnsCommonUserEntity.VISIT_USER);
         articleEntity.setUserId(commonUserEntity.getUserId());
@@ -209,7 +209,7 @@ public class MMSnsPortalProfileArticleController {
             Matcher urlMatcher = Pattern.compile(IMGSRC_REG).matcher(group);
             while (urlMatcher.find()) {
                 String url = urlMatcher.group();
-                if(url==null||url.contains("/layui")||url.contains("/icon")){
+                if (url == null || url.contains("/layui") || url.contains("/icon")) {
                     continue;
                 }
                 url = url.substring(0, url.length() - 1);
@@ -217,5 +217,23 @@ public class MMSnsPortalProfileArticleController {
             }
         }
         return null;
+    }
+
+    /**
+     * 字数统计
+     *
+     * @param content 文本内容
+     * @return
+     */
+    public static int wordCount(String content) {
+        if (content == null) return 0;
+        int wordCount = 0;
+        char[] chars = content.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if (Character.toString(chars[i]).matches("[\\u4E00-\\u9FA5]+")) {
+                wordCount++;
+            }
+        }
+        return wordCount;
     }
 }
