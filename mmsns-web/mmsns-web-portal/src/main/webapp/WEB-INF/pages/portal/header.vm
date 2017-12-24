@@ -109,7 +109,7 @@
             <li class="layui-nav-item"><a href="/doc">文库</a></li>
         #end
     </ul>
-    #if($shiro.isUser())
+    #if($shiro.isUser() and $!MMSNS_COMMON_USER)
         <ul class="nav-button layui-nav">
             <li class="layui-nav-item">
                 <a href="/admin/$!MMSNS_COMMON_USER.individuation/user/inbox">我的消息#*<span class="layui-badge">9</span>*#</a>

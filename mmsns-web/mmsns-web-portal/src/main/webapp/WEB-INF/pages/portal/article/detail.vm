@@ -8,40 +8,41 @@
         <div class="detail-breadcrumb">
             <span class="layui-breadcrumb">
               <a href="/article" style="">我的文章</a>
-              <a href="/article/detail/1">文章详情</a>
+              <a href="/article/detail/$articleId">文章详情</a>
             </span>
         </div>
         <div class="article-title">
             <div>
-                <span class="articletype" style="border-color: #51BAE3;color: #51BAE3;border: 2px solid #51BAE3;border-radius: 50%;width: 25px;height: 25px;vertical-align: text-bottom;text-align: center;font-size: 16px;line-height: 26px;float: left;display: inline-block;margin-right: 5px;margin-top: 4px">赞</span>
-                <h2>深入区分javascript中的作用域和执行环境</h2>
+                <h2><span style="border-color: #51BAE3;color: #51BAE3;border: 2px solid #51BAE3;border-radius: 50%;width: 25px;height: 25px;vertical-align: text-bottom;text-align: center;font-size: 16px;line-height: 26px;display: inline-block;margin-right: 5px;margin-top: 4px">原</span>$!article.articleTitle</h2>
             </div>
             <div class="article-author">
                 <span><a href="/article/detail/1" style="color: #46B;">龙马行空</a></span>
-                <span>发表于 2017-12-25</span>
-                <span>阅读 359</span>
-                <span>收藏 35</span>
-                <span>点赞 0</span>
-                <span>转发 0</span>
-                <span>评论<a href="/article/detail/1" style="color: #46B;"> 3</a></span>
+                <span>发表于 $!date.format('yyyy-MM-dd',$!article.articleDate)</span>
+                <span>阅读 $!article.readCount</span>
+                <span>收藏 $!article.collectCount</span>
+                <span>点赞 $!article.voteCount</span>
+                <span>转发 $!article.relayCount</span>
+                <span>评论<a href="/article/detail/$articleId" style="color: #46B;"> $!article.commentCount</a></span>
             </div>
         </div>
         <div class="article-message">
             <div class="article-abstract">
-                摘要: zbus.NET网络通讯模块（二），以实现MySQL服务器透明代理讲述zbus.NET网络通讯模块的小巧与精干的编程能力。
+                摘要: $!article.articleSumary
             </div>
             <div class="article-maincontent">
-                <section class="content">
-                    <p>首先要明确，作用域和执行环境是两个完全不同的概念，我们试图给他俩分别一个明确的定义，发现很难，因为你很难定义一个概念“是什么”，但是我们可以搞清楚他们分别起什么作用。
-                        另一个令人迷惑的地方就是js中的this关键字。其实执行环境就是this的值。总的来说，作用域是相对于函数来讲的，因为js里没有块级作用域，只有函数才能形成新的作用域。
-                        而且作用域在函数声明时就定义好了。作用域里声明的变量和函数，外部无法访问，注意，是外部。而执行环境在函数被调用时才生成。</p>
-                </section>
+                $!article.articleContent
             </div>
         </div>
         <div class="article-extra">
             <div class="article-license"><span style="color: #999;">© 著作权归作者所有</span></div>
             <div  class="article-classify"><span style="">分类：<a href="/article/detail/1">系列-VUE</a>  字数：1120</span></div>
-            <div class="article-labels"><span>标签： <a href="/article/detail/1">vue</a> <a href="/article/detail/1">axios</a></span></div>
+            <div class="article-labels">
+                <span>标签：
+                #foreach($articleLabel in $!article.articleLabels.split(" "))
+                    <a href="/article/detail/1">$articleLabel</a>
+                #end
+                </span>
+            </div>
         </div>
         <div class="article-buttons">
             <ul>
@@ -73,7 +74,7 @@
                 </div>
                 <div class="comment-list">
                     <ul>
-                        #set($comments=[0 .. 9])
+                        #set($comments=[0 .. 4])
                         #foreach($comment in $comments)
                             <li>
                                 <div class="comment-image">

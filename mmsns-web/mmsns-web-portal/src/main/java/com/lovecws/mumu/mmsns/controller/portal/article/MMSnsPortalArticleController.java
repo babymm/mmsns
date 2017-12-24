@@ -1,5 +1,8 @@
 package com.lovecws.mumu.mmsns.controller.portal.article;
 
+import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleEntity;
+import com.lovecws.mumu.mmsns.article.service.MMSnsArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/article")
 public class MMSnsPortalArticleController {
 
+    @Autowired(required = false)
+    private MMSnsArticleService articleService;
+
     @RequestMapping(method = RequestMethod.GET)
     public String article(HttpServletRequest request) {
         request.setAttribute("mainModular", "article");
@@ -26,6 +32,9 @@ public class MMSnsPortalArticleController {
     @RequestMapping(value = "/detail/{articleId}", method = RequestMethod.GET)
     public String detail(@PathVariable int articleId, HttpServletRequest request) {
         request.setAttribute("mainModular", "article");
+        //根据文章id获取文章详情
+        MMSnsArticleEntity articleInfo = articleService.getArticleInfo(String.valueOf(articleId));
+        request.setAttribute("article", articleInfo);
         return "/portal/article/detail";
     }
 }
