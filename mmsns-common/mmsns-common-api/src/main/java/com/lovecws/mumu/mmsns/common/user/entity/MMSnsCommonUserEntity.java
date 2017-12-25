@@ -79,14 +79,6 @@ public class MMSnsCommonUserEntity extends PersistentEntity {
     private int userScore;//用户积分
     private int userAccessCount;//用户访问量
 
-    //文章信息
-    private int articleCount;
-    private int articleWordCount;
-    private int articleOriginalCount;
-    private int articleReprintCount;
-    private int articleVoteCount;
-    private int articleCollectCount;
-
     public Integer getUserId() {
         return userId;
     }
@@ -439,51 +431,4 @@ public class MMSnsCommonUserEntity extends PersistentEntity {
         this.userAccessCount = userAccessCount;
     }
 
-    public int getArticleCount() {
-        return articleCount;
-    }
-
-    public void setArticleCount(int articleCount) {
-        this.articleCount = articleCount;
-    }
-
-    public int getArticleWordCount() {
-        return articleWordCount;
-    }
-
-    public void setArticleWordCount(int articleWordCount) {
-        this.articleWordCount = articleWordCount;
-    }
-
-    public int getArticleOriginalCount() {
-        return articleOriginalCount;
-    }
-
-    public void setArticleOriginalCount(int articleOriginalCount) {
-        this.articleOriginalCount = articleOriginalCount;
-    }
-
-    public int getArticleReprintCount() {
-        return articleReprintCount;
-    }
-
-    public void setArticleReprintCount(int articleReprintCount) {
-        this.articleReprintCount = articleReprintCount;
-    }
-
-    public int getArticleVoteCount() {
-        return articleVoteCount;
-    }
-
-    public void setArticleVoteCount(int articleVoteCount) {
-        this.articleVoteCount = articleVoteCount;
-    }
-
-    public int getArticleCollectCount() {
-        return articleCollectCount;
-    }
-
-    public void setArticleCollectCount(int articleCollectCount) {
-        this.articleCollectCount = articleCollectCount;
-    }
 }

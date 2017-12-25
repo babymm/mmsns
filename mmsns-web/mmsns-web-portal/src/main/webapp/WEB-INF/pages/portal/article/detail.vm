@@ -22,7 +22,7 @@
                 <span>收藏 $!article.collectCount</span>
                 <span>点赞 $!article.voteCount</span>
                 <span>转发 $!article.relayCount</span>
-                <span>评论<a href="#comment" style="color: #46B;"> $!article.commentCount</a></span>
+                <span>评论<a href="#comment" style="color: #46B;"> <span id="articleCommentAuthorSpan" style="float: right;"> $!article.commentCount</span></a></span>
             </div>
         </div>
         <div class="article-message">
@@ -124,7 +124,7 @@
             uploadImage: {url: '/common/upload/layedit', type: 'post'}
         });
         var articleMessageIndex=layedit.build('articleMessage',{
-            height:100
+            height:200
         });
         var commentCount=$("#articleCommentSpan").text(),limit=5;
         var floor=1;
@@ -160,31 +160,41 @@
                 commentContent=layedit.getContent(articleMessageIndex);
                 $.post("/article/comment/publish",{articleId:'$!article.articleId',commentContent:commentContent},function (respData) {
                     if(respData.code==200){
-                        $("#articleDetailFlowUL").prepend(li(respData.data,0));
+                        prependLi(respData.data);
                     }else{
                         layer.alert("添加评论操作失败",{icon:2});
                     }
                 });
             });
         });
-        function li(articleComment,floor) {
-            //用户头像
-            var userAvator=articleComment.avator?articleComment.avator:'/resources/portal/images/logo.jpg';
-            var commentContent=articleComment.commentContent;
-            //回复 评论
-            if(articleComment.commentType=='reply'){
-                commentContent="回复 "+articleComment.replyUserName+" : "+commentContent;
-            }
-            var li='<li id="li-'+articleComment.commentId+'">' +
-                    '<div class="comment-image"><a href="/profile/'+articleComment.individuation+'/home"><img src="'+userAvator+'" width="40" height="40" style="border-radius: 50%"> </a></div>'+
-                    '<div class="comment-profile"><span><a href="/profile/'+articleComment.individuation+'/home">'+articleComment.userName+'</a></span><span>'+floor+'楼 '+articleComment.commentDate+'</span> </div> ' +
-                    '<div class="comment-reply"><a onclick="articleCommentReplyButton(\''+articleComment.commentId+'\',\''+articleComment.userName+'\')" href="javascript:void(0)">回复</a></div>' +
-                    '<div class="comment-maincontent"><span>'+commentContent+'</span></div> ' +
-                    '<div class="comment-replycontent"><span>'+articleComment.replyCommentContent+'</span></div> ' +
-                    '</li>';
-            return li;
-        }
     });
+    //向评论列表添加评论或者回复
+    function prependLi(data) {
+        $("#articleDetailFlowUL").prepend(li(data,0));
+        commentCount=parseInt($("#articleCommentSpan").text());
+        $("#articleCommentSpan").text(commentCount+1);
+        $("#articleCommentAuthorSpan").text(commentCount+1);
+    }
+    function li(articleComment,floor) {
+        console.log(articleComment);
+        //用户头像
+        var userAvator=articleComment.avator?articleComment.avator:'/resources/portal/images/logo.jpg';
+        var commentContent=articleComment.commentContent;
+        var replyCommentContent='';
+        //回复 评论
+        if(articleComment.commentType=='reply'){
+            commentContent="回复 "+articleComment.replyUserName+" : "+commentContent;
+            replyCommentContent=articleComment.replyCommentContent;
+        }
+        var li='<li id="li-'+articleComment.commentId+'">' +
+                '<div class="comment-image"><a href="/profile/'+articleComment.individuation+'/home"><img src="'+userAvator+'" width="40" height="40" style="border-radius: 50%"> </a></div>'+
+                '<div class="comment-profile"><span><a href="/profile/'+articleComment.individuation+'/home">'+articleComment.userName+'</a></span><span>'+floor+'楼 '+articleComment.commentDate+'</span> </div> ' +
+                '<div class="comment-reply"><a onclick="articleCommentReplyButton(\''+articleComment.commentId+'\',\''+articleComment.userName+'\')" href="javascript:void(0)">回复</a></div>' +
+                '<div class="comment-commentcontent"><span>'+commentContent+'</span></div> ' +
+                '<div class="comment-replycontent"><span>'+replyCommentContent+'</span></div> ' +
+                '</li>';
+        return li;
+    }
     //评论回复
     function articleCommentReplyButton(commentId,userName) {
         console.log(commentId+" "+userName);

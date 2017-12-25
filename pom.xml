@@ -668,9 +668,7 @@
             <properties>
                 <env>company</env>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault><!--默认启用的是dev环境配置-->
-            </activation>
+
         </profile>
 
         <!-- 家庭环境 -->
@@ -679,6 +677,9 @@
             <properties>
                 <env>home</env>
             </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault><!--默认启用的是dev环境配置-->
+            </activation>
         </profile>
     </profiles>
 </project>

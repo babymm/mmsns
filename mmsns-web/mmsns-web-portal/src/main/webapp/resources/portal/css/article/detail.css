@@ -243,6 +243,17 @@
 .article-content .article-body .article-comment .comment-body .comment-list ul li .comment-reply{
     float: right;
 }
+.article-content .article-body .article-comment .comment-body .comment-list ul li .comment-commentcontent{
+    width: 100%;
+    float: left;
+    margin-left: 50px;
+}
+.article-content .article-body .article-comment .comment-body .comment-list ul li .comment-replycontent{
+    width: calc(100% - 50px);
+    float: left;
+    margin-left: 50px;
+    margin-top: 20px;
+}
 .article-content .article-category{
     width: 25%;
     float: right;

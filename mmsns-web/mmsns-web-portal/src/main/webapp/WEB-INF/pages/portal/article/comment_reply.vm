@@ -11,7 +11,6 @@
         height:100%;
         margin: 0 auto;
         margin-top: 20px;
-        border: 1px solid #ddd;
     }
     .reply-body .reply-content .replyer{
         width: 100%;
@@ -40,7 +39,6 @@
         padding: 3px 8px !important;
         cursor: pointer;
         color: #fff;
-        border: 1px solid transparent;
         border-radius: 2px;
         outline: none;
         background: #4eaa4c;
@@ -75,12 +73,13 @@
                 return false;
             }
              commentContent=layedit.getContent(articleCommentReplyIndex);
-            $.post("/article/comment/reply",{commentId:'$!commentId',replyComment:commentContent},function (respData) {
+            $.post("/article/comment/reply",{commentId:'$!commentId',replyComment:commentContent,userName:'$!userName'},function (respData) {
                 if(respData.code==200){
                     layer.msg('回复成功！', {
                         icon: 1,
                         time: 2000
                     }, function(){
+                        window.parent.prependLi(respData.data);
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
                     });

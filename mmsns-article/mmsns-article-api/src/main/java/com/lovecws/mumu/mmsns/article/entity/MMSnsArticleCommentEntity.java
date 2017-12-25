@@ -13,6 +13,9 @@ import java.util.Date;
  */
 public class MMSnsArticleCommentEntity extends PersistentEntity {
 
+    public static final String ARTICLE_COMMENT_TYPE_COMMENT="comment";
+    public static final String ARTICLE_COMMENT_TYPE_REPLY="reply";
+
     private int commentId;//评论id
     private String commentStatus;//评论状态
     private Date commentDate;//评论时间
@@ -23,6 +26,8 @@ public class MMSnsArticleCommentEntity extends PersistentEntity {
 
     private int articleId;//文章id
     private int replyCommentId;//如果是回复 则是回复的评论id
+    private int replyUserId;//回复评论id
+    private String replyCommentContent;//回复的评论内容
 
     private int commentUserId;//评论用户id
 
@@ -98,9 +103,26 @@ public class MMSnsArticleCommentEntity extends PersistentEntity {
         this.commentUserId = commentUserId;
     }
 
+    public int getReplyUserId() {
+        return replyUserId;
+    }
+
+    public void setReplyUserId(int replyUserId) {
+        this.replyUserId = replyUserId;
+    }
+
+    public String getReplyCommentContent() {
+        return replyCommentContent;
+    }
+
+    public void setReplyCommentContent(String replyCommentContent) {
+        this.replyCommentContent = replyCommentContent;
+    }
+
     private String userName;
     private String individuation;
     private String avator;
+    private String replyUserName;
 
     public String getUserName() {
         return userName;
@@ -124,5 +146,13 @@ public class MMSnsArticleCommentEntity extends PersistentEntity {
 
     public void setAvator(String avator) {
         this.avator = avator;
+    }
+
+    public String getReplyUserName() {
+        return replyUserName;
+    }
+
+    public void setReplyUserName(String replyUserName) {
+        this.replyUserName = replyUserName;
     }
 }

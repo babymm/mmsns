@@ -2,6 +2,11 @@
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/login.css">
+<script type="text/javascript">
+    if(top.window!=self.window){
+        top.window.location.href="/login";
+    }
+</script>
 #parse("/portal/header.vm")
 <div class="layout-body">
    <div class="layout-center">

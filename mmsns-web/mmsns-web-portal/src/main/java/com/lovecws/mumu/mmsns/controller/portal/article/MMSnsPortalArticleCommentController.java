@@ -41,17 +41,15 @@ public class MMSnsPortalArticleCommentController {
      */
     @ResponseBody
     @RequestMapping(value = "/publish", method = RequestMethod.POST)
-    public ResponseEntity publish(int articleId, String commentContent,
-                       @RequestParam(name = "commentType", required = false, defaultValue = "comment") String commentType, String replyCommentId) {
+    public ResponseEntity publish(int articleId, String commentContent) {
         MMSnsArticleCommentEntity articleCommentEntity = new MMSnsArticleCommentEntity();
         articleCommentEntity.setArticleId(articleId);
         articleCommentEntity.setCommentContent(commentContent);
         articleCommentEntity.setCommentStatus(PublicEnum.NORMAL.value());
         articleCommentEntity.setCommentDate(new Date());
-        articleCommentEntity.setCommentType(commentType);
+        articleCommentEntity.setCommentType(MMSnsArticleCommentEntity.ARTICLE_COMMENT_TYPE_COMMENT);
         MMSnsCommonUserEntity sessionCommonUser = (MMSnsCommonUserEntity) SecurityUtils.getSubject().getSession().getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
         articleCommentEntity.setCommentUserId(sessionCommonUser.getUserId());
-        articleCommentEntity.setReplyCommentId(replyCommentId != null ? Integer.parseInt(replyCommentId) : 0);
         articleCommentEntity = articleCommentService.publishArticleComment(articleCommentEntity);
 
         articleCommentEntity.setUserName(sessionCommonUser.getUserName());
@@ -86,7 +84,7 @@ public class MMSnsPortalArticleCommentController {
 
     @ResponseBody
     @RequestMapping(value = "/reply",method = RequestMethod.POST)
-    public ResponseEntity articleCommentReply(int commentId,String replyComment){
+    public ResponseEntity articleCommentReply(int commentId,String replyComment,String userName){
         //根据评论id 获取评论详情
         MMSnsArticleCommentEntity articleCommentEntity=articleCommentService.getArticleCommentInfo(commentId);
         if(articleCommentEntity==null){
@@ -98,13 +96,18 @@ public class MMSnsPortalArticleCommentController {
         articleCommentReply.setCommentContent(replyComment);
         articleCommentReply.setCommentStatus(PublicEnum.NORMAL.value());
         articleCommentReply.setCommentDate(new Date());
-        articleCommentReply.setCommentType("reply");
+        articleCommentReply.setCommentType(MMSnsArticleCommentEntity.ARTICLE_COMMENT_TYPE_REPLY);
         articleCommentReply.setReplyCommentId(commentId);
-
+        articleCommentReply.setReplyUserId(articleCommentEntity.getCommentUserId());
+        articleCommentReply.setReplyCommentContent(articleCommentEntity.getCommentContent());
         MMSnsCommonUserEntity sessionCommonUser = (MMSnsCommonUserEntity) SecurityUtils.getSubject().getSession().getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
         articleCommentReply.setCommentUserId(sessionCommonUser.getUserId());
-
         articleCommentReply = articleCommentService.publishArticleComment(articleCommentReply);
+
+        articleCommentReply.setUserName(sessionCommonUser.getUserName());
+        articleCommentReply.setIndividuation(sessionCommonUser.getIndividuation());
+        articleCommentReply.setAvator(sessionCommonUser.getAvator());
+        articleCommentReply.setReplyUserName(userName);
         return new ResponseEntity(articleCommentReply);
     }
 }
