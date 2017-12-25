@@ -13,8 +13,8 @@ import java.util.Date;
  */
 public class MMSnsArticleEntity extends PersistentEntity {
 
-    public static final String ARTICLE_TYPE_ORIGINAL="original";
-    public static final String ARTICLE_TYPE_REPRINT="reprint";
+    public static final String ARTICLE_TYPE_ORIGINAL = "original";
+    public static final String ARTICLE_TYPE_REPRINT = "reprint";
     private int articleId;
     private String articleStatus;
     private Date articleDate;
@@ -205,6 +205,15 @@ public class MMSnsArticleEntity extends PersistentEntity {
     private String categoryName;
     private String categoryId;
 
+    private String userName;
+    private String company;
+    private String positional;
+    private String individuation;
+    private int userFansCount;
+    private int userScore;
+    private int userAccessCount;
+    private String avator;
+
     public int getArticleCount() {
         return articleCount;
     }
@@ -227,5 +236,69 @@ public class MMSnsArticleEntity extends PersistentEntity {
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getPositional() {
+        return positional;
+    }
+
+    public void setPositional(String positional) {
+        this.positional = positional;
+    }
+
+    public String getIndividuation() {
+        return individuation;
+    }
+
+    public void setIndividuation(String individuation) {
+        this.individuation = individuation;
+    }
+
+    public int getUserFansCount() {
+        return userFansCount;
+    }
+
+    public void setUserFansCount(int userFansCount) {
+        this.userFansCount = userFansCount;
+    }
+
+    public int getUserScore() {
+        return userScore;
+    }
+
+    public void setUserScore(int userScore) {
+        this.userScore = userScore;
+    }
+
+    public int getUserAccessCount() {
+        return userAccessCount;
+    }
+
+    public void setUserAccessCount(int userAccessCount) {
+        this.userAccessCount = userAccessCount;
+    }
+
+    public String getAvator() {
+        return avator;
+    }
+
+    public void setAvator(String avator) {
+        this.avator = avator;
     }
 }

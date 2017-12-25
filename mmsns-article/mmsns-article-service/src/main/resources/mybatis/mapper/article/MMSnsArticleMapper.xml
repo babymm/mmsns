@@ -32,6 +32,15 @@
         <result column="article_count" property="articleCount" jdbcType="INTEGER"/>
         <result column="category_name" property="categoryName" jdbcType="INTEGER"/>
         <result column="category_id" property="categoryId" jdbcType="INTEGER"/>
+
+        <result column="user_name" property="userName" jdbcType="INTEGER"/>
+        <result column="company" property="company" jdbcType="INTEGER"/>
+        <result column="positional" property="positional" jdbcType="INTEGER"/>
+        <result column="individuation" property="individuation" jdbcType="INTEGER"/>
+        <result column="user_fans_count" property="userFansCount" jdbcType="INTEGER"/>
+        <result column="user_score" property="userScore" jdbcType="INTEGER"/>
+        <result column="user_access_count" property="userAccessCount" jdbcType="INTEGER"/>
+        <result column="avator" property="avator" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="MMSnsArticleColumn">
@@ -83,9 +92,9 @@
         </if>
     </select>
 
-    <!-- 获取用户下按照文章类型分组的文章数量-->
+    <!-- 获取用户下按照文章类型分组的文章数量 和文章字数数量-->
     <select id="groupArticleCountByUserId" resultMap="MMSnsArticleResultMap" parameterType="map">
-        select article_type,count(article_id) article_count
+        select article_type,count(article_id) article_count,sum(word_count) word_count
         from mb_article
         <where>
             <if test="userId!=null and userId!=''">
@@ -118,9 +127,13 @@
     <!-- 获取文章评论详情信息-->
     <select id="selectByPrimaryKey" resultMap="MMSnsArticleResultMap" parameterType="java.lang.String">
         select
-        <include refid="MMSnsArticleColumn"/>
-        from mb_article
-        where article_id=#{articleId}
+        a.article_id,a.article_title,a.article_sumary,a.article_content,a.article_labels,a.article_type,a.read_count,a.collect_count,a.vote_count,a.relay_count,a.comment_count,a.article_date,a.user_id,a.word_count,
+        ac.category_name,
+        u.user_name,u.individuation,u.user_fans_count,u.user_score,u.user_access_count,u.avator,u.company,u.positional
+        from mb_article a
+        INNER JOIN mb_article_category ac on(ac.category_id=a.user_category_id)
+        INNER JOIN mc_user u on(u.user_id=a.user_id)
+        where a.article_id=#{articleId}
     </select>
 
     <!-- 添加文章评论信息 -->
@@ -282,19 +295,19 @@
                 user_category_id=#{userCategoryId},
             </if>
             <if test="readCount!=null and readCount!=0">
-                read_count=#{readCount},
+                read_count=read_count+#{readCount},
             </if>
             <if test="collectCount!=null and collectCount!=0">
-                collect_count=#{collectCount},
+                collect_count=collect_count+#{collectCount},
             </if>
             <if test="voteCount!=null and voteCount!=0">
-                vote_count=#{voteCount},
+                vote_count=vote_count+#{voteCount},
             </if>
             <if test="relayCount!=null and relayCount!=0">
-                relay_count=#{relayCount},
+                relay_count=relay_count+#{relayCount},
             </if>
             <if test="commentCount!=null and commentCount!=0">
-                comment_count=#{commentCount},
+                comment_count=comment_count+#{commentCount},
             </if>
             <if test="articleType!=null">
                 article_type=#{articleType},

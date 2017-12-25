@@ -7,8 +7,8 @@
     <div class="article-body">
         <div class="detail-breadcrumb">
             <span class="layui-breadcrumb">
-              <a href="/article" style="">我的文章</a>
-              <a href="/article/detail/$articleId">文章详情</a>
+              <a href="/article">我的文章</a>
+              <a href="/article/detail/$!article.articleId">文章详情</a>
             </span>
         </div>
         <div class="article-title">
@@ -16,13 +16,13 @@
                 <h2><span style="border-color: #51BAE3;color: #51BAE3;border: 2px solid #51BAE3;border-radius: 50%;width: 25px;height: 25px;vertical-align: text-bottom;text-align: center;font-size: 16px;line-height: 26px;display: inline-block;margin-right: 5px;margin-top: 4px">原</span>$!article.articleTitle</h2>
             </div>
             <div class="article-author">
-                <span><a href="/article/detail/1" style="color: #46B;">龙马行空</a></span>
+                <span><a href="/profile/$!article.individuation/home" style="color: #46B;">$!article.userName</a></span>
                 <span>发表于 $!date.format('yyyy-MM-dd',$!article.articleDate)</span>
                 <span>阅读 $!article.readCount</span>
                 <span>收藏 $!article.collectCount</span>
                 <span>点赞 $!article.voteCount</span>
                 <span>转发 $!article.relayCount</span>
-                <span>评论<a href="/article/detail/$articleId" style="color: #46B;"> $!article.commentCount</a></span>
+                <span>评论<a href="#comment" style="color: #46B;"> $!article.commentCount</a></span>
             </div>
         </div>
         <div class="article-message">
@@ -35,7 +35,7 @@
         </div>
         <div class="article-extra">
             <div class="article-license"><span style="color: #999;">© 著作权归作者所有</span></div>
-            <div  class="article-classify"><span style="">分类：<a href="/article/detail/1">系列-VUE</a>  字数：$!article.wordCount</span></div>
+            <div  class="article-classify"><span style="">分类：<a href="/article/detail/$!article.articleId">$!article.categoryName</a>  字数：$!article.wordCount</span></div>
             <div class="article-labels">
                 <span>标签：
                 #foreach($articleLabel in $!article.articleLabels.split(" "))
@@ -46,51 +46,40 @@
         </div>
         <div class="article-buttons">
             <ul>
-                <li><a href="/article/detail/1"><i class="icon-svg icon-reward-blog"></i><span>点赞</span></a></li>
-                <li><a href="/article/detail/1"><i class="icon-svg icon-reward-blog"></i><span>收藏</span></a></li>
-                <li><a href="/article/detail/1"><i class="icon-svg icon-reward-blog"></i><span>分享</span></a></li>
-                <li><a href="/article/detail/1"><i class="icon-svg icon-reward-blog"></i><span>打赏</span></a></li>
-                <li><a href="/article/detail/1"><i class="icon-svg icon-reward-blog"></i><span>举报</span></a></li>
+                <li><a id="articleVoteButton" href="javascript:void(0)"><i class="icon-svg icon-reward-blog"></i><span>点赞</span></a></li>
+                <li><a id="articleCollectButton" href="javascript:void(0)"><i class="icon-svg icon-reward-blog"></i><span>收藏</span></a></li>
+                <li><a id="articleShareButton" href="javascript:void(0)"><i class="icon-svg icon-reward-blog"></i><span>分享</span></a></li>
+                <li><a id="articleTipButton" href="javascript:void(0)"><i class="icon-svg icon-reward-blog"></i><span>打赏</span></a></li>
+                <li><a id="articleReportButton" href="javascript:void(0)"><i class="icon-svg icon-reward-blog"></i><span>举报</span></a></li>
             </ul>
         </div>
         <div class="article-users">
             <div class="article-usermessage">
                 <div class="user-image">
-                    <a href="/article/detail/1"><img style="width: 80px;height: 80px;vertical-align: baseline;border-radius: 50%" src="https://static.oschina.net/uploads/user/708/1416844_100.jpg?t=1421506700000"></a>
+                    <a href="/profile/$!article.individuation/home">
+                        #if($!article.avator)
+                            <img src="$!article.avator" width="80" height="80" style="border-radius: 50%">
+                        #else
+                            <img src="/resources/portal/images/logo.jpg" width="80" height="80" style="border-radius: 50%">
+                        #end
+                    </a>
                 </div>
                 <div class="user-message">
-                    <span class="user-name"><a href="">龙马行空</a></span>
-                    <span class="user-name">前端工程师  房山</span>
-                    <span class="user-name">粉丝 <a href="">375</a> 博文 <a href="">127</a> 码字总数 <a href="">10255</a></span>
+                    <span class="user-name"><a href="/profile/$!article.individuation/home">$!article.userName</a></span>
+                    <span class="user-name">$!article.company  $!article.positional</span>
+                    <span class="user-name">粉丝 <a href="/profile/$!article.individuation/home">$!article.userFansCount</a> 博文 <a href="/profile/$!article.individuation/article">$!articleCount</a> 码字总数 <a href="/profile/$!article.individuation/article">$!articleWordCount</a></span>
                 </div>
             </div>
         </div>
         <div class="article-comment">
             <div class="comment-body">
-                <div><h2>评论 4</h2></div>
+                <div><a name="comment"><h2>评论 <span id="articleCommentSpan">$!article.commentCount</span></h2></a></div>
                 <div class="comment-textarea">
                     <textarea id="articleMessage"></textarea>
-                    <button>发表评论</button>
+                    <button id="publishArticleComment">发表评论</button>
                 </div>
                 <div class="comment-list">
-                    <ul>
-                        #set($comments=[0 .. 4])
-                        #foreach($comment in $comments)
-                            <li>
-                                <div class="comment-image">
-                                    <a href="/article/detail/1">
-                                        <img src="https://static.oschina.net/uploads/user/106/212080_50.jpg?t=1395912810000" width="40" height="40">
-                                    </a>
-                                </div>
-                                <div class="comment-profile">
-                                    <span><a href="/article/detail/1">陈阳阳阳</a></span>
-                                    <span>1楼 2017/12/08 15:28</span>
-                                </div>
-                                <div class="comment-reply"><a href="/article/detail/1">回复</a></div>
-                                <hr>
-                            </li>
-                        #end
-                    </ul>
+                    <ul class="flow-default" id="articleDetailFlowUL"></ul>
                 </div>
             </div>
         </div>
@@ -129,11 +118,93 @@
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js"  charset="utf-8"></script>
 <script type="text/javascript">
-    layui.use(['element', 'carousel', 'code', 'layedit'], function () {
-        var element = layui.element, carousel = layui.carousel, layedit = layui.layedit;
-        layedit.build('articleMessage',{
-            tool:[],
+    layui.use(['element', 'layedit','flow','layer'], function () {
+        var element = layui.element,layedit = layui.layedit, flow = layui.flow;
+        layedit.set({
+            uploadImage: {url: '/common/upload/layedit', type: 'post'}
+        });
+        var articleMessageIndex=layedit.build('articleMessage',{
             height:100
         });
+        var commentCount=$("#articleCommentSpan").text(),limit=5;
+        var floor=1;
+        if(commentCount>0){
+            var commentPage=commentCount>limit?(commentCount%limit==0?commentCount/limit:commentCount/limit+1):1;
+            flow.load({
+                elem: '#articleDetailFlowUL'
+                ,isAuto:true
+                ,isLazyimg:true
+                ,done: function(page, next){
+                    $.get("/article/comment/data",{articleId:'$!article.articleId',page:page,limit:limit},function (respData) {
+                        if(respData.code==200){
+                            var lis = [];
+                            for(var i = 0; i < respData.data.length; i++){
+                                lis.push(li( respData.data[i],floor++));
+                            }
+                            next(lis.join(''), page < commentPage);
+                        }else{
+                            layer.msg("文章评论数据加载失败!",{icon:2});
+                        }
+                    });
+                }
+            });
+        }
+        $(function () {
+            //文章发布
+            $("#publishArticleComment").click(function () {
+                commentContent=layedit.getText(articleMessageIndex);
+                if(commentContent==null||commentContent==''){
+                    layer.msg("请输入评论内容！");
+                    return false;
+                }
+                commentContent=layedit.getContent(articleMessageIndex);
+                $.post("/article/comment/publish",{articleId:'$!article.articleId',commentContent:commentContent},function (respData) {
+                    if(respData.code==200){
+                        $("#articleDetailFlowUL").prepend(li(respData.data,0));
+                    }else{
+                        layer.alert("添加评论操作失败",{icon:2});
+                    }
+                });
+            });
+        });
+        function li(articleComment,floor) {
+            //用户头像
+            var userAvator=articleComment.avator?articleComment.avator:'/resources/portal/images/logo.jpg';
+            var commentContent=articleComment.commentContent;
+            //回复 评论
+            if(articleComment.commentType=='reply'){
+                commentContent="回复 "+articleComment.replyUserName+" : "+commentContent;
+            }
+            var li='<li id="li-'+articleComment.commentId+'">' +
+                    '<div class="comment-image"><a href="/profile/'+articleComment.individuation+'/home"><img src="'+userAvator+'" width="40" height="40" style="border-radius: 50%"> </a></div>'+
+                    '<div class="comment-profile"><span><a href="/profile/'+articleComment.individuation+'/home">'+articleComment.userName+'</a></span><span>'+floor+'楼 '+articleComment.commentDate+'</span> </div> ' +
+                    '<div class="comment-reply"><a onclick="articleCommentReplyButton(\''+articleComment.commentId+'\',\''+articleComment.userName+'\')" href="javascript:void(0)">回复</a></div>' +
+                    '<div class="comment-maincontent"><span>'+commentContent+'</span></div> ' +
+                    '<div class="comment-replycontent"><span>'+articleComment.replyCommentContent+'</span></div> ' +
+                    '</li>';
+            return li;
+        }
     });
+    //评论回复
+    function articleCommentReplyButton(commentId,userName) {
+        console.log(commentId+" "+userName);
+        //$("#li-"+commentId).append('<div class="comment-replytextarea"><textarea id="articleMessage"></textarea><button id="publishArticleCommentReply">回复评论</button> </div>');
+        layer.open({
+            type: 2,
+            closeBtn:true,
+            shadeClose:true,
+            scrollbar:false,
+            title: false,
+            closeBtn: 1,
+            area: ['650px', '420px'],
+            skin: 'layui-layer-nobg',
+            shadeClose: false,
+            content:['/article/comment/reply?commentId='+commentId+"&userName="+userName, 'no']
+            /*content: '<div style="width: 100%;height:100%;float: left;background-color: white;">' +
+            '<div style="width: 410px;height: 240px;margin: 20px">' +
+            '<span style=" width: 100%;float: left;color: #6a6a6a;"><strong>回复:'+userName+'</strong></span>' +
+            '<span style=" width: 100%;float: left;margin-top: 10px;"><strong>回复内容</strong></span><textarea style="width: 90%;height: 160px;"></textarea><span style="width: 100%;float: left;margin-top: 15px;margin-bottom: 20px"><a style="width: 60px;font-size: 14px;line-height: 1.6;padding: 3px 8px !important;cursor: pointer;color: #fff;border: 1px solid transparent;border-radius: 2px;outline: none;background: #4eaa4c;" href="javascript:void(0)" onclick="articleCommentReply()">发送</a></span>' +
+            '</div></div>'*/
+        });
+    }
 </script>

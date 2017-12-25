@@ -33,7 +33,9 @@ public class MMSnsArticleServiceImpl implements MMSnsArticleService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public MMSnsArticleEntity addArticle(MMSnsArticleEntity articleEntity) {
-        return articleDao.insert(articleEntity);
+        //保存文章
+        articleEntity = articleDao.insert(articleEntity);
+        return articleEntity;
     }
 
     @Override

@@ -48,10 +48,11 @@ public class MMSnsPortalProfileArticleController {
     public void initArticleCenter(String sessionUserId) {
         //获取统计信息 我发布的文章的数量、我转发的文章的数量
         List<MMSnsArticleEntity> articleCounts = articleService.groupArticleCountByUserId(sessionUserId);
-        int originalArticleCount = 0, reprintArticleCount = 0, voteArticleCount = 0, collectArticleCount = 0;
+        int originalArticleCount = 0, reprintArticleCount = 0, articleWordCount = 0, voteArticleCount = 0, collectArticleCount = 0;
         for (MMSnsArticleEntity articleEntity : articleCounts) {
             if (articleEntity.getArticleType().equals(MMSnsArticleEntity.ARTICLE_TYPE_ORIGINAL)) {
                 originalArticleCount = articleEntity.getArticleCount();
+                articleWordCount = articleEntity.getWordCount();
             } else if (articleEntity.getArticleType().equals(MMSnsArticleEntity.ARTICLE_TYPE_REPRINT)) {
                 reprintArticleCount = articleEntity.getArticleCount();
             }
@@ -62,6 +63,7 @@ public class MMSnsPortalProfileArticleController {
         //获取文章分类
         List<MMSnsArticleEntity> articleCategorys = articleService.groupArticleCountByCategory(sessionUserId, MMSnsArticleEntity.ARTICLE_TYPE_ORIGINAL);
 
+        request.setAttribute("articleWordCount", articleWordCount);
         request.setAttribute("originalArticleCount", originalArticleCount);
         request.setAttribute("reprintArticleCount", reprintArticleCount);
         request.setAttribute("voteArticleCount", voteArticleCount);
@@ -169,7 +171,7 @@ public class MMSnsPortalProfileArticleController {
     public ResponseEntity updateArticle(@PathVariable String individuation, MMSnsArticleEntity articleEntity) {
         String articleContent = articleEntity.getArticleContent();
         articleEntity.setArticleLogo(getFacadeImageFromContent(articleContent));
-        articleEntity.setWordCount(articleContent.length());
+        articleEntity.setWordCount(wordCount(articleContent));
         articleEntity = articleService.updateArticle(articleEntity);
         return new ResponseEntity(articleEntity);
     }

@@ -53,11 +53,24 @@
         <result column="individuation" property="individuation" jdbcType="VARCHAR"/>
         <result column="isindivid" property="isindivid" jdbcType="VARCHAR"/>
         <result column="motto" property="motto" jdbcType="VARCHAR"/>
+
+        <result column="user_vote_count" property="userVoteCount" jdbcType="INTEGER"/>
+        <result column="user_fans_count" property="userFansCount" jdbcType="INTEGER"/>
+        <result column="user_attach_count" property="userAttachCount" jdbcType="INTEGER"/>
+        <result column="user_score" property="userScore" jdbcType="INTEGER"/>
+        <result column="user_access_count" property="userAccessCount" jdbcType="INTEGER"/>
+
+        <result column="article_count" property="articleCount" jdbcType="INTEGER"/>
+        <result column="article_word_count" property="articleWordCount" jdbcType="INTEGER"/>
+        <result column="article_original_count" property="articleOriginalCount" jdbcType="INTEGER"/>
+        <result column="article_reprint_count" property="articleReprintCount" jdbcType="INTEGER"/>
+        <result column="article_vote_count" property="articleVoteCount" jdbcType="INTEGER"/>
+        <result column="article_collect_count" property="articleCollectCount" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="ElebillCommonUserColumn">
         user_id,user_status,create_ip,create_date,create_area,edit_ip,edit_date,edit_area,last_login_time,last_login_ip,last_login_area,user_name,real_name,user_password,user_salt,user_sex,user_birthday,
         user_phone,phone_active,avator,thumb,user_email,email_active,province,city,area,detail_area,register_type,thirdLogin_token,wexin,company,positional,user_auth,idcard,idcard_img,idcardbg_img,
-        individuation,isindivid,motto
+        individuation,isindivid,motto,user_vote_count,user_fans_count,user_attach_count,user_score,user_access_count,article_count,article_word_count,article_original_count,article_reprint_count,article_vote_count,article_collect_count
     </sql>
 
     <!-- 获取用户数量 -->
@@ -238,6 +251,39 @@
             <if test="motto!=null">
                 motto,
             </if>
+            <if test="userVoteCount!=null">
+                user_vote_count,
+            </if>
+            <if test="userFansCount!=null">
+                user_fans_count,
+            </if>
+            <if test="userAttachCount!=null">
+                user_attach_count,
+            </if>
+            <if test="userScore!=null">
+                user_score,
+            </if>
+            <if test="userAccessCount!=null">
+                user_access_count,
+            </if>
+            <if test="articleCount!=null">
+                article_count,
+            </if>
+            <if test="articleWordCount!=null">
+                article_word_count,
+            </if>
+            <if test="articleOriginalCount!=null">
+                article_original_count,
+            </if>
+            <if test="articleReprintCount!=null">
+                article_reprint_count,
+            </if>
+            <if test="articleVoteCount!=null">
+                article_vote_count,
+            </if>
+            <if test="articleCollectCount!=null">
+                article_collect_count,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="userStatus!=null">
@@ -353,6 +399,39 @@
             </if>
             <if test="motto!=null">
                 #{motto},
+            </if>
+            <if test="userVoteCount!=null">
+                #{userVoteCount},
+            </if>
+            <if test="userFansCount!=null">
+                #{userFansCount},
+            </if>
+            <if test="userAttachCount!=null">
+                #{userAttachCount},
+            </if>
+            <if test="userScore!=null">
+                #{userScore},
+            </if>
+            <if test="userAccessCount!=null">
+                #{userAccessCount},
+            </if>
+            <if test="articleCount!=null">
+                #{articleCount},
+            </if>
+            <if test="articleWordCount!=null">
+                #{articleWordCount},
+            </if>
+            <if test="articleOriginalCount!=null">
+                #{articleOriginalCount},
+            </if>
+            <if test="articleReprintCount!=null">
+                #{articleReprintCount},
+            </if>
+            <if test="articleVoteCount!=null">
+                #{articleVoteCount},
+            </if>
+            <if test="articleCollectCount!=null">
+                #{articleCollectCount},
             </if>
         </trim>
     </insert>
@@ -474,6 +553,39 @@
             </if>
             <if test="motto!=null">
                 motto=#{motto},
+            </if>
+            <if test="userVoteCount!=null and userVoteCount!=0">
+                user_vote_count=#{userVoteCount},
+            </if>
+            <if test="userFansCount!=null and userFansCount!=0">
+                user_fans_count=#{userFansCount},
+            </if>
+            <if test="userAttachCount!=null and userAttachCount!=0">
+                user_attach_count=#{userAttachCount},
+            </if>
+            <if test="userScore!=null and userScore!=0">
+                user_score=#{userScore},
+            </if>
+            <if test="userAccessCount!=null and userAccessCount!=0">
+                user_access_count=#{userAccessCount},
+            </if>
+            <if test="articleCount!=null and articleCount!=0">
+                article_count=#{articleCount},
+            </if>
+            <if test="articleWordCount!=null and articleWordCount!=0">
+                article_word_count=#{articleWordCount},
+            </if>
+            <if test="articleOriginalCount!=null and articleOriginalCount!=0">
+                article_original_count=#{articleOriginalCount},
+            </if>
+            <if test="articleReprintCount!=null and articleReprintCount!=0">
+                article_reprint_count=#{articleReprintCount},
+            </if>
+            <if test="articleVoteCount!=null and articleVoteCount!=0">
+                article_vote_count=#{articleVoteCount},
+            </if>
+            <if test="articleCollectCount!=null and articleCollectCount!=0">
+                article_collect_count=#{articleCollectCount},
             </if>
         </set>
         <where>

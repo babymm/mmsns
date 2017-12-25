@@ -198,10 +198,18 @@
     display: inline-block;
     cursor: pointer;
 }
+.article-content .article-body .article-comment .comment-body .comment-list ul{
+    float: left;
+    margin-top: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
 .article-content .article-body .article-comment .comment-body .comment-list ul li{
     float: left;
     margin-top: 20px;
     width: 100%;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
 }
 .article-content .article-body .article-comment .comment-body .comment-list ul li .comment-image{
     float: left;
@@ -213,10 +221,27 @@
 .article-content .article-body .article-comment .comment-body .comment-list ul li .comment-profile span{
     float: left;
     width: 100%;
+    font-size: 12px;
+    color: #999;
+    line-height: 2;
+    margin-top: 1px;
+}
+.article-content .article-body .article-comment .comment-body .comment-list ul li .comment-maincontent{
+    float: left;
+    width: 100%;
+    margin-left: 50px;
+}
+.article-content .article-body .article-comment .comment-body .comment-list ul li .comment-maincontent img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.article-content .article-body .article-comment .comment-body .comment-list ul li .comment-replytextarea{
+    float: left;
+    width: 100%;
+    margin-left: 50px;
 }
 .article-content .article-body .article-comment .comment-body .comment-list ul li .comment-reply{
     float: right;
-    margin-bottom: 50px;
 }
 .article-content .article-category{
     width: 25%;

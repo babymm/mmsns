@@ -12,13 +12,13 @@ import java.util.Date;
  */
 public class MMSnsCommonUserEntity extends PersistentEntity {
 
-    public static final String USER_STATUS_UNACTIVE="unactive";//未激活
-    public static final String USER_STATUS_ACTIVE="active";//已激活
-    public static final String USER_STATUS_FORBIT="forbit";//被禁止登录
-    public static final String USER_STATUS_DELETE="delete";//删除
+    public static final String USER_STATUS_UNACTIVE = "unactive";//未激活
+    public static final String USER_STATUS_ACTIVE = "active";//已激活
+    public static final String USER_STATUS_FORBIT = "forbit";//被禁止登录
+    public static final String USER_STATUS_DELETE = "delete";//删除
 
-    public static final String MMSNS_COMMON_USER="MMSNS_COMMON_USER";
-    public static final String VISIT_USER="VISIT_USER";
+    public static final String MMSNS_COMMON_USER = "MMSNS_COMMON_USER";
+    public static final String VISIT_USER = "VISIT_USER";
 
     private Integer userId;//用户id
     private String userStatus;//用户状态
@@ -71,6 +71,21 @@ public class MMSnsCommonUserEntity extends PersistentEntity {
     private String individuation;//个性化名称
     private String isindivid;//个性化设置时间
     private String motto;//人生格言
+
+    //用户信息
+    private int userVoteCount;//用户点赞数量
+    private int userFansCount;//用户粉丝数量
+    private int userAttachCount;//用户关注数量
+    private int userScore;//用户积分
+    private int userAccessCount;//用户访问量
+
+    //文章信息
+    private int articleCount;
+    private int articleWordCount;
+    private int articleOriginalCount;
+    private int articleReprintCount;
+    private int articleVoteCount;
+    private int articleCollectCount;
 
     public Integer getUserId() {
         return userId;
@@ -382,5 +397,93 @@ public class MMSnsCommonUserEntity extends PersistentEntity {
 
     public void setMotto(String motto) {
         this.motto = motto;
+    }
+
+    public int getUserVoteCount() {
+        return userVoteCount;
+    }
+
+    public void setUserVoteCount(int userVoteCount) {
+        this.userVoteCount = userVoteCount;
+    }
+
+    public int getUserFansCount() {
+        return userFansCount;
+    }
+
+    public void setUserFansCount(int userFansCount) {
+        this.userFansCount = userFansCount;
+    }
+
+    public int getUserAttachCount() {
+        return userAttachCount;
+    }
+
+    public void setUserAttachCount(int userAttachCount) {
+        this.userAttachCount = userAttachCount;
+    }
+
+    public int getUserScore() {
+        return userScore;
+    }
+
+    public void setUserScore(int userScore) {
+        this.userScore = userScore;
+    }
+
+    public int getUserAccessCount() {
+        return userAccessCount;
+    }
+
+    public void setUserAccessCount(int userAccessCount) {
+        this.userAccessCount = userAccessCount;
+    }
+
+    public int getArticleCount() {
+        return articleCount;
+    }
+
+    public void setArticleCount(int articleCount) {
+        this.articleCount = articleCount;
+    }
+
+    public int getArticleWordCount() {
+        return articleWordCount;
+    }
+
+    public void setArticleWordCount(int articleWordCount) {
+        this.articleWordCount = articleWordCount;
+    }
+
+    public int getArticleOriginalCount() {
+        return articleOriginalCount;
+    }
+
+    public void setArticleOriginalCount(int articleOriginalCount) {
+        this.articleOriginalCount = articleOriginalCount;
+    }
+
+    public int getArticleReprintCount() {
+        return articleReprintCount;
+    }
+
+    public void setArticleReprintCount(int articleReprintCount) {
+        this.articleReprintCount = articleReprintCount;
+    }
+
+    public int getArticleVoteCount() {
+        return articleVoteCount;
+    }
+
+    public void setArticleVoteCount(int articleVoteCount) {
+        this.articleVoteCount = articleVoteCount;
+    }
+
+    public int getArticleCollectCount() {
+        return articleCollectCount;
+    }
+
+    public void setArticleCollectCount(int articleCollectCount) {
+        this.articleCollectCount = articleCollectCount;
     }
 }

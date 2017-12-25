@@ -10,7 +10,7 @@
             </a>
             </span>
             <span class="user-name"><a href="/profile/$individuation/home">$VISIT_USER.userName</a></span>
-            <span class="user-words">共编写3456文字</span>
+            <span class="user-words">共编写 $!articleWordCount 文字</span>
             #if($individuation==$MMSNS_COMMON_USER.individuation)
                 <span class="user-writearticle"><a href="/profile/$individuation/article/create">编写文章</a></span>
             #end
@@ -21,7 +21,6 @@
                 #set($totalCount=$!originalArticleCount+$!reprintArticleCount+$!voteArticleCount+$!collectArticleCount)
                 <span class="classifycount">共$totalCount篇</span>
             </div>
-            <hr>
             <ul>
                 <li id="original">
                     <a href="/profile/$individuation/article/original">
@@ -54,7 +53,6 @@
                 <span class="classifytitle" style="line-height: 30px;font-size: 18px;font-weight: 400">文章分类</span>
                 <span class="classifycount">共$!originalArticleCount篇</span>
             </div>
-            <hr>
             <ul>
                 #foreach($articleCategory in $!articleCategorys)
                     <li id="$articleCategory.categoryId">

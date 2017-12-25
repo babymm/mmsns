@@ -12,12 +12,14 @@
         <result column="comment_content" property="commentContent" jdbcType="VARCHAR"/>
         <result column="comment_img" property="commentImg" jdbcType="VARCHAR"/>
 
-        <result column="comment_order" property="commentOrder" jdbcType="INTEGER"/>
         <result column="article_id" property="articleId" jdbcType="INTEGER"/>
         <result column="reply_comment_id" property="replyCommentId" jdbcType="INTEGER"/>
 
         <result column="comment_user_id" property="commentUserId" jdbcType="INTEGER"/>
-        <result column="article_user_id" property="articleUserId" jdbcType="INTEGER"/>
+
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="individuation" property="individuation" jdbcType="VARCHAR"/>
+        <result column="avator" property="avator" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="MMSnsArticleCommentColumn">
 		comment_id,comment_status,comment_date,comment_type,comment_content,comment_img,comment_order,article_id,reply_comment_id,comment_user_id,article_user_id
@@ -28,6 +30,9 @@
         select count(comment_id)
         from mb_article_comment
         <where>
+            <if test="articleId!=null and articleId!=''">
+                and article_id=#{articleId}
+            </if>
             <if test="commentStatus!=null and commentStatus!=''">
                 and comment_status=#{commentStatus}
             </if>
@@ -37,14 +42,21 @@
     <!-- 分页获取文章评论 -->
     <select id="listPage" resultMap="MMSnsArticleCommentResultMap" parameterType="map">
         select
-        <include refid="MMSnsArticleCommentColumn"/>
-        from mb_article_comment
+        ac.comment_id,ac.comment_date,ac.comment_type,ac.comment_content,ac.comment_img,ac.reply_comment_id,
+        u.user_name,u.individuation,u.avator,
+        uu.user_name reply_user_name
+        from mb_article_comment ac
+        INNER JOIN mc_user u on(u.user_id=ac.comment_user_id)
+        LEFT JOIN mc_user uu on(uu.user_id=ac.reply_user_id)
         <where>
+            <if test="articleId!=null and articleId!=''">
+                and ac.article_id=#{articleId}
+            </if>
             <if test="commentStatus!=null and commentStatus!=''">
-                and comment_status=#{commentStatus}
+                and ac.comment_status=#{commentStatus}
             </if>
         </where>
-        ORDER BY category_order DESC
+        ORDER BY comment_date DESC
         <if test="beginIndex!=null and numPerPage!=null">
             limit #{beginIndex},#{numPerPage}
         </if>
@@ -85,9 +97,6 @@
             <if test="commentImg!=null">
                 comment_img,
             </if>
-            <if test="commentOrder!=null">
-                comment_order,
-            </if>
             <if test="articleId!=null">
                 article_id,
             </if>
@@ -96,9 +105,6 @@
             </if>
             <if test="commentUserId!=null">
                 comment_user_id,
-            </if>
-            <if test="articleUserId!=null">
-                article_user_id,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -117,9 +123,6 @@
             <if test="commentImg!=null">
                 #{commentImg},
             </if>
-            <if test="commentOrder!=null">
-                #{commentOrder},
-            </if>
             <if test="articleId!=null">
                 #{articleId},
             </if>
@@ -128,9 +131,6 @@
             </if>
             <if test="commentUserId!=null">
                 #{commentUserId},
-            </if>
-            <if test="articleUserId!=null">
-                #{articleUserId},
             </if>
         </trim>
     </insert>
@@ -154,9 +154,6 @@
             <if test="commentImg!=null">
                 comment_img=#{commentImg},
             </if>
-            <if test="commentOrder!=null and commentOrder!=0">
-                comment_order=#{commentOrder},
-            </if>
             <if test="articleId!=null and articleId!=0">
                 article_id=#{articleId},
             </if>
@@ -165,9 +162,6 @@
             </if>
             <if test="commentUserId!=null and commentUserId!=0">
                 comment_user_id=#{commentUserId},
-            </if>
-            <if test="articleUserId!=null and articleUserId!=0">
-                article_user_id=#{articleUserId},
             </if>
         </set>
         <where>
