@@ -1,4 +1,4 @@
-<title>baby慕慕SNS个人博客管理系统-文章</title>
+<title>我的文章-MMSNS博客系统</title>
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/article/acticle.css">
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
@@ -76,10 +76,26 @@
             <ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" style="margin-top: 15px;">
                 #foreach($popularArticleAuthor in $popularArticleAuthors)
                     <li class="layui-nav-item" style="height: 60px;">
-                        <a href="/profile/$popularArticleAuthor.individuation/home">
-                            <img src="$!popularArticleAuthor.avator" style="float: left;margin-top: 2px;margin-right: 5px;">
+                        <a href="/profile/$popularArticleAuthor.individuation/home" style="height: 50px">
+                            #if($!popularArticleAuthor.avator)
+                                <img src="$!popularArticleAuthor.avator" style="float: left;margin-right: 5px;border-radius: 50%;" width="50" height="50">
+                            #else
+                                <img src="/resources/portal/images/logo.jpg" style="float: left;margin-right: 5px;border-radius: 50%;" width="50" height="50">
+                            #end
                             <h1 style="margin-top: 5px;margin-bottom: 0px;">$!popularArticleAuthor.userName</h1>
-                            <span style="float: left;height: 30px;text-align: center;margin-top: -8px;">$!popularArticleAuthor.company $!popularArticleAuthor.positional</span>
+                            <span style="float: left;height: 30px;text-align: center;margin-top: -8px;font-size: 13px;color: silver;">
+                                #if($!popularArticleAuthor.company)
+                                    $!popularArticleAuthor.company
+                                #else
+                                    公司未设置
+                                #end
+                                -
+                                #if($!popularArticleAuthor.positional)
+                                    $!popularArticleAuthor.positional
+                                #else
+                                    职位未设置
+                                #end
+                            </span>
                         </a>
                     </li>
                 #end

@@ -1,4 +1,4 @@
-<title>baby慕慕SNS个人博客管理系统-文章详情</title>
+<title>文章详情-我的文章-MMSNS博客系统</title>
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/article/detail.css" media="all">
@@ -158,15 +158,15 @@
         $(function () {
             //文章发布
             $("#publishArticleComment").click(function () {
-                commentContent=layedit.getText(articleMessageIndex);
-                if(commentContent==null||commentContent==''){
+                commentContent=layedit.getContent(articleMessageIndex);
+                if(commentContent==null||commentContent==''||commentContent=='<p><br></p>'){
                     layer.msg("请输入评论内容！");
                     return false;
                 }
-                commentContent=layedit.getContent(articleMessageIndex);
                 $.post("/article/comment/publish",{articleId:articleId,commentContent:commentContent},function (respData) {
                     if(respData.code==200){
                         prependLi(respData.data);
+
                     }else if(respData.code==444){
                         layer.msg(respData.data,{icon:5,time:2000},function () {
                             window.location.href="/login";
@@ -238,7 +238,6 @@
         $("#articleCommentAuthorSpan").text(commentCount+1);
     }
     function li(articleComment,floor) {
-        console.log(articleComment);
         //用户头像
         var userAvator=articleComment.avator?articleComment.avator:'/resources/portal/images/logo.jpg';
         var commentContent=articleComment.commentContent;
@@ -259,7 +258,6 @@
     }
     //评论回复
     function articleCommentReplyButton(commentId,userName) {
-        console.log(commentId+" "+userName);
         //$("#li-"+commentId).append('<div class="comment-replytextarea"><textarea id="articleMessage"></textarea><button id="publishArticleCommentReply">回复评论</button> </div>');
         layer.open({
             type: 2,

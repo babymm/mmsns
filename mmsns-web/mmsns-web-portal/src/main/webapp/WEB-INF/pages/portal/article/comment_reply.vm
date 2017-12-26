@@ -1,3 +1,4 @@
+<title>文章评论回复-我的文章-MMSNS博客系统</title>
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
 <style type="text/css">
     .reply-body{
@@ -67,12 +68,11 @@
         });
         //评论回复
         $(".articleCommentReply").click(function () {
-            var commentContent=layedit.getText(articleCommentReplyIndex);
-            if(commentContent==null||commentContent==''){
+            var commentContent=layedit.getContent(articleCommentReplyIndex);
+            if(commentContent==null||commentContent==''||commentContent=='<p><br></p>'){
                 layer.msg("请输入评论内容！");
                 return false;
             }
-            commentContent=layedit.getContent(articleCommentReplyIndex);
             $.post("/article/comment/reply",{commentId:'$!commentId',replyComment:commentContent,userName:'$!userName'},function (respData) {
                 if(respData.code==200){
                     layer.msg('回复成功！', {

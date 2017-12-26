@@ -34,6 +34,9 @@
         width: 150px;
         min-width: 150px;
     }
+    .layui-this a{
+        color: #4eaa4c !important;
+    }
 </style>
 <div class="mmsns-nav">
     <div class="nav-logo">
