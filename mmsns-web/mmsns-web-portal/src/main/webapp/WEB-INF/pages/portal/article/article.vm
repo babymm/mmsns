@@ -21,67 +21,50 @@
 <div class="article-body">
     <div class="body-content">
         <div class="content-best">
-            <div class="content-header">
-                <h3>精彩文章</h3>
-            </div>
+            #*<div class="content-header">
+                <h2>精彩文章</h2>
+            </div>*#
             <div class="layui-row">
-                #set($rows=[0 .. 3])
-                #foreach($row in $rows)
+                #foreach($article in $articles)
                     <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
                         <div class="grid-demo grid-demo-bg1">
                             <div class="article-logo">
-                                <a href="/article/detail/1"><img src="http://www.jeesns.cn/res/front/images/banner1.png" width="100%" height="200px;"></a>
+                                <a href="/article/detail/$!article.articleId"><img src="$!article.articleLogo" width="100%" height="200" style="border: 1px solid #ddd"></a>
                             </div>
                             <div class="article-title">
-                                <h4><a>当福利变成暴力，携程你还能走多远</a></h4>
+                                <h3 style="text-align: center;" align="center"><a href="/article/detail/$article.articleId" >$!article.articleTitle</a></h3>
                             </div>
-                            <div class="article-media">
+                            #*<div class="article-media">
                                 <a class="user" href="/article" target="_blank" tabindex="-1">
-                                    <img class="article-person" href="https://static.oschina.net/uploads/user/1832/3665821_50.jpeg?t=1509784085000">
-                                    <span>baby慕慕</span>
+                                    <img class="article-person" href="$!article.avator">
+                                    <span>$!article.userName</span>
                                 </a>
-                                <span class="message">2</span>
-                            </div>
+                                <span class="message">$!article.readCount</span>
+                            </div>*#
                         </div>
                     </div>
                 #end
             </div>
         </div>
         <div class="content-nav">
-            <ul class="layui-nav">
-                <li class="layui-nav-item"><a href=""><h1>最新推荐</h1></a></li>
-                <li class="layui-nav-item"><a href=""><h1>今日热门</h1></a></li>
-                <li class="layui-nav-item"><a href=""><h1>本周热门</h1></a></li>
-                <li class="layui-nav-item"><a href=""><h1>本周热门</h1></a></li>
-                <li class="layui-nav-item"><a href=""><h1>每日一博</h1></a></li>
-                <li class="layui-nav-item"><a href=""><h1>最新文章</h1></a></li>
+            <ul class="layui-nav" lay-filter="demo">
+                <li class="layui-nav-item layui-this"><a  href="javascript:void(0)"><h1 class="articleRecommend">最新推荐</h1></a></li>
+                <li class="layui-nav-item"><a href="javascript:void(0)"><h1 class="articleToday">今日热门</h1></a></li>
+                <li class="layui-nav-item"><a href="javascript:void(0)"><h1 class="articleWeek" >本周热门</h1></a></li>
+                <li class="layui-nav-item"><a href="javascript:void(0)"><h1 class="articleHot" >每日一博</h1></a></li>
+                <li class="layui-nav-item"><a href="javascript:void(0)"><h1 class="articleNewsest" >最新文章</h1></a></li>
             </ul>
         </div>
-        <div class="article-list">
-            #set($lists=[0 .. 9])
-            #foreach($list in $lists)
-                <div class="article-list-item">
-                    <div class="header">
-                        <a href="/"><img src="https://static.oschina.net/uploads/user/1202/2404202_50.jpeg?t=1483522883000" width="60px" height="60px" style="float: right;"></a>
-                    </div>
-                    <div class="content">
-                        <span><a href="/article/detail/1"><h2>xxx is not in the sudoers file 原</h2></a></span>
-                        <span class="contents"><code>问题 无法使用sudo指令 1. 查找sudoers位置（默认会在/etc/sudoers) [tianshl@tianshl ~]# whereis sudoers sudoers: /etc/sudoers /etc/sudoers.bak /usr/share/man/man5/sudoers.5.gz 2. 切换到root</code> </span>
-                        <span class="publish">tianshl 发布于 1个月前 阅读 214084 点赞 1</span>
-                    </div>
-                </div>
-            #end
-        </div>
+        <div class="article-list flow-default" id="articleFlowUL"></div>
     </div>
     <div class="body-cateory">
         <div class="category-classify">
             <ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline">
-                #set($classifys=['全部','JAVA开发','大数据hadoop',"数据库","NOSQL数据库","云计算","服务端开发"])
-                #foreach($classify in $classifys)
+                #foreach($articleCategory in $articleCategorys)
                     <li class="layui-nav-item">
-                        <a href="">
+                        <a href="/article?sysCategoryId=$articleCategory.categoryId">
                             <i class="fa fa-bars" style="float: left;margin-top: 15px;margin-right: 5px;"></i>
-                            <h1 style="margin-top: 15px;">$classify</h1>
+                            <h1 style="margin-top: 15px;">$articleCategory.categoryName</h1>
                         </a>
                     </li>
                 #end
@@ -91,13 +74,12 @@
             <h3 style="font-size: 1.125rem;font-weight: 400;line-height: 38px;color: #6a6a6a;box-shadow: inset 0 -1px 0 0 #ddd;">最受欢迎</h3>
             <hr width="100%" color="red" style="margin: 0px;">
             <ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" style="margin-top: 15px;">
-                #set($classifys=['baby慕慕','小墨科技','lovecws',"爱你一万年","万精油","爱爱爱爱啊","ksksksksk"])
-                #foreach($classify in $classifys)
+                #foreach($popularArticleAuthor in $popularArticleAuthors)
                     <li class="layui-nav-item" style="height: 60px;">
-                        <a href="">
-                            <img src="https://static.oschina.net/uploads/user/1202/2404202_50.jpeg?t=1483522883000" style="float: left;margin-top: 2px;margin-right: 5px;">
-                            <h1 style="margin-top: 5px;margin-bottom: 0px;">$classify</h1>
-                            <span style="float: left;height: 30px;text-align: center;margin-top: -8px;">程序员</span>
+                        <a href="/profile/$popularArticleAuthor.individuation/home">
+                            <img src="$!popularArticleAuthor.avator" style="float: left;margin-top: 2px;margin-right: 5px;">
+                            <h1 style="margin-top: 5px;margin-bottom: 0px;">$!popularArticleAuthor.userName</h1>
+                            <span style="float: left;height: 30px;text-align: center;margin-top: -8px;">$!popularArticleAuthor.company $!popularArticleAuthor.positional</span>
                         </a>
                     </li>
                 #end
@@ -119,29 +101,70 @@
                 #end
             </ul>
         </div>
-        <div class="category-bounty">
-            <h3 style="font-size: 1.125rem;font-weight: 400;line-height: 38px;color: #6a6a6a;box-shadow: inset 0 -1px 0 0 #ddd;">赏金榜单</h3>
-            <hr width="100%" color="red" style="margin: 0px;">
-            <ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" style="margin-top: 15px;">
-                #set($classifys=['baby慕慕','小墨科技','lovecws',"爱你一万年","万精油","爱爱爱爱啊","ksksksksk"])
-                #foreach($classify in $classifys)
-                    <li class="layui-nav-item" style="height: 60px;">
-                        <a href="">
-                            <img src="https://static.oschina.net/uploads/user/1202/2404202_50.jpeg?t=1483522883000" style="float: left;margin-top: 2px;margin-right: 5px;">
-                            <h1 style="margin-top: 5px;margin-bottom: 0px;">$classify</h1>
-                            <span style="float: left;height: 30px;text-align: center;margin-top: -8px;">程序员</span>
-                        </a>
-                    </li>
-                #end
-            </ul>
-        </div>
     </div>
 </div>
 #parse("/portal/footer.vm")
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
 <script type="text/javascript">
-    layui.use(['element'], function () {
-        var element = layui.element;
+    layui.use(['element','flow','layer'], function () {
+        var element = layui.element,flow=layui.flow,layer=layui.layer;
+        var limit=5,sysCategoryId='$!sysCategoryId';
+        loadFlowData();
+        element.on('nav(demo)', function(elem){
+            var articleType=null;
+            $("#articleFlowUL").empty();
+            switch (elem.text()){
+                case "最新推荐":
+                    articleType="articleRecommend";
+                    break
+                case "今日热门":
+                    articleType="articleToday";
+                    break
+                case "本周热门":
+                    articleType="articleWeek";
+                    break
+                case "每日一博":
+                    articleType="articleVote";
+                    break
+                case "最新文章":
+                    articleType="articleNewst";
+                    break
+            }
+            loadFlowData(articleType);
+        });
+        function loadFlowData(articleType) {
+            flow.load({
+                elem: '#articleFlowUL'
+                ,isAuto:true
+                ,isLazyimg:true
+                ,done: function(page, next){
+                    $.get("/article/data",{sysCategoryId:sysCategoryId,articleType:articleType,page:page,limit:limit},function (respData) {
+                        if(respData.code==200){
+                            var lis = [];
+                            for(var i = 0; i < respData.data.length; i++){
+                                var article=respData.data[i];
+                                var userAvator=article.avator?article.avator:"/resources/portal/images/logo.jpg";
+                                lis.push('<div class="article-list-item" style="width: 100%;height:120px;margin-bottom: 30px;">'+
+                                        '<div class="header" style="float: left;width: 50px;min-width:50px;margin-top: 15px;"><a href="/" style="color: #000;"><img src="'+userAvator+'" width="60px" height="60px" style="float: right;border-radius: 50%;"></a></div>'+
+                                        '<div class="content" style="float: left;width: 85%;margin-left: 20px;">' +
+                                        '<span style="float: left;display: block;margin-top: 8px;word-wrap: break-word;overflow: hidden;"><a href="/article/detail/'+article.articleId+'"><h2>'+article.articleTitle+'</h2></a></span> '+
+                                        '<span class="contents" style="width: 100%;font-size: .875rem;line-height: 20px;overflow: hidden;height: auto;max-height: 40px;margin: 4px 0 6px;text-align: justify;text-justify: inter-ideograph;word-break: initial;color: #6a6a6a;"><code>'+article.articleSumary+'</code> </span>'+
+                                        '<span class="publish" style="float: left;display: block;margin-top: 8px;;width: 100%;font-size: .75rem;line-height: 20px;color: #9d9d9d;">'+article.userName+' 发布于 '+article.articleDate+' 阅读 '+article.readCount+' 点赞 '+article.voteCount+'</span>' +
+                                        '</div>'+
+                                        '</div>');
+                            }
+                            if(respData.data.length<limit){
+                                next(lis.join(''),false);
+                            }else {
+                                next(lis.join(''),true);
+                            }
+                        }else{
+                            layer.msg("文章数据加载失败!",{icon:2});
+                        }
+                    });
+                }
+            });
+        }
     });
 </script>

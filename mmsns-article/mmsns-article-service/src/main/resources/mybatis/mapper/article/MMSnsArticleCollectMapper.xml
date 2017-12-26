@@ -65,6 +65,17 @@
         select
         <include refid="MMSnsArticleCollectColumn"/>
         from mb_article_collect
+        <where>
+            <if test="articleId!=null and articleId!=''">
+                and article_id=#{articleId}
+            </if>
+            <if test="collectUserId!=null and collectUserId!=''">
+                and collect_user_id=#{collectUserId}
+            </if>
+            <if test="collectStatus!=null and collectStatus!=''">
+                and collect_status=#{collectStatus}
+            </if>
+        </where>
     </select>
 
     <!-- 获取文章收藏详情信息-->

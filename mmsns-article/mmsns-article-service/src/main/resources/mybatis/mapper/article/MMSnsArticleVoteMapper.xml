@@ -71,6 +71,17 @@
         select
         <include refid="MMSnsArticleVoteColumn"/>
         from mb_article_vote
+        <where>
+            <if test="articleId!=null and articleId!=''">
+                and article_id=#{articleId}
+            </if>
+            <if test="voteUserId!=null and voteUserId!=''">
+                and vote_user_id=#{voteUserId}
+            </if>
+            <if test="voteStatus!=null and voteStatus!=''">
+                and vote_status=#{voteStatus}
+            </if>
+        </where>
     </select>
 
     <!-- 获取文章点赞详情信息-->

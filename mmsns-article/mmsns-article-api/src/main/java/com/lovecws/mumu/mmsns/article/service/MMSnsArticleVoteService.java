@@ -1,7 +1,10 @@
 package com.lovecws.mumu.mmsns.article.service;
 
 import com.lovecws.mumu.core.page.PageBean;
+import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleCollectEntity;
 import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleVoteEntity;
+
+import java.util.List;
 
 /**
  * @author babymm
@@ -28,4 +31,8 @@ public interface MMSnsArticleVoteService {
      * @return
      */
     public PageBean<MMSnsArticleVoteEntity> listVoteArticlePage(String sessionUserId, int page, int limit);
+
+    public List<MMSnsArticleVoteEntity> getArticleVoteByCondition(int articleId, Integer userId);
+
+    public MMSnsArticleVoteEntity voteArticle(MMSnsArticleVoteEntity articleVoteEntity);
 }

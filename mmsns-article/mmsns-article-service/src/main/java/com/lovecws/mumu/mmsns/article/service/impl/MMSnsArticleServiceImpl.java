@@ -68,6 +68,46 @@ public class MMSnsArticleServiceImpl implements MMSnsArticleService {
     }
 
     @Override
+    public List<MMSnsArticleEntity> selectArticlePage(String sessionUserId, String articleType, String sysCategoryId, String userCategoryId, String orderby, boolean articleLogo, int page, int limit) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("userId", sessionUserId);
+        paramMap.put("articleType", articleType);
+        paramMap.put("articleStatus", PublicEnum.NORMAL.value());
+        paramMap.put("userCategoryId", userCategoryId);
+        if (sysCategoryId != null && !"0".equals(sysCategoryId)) {
+            paramMap.put("sysCategoryId", sysCategoryId);
+        }
+        if (articleLogo) {
+            paramMap.put("articleLogo", "articleLogo");
+        }
+        PageParam pageParam = new PageParam(page, limit);
+        paramMap.put("beginIndex", pageParam.getBeginIndex());
+        paramMap.put("numPerPage", pageParam.getNumPerPage());
+        paramMap.put("orderby", orderby == null ? "article_date" : orderby);
+        return articleDao.selectList("listPage", paramMap);
+    }
+
+    @Override
+    public List<MMSnsArticleEntity> selectArticlePageWithAuthorMessage(String articleType, String sysCategoryId, String orderby, boolean articleLogo,String startDate,String endDate, int page, int limit) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("articleType", articleType);
+        paramMap.put("articleStatus", PublicEnum.NORMAL.value());
+        if (sysCategoryId != null && !"0".equals(sysCategoryId)) {
+            paramMap.put("sysCategoryId", sysCategoryId);
+        }
+        if (articleLogo) {
+            paramMap.put("articleLogo", "articleLogo");
+        }
+        paramMap.put("startDate", startDate);
+        paramMap.put("endDate", endDate);
+        PageParam pageParam = new PageParam(page, limit);
+        paramMap.put("beginIndex", pageParam.getBeginIndex());
+        paramMap.put("numPerPage", pageParam.getNumPerPage());
+        paramMap.put("orderby", orderby == null ? "article_date" : orderby);
+        return articleDao.selectList("selectArticlePageWithAuthorMessage", paramMap);
+    }
+
+    @Override
     public MMSnsArticleEntity getArticleInfo(String articleId) {
         return articleDao.getById(articleId);
     }
@@ -77,5 +117,21 @@ public class MMSnsArticleServiceImpl implements MMSnsArticleService {
     public MMSnsArticleEntity updateArticle(MMSnsArticleEntity articleEntity) {
         articleDao.update(articleEntity);
         return articleEntity;
+    }
+
+    @Override
+    public MMSnsArticleEntity getArticleSimpleInfo(String articleId) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("articleId", articleId);
+        return articleDao.getByColumn(paramMap);
+    }
+
+    @Override
+    public List<MMSnsArticleEntity> getPopularArticleAuthorMessage(int page, int limit) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        PageParam pageParam=new PageParam(page,limit);
+        paramMap.put("beginIndex", pageParam.getBeginIndex());
+        paramMap.put("numPerPage", pageParam.getNumPerPage());
+        return articleDao.selectList("getPopularArticleAuthorMessage",paramMap);
     }
 }

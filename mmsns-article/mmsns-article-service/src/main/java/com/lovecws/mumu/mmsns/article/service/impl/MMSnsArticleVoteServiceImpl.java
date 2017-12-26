@@ -1,10 +1,13 @@
 package com.lovecws.mumu.mmsns.article.service.impl;
 
+import com.lovecws.mumu.core.enums.PublicEnum;
 import com.lovecws.mumu.core.page.PageBean;
 import com.lovecws.mumu.core.page.PageParam;
 import com.lovecws.mumu.mmsns.article.dao.MMSnsArticleVoteDao;
+import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleCollectEntity;
 import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleEntity;
 import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleVoteEntity;
+import com.lovecws.mumu.mmsns.article.service.MMSnsArticleService;
 import com.lovecws.mumu.mmsns.article.service.MMSnsArticleVoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +16,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,6 +31,8 @@ public class MMSnsArticleVoteServiceImpl implements MMSnsArticleVoteService {
 
     @Autowired
     private MMSnsArticleVoteDao articleVoteDao;
+    @Autowired
+    private MMSnsArticleService articleService;
 
     @Override
     public int getVoteArticleCountByCondition(String sessionUserId) {
@@ -39,6 +45,29 @@ public class MMSnsArticleVoteServiceImpl implements MMSnsArticleVoteService {
     public PageBean<MMSnsArticleVoteEntity> listVoteArticlePage(String sessionUserId, int page, int limit) {
         Map<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("voteUserId", sessionUserId);
+        paramMap.put("voteStatus", PublicEnum.NORMAL.value());
         return articleVoteDao.listPage(new PageParam(page, limit), paramMap);
+    }
+
+    @Override
+    public List<MMSnsArticleVoteEntity> getArticleVoteByCondition(int articleId, Integer userId) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("articleId", articleId);
+        paramMap.put("voteUserId", userId);
+        paramMap.put("voteStatus", PublicEnum.NORMAL.value());
+        return articleVoteDao.listByColumn(paramMap);
+    }
+
+    @Override
+    public MMSnsArticleVoteEntity voteArticle(MMSnsArticleVoteEntity articleVoteEntity) {
+        //保存文章点赞信息
+        articleVoteEntity = articleVoteDao.insert(articleVoteEntity);
+
+        //更新文章点赞量
+        MMSnsArticleEntity articleEntity = new MMSnsArticleEntity();
+        articleEntity.setArticleId(articleVoteEntity.getArticleId());
+        articleEntity.setVoteCount(1);
+        articleService.updateArticle(articleEntity);
+        return articleVoteEntity;
     }
 }

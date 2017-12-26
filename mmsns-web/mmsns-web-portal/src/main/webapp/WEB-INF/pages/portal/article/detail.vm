@@ -35,7 +35,7 @@
         </div>
         <div class="article-extra">
             <div class="article-license"><span style="color: #999;">© 著作权归作者所有</span></div>
-            <div  class="article-classify"><span style="">分类：<a href="/article/detail/$!article.articleId">$!article.categoryName</a>  字数：$!article.wordCount</span></div>
+            <div  class="article-classify"><span style="">分类：<a href="/profile/babymumu/article/$!article.userCategoryId">$!article.categoryName</a>  字数：$!article.wordCount</span></div>
             <div class="article-labels">
                 <span>标签：
                 #foreach($articleLabel in $!article.articleLabels.split(" "))
@@ -85,30 +85,36 @@
         </div>
     </div>
     <div class="article-category">
-        <div class="category-aboutarticle">
+        <div class="category-article">
             <h2>相关文章</h2><hr>
             <ul>
-                #set($aboutarticles=[0 .. 4])
-                #foreach($aboutarticle in $aboutarticles)
-                    <li><a>深入区分javascript中的作用域和执行环境</a></li>
+                #foreach($relationArticle in $relationArticles)
+                    <li>
+                        <span class="articletitle"><a href="/article/detail/$!relationArticle.articleId">$!relationArticle.articleTitle</a></span>
+                        <span class="articleinfo">阅读 $!relationArticle.readCount 点赞 $!relationArticle.voteCount 收藏 $!relationArticle.collectCount 转发 $!relationArticle.relayCount 评论 $!relationArticle.commentCount</span>
+                    </li>
                 #end
             </ul>
         </div>
-        <div class="category-hotarticle">
+        <div class="category-article">
             <h2>热门文章</h2><hr>
             <ul>
-                #set($aboutarticles=[0 .. 4])
-                #foreach($aboutarticle in $aboutarticles)
-                    <li><a>深入区分javascript中的作用域和执行环境</a></li>
+                #foreach($hotArticle in $hotArticles)
+                    <li>
+                        <span class="articletitle"><a href="/article/detail/$!hotArticle.articleId">$!hotArticle.articleTitle</a></span>
+                        <span class="articleinfo">阅读 $!hotArticle.readCount</span>
+                    </li>
                 #end
             </ul>
         </div>
-        <div class="category-newarticle">
+        <div class="category-article">
             <h2>最新文章</h2><hr>
             <ul>
-                #set($aboutarticles=[0 .. 4])
-                #foreach($aboutarticle in $aboutarticles)
-                    <li><a>深入区分javascript中的作用域和执行环境</a></li>
+                #foreach($newsArticle in $newsArticles)
+                    <li>
+                        <span class="articletitle"><a href="/article/detail/$!newsArticle.articleId">$!newsArticle.articleTitle</a></span>
+                        <span class="articleinfo">创建:$date.format('yyyy-MM-dd',$!newsArticle.articleDate)</span>
+                    </li>
                 #end
             </ul>
         </div>
@@ -127,7 +133,7 @@
             height:200
         });
         var commentCount=$("#articleCommentSpan").text(),limit=5;
-        var floor=1;
+        var floor=1,articleId='$!article.articleId';
         if(commentCount>0){
             var commentPage=commentCount>limit?(commentCount%limit==0?commentCount/limit:commentCount/limit+1):1;
             flow.load({
@@ -135,7 +141,7 @@
                 ,isAuto:true
                 ,isLazyimg:true
                 ,done: function(page, next){
-                    $.get("/article/comment/data",{articleId:'$!article.articleId',page:page,limit:limit},function (respData) {
+                    $.get("/article/comment/data",{articleId:articleId,page:page,limit:limit},function (respData) {
                         if(respData.code==200){
                             var lis = [];
                             for(var i = 0; i < respData.data.length; i++){
@@ -158,13 +164,69 @@
                     return false;
                 }
                 commentContent=layedit.getContent(articleMessageIndex);
-                $.post("/article/comment/publish",{articleId:'$!article.articleId',commentContent:commentContent},function (respData) {
+                $.post("/article/comment/publish",{articleId:articleId,commentContent:commentContent},function (respData) {
                     if(respData.code==200){
                         prependLi(respData.data);
+                    }else if(respData.code==444){
+                        layer.msg(respData.data,{icon:5,time:2000},function () {
+                            window.location.href="/login";
+                        });
                     }else{
-                        layer.alert("添加评论操作失败",{icon:2});
+                        layer.alert(respData.data,{icon:2});
                     }
                 });
+            });
+            //文章点赞
+            $("#articleVoteButton").click(function () {
+                $.post("/article/vote",{articleId:articleId},function (respData) {
+                    if(respData.code==200){
+                        layer.msg(respData.data);
+                    }else if(respData.code==444){
+                        layer.msg(respData.data,{icon:5,time:2000},function () {
+                            window.location.href="/login";
+                        });
+                    }else{
+                        layer.alert(respData.data,{icon:5});
+                    }
+                });
+            });
+            //文章收藏
+            $("#articleCollectButton").click(function () {
+                $.post("/article/collect",{articleId:articleId},function (respData) {
+                    if(respData.code==200){
+                        layer.msg(respData.data);
+                    }else if(respData.code==444){
+                        layer.msg(respData.data,{icon:5,time:2000},function () {
+                            window.location.href="/login";
+                        });
+                    }else{
+                        layer.alert(respData.data,{icon:5});
+                    }
+                });
+            });
+            //打赏
+            $("#articleTipButton").click(function () {
+                layer.open({
+                    type: 1,
+                    closeBtn:true,
+                    shadeClose:true,
+                    scrollbar:false,
+                    title: false,
+                    closeBtn: 1,
+                    area: ['660px', '400px'],
+                    skin: 'layui-layer-nobg',
+                    shadeClose: false,
+                    content:'<div style="width: 100%;height: 100%;margin: 0px;padding: 0px;float: left;">' +
+                    '<div style="float: left;"><img src="/resources/portal/img/alipay.jpg" width="330" height="400"></div>' +
+                    '<div style="float: left;"><img src="/resources/portal/img/wexin.jpg" width="330" height="400"></div>' +
+                    '</div>'
+                });
+            });
+            $("#articleShareButton").click(function () {
+                 layer.msg("功能未实现！");
+            });
+            $("#articleReportButton").click(function () {
+                layer.msg("功能未实现！");
             });
         });
     });

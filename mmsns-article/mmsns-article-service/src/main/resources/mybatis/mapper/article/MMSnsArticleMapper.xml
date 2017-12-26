@@ -6,7 +6,7 @@
 
         <id column="article_id" property="articleId" jdbcType="INTEGER"/>
         <result column="article_status" property="articleStatus" jdbcType="VARCHAR"/>
-        <result column="article_date" property="articleDate" jdbcType="DATE"/>
+        <result column="article_date" property="articleDate" jdbcType="VARCHAR"/>
 
         <result column="article_title" property="articleTitle" jdbcType="VARCHAR"/>
         <result column="article_sumary" property="articleSumary" jdbcType="VARCHAR"/>
@@ -47,7 +47,7 @@
 		article_id,article_status,article_date,article_title,article_sumary,article_content,article_logo,article_labels,word_count,sys_category_id,user_category_id,read_count,collect_count,vote_count,relay_count,comment_count,article_type,publisher_article_id,relay_article_id,user_id
 	</sql>
 
-    <!-- 获取文章评论数量 -->
+    <!-- 获取文章数量 -->
     <select id="listPageCount" resultType="long" parameterType="map">
         select count(article_id)
         from mb_article
@@ -67,7 +67,7 @@
         </where>
     </select>
 
-    <!-- 分页获取文章评论 -->
+    <!-- 分页获取文章 -->
     <select id="listPage" resultMap="MMSnsArticleResultMap" parameterType="map">
         select
         article_id,article_title,article_logo,read_count,collect_count,vote_count,relay_count,comment_count,article_date,article_type
@@ -82,11 +82,51 @@
             <if test="userCategoryId!=null and userCategoryId!=''">
                 and user_category_id=#{userCategoryId}
             </if>
+            <if test="sysCategoryId!=null and sysCategoryId!=''">
+                and sys_category_id=#{sysCategoryId}
+            </if>
             <if test="articleStatus!=null and articleStatus!=''">
                 and article_status=#{articleStatus}
             </if>
+            <if test="articleLogo!=null and articleLogo!=''">
+                and article_logo IS NOT NULL
+            </if>
         </where>
-        ORDER BY article_date DESC
+        <if test="orderby!=null">
+            ORDER BY ${orderby} DESC
+        </if>
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 分页获取文章列表 同时附带作者信息-->
+    <select id="selectArticlePageWithAuthorMessage" resultMap="MMSnsArticleResultMap" parameterType="map">
+        select
+        a.article_id,a.article_title,a.article_sumary,a.article_labels,a.article_type,a.read_count,a.collect_count,a.vote_count,a.relay_count,a.comment_count,a.article_date,a.user_id,a.word_count,
+        u.user_name,u.individuation,u.avator,u.company,u.positional
+        from mb_article a
+        INNER JOIN mc_user u on(u.user_id=a.user_id)
+        <where>
+            <if test="articleType!=null and articleType!=''">
+                and a.article_type=#{articleType}
+            </if>
+            <if test="sysCategoryId!=null and sysCategoryId!=''">
+                and a.sys_category_id=#{sysCategoryId}
+            </if>
+            <if test="articleStatus!=null and articleStatus!=''">
+                and a.article_status=#{articleStatus}
+            </if>
+            <if test="articleLogo!=null and articleLogo!=''">
+                and a.article_logo IS NOT NULL
+            </if>
+            <if test="startDate!=null and startDate!='' and endDate!=null and endDate!=''">
+                and a.article_date BETWEEN #{startDate} AND #{endDate}
+            </if>
+        </where>
+        <if test="orderby!=null">
+            ORDER BY ${orderby} DESC
+        </if>
         <if test="beginIndex!=null and numPerPage!=null">
             limit #{beginIndex},#{numPerPage}
         </if>
@@ -117,17 +157,17 @@
         ORDER BY ac.category_order ASC
     </select>
 
-    <!-- 按照条件获取文章评论 -->
+    <!-- 按照条件获取文章 -->
     <select id="listByColumn" resultMap="MMSnsArticleResultMap" parameterType="map">
         select
         <include refid="MMSnsArticleColumn"/>
         from mb_article
     </select>
 
-    <!-- 获取文章评论详情信息-->
+    <!-- 获取文章详情信息-->
     <select id="selectByPrimaryKey" resultMap="MMSnsArticleResultMap" parameterType="java.lang.String">
         select
-        a.article_id,a.article_title,a.article_sumary,a.article_content,a.article_labels,a.article_type,a.read_count,a.collect_count,a.vote_count,a.relay_count,a.comment_count,a.article_date,a.user_id,a.word_count,
+        a.article_id,a.article_title,a.article_sumary,a.article_content,a.article_labels,a.article_type,a.read_count,a.collect_count,a.vote_count,a.relay_count,a.comment_count,a.article_date,a.user_id,a.word_count,a.user_category_id,
         ac.category_name,
         u.user_name,u.individuation,u.user_fans_count,u.user_score,u.user_access_count,u.avator,u.company,u.positional
         from mb_article a
@@ -136,7 +176,27 @@
         where a.article_id=#{articleId}
     </select>
 
-    <!-- 添加文章评论信息 -->
+    <!-- 获取文章基本详情信息-->
+    <select id="getByColumn" resultMap="MMSnsArticleResultMap" parameterType="map">
+        select
+        <include refid="MMSnsArticleColumn"/>
+        from mb_article
+        where article_id=#{articleId}
+    </select>
+
+    <!-- 获取最受欢迎的用户-->
+    <select id="getPopularArticleAuthorMessage" resultMap="MMSnsArticleResultMap" parameterType="map">
+        select u.user_name,u.individuation,u.avator,u.company,u.positional,sum(read_count) total_count
+        from mb_article a
+        INNER JOIN mc_user u on(u.user_id=a.user_id)
+        GROUP BY a.user_id
+        ORDER BY total_count DESC
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 添加文章信息 -->
     <insert id="insert" parameterType="MMSnsArticleEntity" useGeneratedKeys="true"
             keyProperty="articleId">
         insert into mb_article
@@ -260,7 +320,7 @@
         </trim>
     </insert>
 
-    <!-- 更新文章评论信息 -->
+    <!-- 更新文章信息 -->
     <update id="updateByPrimaryKey" parameterType="MMSnsArticleEntity">
         update mb_article
         <set>
@@ -329,7 +389,7 @@
         </where>
     </update>
 
-    <!-- 根据id删除文章评论 -->
+    <!-- 根据id删除文章 -->
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete
         from mb_article

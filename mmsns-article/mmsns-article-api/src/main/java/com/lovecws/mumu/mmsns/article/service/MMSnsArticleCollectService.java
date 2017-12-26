@@ -3,6 +3,8 @@ package com.lovecws.mumu.mmsns.article.service;
 import com.lovecws.mumu.core.page.PageBean;
 import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleCollectEntity;
 
+import java.util.List;
+
 /**
  * @author babymm
  * @version 1.0-SNAPSHOT
@@ -28,4 +30,19 @@ public interface MMSnsArticleCollectService {
      * @return
      */
     public PageBean<MMSnsArticleCollectEntity> listCollectArticlePage(String sessionUserId, int page, int limit);
+
+    /**
+     * 获取用户收藏的文章
+     * @param articleId
+     * @param userId
+     * @return
+     */
+    public List<MMSnsArticleCollectEntity> getArticleCollectByCondition(Integer articleId, Integer userId);
+
+    /**
+     * 用户收藏文章
+     * @param articleCollect
+     * @return
+     */
+    public MMSnsArticleCollectEntity collectArticle(MMSnsArticleCollectEntity articleCollect);
 }

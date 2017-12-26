@@ -6,7 +6,7 @@
 
         <id column="comment_id" property="commentId" jdbcType="INTEGER"/>
         <result column="comment_status" property="commentStatus" jdbcType="VARCHAR"/>
-        <result column="comment_date" property="commentDate" jdbcType="DATE"/>
+        <result column="comment_date" property="commentDate" jdbcType="VARCHAR"/>
 
         <result column="comment_type" property="commentType" jdbcType="VARCHAR"/>
         <result column="comment_content" property="commentContent" jdbcType="VARCHAR"/>

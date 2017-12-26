@@ -50,7 +50,41 @@ public interface MMSnsArticleService {
     public PageBean<MMSnsArticleEntity> listArticlePage(String sessionUserId, String articleType, String userCategoryId, int page, int limit);
 
     /**
-     * 获取文章详情
+     * 分页获取文章列表
+     *
+     * @param sessionUserId
+     * @param articleType
+     * @param sysCategoryId
+     * @param userCategoryId
+     * @param orderby
+     * @param articleLogo
+     * @param page
+     * @param limit
+     * @return
+     */
+    public List<MMSnsArticleEntity> selectArticlePage(String sessionUserId, String articleType, String sysCategoryId,String userCategoryId, String orderby, boolean articleLogo, int page, int limit);
+
+    /**
+     * 分页获取文章列表 同时附带作者信息
+     * @param articleType
+     * @param orderby
+     * @param articleLogo
+     * @param page
+     * @param limit
+     * @return
+     */
+    public List<MMSnsArticleEntity> selectArticlePageWithAuthorMessage(String articleType, String sysCategoryId,String orderby, boolean articleLogo,String startDate,String endDate, int page, int limit);
+
+    /**
+     * 简单获取文章详情
+     *
+     * @param articleId
+     * @return
+     */
+    public MMSnsArticleEntity getArticleSimpleInfo(String articleId);
+
+    /**
+     * 获取文章详情 同时附带作者信息
      *
      * @param articleId 文章id
      * @return
@@ -59,8 +93,11 @@ public interface MMSnsArticleService {
 
     /**
      * 更新文章
+     *
      * @param articleEntity
      * @return
      */
     public MMSnsArticleEntity updateArticle(MMSnsArticleEntity articleEntity);
+
+    public List<MMSnsArticleEntity> getPopularArticleAuthorMessage(int page, int limit);
 }

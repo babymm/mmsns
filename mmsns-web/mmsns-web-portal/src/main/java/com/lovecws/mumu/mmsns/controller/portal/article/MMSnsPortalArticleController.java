@@ -1,14 +1,17 @@
 package com.lovecws.mumu.mmsns.controller.portal.article;
 
+import com.lovecws.mumu.core.response.ResponseEntity;
+import com.lovecws.mumu.core.utils.DateUtils;
+import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleCategoryEntity;
 import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleEntity;
+import com.lovecws.mumu.mmsns.article.service.MMSnsArticleCategoryService;
 import com.lovecws.mumu.mmsns.article.service.MMSnsArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -26,15 +29,70 @@ public class MMSnsPortalArticleController {
     private HttpServletRequest request;
     @Autowired(required = false)
     private MMSnsArticleService articleService;
+    @Autowired(required = false)
+    private MMSnsArticleCategoryService articleCategoryService;
 
+    /**
+     * 进入到文章列表页面
+     *
+     * @return
+     */
     @RequestMapping(method = RequestMethod.GET)
-    public String article(HttpServletRequest request) {
+    public String goArticleListPage(String sysCategoryId, String articleType) {
         request.setAttribute("mainModular", "article");
+        request.setAttribute("sysCategoryId", sysCategoryId);
+        //精彩文章 附带图片
+        List<MMSnsArticleEntity> articles = articleService.selectArticlePage(null, null, sysCategoryId, null, "read_count", true, 1, 4);
+        request.setAttribute("articles", articles);
+        //文章系统分类
+        List<MMSnsArticleCategoryEntity> articleCategorys = articleCategoryService.getArticleCategoryList(MMSnsArticleCategoryEntity.ARTICLE_CATEGORY_TYPE_SYSTEM, null, null);
+        MMSnsArticleCategoryEntity allArticleCategory = new MMSnsArticleCategoryEntity();
+        allArticleCategory.setCategoryId(0);
+        allArticleCategory.setCategoryName("全部");
+        articleCategorys.add(0, allArticleCategory);
+        request.setAttribute("articleCategorys", articleCategorys);
+        //最受欢迎 的文章作者
+        List<MMSnsArticleEntity> popularArticleAuthors = articleService.getPopularArticleAuthorMessage(1, 5);
+        request.setAttribute("popularArticleAuthors", popularArticleAuthors);
+        //推荐用户 TODO[准备使用大数据相关内容 进行作者推荐] 1、使用sqoop将文章信息导入到hadoop大数据。2、将用户点击的文章信息保存到redis缓存中。3、使用hive或者mahout做响应的推荐。
+        //List<MMSnsArticleEntity> recommendArticleAuthors = articleService.getRecommendArticleAuthorMessage(1, 5);
+        //request.setAttribute("recommendArticleAuthors", recommendArticleAuthors);
         return "/portal/article/article";
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/data", method = RequestMethod.GET)
+    public ResponseEntity articleData(String articleType, String sysCategoryId,
+                                      @RequestParam(name = "page", required = false, defaultValue = "1") int page,
+                                      @RequestParam(name = "limit", required = false, defaultValue = "5") int limit) {
+        String orderby = "read_count", startDate = null, endDate = null;
+        if ("articleRecommend".equalsIgnoreCase(articleType)) {
+            orderby = "read_count";
+        } else if ("articleToday".equalsIgnoreCase(articleType)) {
+            orderby = "read_count";
+            startDate = DateUtils.formatDate(new Date(), "yyyy-MM-dd");
+            endDate = DateUtils.formatDate(DateUtils.addDay(new Date(), 1), "yyyy-MM-dd");
+        } else if ("articleWeek".equalsIgnoreCase(articleType)) {
+            orderby = "read_count";
+            startDate = DateUtils.formatDate(DateUtils.getWeekStart(new Date()), "yyyy-MM-dd");
+            endDate = DateUtils.formatDate(DateUtils.getWeekEnd(new Date()), "yyyy-MM-dd");
+        } else if ("articleVote".equalsIgnoreCase(articleType)) {
+            orderby = "vote_count";
+        } else if ("articleNewst".equalsIgnoreCase(articleType)) {
+            orderby = "article_date";
+        }
+        List<MMSnsArticleEntity> articles = articleService.selectArticlePageWithAuthorMessage(null, sysCategoryId, orderby, false, startDate, endDate, page, limit);
+        return new ResponseEntity(articles);
+    }
+
+    /**
+     * 进入到文章详情页面
+     *
+     * @param articleId
+     * @return
+     */
     @RequestMapping(value = "/detail/{articleId}", method = RequestMethod.GET)
-    public String detail(@PathVariable int articleId) {
+    public String goArticleDetailPage(@PathVariable int articleId) {
         request.setAttribute("mainModular", "article");
 
         //根据文章id获取文章详情
@@ -65,9 +123,15 @@ public class MMSnsPortalArticleController {
         request.setAttribute("articleCount", articleCount);
         request.setAttribute("articleWordCount", articleWordCount);
 
-        //相关文章
+        //相关文章 文章作者发布的其他文章
+        List<MMSnsArticleEntity> relationArticles = articleService.selectArticlePage(String.valueOf(articleInfo.getUserId()), null, null, null, null, false, 1, 5);
+        request.setAttribute("relationArticles", relationArticles);
         //热门文章
+        List<MMSnsArticleEntity> hotArticles = articleService.selectArticlePage(null, null, null, null, "read_count", false, 1, 5);
+        request.setAttribute("hotArticles", hotArticles);
         //最新文章
+        List<MMSnsArticleEntity> newsArticles = articleService.selectArticlePage(null, null, null, null, "article_date", false, 1, 5);
+        request.setAttribute("newsArticles", newsArticles);
         return "/portal/article/detail";
     }
 }

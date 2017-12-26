@@ -6,6 +6,7 @@ import com.lovecws.mumu.mmsns.article.dao.MMSnsArticleCollectDao;
 import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleCollectEntity;
 import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleEntity;
 import com.lovecws.mumu.mmsns.article.service.MMSnsArticleCollectService;
+import com.lovecws.mumu.mmsns.article.service.MMSnsArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,18 +29,42 @@ public class MMSnsArticleCollectServiceImpl implements MMSnsArticleCollectServic
 
     @Autowired
     private MMSnsArticleCollectDao articleCollectDao;
+    @Autowired
+    private MMSnsArticleService articleService;
 
     @Override
     public int getCollectArticleCountByCondition(String sessionUserId) {
-        Map<String,Object> paramMap=new HashMap<String,Object>();
-        paramMap.put("collectUserId",sessionUserId);
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("collectUserId", sessionUserId);
         return articleCollectDao.listPageCount(paramMap);
     }
 
     @Override
     public PageBean<MMSnsArticleCollectEntity> listCollectArticlePage(String sessionUserId, int page, int limit) {
-        Map<String,Object> paramMap=new HashMap<String,Object>();
-        paramMap.put("collectUserId",sessionUserId);
-        return articleCollectDao.listPage(new PageParam(page,limit),paramMap);
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("collectUserId", sessionUserId);
+        return articleCollectDao.listPage(new PageParam(page, limit), paramMap);
+    }
+
+    @Override
+    public List<MMSnsArticleCollectEntity> getArticleCollectByCondition(Integer articleId, Integer userId) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("articleId", articleId);
+        paramMap.put("collectUserId", userId);
+        return articleCollectDao.listByColumn(paramMap);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public MMSnsArticleCollectEntity collectArticle(MMSnsArticleCollectEntity articleCollect) {
+        //保存文章收藏信息
+        articleCollect = articleCollectDao.insert(articleCollect);
+
+        //更新文章收藏量
+        MMSnsArticleEntity articleEntity = new MMSnsArticleEntity();
+        articleEntity.setArticleId(articleCollect.getArticleId());
+        articleEntity.setCollectCount(1);
+        articleService.updateArticle(articleEntity);
+        return null;
     }
 }
