@@ -33,6 +33,7 @@ public interface MMSnsArticleCollectService {
 
     /**
      * 获取用户收藏的文章
+     *
      * @param articleId
      * @param userId
      * @return
@@ -41,8 +42,16 @@ public interface MMSnsArticleCollectService {
 
     /**
      * 用户收藏文章
+     *
      * @param articleCollect
      * @return
      */
     public MMSnsArticleCollectEntity collectArticle(MMSnsArticleCollectEntity articleCollect);
+
+    /**
+     * 取消文章收藏
+     *
+     * @param articleCollectEntity
+     */
+    public void cancelArticleCollect(MMSnsArticleCollectEntity articleCollectEntity);
 }

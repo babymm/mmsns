@@ -6,7 +6,9 @@ import com.lovecws.mumu.core.response.ResponseEntity;
 import com.lovecws.mumu.core.utils.FilterUtil;
 import com.lovecws.mumu.core.utils.ValidateUtils;
 import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleCategoryEntity;
+import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleCollectEntity;
 import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleEntity;
+import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleVoteEntity;
 import com.lovecws.mumu.mmsns.article.service.MMSnsArticleCategoryService;
 import com.lovecws.mumu.mmsns.article.service.MMSnsArticleCollectService;
 import com.lovecws.mumu.mmsns.article.service.MMSnsArticleService;
@@ -185,8 +187,46 @@ public class MMSnsPortalProfileArticleController {
      */
     @ResponseBody
     @RequestMapping(value = "/{individuation}/article/delete", method = RequestMethod.DELETE)
-    public ResponseEntity deleteArticle(@PathVariable String individuation, String articleId) {
-        //articleService.deleteArticle(articleId);
+    public ResponseEntity deleteArticle(@PathVariable String individuation, int articleId) {
+        articleService.deleteArticle(articleId);
+        return new ResponseEntity();
+    }
+
+
+    /**
+     * 取消文章赞
+     *
+     * @param individuation
+     * @param articleId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/{individuation}/article/cancleVote", method = RequestMethod.DELETE)
+    public ResponseEntity cancleArticleVote(@PathVariable String individuation, int articleId) {
+        MMSnsArticleVoteEntity articleVoteEntity = new MMSnsArticleVoteEntity();
+        articleVoteEntity.setArticleId(articleId);
+        MMSnsCommonUserEntity sessionCommonUser = (MMSnsCommonUserEntity) SecurityUtils.getSubject().getSession().getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
+        articleVoteEntity.setVoteUserId(sessionCommonUser.getUserId());
+        articleVoteService.cancelArticleVote(articleVoteEntity);
+        return new ResponseEntity();
+    }
+
+
+    /**
+     * 取消文章收藏
+     *
+     * @param individuation
+     * @param articleId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/{individuation}/article/cancleCollect", method = RequestMethod.DELETE)
+    public ResponseEntity cancleArticleCollect(@PathVariable String individuation, int articleId) {
+        MMSnsArticleCollectEntity articleCollectEntity = new MMSnsArticleCollectEntity();
+        articleCollectEntity.setArticleId(articleId);
+        MMSnsCommonUserEntity sessionCommonUser = (MMSnsCommonUserEntity) SecurityUtils.getSubject().getSession().getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
+        articleCollectEntity.setCollectUserId(sessionCommonUser.getUserId());
+        articleCollectService.cancelArticleCollect(articleCollectEntity);
         return new ResponseEntity();
     }
 

@@ -100,4 +100,8 @@ public interface MMSnsArticleService {
     public MMSnsArticleEntity updateArticle(MMSnsArticleEntity articleEntity);
 
     public List<MMSnsArticleEntity> getPopularArticleAuthorMessage(int page, int limit);
+
+    public void updateArticleByCategoryId(String sysCategoryId, String userCategoryId, String articleStatus);
+
+    public void deleteArticle(int articleId);
 }

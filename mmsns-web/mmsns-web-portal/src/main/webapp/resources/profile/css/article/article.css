@@ -127,23 +127,14 @@
     float: left;
 }
 .layout-body .layout-right .article-body ul li .articlecontent{
-    width: 50%;
+    width: 70%;
     float: left;
 }
-.layout-body .layout-right .article-body ul li .articlecontent>span{
+.layout-body .layout-right .article-body ul li .articlecontent .articleheader{
     width: 100%;
     float: left;
 }
-.layout-body .layout-right .article-body ul li .articlecontent .articletitle{
-    display: block;
-    font-size: 1.5rem;
-    color: #000;
-    word-break: break-all;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
-.layout-body .layout-right .article-body ul li .articlecontent .articletype{
+.layout-body .layout-right .article-body ul li .articlecontent .articleheader .articletype{
     border-color: #51BAE3;
     color: #51BAE3;
     border: 2px solid #51BAE3;
@@ -158,6 +149,17 @@
     display: inline-block;
     margin-right: 5px;
 }
+.layout-body .layout-right .article-body ul li .articlecontent .articleheader .articletitle{
+    float: left;
+    display: block;
+    font-size: 1.5rem;
+    color: #000;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 .layout-body .layout-right .article-body ul li .articlecontent .articleediter{
     color: #666;
     margin-top: 6px;
@@ -168,11 +170,13 @@
 .layout-body .layout-right .article-body ul li .articlecontent .articlepublish{
     font-size: 0.9rem;
     margin-top: 6px;
+    width: 100%;
+    float: left;
 }
 .layout-body .layout-right .article-body ul li .articlelogo{
-    width: 50%;
+    width: 30%;
     float: right;
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px;
 }
 .layout-body .layout-right .article-body ul li .articlelogo img{

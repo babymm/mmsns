@@ -59,6 +59,7 @@ public class MMSnsArticleVoteServiceImpl implements MMSnsArticleVoteService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public MMSnsArticleVoteEntity voteArticle(MMSnsArticleVoteEntity articleVoteEntity) {
         //保存文章点赞信息
         articleVoteEntity = articleVoteDao.insert(articleVoteEntity);
@@ -69,5 +70,21 @@ public class MMSnsArticleVoteServiceImpl implements MMSnsArticleVoteService {
         articleEntity.setVoteCount(1);
         articleService.updateArticle(articleEntity);
         return articleVoteEntity;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void cancelArticleVote(MMSnsArticleVoteEntity articleVoteEntity) {
+        //删除文章点赞信息
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("articleId", articleVoteEntity.getArticleId());
+        paramMap.put("voteUserId", articleVoteEntity.getVoteUserId());
+        articleVoteDao.delete(paramMap);
+
+        //更新文章点赞量
+        MMSnsArticleEntity articleEntity = new MMSnsArticleEntity();
+        articleEntity.setArticleId(articleVoteEntity.getArticleId());
+        articleEntity.setVoteCount(-1);
+        articleService.updateArticle(articleEntity);
     }
 }

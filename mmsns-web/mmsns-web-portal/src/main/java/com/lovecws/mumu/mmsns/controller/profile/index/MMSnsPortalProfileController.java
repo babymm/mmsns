@@ -1,7 +1,13 @@
 package com.lovecws.mumu.mmsns.controller.profile.index;
 
+import com.lovecws.mumu.core.response.ResponseEntity;
+import com.lovecws.mumu.core.utils.IPAddressUtil;
+import com.lovecws.mumu.core.utils.StringUtil;
+import com.lovecws.mumu.core.utils.WebUtil;
 import com.lovecws.mumu.mmsns.common.user.entity.MMSnsCommonUserEntity;
 import com.lovecws.mumu.mmsns.common.user.service.MMSnsCommonUserService;
+import com.lovecws.mumu.mmsns.configuration.MMSnsPortalAccessControllerAspect;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +32,39 @@ public class MMSnsPortalProfileController {
 
     @RequestMapping(value = {"/{individuation}/home", "/{individuation}"}, method = RequestMethod.GET)
     public String home(@PathVariable String individuation) {
-
         return "/profile/home";
+    }
+
+    /**
+     * 用户头像
+     *
+     * @param individuation
+     * @return
+     */
+    @RequestMapping(value = {"/{individuation}/avator"}, method = RequestMethod.GET)
+    public String avator(@PathVariable String individuation) {
+        return "/profile/avator";
+    }
+
+    /**
+     * 修改用户头像
+     *
+     * @param individuation
+     * @param avator        用户头像
+     * @return
+     */
+    @ResponseBody
+    @MMSnsPortalAccessControllerAspect.UserInfoUpdate
+    @RequestMapping(value = {"/{individuation}/avator"}, method = RequestMethod.POST)
+    public ResponseEntity changeUserAvator(@PathVariable String individuation, String avator) {
+        MMSnsCommonUserEntity sessionCommonUser = (MMSnsCommonUserEntity) request.getSession().getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
+        MMSnsCommonUserEntity avatorCommonUser = new MMSnsCommonUserEntity();
+        avatorCommonUser.setUserId(sessionCommonUser.getUserId());
+        avatorCommonUser.setAvator(avator);
+        avatorCommonUser.setEditDate(new Date());
+        avatorCommonUser.setEditIp(WebUtil.getRemoteIP(request));
+        avatorCommonUser = commonUserService.updateCommonUser(avatorCommonUser);
+        return new ResponseEntity(avatorCommonUser);
     }
 
     @RequestMapping(value = "/{individuation}/home/vote", method = RequestMethod.GET)

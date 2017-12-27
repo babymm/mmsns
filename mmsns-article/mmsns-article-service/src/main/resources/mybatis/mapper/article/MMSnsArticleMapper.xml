@@ -389,6 +389,24 @@
         </where>
     </update>
 
+    <!-- 根据分类id、文章id标记为已删除状态 -->
+    <update id="batchUpdateByColumn">
+        update mb_article
+        <set>
+            <if test="articleStatus!=null">
+                article_status=#{articleStatus},
+            </if>
+        </set>
+        <where>
+            <if test="sysCategoryId!=null and sysCategoryId!=0">
+                and sys_ategory_id=#{sysCategoryId}
+            </if>
+            <if test="userCategoryId!=null and userCategoryId!=0">
+                and user_uategory_id=#{userCategoryId}
+            </if>
+        </where>
+    </update>
+
     <!-- 根据id删除文章 -->
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete

@@ -5,7 +5,9 @@ import com.lovecws.mumu.core.page.PageBean;
 import com.lovecws.mumu.core.page.PageParam;
 import com.lovecws.mumu.mmsns.article.dao.MMSnsArticleCategoryDao;
 import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleCategoryEntity;
+import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleEntity;
 import com.lovecws.mumu.mmsns.article.service.MMSnsArticleCategoryService;
+import com.lovecws.mumu.mmsns.article.service.MMSnsArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -28,6 +30,8 @@ public class MMSnsArticleCategoryServiceImpl implements MMSnsArticleCategoryServ
 
     @Autowired
     private MMSnsArticleCategoryDao articleCategoryDao;
+    @Autowired
+    private MMSnsArticleService articleService;
 
     @Override
     public PageBean<MMSnsArticleCategoryEntity> getArticleCategoryPageBean(String categoryType, String userId, String systemUserId, int page, int limit) {
@@ -60,7 +64,18 @@ public class MMSnsArticleCategoryServiceImpl implements MMSnsArticleCategoryServ
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public void deleteArticleCategory(String categoryId) {
-        articleCategoryDao.delete(categoryId);
+        //将文章分类标记为已删除状态
+        //articleCategoryDao.delete(categoryId);
+        MMSnsArticleCategoryEntity articleCategoryEntity = new MMSnsArticleCategoryEntity();
+        articleCategoryEntity.setCategoryId(Integer.parseInt(categoryId));
+        articleCategoryEntity.setCategoryStatus(PublicEnum.DELETE.value());
+        updateArticleCategory(articleCategoryEntity);
+
+        //将用户文章分类下的所有文章标记为以删除状态
+        MMSnsArticleEntity articleEntity = new MMSnsArticleEntity();
+        articleEntity.setUserCategoryId(Integer.parseInt(categoryId));
+        articleEntity.setArticleStatus(PublicEnum.DELETE.value());
+        articleService.updateArticleByCategoryId(null,categoryId,PublicEnum.DELETE.value());
     }
 
     @Override

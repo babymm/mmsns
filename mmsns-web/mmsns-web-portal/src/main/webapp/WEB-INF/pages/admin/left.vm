@@ -90,6 +90,11 @@
                     #else
                         <li><a href="/admin/$individuation/user/chphone">绑定手机</a></li>
                     #end
+                    #if($adminModular=='userTip')
+                        <li><a class="active" href="/admin/$individuation/user/chphone">修改打赏二维码</a></li>
+                    #else
+                        <li><a href="/admin/$individuation/user/chphone">修改打赏二维码</a></li>
+                    #end
                 </ol>
             </li>
             <li>

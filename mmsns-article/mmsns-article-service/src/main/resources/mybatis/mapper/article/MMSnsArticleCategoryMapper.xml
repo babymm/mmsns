@@ -6,7 +6,7 @@
 
         <id column="category_id" property="categoryId" jdbcType="INTEGER"/>
         <result column="category_status" property="categoryStatus" jdbcType="VARCHAR"/>
-        <result column="category_date" property="categoryDate" jdbcType="DATE"/>
+        <result column="category_date" property="categoryDate" jdbcType="VARCHAR"/>
 
         <result column="category_type" property="categoryType" jdbcType="VARCHAR"/>
         <result column="user_id" property="userId" jdbcType="INTEGER"/>

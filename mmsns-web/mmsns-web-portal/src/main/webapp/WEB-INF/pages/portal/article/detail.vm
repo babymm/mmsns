@@ -91,7 +91,7 @@
                 #foreach($relationArticle in $relationArticles)
                     <li>
                         <span class="articletitle"><a href="/article/detail/$!relationArticle.articleId">$!relationArticle.articleTitle</a></span>
-                        <span class="articleinfo">阅读 $!relationArticle.readCount 点赞 $!relationArticle.voteCount 收藏 $!relationArticle.collectCount 转发 $!relationArticle.relayCount 评论 $!relationArticle.commentCount</span>
+                        #*<span class="articleinfo">阅读 $!relationArticle.readCount 点赞 $!relationArticle.voteCount 收藏 $!relationArticle.collectCount 转发 $!relationArticle.relayCount 评论 $!relationArticle.commentCount</span>*#
                     </li>
                 #end
             </ul>
@@ -102,7 +102,7 @@
                 #foreach($hotArticle in $hotArticles)
                     <li>
                         <span class="articletitle"><a href="/article/detail/$!hotArticle.articleId">$!hotArticle.articleTitle</a></span>
-                        <span class="articleinfo">阅读 $!hotArticle.readCount</span>
+                        #*<span class="articleinfo">阅读 $!hotArticle.readCount</span>*#
                     </li>
                 #end
             </ul>
@@ -113,7 +113,7 @@
                 #foreach($newsArticle in $newsArticles)
                     <li>
                         <span class="articletitle"><a href="/article/detail/$!newsArticle.articleId">$!newsArticle.articleTitle</a></span>
-                        <span class="articleinfo">创建:$date.format('yyyy-MM-dd',$!newsArticle.articleDate)</span>
+                        #*<span class="articleinfo">创建:$date.format('yyyy-MM-dd',$!newsArticle.articleDate)</span>*#
                     </li>
                 #end
             </ul>
@@ -210,7 +210,7 @@
                     type: 1,
                     closeBtn:true,
                     shadeClose:true,
-                    scrollbar:false,
+                    scrollbar:true,
                     title: false,
                     closeBtn: 1,
                     area: ['660px', '400px'],
@@ -263,7 +263,7 @@
             type: 2,
             closeBtn:true,
             shadeClose:true,
-            scrollbar:false,
+            scrollbar:true,
             title: false,
             closeBtn: 1,
             area: ['650px', '420px'],

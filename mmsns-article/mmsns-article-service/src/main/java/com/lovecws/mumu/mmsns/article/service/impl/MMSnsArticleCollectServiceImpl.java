@@ -67,4 +67,19 @@ public class MMSnsArticleCollectServiceImpl implements MMSnsArticleCollectServic
         articleService.updateArticle(articleEntity);
         return null;
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void cancelArticleCollect(MMSnsArticleCollectEntity articleCollect) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("articleId", articleCollect.getArticleId());
+        paramMap.put("collectUserId", articleCollect.getCollectUserId());
+        articleCollectDao.delete(paramMap);
+
+        //更新文章收藏量
+        MMSnsArticleEntity articleEntity = new MMSnsArticleEntity();
+        articleEntity.setArticleId(articleCollect.getArticleId());
+        articleEntity.setCollectCount(1);
+        articleService.updateArticle(articleEntity);
+    }
 }

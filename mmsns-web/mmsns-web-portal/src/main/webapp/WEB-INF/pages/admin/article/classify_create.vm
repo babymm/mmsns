@@ -8,7 +8,7 @@
     <div class="layout-right">
         <div class="right-content">
             <div class="right-articleclassifyheader">
-                <span class="articleheader"><a href="/admin/$individuation/article/classify">文章分类</a><small>>> ${articleClassifyTitle}</small></span>
+                <span class="articleheader"><a href="/admin/$individuation/article/classify">文章分类</a><small>> ${articleClassifyTitle}</small></span>
             </div>
             <div class="right-createArticleClassifyFrom">
                 <form class="layui-form" action="">

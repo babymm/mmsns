@@ -13,7 +13,7 @@
                 #foreach($article in $!articlePageBean.recordList)
                     <li>
                         <div class="articlecontent">
-                            <span>
+                            <span class="articleheader">
                                 #if($operation=='vote')
                                     <span class="articletype">赞</span>
                                 #elseif($operation=='collect')
@@ -28,9 +28,9 @@
                             <span class="articleediter">阅读 $article.readCount ·评论 $article.commentCount ·赞 $article.voteCount ·收藏 $article.collectCount ·转发 $article.relayCount ·
                                 #if($individuation==$MMSNS_COMMON_USER.individuation)
                                     #if($operation=='vote')
-                                        (<a href="javascript:void(0)">取消赞</a>)
+                                        (<a href="javascript:void(0)" onclick="cancleArticleVote('$!article.articleId')">取消赞</a>)
                                     #elseif($operation=='collect')
-                                        (<a href="javascript:void(0)">取消收藏</a>)
+                                        (<a href="javascript:void(0)" onclick="cancleArticleCollect('$!article.articleId')">取消收藏</a>)
                                     #else
                                         (<a href="/profile/$individuation/article/edit/$article.articleId">编辑</a> | <a href="javascript:void(0)" onclick="articleDelete('$!article.articleTitle','$!article.articleId')" class="articleDelete">删除</a>)
                                     #end
@@ -39,7 +39,11 @@
                             <span class="articlepublish">$date.format("yyyy-MM-dd",$article.articleDate)</span>
                         </div>
                         <div class="articlelogo">
-                            <a href="/article/detail/$article.articleId"><img src="$article.articleLogo" width="100" height="100"></a>
+                            #if($!article.articleLogo)
+                                <a href="/article/detail/$article.articleId"><img src="$article.articleLogo" width="100" height="100"></a>
+                            #else
+                                <img width="100" height="100">
+                            #end
                         </div>
                         <hr>
                     </li>
@@ -86,6 +90,36 @@
                     layer.alert(respData.data, {icon: 5});
                 }
             })
+        });
+    }
+    //取消点赞
+    function cancleArticleVote(articleId) {
+        $.post("/profile/$individuation/article/cancleVote", {articleId:articleId,_method:'delete'}, function (respData) {
+            if(respData.code==200){
+                layer.msg('取消点赞操作成功', {
+                    icon: 1,
+                    time: 2000
+                }, function () {
+                    window.location.reload();
+                });
+            } else {
+                layer.alert(respData.data, {icon: 5});
+            }
+        });
+    }
+    //取消收藏
+    function cancleArticleCollect(articleId) {
+        $.post("/profile/$individuation/article/cancleCollect", {articleId:articleId,_method:'delete'}, function (respData) {
+            if(respData.code==200){
+                layer.msg('取消收藏操作成功', {
+                    icon: 1,
+                    time: 2000
+                }, function () {
+                    window.location.reload();
+                });
+            } else {
+                layer.alert(respData.data, {icon: 5});
+            }
         });
     }
 </script>

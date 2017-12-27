@@ -165,4 +165,11 @@
         from mb_article_vote
         where vote_id=#{voteId}
     </delete>
+
+    <!-- 根据文章id、点赞用户id进行删除 -->
+    <delete id="batchDeleteByColumn" parameterType="map">
+        DELETE
+        FROM mb_article_vote
+        WHERE article_id=#{articleId} and vote_user_id=#{voteUserId}
+    </delete>
 </mapper>

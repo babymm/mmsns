@@ -159,4 +159,11 @@
         from mb_article_collect
         where collect_id=#{collectId}
     </delete>
+
+    <!-- 根据文章id、收藏用户id进行删除 -->
+    <delete id="batchDeleteByColumn" parameterType="map">
+        DELETE
+        FROM mb_article_collect
+        WHERE article_id=#{articleId} and collect_user_id=#{collectUserId}
+    </delete>
 </mapper>

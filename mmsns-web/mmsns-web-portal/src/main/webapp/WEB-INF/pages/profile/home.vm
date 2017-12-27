@@ -195,9 +195,4 @@
 #parse("/portal/footer.vm")
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="${request.getContextPath()}/resources/common/js/common.js" charset="utf-8"></script>
-<script type="text/javascript">
-    layui.use(['element'], function () {
-        var element = layui.element;
-    });
-</script>
+<script type="text/javascript" src="${request.getContextPath()}/resources/profile/js/home.js" charset="utf-8"></script>

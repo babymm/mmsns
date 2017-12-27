@@ -11,7 +11,7 @@
                 <span>文章分类</span>
             </div>
             <div class="right-buttons">
-                <a href="/admin/$individuation/article/classify/create"><span>创建文章分类<span></span></a>
+                <a href="/admin/$individuation/article/classify/create"><span class="layui-btn layui-btn-xs">创建文章分类</span></a>
             </div>
             <div class="right-articleclassifytable">
                 <table class="layui-table" id="articleClassifyTable" lay-filter="articleClassifyTableFilter"></table>
@@ -28,6 +28,7 @@
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript">
+    var individuation='$individuation';
     layui.use(['element','table'], function () {
         var element = layui.element,table=layui.table;
         var page={
@@ -35,7 +36,7 @@
         };
         table.render({
             elem: '#articleClassifyTable'
-            ,url:'/admin/$individuation/article/classify/data'
+            ,url:'/admin/'+individuation+'/article/classify/data'
             ,cellMinWidth: 80
             ,cols: [[
                 {field:'categoryId', title: '分类ID',width:80}
@@ -53,10 +54,10 @@
             var data = obj.data;
             console.log(data);
             if(obj.event === 'detail'){
-                window.location.href="/admin/$individuation/article/classify/view?categoryId="+data.categoryId;
+                window.location.href="/admin/"+individuation+"/article/classify/view?categoryId="+data.categoryId;
             } else if(obj.event === 'del'){
-                layer.confirm('你确定要删除文章分类['+data.categoryName+']吗？',{icon:3,title:'警告'}, function(index){
-                    $.post("/admin/$individuation/article/classify/delete", {categoryId:data.categoryId,_method:'delete'}, function (respData) {
+                layer.confirm('你确定要删除文章分类['+data.categoryName+']吗？<span style="color: red">删除文章分类是则会删除该分类下的所有文章！！！</span>',{icon:3,title:'警告'}, function(index){
+                    $.post("/admin/"+individuation+"/article/classify/delete", {categoryId:data.categoryId,_method:'delete'}, function (respData) {
                         if(respData.code==200){
                             layer.msg('删除文章分类操作成功', {
                                 icon: 1,
@@ -71,7 +72,7 @@
                     })
                 });
             } else if(obj.event === 'edit'){
-                window.location.href="/admin/$individuation/article/classify/edit?categoryId="+data.categoryId;
+                window.location.href="/admin/"+individuation+"/article/classify/edit?categoryId="+data.categoryId;
             }
         });
     });

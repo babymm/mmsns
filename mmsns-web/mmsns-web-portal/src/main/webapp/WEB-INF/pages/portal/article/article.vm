@@ -10,13 +10,13 @@
             <h1>我的文章</h1>
         </a>
     </div>
-    <div class="search-input">
+    #*<div class="search-input">
         <form id="searchForm" action="" class="box vertical sec-search" autocomplete="off">
             <input type="hidden" name="scope" value="blog">
             <input class="search-text" type="text" name="q" placeholder="请输入搜索内容">
             <span class="ic-search box vertical" onclick=""></span>
         </form>
-    </div>
+    </div>*#
 </div>
 <div class="article-body">
     <div class="body-content">
@@ -58,25 +58,24 @@
         <div class="article-list flow-default" id="articleFlowUL"></div>
     </div>
     <div class="body-cateory">
-        <div class="category-classify">
+        <div class="category-right category-classify">
             <ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline">
                 #foreach($articleCategory in $articleCategorys)
                     <li class="layui-nav-item">
                         <a href="/article?sysCategoryId=$articleCategory.categoryId">
-                            <i class="fa fa-bars" style="float: left;margin-top: 15px;margin-right: 5px;"></i>
+                            <i class="$articleCategory.categoryIcon" style="float: left;margin-top: 15px;margin-right: 5px;"></i>
                             <h1 style="margin-top: 15px;">$articleCategory.categoryName</h1>
                         </a>
                     </li>
                 #end
             </ul>
         </div>
-        <div class="category-polular">
+        <div class="category-right category-polular">
             <h3 style="font-size: 1.125rem;font-weight: 400;line-height: 38px;color: #6a6a6a;box-shadow: inset 0 -1px 0 0 #ddd;">最受欢迎</h3>
-            <hr width="100%" color="red" style="margin: 0px;">
             <ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" style="margin-top: 15px;">
                 #foreach($popularArticleAuthor in $popularArticleAuthors)
                     <li class="layui-nav-item" style="height: 60px;">
-                        <a href="/profile/$popularArticleAuthor.individuation/home" style="height: 50px">
+                        <a href="/profile/$popularArticleAuthor.individuation/article" style="height: 50px">
                             #if($!popularArticleAuthor.avator)
                                 <img src="$!popularArticleAuthor.avator" style="float: left;margin-right: 5px;border-radius: 50%;" width="50" height="50">
                             #else
@@ -101,17 +100,31 @@
                 #end
             </ul>
         </div>
-        <div class="category-recommend">
+        <div class="category-right category-recommend">
             <h3 style="font-size: 1.125rem;font-weight: 400;line-height: 38px;color: #6a6a6a;box-shadow: inset 0 -1px 0 0 #ddd;">推荐博主</h3>
-            <hr width="100%" color="red" style="margin: 0px;">
             <ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" style="margin-top: 15px;">
-                #set($classifys=['baby慕慕','小墨科技','lovecws',"爱你一万年","万精油","爱爱爱爱啊","ksksksksk"])
-                #foreach($classify in $classifys)
+                #foreach($popularArticleAuthor in $popularArticleAuthors)
                     <li class="layui-nav-item" style="height: 60px;">
-                        <a href="">
-                            <img src="https://static.oschina.net/uploads/user/1202/2404202_50.jpeg?t=1483522883000" style="float: left;margin-top: 2px;margin-right: 5px;">
-                            <h1 style="margin-top: 5px;margin-bottom: 0px;">$classify</h1>
-                            <span style="float: left;height: 30px;text-align: center;margin-top: -8px;">程序员</span>
+                        <a href="/profile/$popularArticleAuthor.individuation/article" style="height: 50px">
+                            #if($!popularArticleAuthor.avator)
+                                <img src="$!popularArticleAuthor.avator" style="float: left;margin-right: 5px;border-radius: 50%;" width="50" height="50">
+                            #else
+                                <img src="/resources/portal/images/logo.jpg" style="float: left;margin-right: 5px;border-radius: 50%;" width="50" height="50">
+                            #end
+                            <h1 style="margin-top: 5px;margin-bottom: 0px;">$!popularArticleAuthor.userName</h1>
+                            <span style="float: left;height: 30px;text-align: center;margin-top: -8px;font-size: 13px;color: silver;">
+                                #if($!popularArticleAuthor.company)
+                                    $!popularArticleAuthor.company
+                                #else
+                                    公司未设置
+                                #end
+                                -
+                                #if($!popularArticleAuthor.positional)
+                                    $!popularArticleAuthor.positional
+                                #else
+                                    职位未设置
+                                #end
+                            </span>
                         </a>
                     </li>
                 #end
@@ -162,7 +175,7 @@
                                 var article=respData.data[i];
                                 var userAvator=article.avator?article.avator:"/resources/portal/images/logo.jpg";
                                 lis.push('<div class="article-list-item" style="width: 100%;height:120px;margin-bottom: 30px;">'+
-                                        '<div class="header" style="float: left;width: 50px;min-width:50px;margin-top: 15px;"><a href="/" style="color: #000;"><img src="'+userAvator+'" width="60px" height="60px" style="float: right;border-radius: 50%;"></a></div>'+
+                                        '<div class="header" style="float: left;width: 50px;min-width:50px;margin-top: 15px;"><a href="/profile/'+article.individuation+'/article" style="color: #000;"><img src="'+userAvator+'" width="60px" height="60px" style="float: right;border-radius: 50%;"></a></div>'+
                                         '<div class="content" style="float: left;width: 85%;margin-left: 20px;">' +
                                         '<span style="float: left;display: block;margin-top: 8px;word-wrap: break-word;overflow: hidden;"><a href="/article/detail/'+article.articleId+'"><h2>'+article.articleTitle+'</h2></a></span> '+
                                         '<span class="contents" style="width: 100%;font-size: .875rem;line-height: 20px;overflow: hidden;height: auto;max-height: 40px;margin: 4px 0 6px;text-align: justify;text-justify: inter-ideograph;word-break: initial;color: #6a6a6a;"><code>'+article.articleSumary+'</code> </span>'+

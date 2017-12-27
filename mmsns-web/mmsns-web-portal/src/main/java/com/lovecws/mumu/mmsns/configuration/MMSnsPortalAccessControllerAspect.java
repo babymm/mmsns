@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.lang.annotation.*;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +39,8 @@ public class MMSnsPortalAccessControllerAspect {
     @Autowired(required = false)
     private MMSnsCommonUserService commonUserService;
 
+    public static final String VISIT_USERS_MAP = "VISIT_USERS_MAP";
+
     private static final Logger log = Logger.getLogger(MMSnsPortalLogComponent.class);
 
     @Pointcut("execution(* com.lovecws.mumu.mmsns.controller.profile.*.*Controller.*(..)) || " +
@@ -48,13 +51,26 @@ public class MMSnsPortalAccessControllerAspect {
     @Around("MMSnsPortalProfileAspect()")
     public Object accessController(ProceedingJoinPoint joinPoint) throws Throwable {
         Method requestMethod = getMethod(joinPoint.getTarget().getClass(), joinPoint.getSignature().getName(), joinPoint.getArgs());
+        String servletPath = request.getServletPath();
+        String individuation = getIndividuation(servletPath);
         //判断该方法是 返回页面还是返回数据;如果是返回数据 则直接放行
         ResponseBody responseBody = requestMethod.getAnnotation(ResponseBody.class);
         if (responseBody != null) {
-            return joinPoint.proceed();
+            Object proceed = joinPoint.proceed();
+            //后台接口 修改了用户信息 需要重置缓存信息
+            UserInfoUpdate userInfoUpdate = requestMethod.getAnnotation(UserInfoUpdate.class);
+            if (userInfoUpdate != null && userInfoUpdate.required()) {
+                MMSnsCommonUserEntity commonUserEntity = getCommonUser(individuation);
+                MMSnsCommonUserEntity loginUser = (MMSnsCommonUserEntity) request.getSession().getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
+                Map<String, MMSnsCommonUserEntity> visitMap = (Map<String, MMSnsCommonUserEntity>) request.getSession().getAttribute(VISIT_USERS_MAP);
+                visitMap.put(loginUser.getIndividuation(), commonUserEntity);
+                visitMap.put(individuation, commonUserEntity);
+                request.getSession().setAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER, commonUserEntity);
+                request.getSession().setAttribute(VISIT_USERS_MAP, visitMap);
+            }
+            return proceed;
         }
-        String servletPath = request.getServletPath();
-        String individuation = getIndividuation(servletPath);
+
         if (servletPath.startsWith("/profile")) {
             return handleProfilePage(individuation, joinPoint);
         } else if (servletPath.startsWith("/admin")) {
@@ -91,10 +107,18 @@ public class MMSnsPortalAccessControllerAspect {
     private String getIndividuation(String servletPath) {
         int beginIndex = servletPath.indexOf("/", 1);
         int endIndex = servletPath.indexOf("/", beginIndex + 1);
-        if(endIndex>=0){
+        if (endIndex >= 0) {
             return servletPath.substring(beginIndex + 1, endIndex);
         }
-        return servletPath.substring(beginIndex+1);
+        return servletPath.substring(beginIndex + 1);
+    }
+
+    private MMSnsCommonUserEntity getCommonUser(String individuation) {
+        List<MMSnsCommonUserEntity> commonUsers = commonUserService.getCommonUserByCondition(null, null, null, individuation, null);
+        if (commonUsers != null && commonUsers.size() > 0) {
+            return commonUsers.get(0);
+        }
+        return null;
     }
 
     /**
@@ -109,22 +133,19 @@ public class MMSnsPortalAccessControllerAspect {
             return "/common/error/404";
         }
         //缓存用户访问的用户列表
-        Map<String, MMSnsCommonUserEntity> visitMap = (Map<String, MMSnsCommonUserEntity>) request.getSession().getAttribute("VISIT_USERS_MAP");
+        Map<String, MMSnsCommonUserEntity> visitMap = (Map<String, MMSnsCommonUserEntity>) request.getSession().getAttribute(VISIT_USERS_MAP);
         //初始化的时候 将登陆用户添加进去
         if (visitMap == null) {
-            visitMap = new HashMap<String, MMSnsCommonUserEntity>();
             MMSnsCommonUserEntity loginUser = (MMSnsCommonUserEntity) request.getSession().getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
+            visitMap = new HashMap<String, MMSnsCommonUserEntity>();
             visitMap.put(loginUser.getIndividuation(), loginUser);
         }
         MMSnsCommonUserEntity commonUserEntity = visitMap.get(individuation);
         if (commonUserEntity == null) {
-            List<MMSnsCommonUserEntity> commonUsers = commonUserService.getCommonUserByCondition(null, null, null, individuation,null);
-            if (commonUsers != null && commonUsers.size() > 0) {
-                commonUserEntity = commonUsers.get(0);
-            }
+            commonUserEntity = getCommonUser(individuation);
         }
         visitMap.put(individuation, commonUserEntity);
-        request.getSession().setAttribute("VISIT_USERS_MAP", visitMap);
+        request.getSession().setAttribute(VISIT_USERS_MAP, visitMap);
         request.getSession().setAttribute(MMSnsCommonUserEntity.VISIT_USER, commonUserEntity);
         //如果用户不存在 则跳转到404页面
         if (commonUserEntity == null) {
@@ -150,5 +171,14 @@ public class MMSnsPortalAccessControllerAspect {
             return "redirect:/profile/" + loginUser.getIndividuation() + "/home";
         }
         return joinPoint.proceed();
+    }
+
+    @Target(ElementType.METHOD)
+    @Retention(RetentionPolicy.RUNTIME)
+    @Documented
+    public @interface UserInfoUpdate {
+        String name() default "";
+
+        boolean required() default true;
     }
 }

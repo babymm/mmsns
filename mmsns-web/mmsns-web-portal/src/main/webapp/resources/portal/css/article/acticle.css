@@ -56,11 +56,10 @@
     background-size: 16px 16px;
 }
 .article-body{
-    width: 98%;
-    height: auto;
-    min-width: 1100px;
-    margin: 20px;
-    padding: 0px;
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    min-width: 1056px;
 }
 .article-body .body-content{
     width: 78%;
@@ -132,6 +131,7 @@
     list-style: none;
     margin-top: 25px;
     margin-bottom: 25px;
+    min-height: 600px;
 }
 .article-body .body-content .article-list .article-list-item{
     width: 100%;
@@ -181,10 +181,7 @@
     padding: 0px;
     margin: 0px;
 }
-.article-body .body-cateory .category-classify,
-.article-body .body-cateory .category-polular
-.article-body .body-cateory .category-recommend,
-.article-body .body-cateory .category-bounty
+.article-body .body-cateory .category-right
 {
     width: 98%;
     float: left;
@@ -193,10 +190,7 @@
     margin: 0px;
     margin-bottom: 20px;
 }
-.article-body .body-cateory .category-classify .layui-nav,
-.article-body .body-cateory .category-polular .layui-nav,
-.article-body .body-cateory .category-recommend .layui-nav,
-.article-body .body-cateory .category-bounty .layui-nav
+.article-body .body-cateory .category-right .layui-nav
 {
     width: 100%;
     background-color: #ffffff;
@@ -204,10 +198,7 @@
     padding: 0px;
     margin: 0px;
 }
-.article-body .body-cateory .category-classify .layui-nav .layui-nav-item,
-.article-body .body-cateory .category-polular .layui-nav .layui-nav-item,
-.article-body .body-cateory .category-recommend .layui-nav .layui-nav-item,
-.article-body .body-cateory .category-bounty .layui-nav .layui-nav-item
+.article-body .body-cateory .category-right .layui-nav .layui-nav-item
 {
     min-width: 0;
     -webkit-transition: width .2s;
@@ -223,19 +214,13 @@
     background-color: #ffffff;
     color: #6a6a6a;
 }
-.article-body .body-cateory .category-classify .layui-nav .layui-nav-item a,
-.article-body .body-cateory .category-polular .layui-nav .layui-nav-item a,
-.article-body .body-cateory .category-recommend .layui-nav .layui-nav-item a,
-.article-body .body-cateory .category-bounty .layui-nav .layui-nav-item a
+.article-body .body-cateory .category-right .layui-nav .layui-nav-item a
 {
     color: #6a6a6a;
     background-color: #ffffff;
     padding-left: 0px;
 }
-.article-body .body-cateory .category-classify .layui-nav .layui-nav-item a h1,
-.article-body .body-cateory .category-polular .layui-nav .layui-nav-item a h1,
-.article-body .body-cateory .category-recommend .layui-nav .layui-nav-item a h1,
-.article-body .body-cateory .category-bounty .layui-nav .layui-nav-item a h1
+.article-body .body-cateory .category-right .layui-nav .layui-nav-item a h1
 {
     line-height: 14px;
     display: block;

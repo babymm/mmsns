@@ -12,8 +12,10 @@
     <file url="file://$PROJECT_DIR$/mmsns-common/mmsns-common-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-common/mmsns-common-web" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-group" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mmsns-modular" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mmsns-modular/mmsns-modular-sqoop" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-news" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mmsns-picture" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mmsns-photo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-web" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-web/mmsns-web-manager" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-web/mmsns-web-portal" charset="UTF-8" />

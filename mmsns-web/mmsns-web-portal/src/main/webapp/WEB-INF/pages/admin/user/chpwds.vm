@@ -15,25 +15,25 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">原登录密码</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                            <input type="password" name="password" required  lay-verify="required" placeholder="" autocomplete="off" autofocus class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">新密码</label>
                         <div class="layui-input-inline">
-                            <input type="password" name="password" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                            <input type="password" name="newpassword" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">再次输入新密码</label>
                         <div class="layui-input-inline">
-                            <input type="password" name="password" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                            <input type="password" name="repassword" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
                         </div>
                     </div>
-                    <span class="forgetpwd"><a href="">忘记登录密码?</a></span>
+                    <span class="forgetpwd"><a href="/iforget">忘记登录密码?</a></span>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit lay-filter="formDemo">修改密码</button>
+                            <button class="layui-btn" lay-submit lay-filter="changePwdFromFilter">修改密码</button>
                         </div>
                     </div>
                 </form>
@@ -45,7 +45,27 @@
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript">
-    layui.use(['element'], function () {
-        var element = layui.element;
+    layui.use(['element','form'], function () {
+        var element = layui.element,form=layui.form;
+        form.on('submit(changePwdFromFilter)', function (data) {
+            if(data.field.newpassword!=data.field.repassword){
+                layer.msg("两次新密码不一样！",{icon:2});
+                return false;
+            }
+            data.field._method='put';
+            $.post("/admin/$individuation/user/chpwd", data.field, function (respData) {
+                if(respData.code==200){
+                    layer.msg('修改登录密码操作成功,请<span style="color: red;">重新登录</span>', {
+                        icon: 1,
+                        time: 2000
+                    }, function () {
+                        window.location.href="/logout";
+                    });
+                } else {
+                    layer.alert(respData.data, {icon: 5});
+                }
+            })
+            return false;
+        });
     });
 </script>

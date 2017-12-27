@@ -39,22 +39,10 @@
 .layout-body .layout-right .right-content .right-buttons span{
     float: left;
 }
-.layout-body .layout-right .right-content .right-buttons a{
-    display: block;
-    width: 88px;
-    height: 22px;
-    border: 1px solid #ddd;
-    color: white;
-    background-color: #4eaa4c;
-    vertical-align: middle;
-    padding-top: 4px;
-    text-align: center;
-}
 .layout-body .layout-right .right-content .right-articleclassifytable{
     width: 100%;
     float: left;
 }
-
 .layout-body .layout-right .right-content .right-articleclassifyheader .articleheader{
     width: 100%;
     font-size: 18px;

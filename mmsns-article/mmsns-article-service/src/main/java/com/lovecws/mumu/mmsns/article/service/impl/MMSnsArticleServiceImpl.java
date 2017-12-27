@@ -88,7 +88,7 @@ public class MMSnsArticleServiceImpl implements MMSnsArticleService {
     }
 
     @Override
-    public List<MMSnsArticleEntity> selectArticlePageWithAuthorMessage(String articleType, String sysCategoryId, String orderby, boolean articleLogo,String startDate,String endDate, int page, int limit) {
+    public List<MMSnsArticleEntity> selectArticlePageWithAuthorMessage(String articleType, String sysCategoryId, String orderby, boolean articleLogo, String startDate, String endDate, int page, int limit) {
         Map<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("articleType", articleType);
         paramMap.put("articleStatus", PublicEnum.NORMAL.value());
@@ -129,9 +129,29 @@ public class MMSnsArticleServiceImpl implements MMSnsArticleService {
     @Override
     public List<MMSnsArticleEntity> getPopularArticleAuthorMessage(int page, int limit) {
         Map<String, Object> paramMap = new HashMap<String, Object>();
-        PageParam pageParam=new PageParam(page,limit);
+        PageParam pageParam = new PageParam(page, limit);
         paramMap.put("beginIndex", pageParam.getBeginIndex());
         paramMap.put("numPerPage", pageParam.getNumPerPage());
-        return articleDao.selectList("getPopularArticleAuthorMessage",paramMap);
+        return articleDao.selectList("getPopularArticleAuthorMessage", paramMap);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void updateArticleByCategoryId(String sysCategoryId, String userCategoryId, String articleStatus) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("sysCategoryId", sysCategoryId);
+        paramMap.put("userCategoryId", userCategoryId);
+        paramMap.put("articleStatus", PublicEnum.DELETE.value());
+        articleDao.update(paramMap);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void deleteArticle(int articleId) {
+        //articleDao.delete(String.valueOf(articleId));
+        MMSnsArticleEntity articleEntity = new MMSnsArticleEntity();
+        articleEntity.setArticleId(articleId);
+        articleEntity.setArticleStatus(PublicEnum.DELETE.value());
+        updateArticle(articleEntity);
     }
 }

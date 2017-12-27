@@ -67,8 +67,6 @@
     </div>
 </div>
 #parse("/portal/sfooter.vm")
-<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
-<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
 <script type="text/javascript">
     layui.use(['element','laypage'], function () {
         var element = layui.element,laypage=layui.laypage;

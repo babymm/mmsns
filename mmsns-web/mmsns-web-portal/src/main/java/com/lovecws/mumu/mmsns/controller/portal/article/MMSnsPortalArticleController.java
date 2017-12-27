@@ -49,6 +49,7 @@ public class MMSnsPortalArticleController {
         MMSnsArticleCategoryEntity allArticleCategory = new MMSnsArticleCategoryEntity();
         allArticleCategory.setCategoryId(0);
         allArticleCategory.setCategoryName("全部");
+        allArticleCategory.setCategoryIcon("fa fa-bars");
         articleCategorys.add(0, allArticleCategory);
         request.setAttribute("articleCategorys", articleCategorys);
         //最受欢迎 的文章作者

@@ -34,5 +34,16 @@ public interface MMSnsArticleVoteService {
 
     public List<MMSnsArticleVoteEntity> getArticleVoteByCondition(int articleId, Integer userId);
 
+    /**
+     * 点赞文章
+     * @param articleVoteEntity
+     * @return
+     */
     public MMSnsArticleVoteEntity voteArticle(MMSnsArticleVoteEntity articleVoteEntity);
+
+    /**
+     * 取消点赞文章
+     * @param articleVoteEntity
+     */
+    public void cancelArticleVote(MMSnsArticleVoteEntity articleVoteEntity);
 }
