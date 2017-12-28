@@ -10,9 +10,10 @@
         <module>mmsns-news</module>
         <module>mmsns-group</module>
         <module>mmsns-action</module>
-        <module>mmsns-picture</module>
+        <module>mmsns-photo</module>
         <module>mmsns-web</module>
         <module>mmsns-common</module>
+        <module>mmsns-modular</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -668,7 +669,9 @@
             <properties>
                 <env>company</env>
             </properties>
-
+            <activation>
+                <activeByDefault>true</activeByDefault><!--默认启用的是dev环境配置-->
+            </activation>
         </profile>
 
         <!-- 家庭环境 -->
@@ -677,9 +680,7 @@
             <properties>
                 <env>home</env>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault><!--默认启用的是dev环境配置-->
-            </activation>
+
         </profile>
     </profiles>
 </project>
