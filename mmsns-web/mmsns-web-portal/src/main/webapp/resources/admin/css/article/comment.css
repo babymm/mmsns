@@ -69,6 +69,12 @@
 }
 .layout-body .layout-right .right-content .right-main ul li .article .articlecontent{
     line-height: 22px;
+    width: 100%;
+    height: 100%;
+}
+.layout-body .layout-right .right-content .right-main ul li .article .articlecontent img{
+    max-width: 200px;
+    max-height: 200px;
 }
 .layout-body .layout-right .right-content .right-main ul li .article .articleextra .pubdate{
     width: 60px;

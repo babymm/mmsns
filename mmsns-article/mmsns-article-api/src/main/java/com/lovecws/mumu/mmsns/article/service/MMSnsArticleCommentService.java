@@ -31,4 +31,10 @@ public interface MMSnsArticleCommentService {
     public MMSnsArticleCommentEntity publishArticleComment(MMSnsArticleCommentEntity articleCommentEntity);
 
     public MMSnsArticleCommentEntity getArticleCommentInfo(int commentId);
+
+    public PageBean listUserArticleCommentPage(Integer userId, int page, int limit);
+
+    public void deleteArticleCommentById(String commentId);
+
+    public void updateArticleComment(MMSnsArticleCommentEntity articleCommentEntity);
 }

@@ -1,10 +1,14 @@
 package com.lovecws.mumu.mmsns.controller.portal.index;
 
+import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleEntity;
+import com.lovecws.mumu.mmsns.article.service.MMSnsArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @author babymm
@@ -16,9 +20,16 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping
 public class MMSnsPortalIndexController {
 
-    @RequestMapping(value = {"/","/index"},method = RequestMethod.GET)
+    @Autowired(required = false)
+    private MMSnsArticleService articleService;
+
+    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String index(HttpServletRequest request) {
         request.setAttribute("mainModular", "index");
+
+        //精彩文章 附带图片
+        List<MMSnsArticleEntity> articles = articleService.selectArticlePage(null, null, null, null, "read_count", true, 1, 8);
+        request.setAttribute("articles", articles);
         return "/portal/index";
     }
 }

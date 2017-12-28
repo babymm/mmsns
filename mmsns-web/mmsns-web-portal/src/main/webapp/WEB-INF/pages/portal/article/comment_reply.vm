@@ -1,4 +1,4 @@
-<title>文章评论回复-我的文章-MMSNS博客系统</title>
+<title>文章评论回复-文章-MMSNS博客系统</title>
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
 <style type="text/css">
     .reply-body{
@@ -79,7 +79,9 @@
                         icon: 1,
                         time: 2000
                     }, function(){
-                        window.parent.prependLi(respData.data);
+                        if(window.parent.prependLi){
+                            window.parent.prependLi(respData.data);
+                        }
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
                     });

@@ -124,6 +124,8 @@ public class MMSnsArticleCommentEntity extends PersistentEntity {
     private String avator;
     private String replyUserName;
 
+    private String articleTitle;
+
     public String getUserName() {
         return userName;
     }
@@ -154,5 +156,13 @@ public class MMSnsArticleCommentEntity extends PersistentEntity {
 
     public void setReplyUserName(String replyUserName) {
         this.replyUserName = replyUserName;
+    }
+
+    public String getArticleTitle() {
+        return articleTitle;
+    }
+
+    public void setArticleTitle(String articleTitle) {
+        this.articleTitle = articleTitle;
     }
 }

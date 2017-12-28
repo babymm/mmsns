@@ -69,7 +69,7 @@ public class MMSnsCommonUserEntity extends PersistentEntity {
     private String idcardbgImg;//身份证图片信息
 
     private String individuation;//个性化名称
-    private String isindivid;//个性化设置时间
+    private String isindivid;//个性化设置
     private String motto;//人生格言
 
     //用户信息

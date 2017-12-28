@@ -17,10 +17,12 @@
         <result column="category_desc" property="categoryDesc" jdbcType="VARCHAR"/>
 
         <result column="category_order" property="categoryOrder" jdbcType="INTEGER"/>
+
+
         <result column="article_count" property="articleCount" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="MMSnsArticleCategoryColumn">
-		category_id,category_status,category_date,category_type,user_id,system_user_id, category_name,category_icon,category_desc,category_order,article_count
+		category_id,category_status,category_date,category_type,user_id,system_user_id, category_name,category_icon,category_desc,category_order
 	</sql>
 
     <!-- 获取文章分类数量 -->
@@ -115,9 +117,6 @@
             <if test="categoryOrder!=null and categoryOrder!=0">
                 category_order,
             </if>
-            <if test="articleCount!=null and articleCount!=0">
-                article_count,
-            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="categoryStatus!=null">
@@ -146,9 +145,6 @@
             </if>
             <if test="categoryOrder!=null and categoryOrder!=0">
                 #{categoryOrder},
-            </if>
-            <if test="articleCount!=null and articleCount!=0">
-                #{articleCount},
             </if>
         </trim>
     </insert>
@@ -183,9 +179,6 @@
             </if>
             <if test="categoryOrder!=null and categoryOrder!=0">
                 category_order=#{categoryOrder},
-            </if>
-            <if test="articleCount!=null and articleCount!=0">
-                article_count=#{articleCount},
             </if>
         </set>
         <where>

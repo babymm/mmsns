@@ -38,9 +38,9 @@ public class MMSnsPortalLoginController {
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public String login(HttpServletRequest request, HttpServletResponse response) {
         //如果用户已经登录了 则重定向到用户首页
-        Subject subject = SecurityUtils.getSubject();
-        if (subject != null) {
-            MMSnsCommonUserEntity commonUserEntity = (MMSnsCommonUserEntity) subject.getSession(true).getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
+        boolean authenticated = SecurityUtils.getSubject().isAuthenticated();
+        if(authenticated){
+            MMSnsCommonUserEntity commonUserEntity = (MMSnsCommonUserEntity) request.getSession().getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
             if (commonUserEntity != null) {
                 return "redirect:/profile/" + commonUserEntity.getIndividuation() + "/home";
             }

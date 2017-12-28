@@ -89,7 +89,7 @@ public class MMSnsAdminUserController {
 
     @RequestMapping(value = {"/{individuation}/user/namespace"}, method = RequestMethod.GET)
     public String individuationspace(@PathVariable String individuation) {
-        request.setAttribute("adminModular", "namespace");
+        request.setAttribute("adminModular", "userNamespace");
         return "/admin/user/namespace";
     }
 

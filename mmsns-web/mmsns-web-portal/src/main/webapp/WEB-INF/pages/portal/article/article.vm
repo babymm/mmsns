@@ -1,4 +1,4 @@
-<title>我的文章-MMSNS博客系统</title>
+<title>文章-MMSNS博客系统</title>
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/article/acticle.css">
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
@@ -6,24 +6,13 @@
 <div class="article-search">
     <div class="search-logo">
         <a href="/article" style="display:inline-block;margin-top: 15px;color: #393D49">
-            #*<img src="${request.getContextPath()}/resources/img/article_logo.png" alt="我的文章" width="200px" height="60px">*#
             <h1>我的文章</h1>
         </a>
     </div>
-    #*<div class="search-input">
-        <form id="searchForm" action="" class="box vertical sec-search" autocomplete="off">
-            <input type="hidden" name="scope" value="blog">
-            <input class="search-text" type="text" name="q" placeholder="请输入搜索内容">
-            <span class="ic-search box vertical" onclick=""></span>
-        </form>
-    </div>*#
 </div>
 <div class="article-body">
     <div class="body-content">
         <div class="content-best">
-            #*<div class="content-header">
-                <h2>精彩文章</h2>
-            </div>*#
             <div class="layui-row">
                 #foreach($article in $articles)
                     <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
@@ -34,13 +23,6 @@
                             <div class="article-title">
                                 <h3 style="text-align: center;" align="center"><a href="/article/detail/$article.articleId" >$!article.articleTitle</a></h3>
                             </div>
-                            #*<div class="article-media">
-                                <a class="user" href="/article" target="_blank" tabindex="-1">
-                                    <img class="article-person" href="$!article.avator">
-                                    <span>$!article.userName</span>
-                                </a>
-                                <span class="message">$!article.readCount</span>
-                            </div>*#
                         </div>
                     </div>
                 #end
@@ -179,7 +161,7 @@
                                         '<div class="content" style="float: left;width: 85%;margin-left: 20px;">' +
                                         '<span style="float: left;display: block;margin-top: 8px;word-wrap: break-word;overflow: hidden;"><a href="/article/detail/'+article.articleId+'"><h2>'+article.articleTitle+'</h2></a></span> '+
                                         '<span class="contents" style="width: 100%;font-size: .875rem;line-height: 20px;overflow: hidden;height: auto;max-height: 40px;margin: 4px 0 6px;text-align: justify;text-justify: inter-ideograph;word-break: initial;color: #6a6a6a;"><code>'+article.articleSumary+'</code> </span>'+
-                                        '<span class="publish" style="float: left;display: block;margin-top: 8px;;width: 100%;font-size: .75rem;line-height: 20px;color: #9d9d9d;">'+article.userName+' 发布于 '+article.articleDate+' 阅读 '+article.readCount+' 点赞 '+article.voteCount+'</span>' +
+                                        '<span class="publish" style="float: left;display: block;margin-top: 8px;;width: 100%;font-size: .75rem;line-height: 20px;color: #9d9d9d;">'+article.userName+' 发布于 '+article.articleDate+' 阅读 '+article.readCount+' 点赞 '+article.voteCount+' 收藏'+article.collectCount+' 评论'+article.commentCount+'</span>' +
                                         '</div>'+
                                         '</div>');
                             }

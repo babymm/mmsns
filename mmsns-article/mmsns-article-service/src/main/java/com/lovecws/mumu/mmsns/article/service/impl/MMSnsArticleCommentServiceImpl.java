@@ -41,7 +41,17 @@ public class MMSnsArticleCommentServiceImpl implements MMSnsArticleCommentServic
         PageParam pageParam = new PageParam(page, limit);
         paramMap.put("beginIndex", pageParam.getBeginIndex());
         paramMap.put("numPerPage", pageParam.getNumPerPage());
-        return articleCommentDao.selectList("listPage", paramMap);
+        paramMap.put("commentStatus", PublicEnum.NORMAL.value());
+        return articleCommentDao.selectList("listArticleCommentPage", paramMap);
+    }
+
+    @Override
+    public PageBean listUserArticleCommentPage(Integer userId, int page, int limit) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("userId", userId);
+        paramMap.put("articleStatus", PublicEnum.NORMAL.value());
+        paramMap.put("commentStatus", PublicEnum.NORMAL.value());
+        return articleCommentDao.listPage(new PageParam(page, limit), paramMap);
     }
 
     @Override
@@ -61,5 +71,20 @@ public class MMSnsArticleCommentServiceImpl implements MMSnsArticleCommentServic
     @Override
     public MMSnsArticleCommentEntity getArticleCommentInfo(int commentId) {
         return articleCommentDao.getById(String.valueOf(commentId));
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void deleteArticleCommentById(String commentId) {
+        MMSnsArticleCommentEntity articleCommentEntity = new MMSnsArticleCommentEntity();
+        articleCommentEntity.setCommentId(Integer.parseInt(commentId));
+        articleCommentEntity.setCommentStatus(PublicEnum.DELETE.value());
+        updateArticleComment(articleCommentEntity);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void updateArticleComment(MMSnsArticleCommentEntity articleCommentEntity) {
+        articleCommentDao.update(articleCommentEntity);
     }
 }

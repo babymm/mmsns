@@ -4,7 +4,9 @@ import com.lovecws.mumu.core.enums.PublicEnum;
 import com.lovecws.mumu.core.page.PageBean;
 import com.lovecws.mumu.core.response.ResponseEntity;
 import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleCategoryEntity;
+import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleCommentEntity;
 import com.lovecws.mumu.mmsns.article.service.MMSnsArticleCategoryService;
+import com.lovecws.mumu.mmsns.article.service.MMSnsArticleCommentService;
 import com.lovecws.mumu.mmsns.common.user.entity.MMSnsCommonUserEntity;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,8 @@ public class MMSnsAdminArticleController {
     private HttpServletRequest request;
     @Autowired(required = false)
     private MMSnsArticleCategoryService articleCategoryService;
+    @Autowired(required = false)
+    private MMSnsArticleCommentService articleCommentService;
 
     /**
      * 跳转到文章分类页面
@@ -156,9 +160,37 @@ public class MMSnsAdminArticleController {
         return new ResponseEntity();
     }
 
+    /**
+     * 获取用户评论列表
+     *
+     * @param individuation
+     * @param page
+     * @param limit
+     * @return
+     */
     @RequestMapping(value = {"/{individuation}/article/comment"}, method = RequestMethod.GET)
-    public String articleComment(@PathVariable String individuation) {
+    public String articleComment(@PathVariable String individuation,
+                                 @RequestParam(name = "page", required = false, defaultValue = "1") int page,
+                                 @RequestParam(name = "limit", required = false, defaultValue = "7") int limit) {
         request.setAttribute("adminModular", "articleComment");
+        MMSnsCommonUserEntity sessionCommonUser = (MMSnsCommonUserEntity) request.getSession().getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
+        PageBean<MMSnsArticleCommentEntity> pageBean = articleCommentService.listUserArticleCommentPage(sessionCommonUser.getUserId(), page, limit);
+        request.setAttribute("articleCommentPageBean", pageBean);
         return "/admin/article/comments";
+    }
+
+
+    /**
+     * 文章评论删除
+     *
+     * @param individuation
+     * @param commentId     评论id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = {"/{individuation}/article/comment/delete"}, method = RequestMethod.DELETE)
+    public ResponseEntity deleteArticleComment(@PathVariable String individuation, String commentId) {
+        articleCommentService.deleteArticleCommentById(commentId);
+        return new ResponseEntity();
     }
 }

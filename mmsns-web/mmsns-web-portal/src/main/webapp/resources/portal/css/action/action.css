@@ -13,56 +13,11 @@
     margin-left: 30px;
     float: left;
 }
-.action-search .search-input{
-    width: 250px;
-    height: 40px;
-    float: left;
-    margin-top: 20px;
-}
-.action-search .search-input .sec-search{
-    position: relative;
-    margin: 0;
-}
-.action-search .search-input .sec-search .search-text{
-    font-size: .875rem;
-    width: 200px;
-    height: 30px;
-    padding: 0 50px 0 14px;
-    -webkit-transition: -webkit-box-shadow .2s;
-    transition: -webkit-box-shadow .2s;
-    transition: box-shadow .2s;
-    transition: box-shadow .2s,-webkit-box-shadow .2s;
-    color: #111;
-    border: none;
-    border-radius: 1.5em;
-    outline: 0;
-    background: rgba(255,255,255,.6);
-    -webkit-box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
-}
-.action-search .search-input .sec-search .ic-search{
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 40px;
-    height: 30px;
-    padding: 0;
-    cursor: pointer;
-    -webkit-transition: background .2s;
-    transition: background .2s;
-    border: none;
-    border-top-right-radius: 1em;
-    border-bottom-right-radius: 1em;
-    outline: 0;
-    background: url(https://www.oschina.net/build/oschina/components/imgs/icon/ic_search.svg) center center no-repeat;
-    background-size: 16px 16px;
-}
 .action-body{
-    margin: 0px;
-    padding:0px;
-    width: 98%;
-    float: left;
-    padding-left: 20px;
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    min-width: 1056px;
 }
 .action-body .action-content{
     width: 70%;
@@ -83,55 +38,77 @@
     font-size: 14px;
     line-height: 26px;
     width: 72px;
-    height: 26px;
+    height: 30px;
     color: #fff;
 }
-.action-body .action-content .content-list{
+.action-body .layout-action{
     float: left;
     width: 100%;
 }
-.action-body .action-content .content-list ul{
-    margin-top: 30px;
+.action-body .layout-action ul{
+    margin-top: 20px;
     float: left;
+
 }
-.action-body .action-content .content-list ul li{
+.action-body .action-content .content-list .action-flow{
+    background-color: inherit;
+    color: #000;
+    list-style: none;
+    margin-bottom: 25px;
+    min-height: 600px;
+}
+.action-body .layout-action ul li{
     float: left;
     margin-bottom: 30px;
+    width: 100%;
 }
-.action-body .action-content .content-list ul li .li-image{
+.action-body .layout-action ul li .li-image{
     float: left;
     width: 60px;
     height:100%;
     display: block;
 }
-.action-body .action-content .content-list ul li .li-info{
+.action-body .layout-action ul li .li-info{
     float: left;
-    width: 80%;
-}
-.action-body .action-content .content-list ul li .li-info .info{
-    float: left;
-    width: 100%;
-    margin-top: 4px;
-}
-.action-body .action-content .content-list ul li .li-info .info-reprint{
-    float: left;
+    width: calc(100% - 80px);
     margin-left: 20px;
-    margin-top: 40px;
 }
-.action-body .action-content .content-list ul li .li-info .info-reprint .reprintinfo{
+.action-body .layout-action ul li .li-info .info-author{
     float: left;
     width: 100%;
     margin-top: 4px;
 }
-.action-body .action-content .content-list ul li .li-info .info-command{
+.action-body .layout-action ul li .li-info .info-reprint{
     float: left;
-    margin-top: 20px;
-    height: 40px;
-    width: 200px;
-}
-.action-body .action-content .content-list ul li .li-info .info-command span a{
+    width: 100%;
+    margin-left: 10px;
     margin-top: 10px;
-    margin-right: 15px;
+}
+.action-body .layout-action ul li .li-info .info-reprint .reprintinfo{
+    float: left;
+    width: 100%;
+    margin-top: 4px;
+}
+.action-body .layout-action ul li .li-info .info-content{
+    float: left;
+    width: 100%;
+    line-height: 24px;
+    vertical-align: top;
+}
+.action-body .layout-action ul li .li-info .info-content img{
+    max-width: 100%;
+    max-height: 150px;
+}
+.action-body .layout-action ul li .li-info .info-command{
+    float: left;
+    margin-top: 10px;
+    height: 40px;
+    width: 100%;
+}
+.action-body .layout-action ul li .li-info .info-command span a{
+    margin-top: 10px;
+    margin-right: 3px;
+    color: #898989;
 }
 .action-body .action-category{
     width: 28%;
@@ -140,59 +117,8 @@
 .action-body .action-category .category-hotaction{
     float: left;
 }
-.action-body .action-category .category-hotaction ul{
-    float: left;
-    margin-top: 30px;
-}
-.action-body .action-category .category-hotaction ul li{
-    float: left;
-    margin-bottom: 30px;
-    padding-left: 15px;
-}
-.action-body .action-category .category-hotaction ul li .li-image{
-    float: left;
-    width: 60px;
-    height:100%;
-    display: block;
-}
-.action-body .action-category .category-hotaction ul li .li-info{
-    float: left;
-    width: 80%;
-}
-.action-body .action-category .category-hotaction ul li .li-info .info{
+
+.layui-flow-more{
     float: left;
     width: 100%;
-    margin-top: 4px;
-}
-.action-body .action-category .category-hotaction ul li .li-info .info-command{
-    float: left;
-    margin-top: 10px;
-    height: 40px;
-    width: 200px;
-}
-.action-body .action-category .category-hotaction ul li .li-info .info-command span a{
-    margin-right: 15px;
-}
-.action-body .action-category .category-hottopic{
-    float: left;
-}
-.action-body .action-category .category-hottopic ul{
-    float: left;
-}
-
-.action-body .action-category .category-hottopic ul li a{
-    float: left;
-    font-size: 14px;
-    line-height: 38px;
-    display: inline-block;
-    overflow: hidden;
-    max-width: 200px;
-    height: 36px;
-    margin: 0 15px 15px 0;
-    padding: 0 15px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: #4a4a4a;
-    border-radius: 3em;
-    background: #f5f5f5;
 }

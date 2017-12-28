@@ -23,6 +23,8 @@
         <result column="individuation" property="individuation" jdbcType="VARCHAR"/>
         <result column="avator" property="avator" jdbcType="VARCHAR"/>
         <result column="reply_user_name" property="replyUserName" jdbcType="VARCHAR"/>
+
+        <result column="article_title" property="articleTitle" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="MMSnsArticleCommentColumn">
 		comment_id,comment_status,comment_date,comment_type,comment_content,comment_img,article_id,reply_comment_id,reply_user_id,reply_comment_content,comment_user_id
@@ -30,20 +32,52 @@
 
     <!-- 获取文章评论数量 -->
     <select id="listPageCount" resultType="long" parameterType="map">
-        select count(comment_id)
-        from mb_article_comment
+        select count(ac.comment_id)
+        from mb_article a
+        INNER JOIN mb_article_comment ac on(ac.article_id=a.article_id)
         <where>
-            <if test="articleId!=null and articleId!=''">
-                and article_id=#{articleId}
+            <if test="userId!=null and userId!=''">
+                and a.user_id=#{userId}
+            </if>
+            <if test="articleStatus!=null and articleStatus!=''">
+                and a.article_status=#{articleStatus}
             </if>
             <if test="commentStatus!=null and commentStatus!=''">
-                and comment_status=#{commentStatus}
+                and ac.comment_status=#{commentStatus}
             </if>
         </where>
     </select>
 
-    <!-- 分页获取文章评论 -->
+    <!-- 分页获取用户的所有文章评论 -->
     <select id="listPage" resultMap="MMSnsArticleCommentResultMap" parameterType="map">
+        select
+        a.article_id,a.article_title,
+        ac.comment_id,ac.comment_date,ac.comment_type,ac.comment_content,ac.comment_img,ac.reply_comment_id,reply_comment_content,
+        u.user_name,u.individuation,u.avator,
+        uu.user_name reply_user_name
+        from mb_article a
+        INNER JOIN mb_article_comment ac on(ac.article_id=a.article_id)
+        INNER JOIN mc_user u on(u.user_id=ac.comment_user_id)
+        LEFT JOIN mc_user uu on(uu.user_id=ac.reply_user_id)
+        <where>
+            <if test="userId!=null and userId!=''">
+                and a.user_id=#{userId}
+            </if>
+            <if test="articleStatus!=null and articleStatus!=''">
+                and a.article_status=#{articleStatus}
+            </if>
+            <if test="commentStatus!=null and commentStatus!=''">
+                and ac.comment_status=#{commentStatus}
+            </if>
+        </where>
+        ORDER BY ac.comment_date DESC
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 分页获取文章评论 -->
+    <select id="listArticleCommentPage" resultMap="MMSnsArticleCommentResultMap" parameterType="map">
         select
         ac.comment_id,ac.comment_date,ac.comment_type,ac.comment_content,ac.comment_img,ac.reply_comment_id,reply_comment_content,
         u.user_name,u.individuation,u.avator,

@@ -24,13 +24,13 @@
             <ul>
                 <li id="original">
                     <a href="/profile/$individuation/article/original">
-                        <span class="classifytitle">我发布的</span>
+                        <span class="classifytitle">我原创的</span>
                         <span class="classifycount">$!originalArticleCount</span>
                     </a>
                 </li>
                 <li id="reprint">
                     <a href="/profile/$individuation/article/reprint">
-                        <span class="classifytitle">我转发的</span>
+                        <span class="classifytitle">我转载的</span>
                         <span class="classifycount">$!reprintArticleCount</span>
                     </a>
                 </li>

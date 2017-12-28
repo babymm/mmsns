@@ -6,7 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="mmsns-action" />
+        <module name="mmsns-action-api" />
+        <module name="mmsns-action-service" />
+        <module name="mmsns-action-web" />
         <module name="mmsns-article-api" />
         <module name="mmsns-article-service" />
         <module name="mmsns-article-web" />
@@ -27,6 +29,9 @@
     <bytecodeTargetLevel>
       <module name="mmsns" target="1.8" />
       <module name="mmsns-action" target="1.8" />
+      <module name="mmsns-action-api" target="1.8" />
+      <module name="mmsns-action-service" target="1.8" />
+      <module name="mmsns-action-web" target="1.8" />
       <module name="mmsns-article" target="1.8" />
       <module name="mmsns-article-api" target="1.8" />
       <module name="mmsns-article-service" target="1.8" />

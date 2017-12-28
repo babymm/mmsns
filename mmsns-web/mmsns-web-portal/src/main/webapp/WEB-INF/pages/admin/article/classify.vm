@@ -42,7 +42,6 @@
                 {field:'categoryId', title: '分类ID',width:80}
                 ,{field:'categoryOrder', title: '排序序号',width:90}
                 ,{field:'categoryName',width:300, title: '分类名称'}
-                ,{field:'articleCount',width:120, title: '文章数量',sort:true}
                 ,{field:'categoryDesc', title: '分类描述'}
                 ,{field:'categoryDate',width:170, title: '创建时间'}
                 ,{field:'toolbar', title: '操作',width:170,align:'center',toolbar: '#articleClassifyTableBar'}

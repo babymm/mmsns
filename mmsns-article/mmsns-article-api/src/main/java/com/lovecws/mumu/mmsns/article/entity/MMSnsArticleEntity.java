@@ -36,9 +36,6 @@ public class MMSnsArticleEntity extends PersistentEntity {
     private int commentCount;
 
     private String articleType;//原创 original、转载 reprint
-    private int publisherArticleId;//文章发布者的文章id
-    private int relayArticleId;//转发文章id
-
     private int userId;//用户id
 
     public int getArticleId() {
@@ -175,22 +172,6 @@ public class MMSnsArticleEntity extends PersistentEntity {
 
     public void setArticleType(String articleType) {
         this.articleType = articleType;
-    }
-
-    public int getPublisherArticleId() {
-        return publisherArticleId;
-    }
-
-    public void setPublisherArticleId(int publisherArticleId) {
-        this.publisherArticleId = publisherArticleId;
-    }
-
-    public int getRelayArticleId() {
-        return relayArticleId;
-    }
-
-    public void setRelayArticleId(int relayArticleId) {
-        this.relayArticleId = relayArticleId;
     }
 
     public int getUserId() {

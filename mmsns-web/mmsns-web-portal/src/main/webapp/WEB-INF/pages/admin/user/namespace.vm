@@ -15,7 +15,11 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">我的网址</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="individuation" value="$!individuation" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                            #if($!MMSNS_COMMON_USER.isindivid)
+                                <input type="text" name="individuation" value="$!individuation" disabled placeholder="只有一次机会修改个性化空间地址哦！" autocomplete="off" class="layui-input">
+                            #else
+                                <input type="text" name="individuation" required  lay-verify="required" placeholder="只有一次机会修改个性化空间地址哦！" autocomplete="off" class="layui-input">
+                            #end
                         </div>
                     </div>
                     <div class="layui-form-item">

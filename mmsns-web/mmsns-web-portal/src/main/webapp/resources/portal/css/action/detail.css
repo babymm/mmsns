@@ -1,17 +1,25 @@
-body{
-    float: left;
+.body{
     width: 100%;
+    min-width: 1100px;
+    margin: 0px;
+    padding: 0px;
 }
-.detail-body{
-    width: 1100px;
-    margin: 0 auto;
+.layout-body{
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    min-width: 1056px;
 }
-.detail-body .detail-breadcrumb{
+.layout-body .layout-left{
+    float: left;
+    width: 70%;
+}
+.layout-body .layout-left .layout-breadcrumb{
     font-size: 16px;
     font-weight: 400;
     margin: 22px 0 30px;
 }
-.detail-body .detail-breadcrumb a{
+.layout-body .layout-left .layout-breadcrumb a{
     font-size: 18px;
     font-weight: 400;
     margin: 22px 0 30px;
@@ -21,80 +29,187 @@ body{
     text-decoration: none;
     outline: 0;
 }
-.detail-body .action-detail{
+.layout-body .layout-left .layout-content{
     float: left;
     width: 100%;
 }
-.detail-body .action-detail .li-image{
+.layout-body .layout-left .layout-content .li-image{
     float: left;
     width: 60px;
     height:100%;
     display: block;
 }
-.detail-body .action-detail .li-info{
+.layout-body .layout-left .layout-content .li-info{
     float: left;
     width: 90%;
 }
-.detail-body .action-detail .li-info .info{
+.layout-body .layout-left .layout-content .li-info .info-author{
     float: left;
     width: 100%;
     margin-top: 4px;
 }
-.detail-body .action-detail .li-info .info-reprint{
-    float: left;
-    margin-left: 20px;
-    margin-top: 40px;
-}
-.detail-body .action-detail .li-info .info-reprint .reprintinfo{
+.layout-body .layout-left .layout-content .li-info .info-reprint{
     float: left;
     width: 100%;
-    margin-top: 4px;
-}
-.detail-body .action-detail .li-info .info-command{
-    float: right;
-    margin-top: 20px;
-    height: 40px;
-    width: 180px;
-}
-.detail-body .action-detail .li-info .info-command span{
     margin-left: 10px;
+    margin-top: 10px;
 }
-.detail-body .detail-reply{
+.layout-body .layout-left .layout-content .li-info .info-reprint .reprintinfo{
+    float: left;
+    width: 100%;
+    margin-top: 4px;
+}
+.layout-body .layout-left .layout-content .li-info .info-content{
+    float: left;
+    width: 100%;
+    line-height: 24px;
+    vertical-align: top;
+}
+.layout-body .layout-left .layout-content .li-info .info-content img{
+    max-width: 100%;
+    max-height: 150px;
+}
+.layout-body .layout-left .layout-content .li-info .info-command{
+    float: left;
+    margin-top: 10px;
+    height: 40px;
+    width: 100%;
+}
+.layout-body .layout-left .layout-content .li-info .info-command span a{
+    margin-top: 10px;
+    margin-right: 3px;
+    color: #898989;
+}
+.layout-body .layout-left .content-reply{
     float: left;
     width: 100%;
 }
-.detail-body .detail-reply .textarea-publish{
+.layout-body .layout-left .content-reply .textarea-publish{
     float: right;
     margin-top: 5px;
     margin-bottom: 10px;
 }
-.detail-body .detail-reply .textarea-publish button{
+.layout-body .layout-left .content-reply .textarea-publish button{
     width: 72px;
     background-color: #ffa300;
     font-size: 14px;
     line-height: 26px;
     width: 72px;
-    height: 26px;
+    height: 30px;
     color: #fff;
 }
-
-.detail-body .detail-comments ul li{
+.layout-body .layout-left .content-comments ul{
+    float: left;
+    min-height: 600px;
+}
+.layout-body .layout-left .content-comments ul li{
     float: left;
     margin-top: 20px;
     width: 100%;
+    border-bottom: 1px solid #ddd;
 }
-.detail-body .detail-comments ul li .comment-image{
+.layout-body .layout-left .content-comments ul li .comment-image{
     float: left;
     width: 50px;
 }
-.detail-body .detail-comments ul li .comment-profile{
+.layout-body .layout-left .content-comments ul li .comment-profile{
     float: left;
 }
-.detail-body .detail-comments ul li .comment-profile span{
+.layout-body .layout-left .content-comments ul li .comment-profile span{
     float: left;
     width: 100%;
+    font-size: 12px;
+    color: #999;
+    line-height: 2;
+    margin-top: 1px;
 }
-.detail-body .detail-comments ul li .comment-reply{
+.layout-body .layout-left .content-comments ul li .comment-maincontent{
+    float: left;
+    width: 100%;
+    margin-left: 50px;
+}
+.layout-body .layout-left .content-comments ul li .comment-maincontent img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.layout-body .layout-left .content-comments ul li .comment-replytextarea{
+    float: left;
+    width: 100%;
+    margin-left: 50px;
+}
+.layout-body .layout-left .content-comments ul li .comment-reply{
     float: right;
-    margin-bottom: 50px;
+}
+.layout-body .layout-left .content-comments ul li .comment-commentcontent{
+    width: 100%;
+    float: left;
+    margin-left: 50px;
+}
+.layout-body .layout-left .content-comments ul li .comment-replycontent{
+    width: calc(100% - 50px);
+    float: left;
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.layout-body .layout-right{
+    width: 25%;
+    float: right;
+    margin-top: 75px;
+}
+.layout-body .layout-right .layout-action ul{
+    margin-top: 20px;
+}
+.layout-body .layout-right .layout-action ul li{
+    float: left;
+    margin-bottom: 30px;
+    width: 100%;
+}
+.layout-body .layout-right .layout-action ul li .li-image{
+    float: left;
+    width: 60px;
+    height:100%;
+    display: block;
+}
+.layout-body .layout-right .layout-action ul li .li-info{
+    float: left;
+    width: calc(100% - 80px);
+    margin-left: 20px;
+}
+.layout-body .layout-right .layout-action ul li .li-info .info-author{
+    float: left;
+    width: 100%;
+    margin-top: 4px;
+}
+.layout-body .layout-right .layout-action ul li .li-info .info-reprint{
+    float: left;
+    width: 100%;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.layout-body .layout-right .layout-action ul li .li-info .info-reprint .reprintinfo{
+    float: left;
+    width: 100%;
+    margin-top: 4px;
+}
+.layout-body .layout-right .layout-action ul li .li-info .info-content{
+    float: left;
+    width: 100%;
+    line-height: 24px;
+    vertical-align: top;
+}
+.layout-body .layout-right .layout-action ul li .li-info .info-content img{
+    max-width: 100%;
+    max-height: 150px;
+}
+.layout-body .layout-right .layout-action ul li .li-info .info-command{
+    float: left;
+    margin-top: 10px;
+    height: 40px;
+    width: 100%;
+}
+.layout-body .layout-right .layout-action ul li .li-info .info-command span a{
+    margin-top: 10px;
+    margin-right: 3px;
+    color: #898989;
 }

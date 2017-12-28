@@ -1,51 +1,71 @@
-.mmsns-cursor {
+.mmsns{
+    float: left;
     width: 100%;
-    min-width: 1000px;
-    margin: 2px auto;
+    min-width: 1100px;
+    margin: 0px;
+    padding: 0px;
+}
+.mmsns .mmsns-cursor {
+    width: 100%;
+    min-width: 1100px;
+    margin: 0px auto;
     height: 250px;
 }
-
-.mmsns-article {
+.mmsns .mmsns-content {
     width: 100%;
-    min-width: 1000px;
-    margin: 20px auto;
+    min-width: 1100px;
+    margin-top: 20px;
 }
-
-.mmsns-article .article-header, .mmsns-action .action-header, .mmsns-group .group-header {
-    border-bottom: 1px solid #0499e2;
+.mmsns .mmsns-content .layout-header{
+    width: 100%;
+    float: left;
+}
+.mmsns .mmsns-content .layout-header .headertitle{
+    float: left;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 10px;
+    font: 20px Helvetica Neue,Helvetica,PingFang SC,微软雅黑,Tahoma,Arial,sans-serif;
+}
+.mmsns .mmsns-content .layout-header .headermore{
+    float: right;
     font-size: 15px;
     font-weight: 500;
-    padding: 5px 0 5px 15px;
-    margin-bottom: 5px;
-    background-color: #ffffff !important;
-    border-color: #0499e2 !important;
-}
-
-.mmsns-article .article-header span, .mmsns-action .action-header span, .mmsns-group .group-header span {
     margin-right: 10px;
-    float: right;
+    background-color: #ffffff !important;
+    color: #fff;
+    margin-top: 3px;
+}
+.mmsns .mmsns-content .layout-header .headermore a {
     color: #fff;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
     background-color: #00aaee;
     border-color: #00aaee;
 }
-
-.mmsns-article .article-header span a, .mmsns-action .action-header span a, .mmsns-group .group-header span a {
-    color: #fff;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
-    background-color: #00aaee;
-    border-color: #00aaee;
-}
-
-.mmsns-article .article-body .grid-demo,.mmsns-group .group-body .grid-demo {
+.mmsns .mmsns-content .layout-body .layui-row .grid-demo{
     margin: 10px;
+    border: 1px solid #ddd;
+    height: 276px;
 }
-
-.mmsns-article .article-body .grid-demo .article-title h4,.mmsns-group .group-body .grid-demo .group-name h4 {
-    margin: 10px auto;
+.mmsns .mmsns-content .layout-body .layui-row .grid-demo .article-logo{
+    float: left;
+    width: 100%;
+    height: 250px;
 }
-
-.mmsns-article .article-body .grid-demo .article-title h4 a,.mmsns-group .group-body .grid-demo .group-name h4 a {
+.mmsns .mmsns-content .layout-body .layui-row .grid-demo .article-logo img{
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+.mmsns .mmsns-content .layout-body .layui-row .grid-demo .article-title{
+    float: left;
+    width: 100%;
+    margin-top: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.mmsns .mmsns-content .layout-body .layui-row .grid-demo .article-title h4 a{
     display: block;
     color: #0499e2;
     text-decoration: none;
@@ -53,57 +73,4 @@
     -o-transition: all .4s cubic-bezier(.175, .885, .32, 1);
     transition: all .4s cubic-bezier(.175, .885, .32, 1);
     text-align: center;
-}
-
-.mmsns-article .article-body .grid-demo .article-media,.mmsns-group .group-body .grid-demo .group-media {
-    margin: 10px auto;
-    display: block;
-    text-align: center;
-}
-
-.mmsns-article .article-body .grid-demo .article-media span {
-    margin-left: 10px;
-}
-
-.mmsns-action {
-    float: left;
-    width: 100%;
-    min-width: 1000px;
-    margin: 20px auto;
-}
-
-.mmsns-action .action-body {
-
-}
-
-.mmsns-action .action-body ul li {
-    float: left;
-    width: 98%;
-    padding-left: 20px;
-    margin-top: 4px;
-}
-.mmsns-action .action-body ul li .action-content{
-    float: left;
-    line-height: 26px;
-}
-.mmsns-action .action-body ul li .action-media{
-    margin-right: 0px;
-    float: right;
-    font-size: 14px;
-    position: relative;
-    overflow: hidden;
-    max-width: 372px;
-    padding: 0 0 0 13px;
-    -webkit-transition: color .2s;
-    transition: color .2s;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: #647891;
-    line-height: 26px;
-}
-.mmsns-group {
-    float: left;
-    width: 100%;
-    min-width: 1000px;
-    margin: 2px auto;
 }

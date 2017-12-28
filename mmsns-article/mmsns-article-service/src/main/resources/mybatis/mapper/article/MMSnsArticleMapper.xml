@@ -25,8 +25,6 @@
         <result column="comment_count" property="commentCount" jdbcType="INTEGER"/>
 
         <result column="article_type" property="articleType" jdbcType="VARCHAR"/>
-        <result column="publisher_article_id" property="publisherArticleId" jdbcType="INTEGER"/>
-        <result column="relay_article_id" property="relayArticleId" jdbcType="INTEGER"/>
         <result column="user_id" property="userId" jdbcType="INTEGER"/>
 
         <result column="article_count" property="articleCount" jdbcType="INTEGER"/>
@@ -44,7 +42,7 @@
     </resultMap>
 
     <sql id="MMSnsArticleColumn">
-		article_id,article_status,article_date,article_title,article_sumary,article_content,article_logo,article_labels,word_count,sys_category_id,user_category_id,read_count,collect_count,vote_count,relay_count,comment_count,article_type,publisher_article_id,relay_article_id,user_id
+		article_id,article_status,article_date,article_title,article_sumary,article_content,article_logo,article_labels,word_count,sys_category_id,user_category_id,read_count,collect_count,vote_count,relay_count,comment_count,article_type,user_id
 	</sql>
 
     <!-- 获取文章数量 -->
@@ -249,12 +247,6 @@
             <if test="articleType!=null">
                 article_type,
             </if>
-            <if test="publisherArticleId!=null">
-                publisher_article_id,
-            </if>
-            <if test="relayArticleId!=null">
-                relay_article_id,
-            </if>
             <if test="userId!=null">
                 user_id,
             </if>
@@ -307,12 +299,6 @@
             </if>
             <if test="articleType!=null">
                 #{articleType},
-            </if>
-            <if test="publisherArticleId!=null">
-                #{publisherArticleId},
-            </if>
-            <if test="relayArticleId!=null">
-                #{relayArticleId},
             </if>
             <if test="userId!=null">
                 #{userId},
@@ -371,12 +357,6 @@
             </if>
             <if test="articleType!=null">
                 article_type=#{articleType},
-            </if>
-            <if test="publisherArticleId!=null and publisherArticleId!=0">
-                publisher_article_id=#{publisherArticleId},
-            </if>
-            <if test="relayArticleId!=null and relayArticleId!=0">
-                relay_article_id=#{relayArticleId},
             </if>
             <if test="userId!=null and userId!=0">
                 user_id=#{userId},

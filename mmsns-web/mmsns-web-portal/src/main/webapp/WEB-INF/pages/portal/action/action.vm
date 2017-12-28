@@ -1,4 +1,4 @@
-<title>baby慕慕SNS个人博客管理系统-动弹</title>
+<title>动弹-MMSNS博客系统</title>
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/action/action.css" media="all">
@@ -9,98 +9,41 @@
             <h1>我的动弹</h1>
         </a>
     </div>
-    <div class="search-input">
-        <form id="searchForm" action="" class="box vertical sec-search" autocomplete="off">
-            <input type="hidden" name="scope" value="blog">
-            <input class="search-text" type="text" name="q" placeholder="请输入搜索内容">
-            <span class="ic-search box vertical" onclick=""></span>
-        </form>
-    </div>
 </div>
 <div class="action-body">
     <div class="action-content">
         <div class="content-textarea">
             <textarea id="actionContentTextArea" style="display: none;"></textarea>
             <div class="textarea-publish">
-                <span>0/160</span>
+   #*             <span>0/160</span>*#
                 <span><button>发布</button></span>
             </div>
         </div>
-        <div class="content-list">
+        <div class="content-list layout-action">
             <h3>大家在动弹什么？</h3>
-            <ul>
-                #set($actions = [0 .. 9])
-                #foreach($action in $actions)
-                    <li>
-                        <div class="li-image">
-                            <a href="/action/detail/1"><img src="https://static.oschina.net/uploads/user/1245/2491310_50.jpeg?t=1505841698000" width="40" height="40" style="border-radius: 50%"></a>
-                        </div>
-                        <div class="li-info">
-                            <span class="info"><a href="/action/detail/1">林青OSC</a> 1分钟前</span>
-                            <span class="info">再来5只，这下子应该就差个大的了！</span>
-                            #set($hasPhoto='false')
-                            #if($hasPhoto=='true')
-                                <span class="info"><img src="https://static.oschina.net/uploads/space/2017/1209/181127_WKtn_3567396(V).jpg" width="260" height="200"></span>
-                            #end
-                            #set($hasReprint='true')
-                            #if($hasReprint=='true')
-                                <div class="info-reprint">
-                                    <span class="reprintinfo"><a href="/action/detail/1">@开源中国首席屌炸天</a></span>
-                                    <span class="reprintinfo">男理发师和男健身私教早就趋向牛郎化了。理发师温柔地聆听你所有牢骚</span>
-                                    #set($childrenHasPhoto='true')
-                                    #if($childrenHasPhoto=='true')
-                                        <span class="reprintinfo"><img src="https://static.oschina.net/uploads/space/2017/1209/181127_WKtn_3567396(V).jpg" width="260" height="200"></span>
-                                    #end
-                                    <span class="reprintinfo"><a href="/action/detail/1">查看原文</a></span>
-                                </div>
-                            #end
-                            <span class="info-command">
-                                <span><a href="/action/detail/1"><i class="fa fa-thumbs-up"></i>1</a> </span>
-                                <span><a href="/action/detail/1"><i class="fa fa-reply"></i>2</a> </span>
-                                <span><a href="/action/detail/1"><i class="fa fa-comment">3</i></a> </span>
-                                <span><a href="/action/detail/1">详细信息</a></span>
-                            </span>
-                        </div>
-                    </li>
-                #end
-            </ul>
+            <ul class="action-flow flow-default" id="actionFlowUL"></ul>
         </div>
     </div>
     <div class="action-category">
-        <div class="category-hotaction">
+        <div class="category-hotaction layout-action">
             <h3>热门动弹</h3>
             <ul>
                 #set($hotactions= [0 .. 4])
                 #foreach($hotaction in $hotactions)
                     <li>
                         <div class="li-image">
-                            <a href="/action/detail/1"><img src="https://static.oschina.net/uploads/user/1245/2491310_50.jpeg?t=1505841698000" width="40" height="40" style="border-radius: 50%"></a>
+                            <a href="/action/detail/1"><img src="http://192.168.11.25/group1/M00/00/04/wKgLGVpDUe6AUfPXAAAz4dLJWpI435.png" width="60" height="60" style="border-radius: 50%"></a>
                         </div>
                         <div class="li-info">
-                            <span class="info"><a href="/action/detail/1">林青OSC</a></span>
-                            <span class="info">再来5只，这下子应该就差个大的了！</span>
-                            #set($hasPhoto='true')
-                            #if($hasPhoto=='true')
-                                <span class="info"><img src="https://static.oschina.net/uploads/space/2017/1209/181127_WKtn_3567396(V).jpg" width="250" height="120"></span>
-                            #end
+                            <span class="info-author"><a href="/action/detail/1">林青OSC</a></span>
+                            <span class="info-content">再来5只，这下子应该就差个大的了！<img src="http://img.blog.csdn.net/20140220173559828"></span>
                             <span class="info-command">
-                                <span><a href="/action/detail/1"><i class="fa fa-thumbs-up"></i>1</a> </span>
-                                <span><a href="/action/detail/1"><i class="fa fa-reply"></i>2</a> </span>
-                                <span><a href="/action/detail/1"><i class="fa fa-comment">3</i></a> </span>
+                                <span><a href="/action/detail/1">赞1</a></span>
+                                <span><a href="/action/detail/1">收藏2</a></span>
+                                <span><a href="/action/detail/1">评论3</a></span>
                                 <span><a href="/action/detail/1">详细信息</a></span>
                             </span>
                         </div>
-                    </li>
-                #end
-            </ul>
-        </div>
-        <div class="category-hottopic">
-            <h3>热门话题</h3>
-            <ul>
-                #set($hottopics= [0 .. 4])
-                #foreach($hottopic in $hottopics)
-                    <li>
-                        <div><a href="/action/detail/1">乱弹大吐槽</a></div>
                     </li>
                 #end
             </ul>
@@ -111,10 +54,59 @@
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
 <script type="text/javascript">
-    layui.use(['element','layedit'], function () {
-        var element = layui.element ,layedit = layui.layedit;
-        layedit.build('actionContentTextArea',{
+    layui.use(['element','layedit','flow','layer'], function () {
+        var element = layui.element ,layedit = layui.layedit,flow=layui.flow,layer=layui.layer;
+        layedit.set({
+            uploadImage: {url: '/common/upload/layedit', type: 'post'}
+        });
+        var actionContentTextAreaIndex=layedit.build('actionContentTextArea',{
             height:150
         });
+        flow.load({
+            elem: '#actionFlowUL'
+            ,isAuto:true
+            ,isLazyimg:true
+            ,done: function(page, next){
+                var lis = [];
+                for(var i = 0; i < 5; i++){
+                    lis.push(li());
+                }
+                next(lis.join(''), page < 3);
+            }
+        });
     });
+    function li() {
+        var hasReprint=false;
+        var li=null;
+        if(hasReprint){
+            li='<li><div class="li-image"><a href="/action/detail/1"><img src="http://192.168.11.25/group1/M00/00/04/wKgLGVpDUe6AUfPXAAAz4dLJWpI435.png" width="60" height="60" style="border-radius: 50%"></a></div>' +
+                    '<div class="li-info">' +
+                    '   <span class="info-author"><a href="/action/detail/1">林青OSC</a><span style="color: #898989">  2分钟前</span></span>' +
+                    '   <span class="info-content">再来5只，这下子应该就差个大的了！<br><img src="http://img.blog.csdn.net/20140220173559828"></span>' +
+                    '   <span class="info-reprint"><span class="reprintinfo"><a href="/action/detail/1">@开源中国首席屌炸天</a></span>' +
+                    '       <span class="reprintinfo">男理发师和男健身私教早就趋向牛郎化了。理发师温柔地聆听你所有牢骚<br><img src="http://img.blog.csdn.net/20140220173559828" width="260" height="200"></span>' +
+                    '       <span class="reprintinfo"><a href="/action/detail/1">查看原文</a></span>' +
+                    '   </span>' +
+                    '   <span class="info-command">' +
+                    '       <span><a href="/action/detail/1">赞1</a></span>' +
+                    '       <span><a href="/action/detail/1">收藏2</a></span>' +
+                    '       <span><a href="/action/detail/1">评论3</a></span>' +
+                    '       <span><a href="/action/detail/1">详细信息</a></span>' +
+                    '   </span>' +
+                    '</div></li>';
+        }else{
+            li='<li><div class="li-image"><a href="/action/detail/1"><img src="http://192.168.11.25/group1/M00/00/04/wKgLGVpDUe6AUfPXAAAz4dLJWpI435.png" width="60" height="60" style="border-radius: 50%"></a></div>' +
+                    '<div class="li-info">' +
+                    '   <span class="info-author"><a href="/action/detail/1">林青OSC</a><span style="color: #898989">  2分钟前</span></span>' +
+                    '   <span class="info-content">在 k8s 上要重启 docker，最好是连同 flanneld 一起重启： systemctl restart flanneld && systemctl restart docker 。因为 flanneld 会同步一些 docker network 环境变量给 docker，这样可以最大限度的避免问题。<br><img src="http://img.blog.csdn.net/20140220173559828"></span>' +
+                    '   <span class="info-command">' +
+                    '       <span><a href="/action/detail/1">赞1</a></span>' +
+                    '       <span><a href="/action/detail/1">收藏2</a></span>' +
+                    '       <span><a href="/action/detail/1">评论3</a></span>' +
+                    '       <span><a href="/action/detail/1">详细信息</a></span>' +
+                    '   </span>' +
+                    '</div></li>';
+        }
+        return li;
+    }
 </script>
