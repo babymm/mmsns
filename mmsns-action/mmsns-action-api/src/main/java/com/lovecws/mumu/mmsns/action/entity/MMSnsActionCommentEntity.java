@@ -22,7 +22,6 @@ public class MMSnsActionCommentEntity extends PersistentEntity {
 
     private String commentType;//评论类型 comment、reply
     private String commentContent;
-    private String commentImg;
 
     private int commentUserId;//评论用户id
     private int actionId;//动弹id
@@ -72,14 +71,6 @@ public class MMSnsActionCommentEntity extends PersistentEntity {
         this.commentContent = commentContent;
     }
 
-    public String getCommentImg() {
-        return commentImg;
-    }
-
-    public void setCommentImg(String commentImg) {
-        this.commentImg = commentImg;
-    }
-
     public int getCommentUserId() {
         return commentUserId;
     }
@@ -126,5 +117,42 @@ public class MMSnsActionCommentEntity extends PersistentEntity {
 
     public void setReplyCommentContent(String replyCommentContent) {
         this.replyCommentContent = replyCommentContent;
+    }
+
+    private String userName;
+    private String individuation;
+    private String avator;
+    private String replyUserName;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getIndividuation() {
+        return individuation;
+    }
+
+    public void setIndividuation(String individuation) {
+        this.individuation = individuation;
+    }
+
+    public String getAvator() {
+        return avator;
+    }
+
+    public void setAvator(String avator) {
+        this.avator = avator;
+    }
+
+    public String getReplyUserName() {
+        return replyUserName;
+    }
+
+    public void setReplyUserName(String replyUserName) {
+        this.replyUserName = replyUserName;
     }
 }

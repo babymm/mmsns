@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lovecws.mumu.mmsns.action.dao.impl.MMSnsActionCollectDaoImpl">
+    <resultMap id="MMSnsActionCollectResultMap"
+               type="com.lovecws.mumu.mmsns.action.entity.MMSnsActionCollectEntity">
+
+        <id column="collect_id" property="collectId" jdbcType="INTEGER"/>
+        <result column="collect_status" property="collectStatus" jdbcType="VARCHAR"/>
+        <result column="collect_date" property="collectDate" jdbcType="DATE"/>
+
+        <result column="collect_user_id" property="collectUserId" jdbcType="VARCHAR"/>
+        <result column="action_id" property="actionId" jdbcType="INTEGER"/>
+        <result column="action_user_d" property="actionUserId" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="MMSnsActionCollectColumn">
+		collect_id,collect_status,collect_date,collect_user_id,action_id,action_user_d
+	</sql>
+
+    <!-- 获取评论收藏数量 -->
+    <select id="listPageCount" resultType="long" parameterType="map">
+        select count(collect_id)
+        from ma_action_collect
+        <where>
+            <if test="collectUserId!=null and collectUserId!=''">
+                and collect_user_id=#{collectUserId}
+            </if>
+            <if test="collectStatus!=null and collectStatus!=''">
+                and collect_status=#{collectStatus}
+            </if>
+        </where>
+    </select>
+
+    <!-- 分页获取评论收藏 -->
+    <select id="listPage" resultMap="MMSnsActionCollectResultMap" parameterType="map">
+        select
+        ac.collect_id,ac.collect_date,ac.action_id,
+        from ma_action_collect ac
+        INNER JOIN mb_action a on(a.action_id=ac.action_id)
+        <where>
+            <if test="collectUserId!=null and collectUserId!=''">
+                and ac.collect_user_id=#{collectUserId}
+            </if>
+            <if test="collectStatus!=null and collectStatus!=''">
+                and ac.collect_status=#{collectStatus}
+            </if>
+        </where>
+        ORDER BY ac.collect_date DESC
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 按照条件获取评论收藏 -->
+    <select id="listByColumn" resultMap="MMSnsActionCollectResultMap" parameterType="map">
+        select
+        <include refid="MMSnsActionCollectColumn"/>
+        from ma_action_collect
+        <where>
+            <if test="actionId!=null and actionId!=''">
+                and action_id=#{actionId}
+            </if>
+            <if test="collectUserId!=null and collectUserId!=''">
+                and collect_user_id=#{collectUserId}
+            </if>
+            <if test="collectStatus!=null and collectStatus!=''">
+                and collect_status=#{collectStatus}
+            </if>
+        </where>
+    </select>
+
+    <!-- 获取评论收藏详情信息-->
+    <select id="selectByPrimaryKey" resultMap="MMSnsActionCollectResultMap" parameterType="java.lang.String">
+        select
+        <include refid="MMSnsActionCollectColumn"/>
+        from ma_action_collect
+        where collect_id=#{collectId}
+    </select>
+    
+    <!-- 添加评论收藏信息 -->
+    <insert id="insert" parameterType="MMSnsActionCollectEntity" useGeneratedKeys="true"
+            keyProperty="collectId">
+        insert into ma_action_collect
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="collectStatus!=null">
+                collect_status,
+            </if>
+            <if test="collectDate!=null">
+                collect_date,
+            </if>
+            <if test="collectUserId!=null">
+                collect_user_id,
+            </if>
+            <if test="actionId!=null">
+                action_id,
+            </if>
+            <if test="actionUserId!=null">
+                action_user_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="collectStatus!=null">
+                #{collectStatus},
+            </if>
+            <if test="collectDate!=null">
+                #{collectDate},
+            </if>
+            <if test="collectUserId!=null">
+                #{collectUserId},
+            </if>
+            <if test="actionId!=null">
+                #{actionId},
+            </if>
+            <if test="actionUserId!=null">
+                #{actionUserId},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 更新评论收藏信息 -->
+    <update id="updateByPrimaryKey" parameterType="MMSnsActionCollectEntity">
+        update ma_action_collect
+        <set>
+            <if test="collectStatus!=null">
+                collect_status=#{collectStatus},
+            </if>
+            <if test="collectDate!=null">
+                collect_date=#{collectDate},
+            </if>
+            <if test="collectUserId!=null and collectUserId!=0">
+                collect_user_id=#{collectUserId},
+            </if>
+            <if test="actionId!=null and actionId!=0">
+                action_id=#{actionId},
+            </if>
+            <if test="actionUserId!=null and actionUserId!=0">
+                action_user_id=#{actionUserId},
+            </if>
+        </set>
+        <where>
+            <if test="collectId!=null">
+                collect_id=#{collectId}
+            </if>
+        </where>
+    </update>
+
+    <!-- 根据id删除评论收藏 -->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from ma_action_collect
+        where collect_id=#{collectId}
+    </delete>
+
+    <!-- 根据文章id、收藏用户id进行删除 -->
+    <delete id="batchDeleteByColumn" parameterType="map">
+        DELETE
+        FROM ma_action_collect
+        WHERE action_id=#{actionId} and collect_user_id=#{collectUserId}
+    </delete>
+</mapper>

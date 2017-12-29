@@ -13,24 +13,23 @@
         </div>
         <div class="layout-content">
             <div class="li-image">
-                <a href="/action/detail/1"><img src="https://static.oschina.net/uploads/user/1245/2491310_50.jpeg?t=1505841698000" width="40" height="40" style="border-radius: 50%"></a>
+                <a href="/action/detail/$!action.actionId"><img src="$!action.avator" width="40" height="40" style="border-radius: 50%"></a>
             </div>
             <div class="li-info">
-                <span class="info-author"><a href="/action/detail/1">baby慕慕</a></span>
-                <span class="info-content">家有小萝莉两枚，昨夜睡觉之前听到她们两在说要把袜子放床头，圣诞老人会来送礼物的…楼主半夜起来一看，还真的把袜子放床头了，悄悄往袜子里塞了些糖果，气球什么的…你们可以想象她们今早起来那股高兴劲么？小孩子真天真啊</span>
-                #set($hasReprint='true')
-                #if($hasReprint=='true')
+                <span class="info-author"><a href="/profile/$!action.individuation/action">$!action.userName</a></span>
+                <span class="info-content">$!action.actionContent</span>
+                #if($!action.actionType=='reprint')
                     <div class="info-reprint">
-                        <span class="reprintinfo"><a href="/action/detail/1">@开源中国首席屌炸天</a></span>
-                        <span class="reprintinfo">男理发师和男健身私教早就趋向牛郎化了。理发师温柔地聆听你所有牢骚<br><img src="http://img.blog.csdn.net/20140220173559828" width="260" height="200"> </span>
-                        <span class="reprintinfo"><a href="/action/detail/1">查看原文</a></span>
+                        <span class="reprintinfo"><a href="/profile/$!action.individuation/action">@ $!action.reprintUserName</a></span>
+                        <span class="reprintinfo">$!action.reprintActionContent</span>
+                        <span class="reprintinfo"><a href="/action/detail/$!action.reprintActionId">查看原文</a></span>
                     </div>
                 #end
                 <span class="info-command">
-                <span><a href="/action/detail/1">赞1</a> </span>
-                <span><a href="/action/detail/1">转发2</a> </span>
-                <span><a href="/action/detail/1">收藏3</a> </span>
-                <span><a href="/action/detail/1">评论3</a> </span>
+                    <span><a href="javascript:void(0)" onclick="actionVote('$!action.actionId')">赞$!action.collectCount</a></span>
+                    <span><a href="javascript:void(0)" onclick="actionCollect('$!action.actionId')">收藏$!action.voteCount</a></span>
+                    <span><a href="javascript:void(0)" onclick="actionReprint('$!action.actionId')">转发$!action.reprintCount</a></span>
+                    <span><a href="javascript:void(0)" onclick="actionComment('$!action.actionId')">评论$!action.commentCount</a></span>
             </span>
             </div>
         </div>
@@ -38,32 +37,31 @@
             <textarea id="actionContentTextArea" style="display: none;"></textarea>
             <div class="textarea-publish">
                 #*<span>0/160</span>*#
-                <span><button>评论</button></span>
+                <span><button id="publishActionComment">评论</button></span>
             </div>
         </div>
         <div class="content-comments">
-            <ul class="flow-default" id="actionDetailFlowUL"></ul>
+            <ul class="flow-default" id="actionDetailCommentFlowUL"></ul>
         </div>
     </div>
     <div class="layout-right">
         <div class="category-hotaction layout-action">
             <h3>推荐动弹</h3>
             <ul>
-                #set($hotactions= [0 .. 4])
-                #foreach($hotaction in $hotactions)
+                #foreach($hotaction in $hotActions)
                     <li>
                         <div class="li-image">
-                            <a href="/action/detail/1"><img src="http://192.168.11.25/group1/M00/00/04/wKgLGVpDUe6AUfPXAAAz4dLJWpI435.png" width="60" height="60" style="border-radius: 50%"></a>
+                            <a href="/profile/$!hotaction.individuation/action"><img src="$!hotaction.avator" width="60" height="60" style="border-radius: 50%"></a>
                         </div>
                         <div class="li-info">
-                            <span class="info-author"><a href="/action/detail/1">林青OSC</a></span>
-                            <span class="info-content">再来5只，这下子应该就差个大的了！</span>
+                            <span class="info-author"><a href="/profile/$!hotaction.individuation/action">$!hotaction.userName</a></span>
+                            <span class="info-content">$!hotaction.actionContent</span>
                             <span class="info-command">
-                                <span><a href="/action/detail/1">赞1</a> </span>
-                                <span><a href="/action/detail/1">转发2</a> </span>
-                                <span><a href="/action/detail/1">收藏3</a> </span>
-                                <span><a href="/action/detail/1">评论3</a> </span>
-                                <span><a href="/action/detail/1">详细信息</a></span>
+                                <span><a href="javascript:void(0)" onclick="actionVote('$!hotaction.actionId')">赞$!hotaction.voteCount</a></span>
+                                <span><a href="javascript:void(0)" onclick="actionCollect('$!hotaction.actionId')">收藏$!hotaction.collectCount</a></span>
+                                <span><a href="javascript:void(0)" onclick="actionReprint('$!hotaction.actionId')">转发$!hotaction.reprintCount</a></span>
+                                <span><a href="javascript:void(0)" onclick="actionComment('$!hotaction.actionId')">评论$!hotaction.commentCount</a></span>
+                                <span><a href="/action/detail/$!hotaction.actionId">详细信息</a></span>
                             </span>
                         </div>
                     </li>
@@ -76,6 +74,7 @@
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
 <script type="text/javascript">
+    var actionId='$!actionId';
     layui.use(['element','layedit','flow','layer'], function () {
         var element = layui.element ,layedit = layui.layedit,flow=layui.flow,layer=layui.layer;
         layedit.set({
@@ -85,22 +84,94 @@
             height:150
         });
         flow.load({
-            elem: '#actionDetailFlowUL'
+            elem: '#actionDetailCommentFlowUL'
             ,isAuto:true
             ,isLazyimg:true
             ,done: function(page, next){
-                var lis = [];
-                for(var i = 0; i < 5; i++){
-                    lis.push('<li id="li-1">' +
-                            '<div class="comment-image"><a href="/profile/123/home"><img src="/resources/portal/images/logo.jpg" width="40" height="40" style="border-radius: 50%"> </a></div>'+
-                            '<div class="comment-profile"><span><a href="/profile/234/home">babymm</a></span><span>1楼 2017-12-28</span> </div> ' +
-                            '<div class="comment-reply"><a href="javascript:void(0)">回复</a></div>' +
-                            '<div class="comment-commentcontent"><span>12345</span></div> ' +
-                            '<div class="comment-replycontent"><span></span></div> ' +
-                            '</li>');
-                }
-                next(lis.join(''), page < 3);
+                $.get("/action/comment/data",{actionId:actionId,page:page,limit:5},function(respData) {
+                    if(respData.code==200){
+                        var lis = [];
+                        for(var i = 0; i < respData.data.length; i++){
+                            lis.push(li(respData.data[i],i+1));
+                        }
+                        if(respData.data.length<5){
+                            next(lis.join(''), false);
+                        }else{
+                            next(lis.join(''), true);
+                        }
+                    }else{
+                        layer.alert(respData.data,{icon:5});
+                    }
+                });
             }
         });
+        //发布动态评论
+        $("#publishActionComment").click(function () {
+            var commentContent=layedit.getContent(actionContentTextAreaIndex);
+            if(commentContent==null||commentContent==''||commentContent=='<p><br></p>'){
+                layer.msg("请输入评论内容！",{icon:1});
+                return false;
+            }
+            $.post("/action/comment/publish",{actionId:actionId,commentContent:commentContent},function (respData) {
+                if(respData.code==200){
+                    prependLi(respData.data);
+                }else if(respData.code==444){
+                    layer.msg(respData.data,{icon:5,time:2000},function () {
+                        window.location.href="/login";
+                    });
+                }else{
+                    layer.alert(respData.data,{icon:2});
+                }
+            });
+        });
     });
+    //向评论列表添加评论或者回复
+    function prependLi(data) {
+        $("#actionDetailCommentFlowUL").prepend(li(data,0));
+    }
+    function li(actionComment,floor) {
+        //用户头像
+        var userAvator=actionComment.avator?actionComment.avator:'/resources/portal/images/logo.jpg';
+        var commentContent=actionComment.commentContent;
+        var replyCommentContent='';
+        //回复 评论
+        if(actionComment.commentType=='reply'){
+            commentContent="回复 "+actionComment.replyUserName+" : "+commentContent;
+            replyCommentContent=actionComment.replyCommentContent;
+        }
+        var li='<li id="li-'+actionComment.commentId+'">' +
+                '<div class="comment-image"><a href="/profile/'+actionComment.individuation+'/home"><img src="'+userAvator+'" width="40" height="40" style="border-radius: 50%"> </a></div>'+
+                '<div class="comment-profile"><span><a href="/profile/'+actionComment.individuation+'/home">'+actionComment.userName+'</a></span><span>'+floor+'楼 '+actionComment.commentDate+'</span> </div> ' +
+                '<div class="comment-reply"><a onclick="actioneCommentReplyButton(\''+actionComment.commentId+'\',\''+actionComment.userName+'\')" href="javascript:void(0)">回复</a></div>' +
+                '<div class="comment-commentcontent"><span>'+commentContent+'</span></div> ' +
+                '<div class="comment-replycontent"><span>'+replyCommentContent+'</span></div> ' +
+                '</li>';
+        return li;
+    }
+    function actioneCommentReplyButton(commentId,userName) {
+        layer.open({
+            type: 2,
+            closeBtn:true,
+            shadeClose:true,
+            scrollbar:true,
+            title: false,
+            closeBtn: 1,
+            area: ['650px', '420px'],
+            skin: 'layui-layer-nobg',
+            shadeClose: false,
+            content:['/action/comment/comment_reply?commentId='+commentId+"&userName="+userName, 'no']
+        });
+    }
+    //动弹点赞
+    function actionVote(actionId) {
+        layer.alert(actionId);
+    }
+    //动弹收藏
+    function actionCollect(actionId) {
+        layer.alert(actionId);
+    }
+    //动弹转发
+    function actionReprint(actionId) {
+        layer.alert(actionId);
+    }
 </script>

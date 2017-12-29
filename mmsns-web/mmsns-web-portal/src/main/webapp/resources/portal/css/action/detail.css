@@ -67,7 +67,7 @@
 }
 .layout-body .layout-left .layout-content .li-info .info-content img{
     max-width: 100%;
-    max-height: 150px;
+    max-height: 100%;
 }
 .layout-body .layout-left .layout-content .li-info .info-command{
     float: left;
@@ -101,6 +101,7 @@
 .layout-body .layout-left .content-comments ul{
     float: left;
     min-height: 600px;
+    width: 100%;
 }
 .layout-body .layout-left .content-comments ul li{
     float: left;
@@ -200,7 +201,7 @@
 }
 .layout-body .layout-right .layout-action ul li .li-info .info-content img{
     max-width: 100%;
-    max-height: 150px;
+    max-height: 100%;
 }
 .layout-body .layout-right .layout-action ul li .li-info .info-command{
     float: left;
@@ -212,4 +213,10 @@
     margin-top: 10px;
     margin-right: 3px;
     color: #898989;
+}
+
+.layui-flow-more{
+    float: left;
+    width: 100%;
+    margin-top: 20px;
 }

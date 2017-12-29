@@ -158,9 +158,9 @@
         $(function () {
             //文章发布
             $("#publishArticleComment").click(function () {
-                commentContent=layedit.getContent(articleMessageIndex);
+                var commentContent=layedit.getContent(articleMessageIndex);
                 if(commentContent==null||commentContent==''||commentContent=='<p><br></p>'){
-                    layer.msg("请输入评论内容！");
+                    layer.msg("请输入评论内容！",{icon:1});
                     return false;
                 }
                 $.post("/article/comment/publish",{articleId:articleId,commentContent:commentContent},function (respData) {
@@ -258,7 +258,6 @@
     }
     //评论回复
     function articleCommentReplyButton(commentId,userName) {
-        //$("#li-"+commentId).append('<div class="comment-replytextarea"><textarea id="articleMessage"></textarea><button id="publishArticleCommentReply">回复评论</button> </div>');
         layer.open({
             type: 2,
             closeBtn:true,
@@ -270,11 +269,6 @@
             skin: 'layui-layer-nobg',
             shadeClose: false,
             content:['/article/comment/reply?commentId='+commentId+"&userName="+userName, 'no']
-            /*content: '<div style="width: 100%;height:100%;float: left;background-color: white;">' +
-            '<div style="width: 410px;height: 240px;margin: 20px">' +
-            '<span style=" width: 100%;float: left;color: #6a6a6a;"><strong>回复:'+userName+'</strong></span>' +
-            '<span style=" width: 100%;float: left;margin-top: 10px;"><strong>回复内容</strong></span><textarea style="width: 90%;height: 160px;"></textarea><span style="width: 100%;float: left;margin-top: 15px;margin-bottom: 20px"><a style="width: 60px;font-size: 14px;line-height: 1.6;padding: 3px 8px !important;cursor: pointer;color: #fff;border: 1px solid transparent;border-radius: 2px;outline: none;background: #4eaa4c;" href="javascript:void(0)" onclick="articleCommentReply()">发送</a></span>' +
-            '</div></div>'*/
         });
     }
 </script>

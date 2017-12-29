@@ -70,7 +70,7 @@
         $(".articleCommentReply").click(function () {
             var commentContent=layedit.getContent(articleCommentReplyIndex);
             if(commentContent==null||commentContent==''||commentContent=='<p><br></p>'){
-                layer.msg("请输入评论内容！");
+                layer.msg("请输入评论内容！",{icon:1});
                 return false;
             }
             $.post("/article/comment/reply",{commentId:'$!commentId',replyComment:commentContent,userName:'$!userName'},function (respData) {

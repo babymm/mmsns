@@ -1,5 +1,9 @@
 package com.lovecws.mumu.mmsns.action.service;
 
+import com.lovecws.mumu.mmsns.action.entity.MMSnsActionEntity;
+
+import java.util.List;
+
 /**
  * @author babymm
  * @version 1.0-SNAPSHOT
@@ -7,4 +11,26 @@ package com.lovecws.mumu.mmsns.action.service;
  * @date 2017-12-28 17:39:
  */
 public interface MMSnsActionService {
+
+    /**
+     * 添加动弹
+     *
+     * @param actionEntity
+     * @return
+     */
+    public MMSnsActionEntity addAction(MMSnsActionEntity actionEntity);
+
+    /**
+     * 分页获取 动弹信息
+     *
+     * @param orderby
+     * @param page
+     * @param limit
+     * @return
+     */
+    public List<MMSnsActionEntity> listActionPageWithUserInfo(String orderby, int page, int limit);
+
+    public MMSnsActionEntity getArctionInfo(int actionId);
+
+    public void updateAction(MMSnsActionEntity actionEntity);
 }

@@ -148,6 +148,7 @@
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
     <orderEntry type="module" module-name="mmsns-common-api" />
     <orderEntry type="module" module-name="mmsns-article-api" />
+    <orderEntry type="module" module-name="mmsns-action-api" />
     <orderEntry type="library" name="Maven: com.belerweb:pinyin4j:2.5.1" level="project" />
   </component>
 </module>

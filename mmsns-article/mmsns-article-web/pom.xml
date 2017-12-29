@@ -307,7 +307,7 @@
     </dependencies>
 
     <build>
-        <finalName>mmsns-common-web</finalName>
+        <finalName>article</finalName>
         <filters>
             <filter>src/main/resources/env/${env}.properties</filter>
         </filters>

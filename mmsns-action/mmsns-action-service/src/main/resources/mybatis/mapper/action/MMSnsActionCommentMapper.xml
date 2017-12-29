@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lovecws.mumu.mmsns.action.dao.impl.MMSnsActionCommentDaoImpl">
+    <resultMap id="MMSnsActionCommentResultMap"
+               type="com.lovecws.mumu.mmsns.action.entity.MMSnsActionCommentEntity">
+
+        <id column="comment_id" property="commentId" jdbcType="INTEGER"/>
+        <result column="comment_status" property="commentStatus" jdbcType="VARCHAR"/>
+        <result column="comment_date" property="commentDate" jdbcType="VARCHAR"/>
+
+        <result column="comment_type" property="commentType" jdbcType="VARCHAR"/>
+        <result column="comment_content" property="commentContent" jdbcType="VARCHAR"/>
+
+        <result column="comment_user_id" property="commentUserId" jdbcType="INTEGER"/>
+        <result column="action_id" property="actionId" jdbcType="INTEGER"/>
+        <result column="action_user_id" property="actionUserId" jdbcType="INTEGER"/>
+
+        <result column="reply_comment_id" property="replyCommentId" jdbcType="INTEGER"/>
+        <result column="reply_user_id" property="replyUserId" jdbcType="INTEGER"/>
+        <result column="reply_comment_content" property="replyCommentContent" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="MMSnsActionCommentColumn">
+		comment_id,comment_status,comment_date,comment_type,comment_content,comment_user_id,action_id,action_user_id,reply_comment_id,reply_user_id,reply_comment_content
+	</sql>
+
+    <!-- 获取文章评论数量 -->
+    <select id="listPageCount" resultType="long" parameterType="map">
+        select count(ac.comment_id)
+        from ma_action a
+        INNER JOIN ma_action_comment ac on(ac.action_id=a.action_id)
+        <where>
+            <if test="userId!=null and userId!=''">
+                and a.user_id=#{userId}
+            </if>
+            <if test="actionStatus!=null and actionStatus!=''">
+                and a.action_status=#{actionStatus}
+            </if>
+            <if test="commentStatus!=null and commentStatus!=''">
+                and ac.comment_status=#{commentStatus}
+            </if>
+        </where>
+    </select>
+
+    <!-- 分页获取用户的所有文章评论 -->
+    <select id="listPage" resultMap="MMSnsActionCommentResultMap" parameterType="map">
+        select
+        a.action_id,a.action_title,
+        ac.comment_id,ac.comment_date,ac.comment_type,ac.comment_content,ac.reply_comment_id,reply_comment_content,
+        u.user_name,u.individuation,u.avator,
+        uu.user_name reply_user_name
+        from ma_action a
+        INNER JOIN ma_action_comment ac on(ac.action_id=a.action_id)
+        INNER JOIN mc_user u on(u.user_id=ac.comment_user_id)
+        LEFT JOIN mc_user uu on(uu.user_id=ac.reply_user_id)
+        <where>
+            <if test="userId!=null and userId!=''">
+                and a.user_id=#{userId}
+            </if>
+            <if test="actionStatus!=null and actionStatus!=''">
+                and a.action_status=#{actionStatus}
+            </if>
+            <if test="commentStatus!=null and commentStatus!=''">
+                and ac.comment_status=#{commentStatus}
+            </if>
+        </where>
+        ORDER BY ac.comment_date DESC
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 分页获取文章评论 -->
+    <select id="listActionCommentPageWithUserInfo" resultMap="MMSnsActionCommentResultMap" parameterType="map">
+        select
+        ac.comment_id,ac.comment_date,ac.comment_type,ac.comment_content,ac.reply_comment_id,reply_comment_content,
+        u.user_name,u.individuation,u.avator,
+        uu.user_name reply_user_name
+        from ma_action_comment ac
+        INNER JOIN mc_user u on(u.user_id=ac.comment_user_id)
+        LEFT JOIN mc_user uu on(uu.user_id=ac.reply_user_id)
+        <where>
+            <if test="actionId!=null and actionId!=''">
+                and ac.action_id=#{actionId}
+            </if>
+            <if test="commentStatus!=null and commentStatus!=''">
+                and ac.comment_status=#{commentStatus}
+            </if>
+        </where>
+        ORDER BY ac.comment_date DESC
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 获取文章评论详情信息-->
+    <select id="selectByPrimaryKey" resultMap="MMSnsActionCommentResultMap" parameterType="java.lang.String">
+        select
+        <include refid="MMSnsActionCommentColumn"/>
+        from ma_action_comment
+        where comment_id=#{commentId}
+    </select>
+
+    <!-- 添加文章评论信息 -->
+    <insert id="insert" parameterType="MMSnsActionCommentEntity" useGeneratedKeys="true"
+            keyProperty="commentId">
+        insert into ma_action_comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="commentStatus!=null">
+                comment_status,
+            </if>
+            <if test="commentDate!=null">
+                comment_date,
+            </if>
+            <if test="commentType!=null">
+                comment_type,
+            </if>
+            <if test="commentContent!=null">
+                comment_content,
+            </if>
+            <if test="commentUserId!=null">
+                comment_user_id,
+            </if>
+            <if test="actionId!=null">
+                action_id,
+            </if>
+            <if test="actionUserId!=null">
+                action_user_id,
+            </if>
+            <if test="replyCommentId!=null">
+                reply_comment_id,
+            </if>
+            <if test="replyUserId!=null">
+                reply_user_id,
+            </if>
+            <if test="replyCommentContent!=null">
+                reply_comment_content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="commentStatus!=null">
+                #{commentStatus},
+            </if>
+            <if test="commentDate!=null">
+                #{commentDate},
+            </if>
+            <if test="commentType!=null">
+                #{commentType},
+            </if>
+            <if test="commentContent!=null">
+                #{commentContent},
+            </if>
+            <if test="commentUserId!=null">
+                #{commentUserId},
+            </if>
+            <if test="actionId!=null">
+                #{actionId},
+            </if>
+            <if test="actionUserId!=null">
+                #{actionUserId},
+            </if>
+            <if test="replyCommentId!=null">
+                #{replyCommentId},
+            </if>
+            <if test="replyUserId!=null">
+                #{replyUserId},
+            </if>
+            <if test="replyCommentContent!=null">
+                #{replyCommentContent},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 更新文章评论信息 -->
+    <update id="updateByPrimaryKey" parameterType="MMSnsActionCommentEntity">
+        update ma_action_comment
+        <set>
+            <if test="commentStatus!=null">
+                comment_status=#{commentStatus},
+            </if>
+            <if test="commentDate!=null">
+                comment_date=#{commentDate},
+            </if>
+            <if test="commentType!=null">
+                comment_type=#{commentType},
+            </if>
+            <if test="commentContent!=null">
+                comment_content=#{commentContent},
+            </if>
+            <if test="commentUserId!=null and commentUserId!=0">
+                comment_user_id=#{commentUserId},
+            </if>
+            <if test="actionId!=null and actionId!=0">
+                action_id=#{actionId},
+            </if>
+            <if test="actionUserId!=null and actionUserId!=0">
+                action_user_id=#{actionUserId},
+            </if>
+            <if test="replyCommentId!=null and replyCommentId!=0">
+                reply_comment_id=#{replyCommentId},
+            </if>
+            <if test="replyUserId!=null and replyUserId!=0">
+                reply_user_id=#{replyUserId},
+            </if>
+            <if test="replyCommentContent!=null">
+                reply_comment_content=#{replyCommentContent},
+            </if>
+        </set>
+        <where>
+            <if test="commentId!=null">
+                comment_id=#{commentId}
+            </if>
+        </where>
+    </update>
+
+    <!-- 根据id删除文章评论 -->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from ma_action_comment
+        where comment_id=#{commentId}
+    </delete>
+</mapper>

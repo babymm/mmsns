@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lovecws.mumu.mmsns.action.dao.impl.MMSnsActionVoteDaoImpl">
+    <resultMap id="MMSnsActionVoteResultMap"
+               type="com.lovecws.mumu.mmsns.action.entity.MMSnsActionVoteEntity">
+
+        <id column="vote_id" property="voteId" jdbcType="INTEGER"/>
+        <result column="vote_status" property="voteStatus" jdbcType="VARCHAR"/>
+        <result column="vote_date" property="voteDate" jdbcType="DATE"/>
+
+        <result column="vote_user_id" property="voteUserId" jdbcType="INTEGER"/>
+        <result column="action_id" property="actionId" jdbcType="INTEGER"/>
+        <result column="action_user_id" property="actionUserId" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="MMSnsActionVoteColumn">
+		vote_id,vote_status,vote_date,vote_user_id,action_id,action_user_id
+	</sql>
+
+    <!-- 获取动弹点赞数量 -->
+    <select id="listPageCount" resultType="long" parameterType="map">
+        select count(vote_id)
+        from ma_action_vote
+        <where>
+            <if test="actionId!=null and actionId!=''">
+                and action_id=#{actionId}
+            </if>
+            <if test="voteUserId!=null and voteUserId!=''">
+                and vote_user_id=#{voteUserId}
+            </if>
+            <if test="voteStatus!=null and voteStatus!=''">
+                and vote_status=#{voteStatus}
+            </if>
+        </where>
+    </select>
+
+    <!-- 分页获取动弹点赞分页信息 -->
+    <select id="listPage" resultMap="MMSnsActionVoteResultMap" parameterType="map">
+        select
+        av.vote_id,av.vote_date,av.action_id,
+        a.action_type,a.action_content,a.word_count,a.collect_count,a.vote_count,a.reprint_count,a.comment_count,a.action_date
+        from ma_action_vote av
+        INNER JOIN ma_action a on(a.action_id=av.action_id)
+        <where>
+            <if test="actionId!=null and actionId!=''">
+                and av.action_id=#{actionId}
+            </if>
+            <if test="voteUserId!=null and voteUserId!=''">
+                and av.vote_user_id=#{voteUserId}
+            </if>
+            <if test="voteStatus!=null and voteStatus!=''">
+                and av.vote_status=#{voteStatus}
+            </if>
+        </where>
+        ORDER BY av.vote_date DESC
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 按照条件获取动弹点赞 -->
+    <select id="listByColumn" resultMap="MMSnsActionVoteResultMap" parameterType="map">
+        select
+        <include refid="MMSnsActionVoteColumn"/>
+        from ma_action_vote
+        <where>
+            <if test="actionId!=null and actionId!=''">
+                and action_id=#{actionId}
+            </if>
+            <if test="voteUserId!=null and voteUserId!=''">
+                and vote_user_id=#{voteUserId}
+            </if>
+            <if test="voteStatus!=null and voteStatus!=''">
+                and vote_status=#{voteStatus}
+            </if>
+        </where>
+    </select>
+
+    <!-- 获取动弹点赞详情信息-->
+    <select id="selectByPrimaryKey" resultMap="MMSnsActionVoteResultMap" parameterType="java.lang.String">
+        select
+        <include refid="MMSnsActionVoteColumn"/>
+        from ma_action_vote
+        where vote_id=#{voteId}
+    </select>
+
+    <!-- 添加动弹点赞信息 -->
+    <insert id="insert" parameterType="MMSnsActionVoteEntity" useGeneratedKeys="true"
+            keyProperty="voteId">
+        insert into ma_action_vote
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="voteStatus!=null">
+                vote_status,
+            </if>
+            <if test="voteDate!=null">
+                vote_date,
+            </if>
+            <if test="voteUserId!=null">
+                vote_user_id,
+            </if>
+            <if test="actionId!=null">
+                action_id,
+            </if>
+            <if test="actionUserId!=null">
+                action_user_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="voteStatus!=null">
+                #{voteStatus},
+            </if>
+            <if test="voteDate!=null">
+                #{voteDate},
+            </if>
+            <if test="voteUserId!=null">
+                #{voteUserId},
+            </if>
+            <if test="actionId!=null">
+                #{actionId},
+            </if>
+            <if test="actionUserId!=null">
+                #{actionUserId},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 更新动弹点赞信息 -->
+    <update id="updateByPrimaryKey" parameterType="MMSnsActionVoteEntity">
+        update ma_action_vote
+        <set>
+            <if test="voteStatus!=null">
+                vote_status=#{voteStatus},
+            </if>
+            <if test="voteDate!=null">
+                vote_date=#{voteDate},
+            </if>
+            <if test="voteUserId!=null and voteUserId!=0">
+                vote_user_id=#{voteUserId},
+            </if>
+            <if test="actionId!=null and actionId!=0">
+                action_id=#{actionId},
+            </if>
+            <if test="actionUserId!=null and actionUserId!=0">
+                action_user_id=#{actionUserId},
+            </if>
+        </set>
+        <where>
+            <if test="voteId!=null">
+                vote_id=#{voteId}
+            </if>
+        </where>
+    </update>
+
+    <!-- 根据id删除动弹点赞 -->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from ma_action_vote
+        where vote_id=#{voteId}
+    </delete>
+
+    <!-- 根据动弹id、点赞用户id进行删除 -->
+    <delete id="batchDeleteByColumn" parameterType="map">
+        DELETE
+        FROM ma_action_vote
+        WHERE action_id=#{actionId} and vote_user_id=#{voteUserId}
+    </delete>
+</mapper>

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lovecws.mumu.mmsns.action.dao.impl.MMSnsActionDaoImpl">
+    <resultMap id="MMSnsActionResultMap"
+               type="com.lovecws.mumu.mmsns.action.entity.MMSnsActionEntity">
+
+        <id column="action_id" property="actionId" jdbcType="INTEGER"/>
+        <result column="action_status" property="actionStatus" jdbcType="VARCHAR"/>
+        <result column="action_date" property="actionDate" jdbcType="VARCHAR"/>
+        <result column="action_type" property="actionType" jdbcType="VARCHAR"/>
+
+        <result column="action_content" property="actionContent" jdbcType="VARCHAR"/>
+        <result column="word_count" property="wordCount" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+
+        <result column="collect_count" property="collectCount" jdbcType="INTEGER"/>
+        <result column="vote_count" property="voteCount" jdbcType="INTEGER"/>
+        <result column="comment_count" property="commentCount" jdbcType="INTEGER"/>
+        <result column="reprint_count" property="reprintCount" jdbcType="INTEGER"/>
+
+        <result column="reprint_action_content" property="reprintActionContent" jdbcType="VARCHAR"/>
+        <result column="reprint_action_id" property="reprintActionId" jdbcType="INTEGER"/>
+        <result column="reprint_user_id" property="reprintUserId" jdbcType="INTEGER"/>
+
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="individuation" property="individuation" jdbcType="VARCHAR"/>
+        <result column="avator" property="avator" jdbcType="VARCHAR"/>
+        <result column="company" property="company" jdbcType="VARCHAR"/>
+        <result column="positional" property="positional" jdbcType="VARCHAR"/>
+
+        <result column="reprint_user_name" property="reprintUserName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="MMSnsActionColumn">
+		action_id,action_status,action_date,action_type,action_content,word_count,user_id,collect_count,vote_count,comment_count,reprint_count,reprint_action_content,reprint_action_id,reprint_user_id
+	</sql>
+
+    <!-- 获取动弹数量 -->
+    <select id="listPageCount" resultType="long" parameterType="map">
+        select count(action_id)
+        from ma_action
+        <where>
+            <if test="userId!=null and userId!=''">
+                and user_id=#{userId}
+            </if>
+            <if test="actionType!=null and actionType!=''">
+                and action_type=#{actionType}
+            </if>
+            <if test="actionStatus!=null and actionStatus!=''">
+                and action_status=#{actionStatus}
+            </if>
+        </where>
+    </select>
+
+    <!-- 分页获取动弹 -->
+    <select id="listPage" resultMap="MMSnsActionResultMap" parameterType="map">
+        select
+        action_id,action_content,collect_count,vote_count,reprint_count,comment_count,action_date,action_type,reprint_action_content
+        from ma_action
+        <where>
+            <if test="userId!=null and userId!=''">
+                and user_id=#{userId}
+            </if>
+            <if test="actionType!=null and actionType!=''">
+                and action_type=#{actionType}
+            </if>
+            <if test="actionStatus!=null and actionStatus!=''">
+                and action_status=#{actionStatus}
+            </if>
+        </where>
+        <if test="orderby!=null">
+            ORDER BY action_date DESC
+        </if>
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 分页获取动弹列表 同时附带作者信息-->
+    <select id="listActionPageWithUserInfo" resultMap="MMSnsActionResultMap" parameterType="map">
+        select
+        a.action_id,a.action_content,a.action_type,a.reprint_action_content,a.collect_count,a.vote_count,a.reprint_count,a.comment_count,a.action_date,a.user_id,a.word_count,
+        u.user_name,u.individuation,u.avator,u.company,u.positional,
+        uu.user_name reprint_user_name
+        from ma_action a
+        INNER JOIN mc_user u on(u.user_id=a.user_id)
+        LEFT JOIN mc_user uu on(uu.user_id=a.reprint_user_id)
+        <where>
+            <if test="actionType!=null and actionType!=''">
+                and a.action_type=#{actionType}
+            </if>
+            <if test="actionStatus!=null and actionStatus!=''">
+                and a.action_status=#{actionStatus}
+            </if>
+        </where>
+        <if test="orderby!=null">
+            ORDER BY ${orderby} DESC
+        </if>
+        <if test="beginIndex!=null and numPerPage!=null">
+            limit #{beginIndex},#{numPerPage}
+        </if>
+    </select>
+
+    <!-- 获取用户下按照动弹类型分组的动弹数量 和动弹字数数量-->
+    <select id="groupActionCountByUserId" resultMap="MMSnsActionResultMap" parameterType="map">
+        select action_type,count(action_id) action_count,sum(word_count) word_count
+        from ma_action
+        <where>
+            <if test="userId!=null and userId!=''">
+                and user_id=#{userId}
+            </if>
+            <if test="actionStatus!=null and actionStatus!=''">
+                and action_status=#{actionStatus}
+            </if>
+        </where>
+        GROUP BY action_type
+    </select>
+
+    <!-- 获取动弹详情信息-->
+    <select id="selectByPrimaryKey" resultMap="MMSnsActionResultMap" parameterType="java.lang.String">
+        select
+        a.action_id,a.action_content,a.action_type,a.reprint_action_content,a.collect_count,a.vote_count,a.reprint_count,a.comment_count,a.action_date,a.user_id,a.word_count,
+        u.user_name,u.individuation,u.avator,u.company,u.positional,
+        uu.user_name reprint_user_name
+        from ma_action a
+        INNER JOIN mc_user u on(u.user_id=a.user_id)
+        LEFT JOIN mc_user uu on(uu.user_id=a.reprint_user_id)
+        where a.action_id=#{actionId}
+    </select>
+
+    <!-- 获取动弹基本详情信息-->
+    <select id="getByColumn" resultMap="MMSnsActionResultMap" parameterType="map">
+        select
+        <include refid="MMSnsActionColumn"/>
+        from ma_action
+        where action_id=#{actionId}
+    </select>
+
+    <!-- 添加动弹信息 -->
+    <insert id="insert" parameterType="MMSnsActionEntity" useGeneratedKeys="true"
+            keyProperty="actionId">
+        insert into ma_action
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="actionStatus!=null">
+                action_status,
+            </if>
+            <if test="actionDate!=null">
+                action_date,
+            </if>
+            <if test="actionType!=null">
+                action_type,
+            </if>
+            <if test="actionContent!=null">
+                action_content,
+            </if>
+            <if test="wordCount!=null">
+                word_count,
+            </if>
+            <if test="userId!=null">
+                user_id,
+            </if>
+            <if test="collectCount!=null">
+                collect_count,
+            </if>
+            <if test="voteCount!=null">
+                vote_count,
+            </if>
+            <if test="commentCount!=null">
+                comment_count,
+            </if>
+            <if test="reprintCount!=null">
+                reprint_count,
+            </if>
+            <if test="reprintActionContent!=null">
+                reprint_action_content,
+            </if>
+            <if test="reprintActionId!=null">
+                reprint_action_id,
+            </if>
+            <if test="reprintUserId!=null">
+                reprint_user_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="actionStatus!=null">
+                #{actionStatus},
+            </if>
+            <if test="actionDate!=null">
+                #{actionDate},
+            </if>
+            <if test="actionType!=null">
+                #{actionType},
+            </if>
+            <if test="actionContent!=null">
+                #{actionContent},
+            </if>
+            <if test="wordCount!=null">
+                #{wordCount},
+            </if>
+            <if test="userId!=null">
+                #{userId},
+            </if>
+            <if test="collectCount!=null">
+                #{collectCount},
+            </if>
+            <if test="voteCount!=null">
+                #{voteCount},
+            </if>
+            <if test="commentCount!=null">
+                #{commentCount},
+            </if>
+            <if test="reprintCount!=null">
+                #{reprintCount},
+            </if>
+            <if test="reprintActionContent!=null">
+                #{reprintActionContent},
+            </if>
+            <if test="reprintActionId!=null">
+                #{reprintActionId},
+            </if>
+            <if test="reprintUserId!=null">
+                #{reprintUserId},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 更新动弹信息 -->
+    <update id="updateByPrimaryKey" parameterType="MMSnsActionEntity">
+        update ma_action
+        <set>
+            <if test="actionStatus!=null">
+                action_status=#{actionStatus},
+            </if>
+            <if test="actionDate!=null">
+                action_date=#{actionDate},
+            </if>
+            <if test="actionType!=null">
+                action_type=#{actionType},
+            </if>
+            <if test="actionContent!=null">
+                action_content=#{actionContent},
+            </if>
+            <if test="wordCount!=null and wordCount!=0">
+                word_count=#{wordCount},
+            </if>
+            <if test="userId!=null and userId!=0">
+                user_id=#{userId},
+            </if>
+            <if test="collectCount!=null and collectCount!=0">
+                collect_count=collect_count+#{collectCount},
+            </if>
+            <if test="voteCount!=null and voteCount!=0">
+                vote_count=vote_count+#{voteCount},
+            </if>
+            <if test="commentCount!=null and commentCount!=0">
+                comment_count=comment_count+#{commentCount},
+            </if>
+            <if test="reprintCount!=null and reprintCount!=0">
+                reprint_count=reprint_count+#{reprintCount},
+            </if>
+            <if test="reprintActionContent!=null">
+                reprint_action_content=#{reprintActionContent},
+            </if>
+            <if test="reprintActionId!=null and reprintActionId!=0">
+                reprint_action_id=#{reprintActionId},
+            </if>
+            <if test="reprintUserId!=null and reprintUserId!=0">
+                reprint_user_id=#{reprintUserId},
+            </if>
+        </set>
+        <where>
+            <if test="actionId!=null">
+                action_id=#{actionId}
+            </if>
+        </where>
+    </update>
+
+    <!-- 根据id删除动弹 -->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from ma_action
+        where action_id=#{actionId}
+    </delete>
+</mapper>

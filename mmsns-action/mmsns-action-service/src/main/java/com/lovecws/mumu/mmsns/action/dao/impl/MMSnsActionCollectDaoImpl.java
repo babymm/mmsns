@@ -15,6 +15,5 @@ import org.springframework.transaction.annotation.Transactional;
  * @date 2017-12-28 17:46:
  */
 @Repository
-@Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.SUPPORTS, readOnly = false)
 public class MMSnsActionCollectDaoImpl extends BaseDaoImpl<MMSnsActionCollectEntity> implements MMSnsActionCollectDao {
 }

@@ -51,10 +51,10 @@
                 <li class="layui-nav-item" id="ticketing_center">
                     <a class="" href="javascript:;">我的文章</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:void(0);" onclick="changeFrameSrc('/manager/article/classify','article',false)">&nbsp;&nbsp;分类管理</a></dd>
-                        <dd><a href="javascript:void(0);" onclick="changeFrameSrc('/manager/article/ticket/saling','article',false)">&nbsp;&nbsp;文章审核</a></dd>
-                        <dd><a href="javascript:void(0);" onclick="changeFrameSrc('/manager/article/ticket/saling','article',false)">&nbsp;&nbsp;文章管理</a></dd>
-                        <dd><a href="javascript:void(0);" onclick="changeFrameSrc('/manager/article/ticket/reserve','article',false)">&nbsp;&nbsp;帖子管理</a></dd>
+                        <dd><a href="javascript:void(0);" onclick="changeFrameSrc('/manager/article/classify','action',false)">&nbsp;&nbsp;分类管理</a></dd>
+                        <dd><a href="javascript:void(0);" onclick="changeFrameSrc('/manager/article/ticket/saling','action',false)">&nbsp;&nbsp;文章审核</a></dd>
+                        <dd><a href="javascript:void(0);" onclick="changeFrameSrc('/manager/article/ticket/saling','action',false)">&nbsp;&nbsp;文章管理</a></dd>
+                        <dd><a href="javascript:void(0);" onclick="changeFrameSrc('/manager/article/ticket/reserve','action',false)">&nbsp;&nbsp;帖子管理</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item" id="ticket_taker_center">

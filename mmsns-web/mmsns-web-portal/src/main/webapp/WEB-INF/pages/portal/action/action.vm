@@ -15,8 +15,8 @@
         <div class="content-textarea">
             <textarea id="actionContentTextArea" style="display: none;"></textarea>
             <div class="textarea-publish">
-   #*             <span>0/160</span>*#
-                <span><button>发布</button></span>
+            #*<span>0/160</span>*#
+                <span><button id="publishActionButton">发布</button></span>
             </div>
         </div>
         <div class="content-list layout-action">
@@ -28,20 +28,20 @@
         <div class="category-hotaction layout-action">
             <h3>热门动弹</h3>
             <ul>
-                #set($hotactions= [0 .. 4])
-                #foreach($hotaction in $hotactions)
+                #foreach($hotaction in $hotActions)
                     <li>
                         <div class="li-image">
-                            <a href="/action/detail/1"><img src="http://192.168.11.25/group1/M00/00/04/wKgLGVpDUe6AUfPXAAAz4dLJWpI435.png" width="60" height="60" style="border-radius: 50%"></a>
+                            <a href="/profile/$!hotaction.individuation/action"><img src="$!hotaction.avator" width="60" height="60" style="border-radius: 50%"></a>
                         </div>
                         <div class="li-info">
-                            <span class="info-author"><a href="/action/detail/1">林青OSC</a></span>
-                            <span class="info-content">再来5只，这下子应该就差个大的了！<img src="http://img.blog.csdn.net/20140220173559828"></span>
+                            <span class="info-author"><a href="/profile/$!hotaction.individuation/action">$!hotaction.userName</a></span>
+                            <span class="info-content">$!hotaction.actionContent</span>
                             <span class="info-command">
-                                <span><a href="/action/detail/1">赞1</a></span>
-                                <span><a href="/action/detail/1">收藏2</a></span>
-                                <span><a href="/action/detail/1">评论3</a></span>
-                                <span><a href="/action/detail/1">详细信息</a></span>
+                                <span><a href="/action/detail/1">赞$!hotaction.collectCount</a></span>
+                                <span><a href="/action/detail/1">收藏$!hotaction.voteCount</a></span>
+                                <span><a href="/action/detail/1">转发$!hotaction.reprintCount</a></span>
+                                <span><a href="/action/detail/1">评论$!hotaction.commentCount</a></span>
+                                <span><a href="/action/detail/$!hotaction.actionId">详细信息</a></span>
                             </span>
                         </div>
                     </li>
@@ -67,46 +67,66 @@
             ,isAuto:true
             ,isLazyimg:true
             ,done: function(page, next){
-                var lis = [];
-                for(var i = 0; i < 5; i++){
-                    lis.push(li());
-                }
-                next(lis.join(''), page < 3);
+                $.get("/action/data",{page:page,limit:5},function(respData) {
+                    if(respData.code==200){
+                        var lis = [];
+                        for(var i = 0; i < respData.data.length; i++){
+                            lis.push(li(respData.data[i]));
+                        }
+                        if(respData.data.length<5){
+                            next(lis.join(''), false);
+                        }else{
+                            next(lis.join(''), true);
+                        }
+                    }else{
+                        layer.alert(respData.data,{icon:5});
+                    }
+                });
             }
         });
+        //发布动弹
+        $("#publishActionButton").click(function () {
+            var actionContent=layedit.getContent(actionContentTextAreaIndex);
+            if(actionContent==null||actionContent==''||actionContent=='<p><br></p>'){
+                layer.msg("请输入评论内容！",{icon:1});
+                return false;
+            }
+            $.post("/action/publish",{actionContent:actionContent},function(respData) {
+                if(respData.code==200){
+                    $("#actionFlowUL").prepend(li(respData.data));
+                    /*window.document.frames("LAY_layedit_1").location.reload(true);*/
+                }else if(respData.code==444){
+                    layer.msg(respData.data,{icon:5,time:2000},function () {
+                        window.location.href="/login";
+                    });
+                }else{
+                    layer.alert(respData.data,{icon:5});
+                }
+            });
+        });
     });
-    function li() {
-        var hasReprint=false;
-        var li=null;
-        if(hasReprint){
-            li='<li><div class="li-image"><a href="/action/detail/1"><img src="http://192.168.11.25/group1/M00/00/04/wKgLGVpDUe6AUfPXAAAz4dLJWpI435.png" width="60" height="60" style="border-radius: 50%"></a></div>' +
-                    '<div class="li-info">' +
-                    '   <span class="info-author"><a href="/action/detail/1">林青OSC</a><span style="color: #898989">  2分钟前</span></span>' +
-                    '   <span class="info-content">再来5只，这下子应该就差个大的了！<br><img src="http://img.blog.csdn.net/20140220173559828"></span>' +
-                    '   <span class="info-reprint"><span class="reprintinfo"><a href="/action/detail/1">@开源中国首席屌炸天</a></span>' +
-                    '       <span class="reprintinfo">男理发师和男健身私教早就趋向牛郎化了。理发师温柔地聆听你所有牢骚<br><img src="http://img.blog.csdn.net/20140220173559828" width="260" height="200"></span>' +
-                    '       <span class="reprintinfo"><a href="/action/detail/1">查看原文</a></span>' +
-                    '   </span>' +
-                    '   <span class="info-command">' +
-                    '       <span><a href="/action/detail/1">赞1</a></span>' +
-                    '       <span><a href="/action/detail/1">收藏2</a></span>' +
-                    '       <span><a href="/action/detail/1">评论3</a></span>' +
-                    '       <span><a href="/action/detail/1">详细信息</a></span>' +
-                    '   </span>' +
-                    '</div></li>';
-        }else{
-            li='<li><div class="li-image"><a href="/action/detail/1"><img src="http://192.168.11.25/group1/M00/00/04/wKgLGVpDUe6AUfPXAAAz4dLJWpI435.png" width="60" height="60" style="border-radius: 50%"></a></div>' +
-                    '<div class="li-info">' +
-                    '   <span class="info-author"><a href="/action/detail/1">林青OSC</a><span style="color: #898989">  2分钟前</span></span>' +
-                    '   <span class="info-content">在 k8s 上要重启 docker，最好是连同 flanneld 一起重启： systemctl restart flanneld && systemctl restart docker 。因为 flanneld 会同步一些 docker network 环境变量给 docker，这样可以最大限度的避免问题。<br><img src="http://img.blog.csdn.net/20140220173559828"></span>' +
-                    '   <span class="info-command">' +
-                    '       <span><a href="/action/detail/1">赞1</a></span>' +
-                    '       <span><a href="/action/detail/1">收藏2</a></span>' +
-                    '       <span><a href="/action/detail/1">评论3</a></span>' +
-                    '       <span><a href="/action/detail/1">详细信息</a></span>' +
-                    '   </span>' +
-                    '</div></li>';
+    function li(actionData) {
+        var userAvator=actionData.avator?actionData.avator:'/resources/portal/images/logo.jpg';
+        var reprintHtml='';
+        if(actionData.actionType=='reprint'){
+            reprintHtml= '<span class="info-reprint"><span class="reprintinfo"><a href="/profile/'+actionData.individuation+'/action">@'+actionData.reprintUserName+'</a></span>' +
+                    '       <span class="reprintinfo">'+actionData.reprintActionContent+'</span>' +
+                    '       <span class="reprintinfo"><a href="/action/detail/'+actionData.reprintActionId+'">查看原文</a></span>' +
+                    '   </span>';
         }
+        var li='<li><div class="li-image"><a href="/profile/'+actionData.individuation+'/action"><img src="'+userAvator+'" width="60" height="60" style="border-radius: 50%"></a></div>' +
+                '<div class="li-info">' +
+                '   <span class="info-author"><a href="/profile/'+actionData.individuation+'/action">'+actionData.userName+'</a><span style="color: #898989">  '+actionData.actionDate+'</span></span>' +
+                '   <span class="info-content">'+actionData.actionContent+'</span>' +
+                reprintHtml+
+                '   <span class="info-command">' +
+                '       <span><a href="/action/detail/1">赞'+actionData.voteCount+'</a></span>' +
+                '       <span><a href="/action/detail/1">收藏'+actionData.collectCount+'</a></span>' +
+                '       <span><a href="/action/detail/1">转发'+actionData.reprintCount+'</a></span>' +
+                '       <span><a href="/action/detail/1">评论'+actionData.commentCount+'</a></span>' +
+                '       <span><a href="/action/detail/'+actionData.actionId+'">详细信息</a></span>' +
+                '   </span>' +
+                '</div></li>';
         return li;
     }
 </script>

@@ -145,4 +145,59 @@ public class MMSnsActionEntity extends PersistentEntity {
     public void setReprintUserId(String reprintUserId) {
         this.reprintUserId = reprintUserId;
     }
+
+    private String userName;
+    private String individuation;
+    private String avator;
+    private String company;
+    private String positional;
+    private String reprintUserName;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getIndividuation() {
+        return individuation;
+    }
+
+    public void setIndividuation(String individuation) {
+        this.individuation = individuation;
+    }
+
+    public String getAvator() {
+        return avator;
+    }
+
+    public void setAvator(String avator) {
+        this.avator = avator;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getPositional() {
+        return positional;
+    }
+
+    public void setPositional(String positional) {
+        this.positional = positional;
+    }
+
+    public String getReprintUserName() {
+        return reprintUserName;
+    }
+
+    public void setReprintUserName(String reprintUserName) {
+        this.reprintUserName = reprintUserName;
+    }
 }

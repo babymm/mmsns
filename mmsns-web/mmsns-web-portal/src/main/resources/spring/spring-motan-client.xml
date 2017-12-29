@@ -52,4 +52,10 @@
     <motan:referer id="articleCollectService" interface="com.lovecws.mumu.mmsns.article.service.MMSnsArticleCollectService" basicReferer="motanBasicReferer"/>
     <motan:referer id="articleCommentService" interface="com.lovecws.mumu.mmsns.article.service.MMSnsArticleCommentService" basicReferer="motanBasicReferer"/>
     <motan:referer id="articleVoteService" interface="com.lovecws.mumu.mmsns.article.service.MMSnsArticleVoteService" basicReferer="motanBasicReferer"/>
+
+    <!-- 动弹模块 -->
+    <motan:referer id="actionService" interface="com.lovecws.mumu.mmsns.action.service.MMSnsActionService" basicReferer="motanBasicReferer"/>
+    <motan:referer id="actionCollectService" interface="com.lovecws.mumu.mmsns.action.service.MMSnsActionCollectService" basicReferer="motanBasicReferer"/>
+    <motan:referer id="actionCommentService" interface="com.lovecws.mumu.mmsns.action.service.MMSnsActionCommentService" basicReferer="motanBasicReferer"/>
+    <motan:referer id="actionVoteService" interface="com.lovecws.mumu.mmsns.action.service.MMSnsActionVoteService" basicReferer="motanBasicReferer"/>
 </beans>

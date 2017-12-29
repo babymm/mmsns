@@ -115,6 +115,9 @@
           <element id="archive" name="mmsns-article-api-1.0-SNAPSHOT.jar">
             <element id="module-output" name="mmsns-article-api" />
           </element>
+          <element id="archive" name="mmsns-action-api-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="mmsns-action-api" />
+          </element>
           <element id="library" level="project" name="Maven: com.belerweb:pinyin4j:2.5.1" />
         </element>
       </element>
