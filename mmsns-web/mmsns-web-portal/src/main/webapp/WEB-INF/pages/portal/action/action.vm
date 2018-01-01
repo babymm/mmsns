@@ -31,7 +31,12 @@
                 #foreach($hotaction in $hotActions)
                     <li>
                         <div class="li-image">
-                            <a href="/profile/$!hotaction.individuation/action"><img src="$!hotaction.avator" width="60" height="60" style="border-radius: 50%"></a>
+                            <a href="/profile/$!hotaction.individuation/action">
+                                #if($!hotaction.avator)
+                                    <img src="$!hotaction.avator" width="60" height="60" style="border-radius: 50%"></a>
+                                #else
+                                    <img src="/resources/portal/images/logo.jpg" width="60" height="60" style="border-radius: 50%"></a>
+                                #end
                         </div>
                         <div class="li-info">
                             <span class="info-author"><a href="/profile/$!hotaction.individuation/action">$!hotaction.userName</a></span>

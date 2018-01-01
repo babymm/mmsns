@@ -132,6 +132,8 @@
 .layout-body .layout-left .content-comments ul li .comment-maincontent img{
     max-width: 100%;
     max-height: 100%;
+    min-width: 600px;
+    min-height: 200px;
 }
 .layout-body .layout-left .content-comments ul li .comment-replytextarea{
     float: left;
@@ -201,7 +203,7 @@
 }
 .layout-body .layout-right .layout-action ul li .li-info .info-content img{
     max-width: 100%;
-    max-height: 100%;
+    max-height: 200px;
 }
 .layout-body .layout-right .layout-action ul li .li-info .info-command{
     float: left;

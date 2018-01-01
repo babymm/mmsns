@@ -33,4 +33,12 @@ public interface MMSnsActionService {
     public MMSnsActionEntity getArctionInfo(int actionId);
 
     public void updateAction(MMSnsActionEntity actionEntity);
+
+    /**
+     * 获取动弹基本信息
+     *
+     * @param actionId
+     * @return
+     */
+    public MMSnsActionEntity getArctionBaseInfo(int actionId);
 }

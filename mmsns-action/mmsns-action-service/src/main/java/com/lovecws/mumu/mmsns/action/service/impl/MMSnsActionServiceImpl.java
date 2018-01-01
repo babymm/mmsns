@@ -53,4 +53,11 @@ public class MMSnsActionServiceImpl implements MMSnsActionService {
     public void updateAction(MMSnsActionEntity actionEntity) {
         actionDao.update(actionEntity);
     }
+
+    @Override
+    public MMSnsActionEntity getArctionBaseInfo(int actionId) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("actionId", actionId);
+        return actionDao.getByColumn(paramMap);
+    }
 }

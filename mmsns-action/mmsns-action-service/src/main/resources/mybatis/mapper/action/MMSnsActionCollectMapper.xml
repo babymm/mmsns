@@ -10,13 +10,13 @@
 
         <result column="collect_user_id" property="collectUserId" jdbcType="VARCHAR"/>
         <result column="action_id" property="actionId" jdbcType="INTEGER"/>
-        <result column="action_user_d" property="actionUserId" jdbcType="INTEGER"/>
+        <result column="action_user_id" property="actionUserId" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="MMSnsActionCollectColumn">
-		collect_id,collect_status,collect_date,collect_user_id,action_id,action_user_d
+		collect_id,collect_status,collect_date,collect_user_id,action_id,action_user_id
 	</sql>
 
-    <!-- 获取评论收藏数量 -->
+    <!-- 获取动弹收藏数量 -->
     <select id="listPageCount" resultType="long" parameterType="map">
         select count(collect_id)
         from ma_action_collect
@@ -30,7 +30,7 @@
         </where>
     </select>
 
-    <!-- 分页获取评论收藏 -->
+    <!-- 分页获取动弹收藏 -->
     <select id="listPage" resultMap="MMSnsActionCollectResultMap" parameterType="map">
         select
         ac.collect_id,ac.collect_date,ac.action_id,
@@ -50,7 +50,7 @@
         </if>
     </select>
 
-    <!-- 按照条件获取评论收藏 -->
+    <!-- 按照条件获取动弹收藏 -->
     <select id="listByColumn" resultMap="MMSnsActionCollectResultMap" parameterType="map">
         select
         <include refid="MMSnsActionCollectColumn"/>
@@ -68,7 +68,7 @@
         </where>
     </select>
 
-    <!-- 获取评论收藏详情信息-->
+    <!-- 获取动弹收藏详情信息-->
     <select id="selectByPrimaryKey" resultMap="MMSnsActionCollectResultMap" parameterType="java.lang.String">
         select
         <include refid="MMSnsActionCollectColumn"/>
@@ -76,7 +76,7 @@
         where collect_id=#{collectId}
     </select>
     
-    <!-- 添加评论收藏信息 -->
+    <!-- 添加动弹收藏信息 -->
     <insert id="insert" parameterType="MMSnsActionCollectEntity" useGeneratedKeys="true"
             keyProperty="collectId">
         insert into ma_action_collect
@@ -116,7 +116,7 @@
         </trim>
     </insert>
 
-    <!-- 更新评论收藏信息 -->
+    <!-- 更新动弹收藏信息 -->
     <update id="updateByPrimaryKey" parameterType="MMSnsActionCollectEntity">
         update ma_action_collect
         <set>
@@ -143,7 +143,7 @@
         </where>
     </update>
 
-    <!-- 根据id删除评论收藏 -->
+    <!-- 根据id删除动弹收藏 -->
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete
         from ma_action_collect
