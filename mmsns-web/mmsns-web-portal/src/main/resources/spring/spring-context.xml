@@ -41,16 +41,19 @@
     </bean>
 
     <!-- 直接加载系统mapper -->
-    <!--<import resource="classpath*:spring/spring-system-service.xml" />-->
-    <!--<import resource="classpath*:spring/spring-system-context.xml" />
-    <import resource="classpath*:spring/spring-data-context.xml" />
-    <import resource="classpath:spring/sprentity-dao.xml" />-->
+    <import resource="classpath*:spring/spring-action-context.xml"/>
+    <import resource="classpath*:spring/spring-article-context.xml"/>
+    <import resource="classpath*:spring/spring-common-context.xml"/>
+    <import resource="classpath:spring/spring-dao.xml"/>
+
+    <!-- rpc motan -->
+    <!--<import resource="classpath:spring/spring-motan-client.xml"/>-->
 
     <import resource="classpath:spring/spring-common-redis.xml"/>
-    <import resource="classpath:spring/spring-common-fdfs.xml" />
-    <import resource="classpath:spring/spring-common-sms.xml" />
-    <import resource="classpath:spring/spring-common-email.xml" />
+    <import resource="classpath:spring/spring-common-fdfs.xml"/>
+    <import resource="classpath:spring/spring-common-sms.xml"/>
+    <import resource="classpath:spring/spring-common-email.xml"/>
 
-    <import resource="classpath:spring/spring-motan-client.xml"/>
     <import resource="classpath:spring/spring-shiro.xml"/>
+
 </beans>

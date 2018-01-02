@@ -18,6 +18,11 @@
         <result column="reply_comment_id" property="replyCommentId" jdbcType="INTEGER"/>
         <result column="reply_user_id" property="replyUserId" jdbcType="INTEGER"/>
         <result column="reply_comment_content" property="replyCommentContent" jdbcType="VARCHAR"/>
+
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="individuation" property="individuation" jdbcType="VARCHAR"/>
+        <result column="avator" property="avator" jdbcType="VARCHAR"/>
+        <result column="reply_user_name" property="replyUserName" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="MMSnsActionCommentColumn">
 		comment_id,comment_status,comment_date,comment_type,comment_content,comment_user_id,action_id,action_user_id,reply_comment_id,reply_user_id,reply_comment_content

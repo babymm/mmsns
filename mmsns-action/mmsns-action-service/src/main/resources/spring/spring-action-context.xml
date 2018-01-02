@@ -19,7 +19,7 @@
     <!-- 配置要扫描的包 -->
     <context:component-scan base-package="com.lovecws.mumu.mmsns.action"/>
 
-    <bean id="articleMapperScanApplication" class="com.lovecws.mumu.core.dao.MapperScanApplication" init-method="init">
+    <bean id="actionMapperScanApplication" class="com.lovecws.mumu.core.dao.MapperScanApplication" init-method="init">
         <property name="configLocation" value="mybatis/mybatis-action-config.xml"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>

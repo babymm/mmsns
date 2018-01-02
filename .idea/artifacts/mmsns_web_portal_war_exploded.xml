@@ -112,11 +112,20 @@
           <element id="archive" name="mmsns-common-api-1.0-SNAPSHOT.jar">
             <element id="module-output" name="mmsns-common-api" />
           </element>
+          <element id="archive" name="mmsns-common-service-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="mmsns-common-service" />
+          </element>
           <element id="archive" name="mmsns-article-api-1.0-SNAPSHOT.jar">
             <element id="module-output" name="mmsns-article-api" />
           </element>
+          <element id="archive" name="mmsns-article-service-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="mmsns-article-service" />
+          </element>
           <element id="archive" name="mmsns-action-api-1.0-SNAPSHOT.jar">
             <element id="module-output" name="mmsns-action-api" />
+          </element>
+          <element id="archive" name="mmsns-action-service-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="mmsns-action-service" />
           </element>
           <element id="library" level="project" name="Maven: com.belerweb:pinyin4j:2.5.1" />
         </element>

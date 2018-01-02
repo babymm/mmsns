@@ -13,7 +13,7 @@
         </div>
         <div class="layout-content">
             <div class="li-image">
-                <a href="/action/detail/$!action.actionId"><img src="$!action.avator" width="40" height="40" style="border-radius: 50%"></a>
+                <a href="/profile/$!action.individuation/action"><img src="$!action.avator" width="40" height="40" style="border-radius: 50%"></a>
             </div>
             <div class="li-info">
                 <span class="info-author"><a href="/profile/$!action.individuation/action">$!action.userName</a></span>
@@ -140,8 +140,8 @@
             replyCommentContent=actionComment.replyCommentContent;
         }
         var li='<li id="li-'+actionComment.commentId+'">' +
-                '<div class="comment-image"><a href="/profile/'+actionComment.individuation+'/home"><img src="'+userAvator+'" width="40" height="40" style="border-radius: 50%"> </a></div>'+
-                '<div class="comment-profile"><span><a href="/profile/'+actionComment.individuation+'/home">'+actionComment.userName+'</a></span><span>'+floor+'楼 '+actionComment.commentDate+'</span> </div> ' +
+                '<div class="comment-image"><a href="/profile/'+actionComment.individuation+'/action"><img src="'+userAvator+'" width="40" height="40" style="border-radius: 50%"> </a></div>'+
+                '<div class="comment-profile"><span><a href="/profile/'+actionComment.individuation+'/action">'+actionComment.userName+'</a></span><span>'+floor+'楼 '+actionComment.commentDate+'</span> </div> ' +
                 '<div class="comment-reply"><a onclick="actioneCommentReplyButton(\''+actionComment.commentId+'\',\''+actionComment.userName+'\')" href="javascript:void(0)">回复</a></div>' +
                 '<div class="comment-commentcontent"><span>'+commentContent+'</span></div> ' +
                 '<div class="comment-replycontent"><span>'+replyCommentContent+'</span></div> ' +

@@ -13,7 +13,7 @@
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- 密码加密回调 -->
-	<bean id="dbPasswordCallback" class="com.lovecws.mumu.common.core.config.DBPasswordCallback">
+	<bean id="dbPasswordCallback" class="com.lovecws.mumu.core.config.DBPasswordCallback">
 		<description>数据库连接回调密码解密</description>
 	</bean>
 

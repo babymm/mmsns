@@ -307,15 +307,23 @@
         </dependency>
         <dependency>
             <groupId>com.lovecws.mumu</groupId>
+            <artifactId>mmsns-common-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lovecws.mumu</groupId>
             <artifactId>mmsns-article-api</artifactId>
         </dependency>
         <dependency>
             <groupId>com.lovecws.mumu</groupId>
-            <artifactId>mmsns-action-api</artifactId>
+            <artifactId>mmsns-article-service</artifactId>
         </dependency>
         <dependency>
             <groupId>com.lovecws.mumu</groupId>
             <artifactId>mmsns-action-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lovecws.mumu</groupId>
+            <artifactId>mmsns-action-service</artifactId>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.belerweb/pinyin4j -->
