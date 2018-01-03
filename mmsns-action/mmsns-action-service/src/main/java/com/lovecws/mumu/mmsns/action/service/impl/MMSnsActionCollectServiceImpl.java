@@ -1,6 +1,8 @@
 package com.lovecws.mumu.mmsns.action.service.impl;
 
 import com.lovecws.mumu.core.enums.PublicEnum;
+import com.lovecws.mumu.core.page.PageBean;
+import com.lovecws.mumu.core.page.PageParam;
 import com.lovecws.mumu.mmsns.action.dao.MMSnsActionCollectDao;
 import com.lovecws.mumu.mmsns.action.entity.MMSnsActionCollectEntity;
 import com.lovecws.mumu.mmsns.action.entity.MMSnsActionEntity;
@@ -51,5 +53,20 @@ public class MMSnsActionCollectServiceImpl implements MMSnsActionCollectService 
         actionEntity.setCollectCount(1);
         actionService.updateAction(actionEntity);
         return actionCollect;
+    }
+
+    @Override
+    public int getCollectActionCountByCondition(String sessionUserId) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("collectUserId", sessionUserId);
+        return actionCollectDao.listPageCount(paramMap);
+    }
+
+    @Override
+    public PageBean listCollectActionPage(String collectUserId, int page, int limit) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("collectUserId", collectUserId);
+        paramMap.put("collectStatus", PublicEnum.NORMAL.value());
+        return actionCollectDao.listPage(new PageParam(page, limit), paramMap);
     }
 }

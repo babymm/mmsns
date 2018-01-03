@@ -42,10 +42,10 @@
                             <span class="info-author"><a href="/profile/$!hotaction.individuation/action">$!hotaction.userName</a></span>
                             <span class="info-content">$!hotaction.actionContent</span>
                             <span class="info-command">
-                                <span><a href="/action/detail/1">赞$!hotaction.collectCount</a></span>
-                                <span><a href="/action/detail/1">收藏$!hotaction.voteCount</a></span>
-                                <span><a href="/action/detail/1">转发$!hotaction.reprintCount</a></span>
-                                <span><a href="/action/detail/1">评论$!hotaction.commentCount</a></span>
+                                <span><a href="javascript:void(0)" onclick="actionVote('$!hotaction.actionId')">赞$!hotaction.voteCount</a></span>
+                                <span><a href="javascript:void(0)" onclick="actionCollect('$!hotaction.actionId')">收藏$!hotaction.collectCount</a></span>
+                                <span><a href="javascript:void(0)" onclick="actionReprint('$!hotaction.actionId')">转发$!hotaction.reprintCount</a></span>
+                                <span><a href="javascript:void(0)" onclick="actionComment('$!hotaction.actionId')">评论$!hotaction.commentCount</a></span>
                                 <span><a href="/action/detail/$!hotaction.actionId">详细信息</a></span>
                             </span>
                         </div>
@@ -93,7 +93,7 @@
         $("#publishActionButton").click(function () {
             var actionContent=layedit.getContent(actionContentTextAreaIndex);
             if(actionContent==null||actionContent==''||actionContent=='<p><br></p>'){
-                layer.msg("请输入评论内容！",{icon:1});
+                layer.msg("请输入动弹内容！",{icon:1});
                 return false;
             }
             $.post("/action/publish",{actionContent:actionContent},function(respData) {
@@ -125,13 +125,14 @@
                 '   <span class="info-content">'+actionData.actionContent+'</span>' +
                 reprintHtml+
                 '   <span class="info-command">' +
-                '       <span><a href="/action/detail/1">赞'+actionData.voteCount+'</a></span>' +
-                '       <span><a href="/action/detail/1">收藏'+actionData.collectCount+'</a></span>' +
-                '       <span><a href="/action/detail/1">转发'+actionData.reprintCount+'</a></span>' +
-                '       <span><a href="/action/detail/1">评论'+actionData.commentCount+'</a></span>' +
+                '       <span><a href="javascript:void(0)" onclick="actionVote('+actionData.actionId+')">赞'+actionData.voteCount+'</a></span>' +
+                '       <span><a href="javascript:void(0)" onclick="actionCollect('+actionData.actionId+')">收藏'+actionData.collectCount+'</a></span>' +
+                '       <span><a href="javascript:void(0)" onclick="actionReprint('+actionData.actionId+')">转发'+actionData.reprintCount+'</a></span>' +
+                '       <span><a href="javascript:void(0)" onclick="actionComment('+actionData.actionId+')">评论'+actionData.commentCount+'</a></span>' +
                 '       <span><a href="/action/detail/'+actionData.actionId+'">详细信息</a></span>' +
                 '   </span>' +
                 '</div></li>';
         return li;
     }
 </script>
+<script type="text/javascript" src="${request.getContextPath()}/resources/portal/js/action/action.js" charset="utf-8"></script>

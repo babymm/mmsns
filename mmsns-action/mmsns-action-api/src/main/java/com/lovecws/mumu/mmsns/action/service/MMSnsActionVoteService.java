@@ -1,5 +1,6 @@
 package com.lovecws.mumu.mmsns.action.service;
 
+import com.lovecws.mumu.core.page.PageBean;
 import com.lovecws.mumu.mmsns.action.entity.MMSnsActionVoteEntity;
 
 import java.util.List;
@@ -12,7 +13,11 @@ import java.util.List;
  */
 public interface MMSnsActionVoteService {
 
-    public List<MMSnsActionVoteEntity> getActionVoteByCondition(int actionId, Integer sessionCommonUserUserId);
+    public List<MMSnsActionVoteEntity> getActionVoteByCondition(int actionId, Integer voteUserId);
 
     public MMSnsActionVoteEntity voteAction(MMSnsActionVoteEntity actionVoteEntity);
+
+    public int getVoteActionCountByCondition(String sessionUserId);
+
+    public PageBean listVoteActionPage(String voteUserId, int page, int limit);
 }

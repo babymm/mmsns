@@ -1,8 +1,10 @@
 package com.lovecws.mumu.mmsns.configuration;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.lovecws.mumu.core.log.MumuLogComponent;
 import com.lovecws.mumu.core.log.MumuLogEntity;
+import com.lovecws.mumu.core.utils.DateUtils;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -28,7 +30,7 @@ public class MMSnsPortalLogComponent extends MumuLogComponent {
 
     @Override
     public void record(MumuLogEntity mumuLogEntity) {
-        log.info(JSON.toJSONString(mumuLogEntity));
+        log.info(JSON.toJSONStringWithDateFormat(mumuLogEntity,"yyyy-MM-dd HH:mm:ss",new SerializerFeature[]{SerializerFeature.QuoteFieldNames,SerializerFeature.WriteMapNullValue}));
     }
 
     @Around("MMSnsPortalLogComponent()")

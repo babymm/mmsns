@@ -8,20 +8,35 @@
     <div class="layout-right">
         <div class="action-body">
             <h2 style="font-size: 30px;font-weight: 400px;color: green;border-radius: 10%">我的动弹</h2>
-            <hr>
             <ul>
-                #set($actions=[0 .. 4])
-                #foreach($action in $actions)
+                #foreach($action in $!actionPageBean.recordList)
                     <li>
                         <div class="actioncontent">
-                            <span class="actiontitle">各位大佬，学信网账号密码忘了，绑定的手机号已经不用了，安全问题也忘记了，邮箱找回显示 邮箱不正确或帐号未绑定找回密码邮箱 ，该怎么办，急急急，在线等啊！！！</span>
-                            <span class="actionediter">阅读 20 ·评论 0 ·赞 0 ·收藏 0 ·(<a href="">编辑</a> | <a href="">删除</a>)</span>
-                            <span class="actionpublish">2017/06/19 发布</span>
+                            <span class="actiontitle">
+                                #if($operation=='vote')
+                                    <span class="actiontype">赞</span>
+                                #elseif($operation=='collect')
+                                    <span class="actiontype">藏</span>
+                                #elseif($action.actionType=='original')
+                                    <span class="actiontype">原</span>
+                                #elseif($action.actionType=='reprint')
+                                    <span class="actiontype">转</span>
+                                #end
+                                $action.actionContent
+                            </span>
+                            <span class="actionediter">转发 $action.reprintCount ·评论 $action.commentCount ·赞 $action.voteCount ·收藏 $action.collectCount ·
+                                #if($individuation==$MMSNS_COMMON_USER.individuation)
+                                    #if($operation=='vote')
+                                        (<a href="javascript:void(0)" onclick="cancleArticleVote('$!article.articleId')">取消赞</a>)
+                                    #elseif($operation=='collect')
+                                        (<a href="javascript:void(0)" onclick="cancleArticleCollect('$!article.articleId')">取消收藏</a>)
+                                    #else
+                                        ( <a href="javascript:void(0)" onclick="articleDelete('$!article.articleTitle','$!article.articleId')" class="articleDelete">删除</a>)
+                                    #end
+                                #end
+                            </span>
+                            <span class="actionpublish">$date.format("yyyy-MM-dd",$action.actionDate)</span>
                         </div>
-                        <div class="actionlogo">
-                            <a href="/profile/$individuation/home"><img src="https://gw.alicdn.com/bao/uploaded/i4/69476562/TB2htq4XTka61BjSszfXXXN8pXa_!!69476562.jpg_400x400q90.jpg?t=1513063905068" width="100" height="100"></a>
-                        </div>
-                        <hr>
                     </li>
                 #end
             </ul>

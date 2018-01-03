@@ -85,6 +85,56 @@ public class MMSnsPortalActionController {
         return new ResponseEntity(actionEntity);
     }
 
+    /**
+     * 跳转到转载页面
+     *
+     * @param actionId
+     * @return
+     */
+    @RequestMapping(value = "/reprint/{actionId}", method = RequestMethod.GET)
+    public String reprint(@PathVariable int actionId) {
+        return "/portal/action/reprint";
+    }
+
+    /**
+     * 动弹转载
+     *
+     * @param actionId      动弹id
+     * @param actionContent 动弹转载内容
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/reprint", method = RequestMethod.POST)
+    public ResponseEntity reprintAction(int actionId, String actionContent) {
+        //获取动弹详情
+        MMSnsActionEntity actionBaseInfo = actionService.getArctionBaseInfo(actionId);
+        if (actionBaseInfo == null) {
+            return new ResponseEntity(HttpCode.PARAMETER_ERROR);
+        }
+        MMSnsCommonUserEntity sessionCommonUser = (MMSnsCommonUserEntity) request.getSession().getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
+        if (actionBaseInfo.getUserId() == sessionCommonUser.getUserId().intValue()) {
+            return new ResponseEntity(404, "parameter error", "不能转载自己的动弹");
+        }
+        MMSnsActionEntity actionEntity = new MMSnsActionEntity();
+        actionEntity.setActionStatus(PublicEnum.NORMAL.value());
+        actionEntity.setActionDate(new Date());
+        actionEntity.setActionType(MMSnsActionEntity.ACTION_TYPE_REPRINT);
+        actionEntity.setActionContent(actionContent);
+        actionEntity.setWordCount(MMSnsContentUtil.wordCount(actionContent));
+        actionEntity.setUserId(sessionCommonUser.getUserId());
+        actionEntity.setReprintActionContent(actionBaseInfo.getActionContent());
+        actionEntity.setReprintActionId(actionBaseInfo.getActionId());
+        actionEntity.setReprintUserId(actionBaseInfo.getUserId());
+        actionEntity = actionService.addAction(actionEntity);
+
+        actionEntity.setAvator(sessionCommonUser.getAvator());
+        actionEntity.setUserName(sessionCommonUser.getUserName());
+        actionEntity.setIndividuation(sessionCommonUser.getIndividuation());
+        actionEntity.setCompany(sessionCommonUser.getCompany());
+        actionEntity.setPositional(sessionCommonUser.getPositional());
+        return new ResponseEntity(actionEntity);
+    }
+
     @RequestMapping(value = "/detail/{actionId}", method = RequestMethod.GET)
     public String detail(@PathVariable int actionId) {
         request.setAttribute("mainModular", "action");

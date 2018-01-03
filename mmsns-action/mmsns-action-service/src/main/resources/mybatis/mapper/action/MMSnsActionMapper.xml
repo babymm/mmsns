@@ -102,7 +102,7 @@
     </select>
 
     <!-- 获取用户下按照动弹类型分组的动弹数量 和动弹字数数量-->
-    <select id="groupActionCountByUserId" resultMap="MMSnsActionResultMap" parameterType="map">
+    <select id="groupActionCountByActionType" resultMap="MMSnsActionResultMap" parameterType="map">
         select action_type,count(action_id) action_count,sum(word_count) word_count
         from ma_action
         <where>

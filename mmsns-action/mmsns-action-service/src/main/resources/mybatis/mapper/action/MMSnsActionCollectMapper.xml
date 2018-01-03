@@ -11,6 +11,15 @@
         <result column="collect_user_id" property="collectUserId" jdbcType="VARCHAR"/>
         <result column="action_id" property="actionId" jdbcType="INTEGER"/>
         <result column="action_user_id" property="actionUserId" jdbcType="INTEGER"/>
+
+        <result column="action_type" property="actionType" jdbcType="INTEGER"/>
+        <result column="action_content" property="actionContent" jdbcType="INTEGER"/>
+        <result column="word_count" property="wordCount" jdbcType="INTEGER"/>
+        <result column="collect_count" property="collectCount" jdbcType="INTEGER"/>
+        <result column="vote_count" property="voteCount" jdbcType="INTEGER"/>
+        <result column="reprint_count" property="reprintCount" jdbcType="INTEGER"/>
+        <result column="comment_count" property="commentCount" jdbcType="INTEGER"/>
+        <result column="action_date" property="actionDate" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="MMSnsActionCollectColumn">
 		collect_id,collect_status,collect_date,collect_user_id,action_id,action_user_id
@@ -34,8 +43,9 @@
     <select id="listPage" resultMap="MMSnsActionCollectResultMap" parameterType="map">
         select
         ac.collect_id,ac.collect_date,ac.action_id,
+        a.action_type,a.action_content,a.word_count,a.collect_count,a.vote_count,a.reprint_count,a.comment_count,a.action_date
         from ma_action_collect ac
-        INNER JOIN mb_action a on(a.action_id=ac.action_id)
+        INNER JOIN ma_action a on(a.action_id=ac.action_id)
         <where>
             <if test="collectUserId!=null and collectUserId!=''">
                 and ac.collect_user_id=#{collectUserId}

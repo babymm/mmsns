@@ -1,5 +1,6 @@
 package com.lovecws.mumu.mmsns.action.service;
 
+import com.lovecws.mumu.core.page.PageBean;
 import com.lovecws.mumu.mmsns.action.entity.MMSnsActionCollectEntity;
 
 import java.util.List;
@@ -15,4 +16,8 @@ public interface MMSnsActionCollectService {
     public List<MMSnsActionCollectEntity> getActionCollectByCondition(int actionId, Integer sessionCommonUserUserId);
 
     public MMSnsActionCollectEntity collectAction(MMSnsActionCollectEntity actionCollect);
+
+    public int getCollectActionCountByCondition(String sessionUserId);
+
+    public PageBean listCollectActionPage(String collectUserId, int page, int limit);
 }

@@ -106,11 +106,11 @@
 
     <error-page>
         <error-code>404</error-code>
-        <location>/common/error/404</location>
+        <location>/WEB-INF/pages/common/error/404.vm</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
-        <location>/common/error/500</location>
+        <location>/WEB-INF/pages/common/error/500.vm</location>
     </error-page>
 
     <session-config>

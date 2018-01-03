@@ -115,9 +115,9 @@
         </property>
         <property name="statusCodes">
             <props>
-                <prop key="common/error/500">500</prop>
-                <prop key="common/error/405">405</prop>
-                <prop key="common/error/404">404</prop>
+                <prop key="/common/error/500">500</prop>
+                <prop key="/common/error/405">405</prop>
+                <prop key="/common/error/404">404</prop>
             </props>
         </property>
     </bean>

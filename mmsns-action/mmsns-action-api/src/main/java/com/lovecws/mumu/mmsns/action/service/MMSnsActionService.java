@@ -1,5 +1,6 @@
 package com.lovecws.mumu.mmsns.action.service;
 
+import com.lovecws.mumu.core.page.PageBean;
 import com.lovecws.mumu.mmsns.action.entity.MMSnsActionEntity;
 
 import java.util.List;
@@ -41,4 +42,8 @@ public interface MMSnsActionService {
      * @return
      */
     public MMSnsActionEntity getArctionBaseInfo(int actionId);
+
+    public List<MMSnsActionEntity> groupActionCountByActionType(String userId);
+
+    public PageBean listActionPage(String userId, String actionType, int page, int limit);
 }

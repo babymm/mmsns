@@ -1,6 +1,7 @@
 package com.lovecws.mumu.mmsns.action.service.impl;
 
 import com.lovecws.mumu.core.enums.PublicEnum;
+import com.lovecws.mumu.core.page.PageBean;
 import com.lovecws.mumu.core.page.PageParam;
 import com.lovecws.mumu.mmsns.action.dao.MMSnsActionVoteDao;
 import com.lovecws.mumu.mmsns.action.entity.MMSnsActionEntity;
@@ -33,10 +34,10 @@ public class MMSnsActionVoteServiceImpl implements MMSnsActionVoteService {
     private MMSnsActionService actionService;
 
     @Override
-    public List<MMSnsActionVoteEntity> getActionVoteByCondition(int actionId, Integer sessionCommonUserUserId) {
+    public List<MMSnsActionVoteEntity> getActionVoteByCondition(int actionId, Integer voteUserId) {
         Map<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("actionId", actionId);
-        paramMap.put("voteUserId", sessionCommonUserUserId);
+        paramMap.put("voteUserId", voteUserId);
         paramMap.put("voteStatus", PublicEnum.NORMAL.value());
         return actionVoteDao.listByColumn(paramMap);
     }
@@ -53,5 +54,20 @@ public class MMSnsActionVoteServiceImpl implements MMSnsActionVoteService {
         actionEntity.setVoteCount(1);
         actionService.updateAction(actionEntity);
         return actionVoteEntity;
+    }
+
+    @Override
+    public int getVoteActionCountByCondition(String sessionUserId) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("voteUserId", sessionUserId);
+        return actionVoteDao.listPageCount(paramMap);
+    }
+
+    @Override
+    public PageBean listVoteActionPage(String voteUserId, int page, int limit) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("voteUserId", voteUserId);
+        paramMap.put("voteStatus", PublicEnum.NORMAL.value());
+        return actionVoteDao.listPage(new PageParam(page,limit),paramMap);
     }
 }

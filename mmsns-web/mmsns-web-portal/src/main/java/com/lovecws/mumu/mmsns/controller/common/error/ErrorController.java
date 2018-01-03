@@ -12,16 +12,16 @@ public class ErrorController {
 
     @RequestMapping("/404")
     public String notFound(){
-        return "common/error/404";
+        return "/common/error/404";
     }
 
     @RequestMapping("/500")
     public String serverError(){
-        return "common/error/500";
+        return "/common/error/500";
     }
 
     @RequestMapping("/unauth")
     public String unauth(){
-        return "common/error/unauth";
+        return "/common/error/unauth";
     }
 }

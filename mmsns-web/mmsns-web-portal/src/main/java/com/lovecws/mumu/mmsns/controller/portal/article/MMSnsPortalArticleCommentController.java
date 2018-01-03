@@ -79,7 +79,7 @@ public class MMSnsPortalArticleCommentController {
     public String goArticleCommentReplyPage(int commentId,String userName){
         request.setAttribute("commentId",commentId);
         request.setAttribute("userName",userName);
-        return "/portal/article/comment_reply";
+        return "/portal/article/reply";
     }
 
     @ResponseBody

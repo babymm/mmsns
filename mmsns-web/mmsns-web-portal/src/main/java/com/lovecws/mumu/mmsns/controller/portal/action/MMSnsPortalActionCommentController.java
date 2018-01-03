@@ -79,7 +79,7 @@ public class MMSnsPortalActionCommentController {
     public String goActionCommentReplyPage(int commentId, String userName) {
         request.setAttribute("commentId", commentId);
         request.setAttribute("userName", userName);
-        return "/portal/action/comment_reply";
+        return "/portal/action/reply";
     }
 
     @ResponseBody

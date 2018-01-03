@@ -1,5 +1,7 @@
 package com.lovecws.mumu.mmsns.action.service.impl;
 
+import com.lovecws.mumu.core.enums.PublicEnum;
+import com.lovecws.mumu.core.page.PageBean;
 import com.lovecws.mumu.core.page.PageParam;
 import com.lovecws.mumu.mmsns.action.dao.MMSnsActionDao;
 import com.lovecws.mumu.mmsns.action.entity.MMSnsActionEntity;
@@ -59,5 +61,21 @@ public class MMSnsActionServiceImpl implements MMSnsActionService {
         Map<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("actionId", actionId);
         return actionDao.getByColumn(paramMap);
+    }
+
+    @Override
+    public List<MMSnsActionEntity> groupActionCountByActionType(String sessionUserId) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("userId", sessionUserId);
+        return actionDao.selectList("groupActionCountByActionType", paramMap);
+    }
+
+    @Override
+    public PageBean listActionPage(String userId, String actionType, int page, int limit) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("userId", userId);
+        paramMap.put("actionType", actionType);
+        paramMap.put("actionStatus", PublicEnum.NORMAL.value());
+        return actionDao.listPage(new PageParam(page, limit), paramMap);
     }
 }

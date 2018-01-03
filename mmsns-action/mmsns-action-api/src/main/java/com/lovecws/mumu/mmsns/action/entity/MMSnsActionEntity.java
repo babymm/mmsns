@@ -31,8 +31,8 @@ public class MMSnsActionEntity extends PersistentEntity {
     private int reprintCount;//转发量
 
     private String reprintActionContent;//转发的动弹内容
-    private String reprintActionId;//转发的动弹id
-    private String reprintUserId;//转发的动弹作者用户id
+    private int reprintActionId;//转发的动弹id
+    private int reprintUserId;//转发的动弹作者用户id
 
     public int getActionId() {
         return actionId;
@@ -130,19 +130,19 @@ public class MMSnsActionEntity extends PersistentEntity {
         this.reprintActionContent = reprintActionContent;
     }
 
-    public String getReprintActionId() {
+    public int getReprintActionId() {
         return reprintActionId;
     }
 
-    public void setReprintActionId(String reprintActionId) {
+    public void setReprintActionId(int reprintActionId) {
         this.reprintActionId = reprintActionId;
     }
 
-    public String getReprintUserId() {
+    public int getReprintUserId() {
         return reprintUserId;
     }
 
-    public void setReprintUserId(String reprintUserId) {
+    public void setReprintUserId(int reprintUserId) {
         this.reprintUserId = reprintUserId;
     }
 
@@ -152,6 +152,8 @@ public class MMSnsActionEntity extends PersistentEntity {
     private String company;
     private String positional;
     private String reprintUserName;
+
+    private int actionCount;//动弹数量
 
     public String getUserName() {
         return userName;
@@ -199,5 +201,13 @@ public class MMSnsActionEntity extends PersistentEntity {
 
     public void setReprintUserName(String reprintUserName) {
         this.reprintUserName = reprintUserName;
+    }
+
+    public int getActionCount() {
+        return actionCount;
+    }
+
+    public void setActionCount(int actionCount) {
+        this.actionCount = actionCount;
     }
 }
