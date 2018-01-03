@@ -1,0 +1,98 @@
+<title>文章评论回复-文章-MMSNS博客系统</title>
+<link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
+<style type="text/css">
+    .reply-body{
+        width: 100%;
+        height:100%;
+        float: left;
+        background-color: white;
+    }
+    .reply-body .reply-content{
+        width: 600px;
+        height:100%;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+    .reply-body .reply-content .replyer{
+        width: 100%;
+        float: left;
+        color: #6a6a6a;
+    }
+    .reply-body .reply-content .replytip{
+        width: 100%;
+        float: left;
+        margin-top: 10px;
+    }
+    .reply-body .reply-content #actionCommentReply{
+        width: 90%;
+        height: 160px;
+    }
+    .reply-body .reply-content .replybutton{
+        width: 100%;
+        float: left;
+        margin-top: 15px;
+        margin-bottom: 20px
+    }
+    .reply-body .reply-content .replybutton a{
+        width: 60px;
+        font-size: 14px;
+        line-height: 1.6;
+        padding: 3px 8px !important;
+        cursor: pointer;
+        color: #fff;
+        border-radius: 2px;
+        outline: none;
+        background: #4eaa4c;
+    }
+</style>
+<div class="reply-body">
+    <div class="reply-content">
+        <span class="replyer"><strong>回复: $!userName</strong></span>
+        <span class="replytip"><strong>回复内容</strong></span>
+        <textarea id="actionCommentReply"></textarea>
+        <span class="replybutton">
+            <a class="actionCommentReply" href="javascript:void(0)">发送</a>
+        </span>
+    </div>
+</div>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js"  charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['element', 'layer','layedit'], function () {
+        var element = layui.element, layedit = layui.layedit;
+        layedit.set({
+            uploadImage: {url: '/common/upload/layedit', type: 'post'}
+        });
+        var actionCommentReplyIndex = layedit.build('actionCommentReply', {
+            height: 250
+        });
+        //评论回复
+        $(".actionCommentReply").click(function () {
+            var commentContent=layedit.getContent(actionCommentReplyIndex);
+            if(commentContent==null||commentContent==''||commentContent=='<p><br></p>'){
+                layer.msg("请输入评论内容！",{icon:1});
+                return false;
+            }
+            $.post("/action/comment/reply",{commentId:'$!commentId',replyComment:commentContent,userName:'$!userName'},function (respData) {
+                if(respData.code==200){
+                    layer.msg('回复成功！', {
+                        icon: 1,
+                        time: 2000
+                    }, function(){
+                        if(window.parent.prependLi){
+                            window.parent.prependLi(respData.data);
+                        }
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                    });
+                }else if(respData.code==444){
+                    layer.msg(respData.data,{icon:5,time:2000},function () {
+                        window.location.href="/login";
+                    });
+                }else{
+                    layer.alert("评论回复操作失败",{icon:2});
+                }
+            });
+        });
+    });
+</script>
