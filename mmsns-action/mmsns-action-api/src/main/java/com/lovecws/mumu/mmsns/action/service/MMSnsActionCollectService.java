@@ -20,4 +20,6 @@ public interface MMSnsActionCollectService {
     public int getCollectActionCountByCondition(String sessionUserId);
 
     public PageBean listCollectActionPage(String collectUserId, int page, int limit);
+
+    public void cancelActionCollect(MMSnsActionCollectEntity actionCollectEntity);
 }

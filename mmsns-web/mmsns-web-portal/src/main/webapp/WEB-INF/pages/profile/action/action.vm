@@ -1,4 +1,4 @@
-<title>baby慕慕SNS个人博客-我的动弹</title>
+<title>我的动弹-MMSNS博客系统</title>
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/resources/profile/css/action/action.css" media="all">
@@ -12,7 +12,7 @@
                 #foreach($action in $!actionPageBean.recordList)
                     <li>
                         <div class="actioncontent">
-                            <span class="actiontitle">
+                            <span class="actionheader">
                                 #if($operation=='vote')
                                     <span class="actiontype">赞</span>
                                 #elseif($operation=='collect')
@@ -27,15 +27,15 @@
                             <span class="actionediter">转发 $action.reprintCount ·评论 $action.commentCount ·赞 $action.voteCount ·收藏 $action.collectCount ·
                                 #if($individuation==$MMSNS_COMMON_USER.individuation)
                                     #if($operation=='vote')
-                                        (<a href="javascript:void(0)" onclick="cancleArticleVote('$!article.articleId')">取消赞</a>)
+                                        <a href="javascript:void(0)" onclick="cancleActionVote('$!action.actionId')">取消赞</a>
                                     #elseif($operation=='collect')
-                                        (<a href="javascript:void(0)" onclick="cancleArticleCollect('$!article.articleId')">取消收藏</a>)
+                                        <a href="javascript:void(0)" onclick="cancleActionCollect('$!action.actionId')">取消收藏</a>
                                     #else
-                                        ( <a href="javascript:void(0)" onclick="articleDelete('$!article.articleTitle','$!article.articleId')" class="articleDelete">删除</a>)
+                                        <a href="/action/detail/$!action.actionId">详情</a> | <a href="javascript:void(0)" onclick="actionDelete('$!action.actionId')">删除</a>
                                     #end
                                 #end
                             </span>
-                            <span class="actionpublish">$date.format("yyyy-MM-dd",$action.actionDate)</span>
+                            <span class="actionpublish">$date.format("yyyy-MM-dd HH:mm:ss",$action.actionDate)</span>
                         </div>
                     </li>
                 #end
@@ -44,19 +44,75 @@
         <div class="action-page" id="actionPage"></div>
     </div>
 </div>
-#parse("/portal/sfooter.vm")
+#parse("/portal/footer.vm")
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/resources/common/js/common.js" charset="utf-8"></script>
 <script type="text/javascript">
-    layui.use(['element','laypage'], function () {
-        var element = layui.element,laypage=layui.laypage;
-        laypage.render({
-            elem: 'actionPage'
-            ,count: 120
-            ,jump: function(obj){
-                console.log(obj)
+    layui.use(['element','laypage','layer'], function () {
+        var element = layui.element,laypage=layui.laypage,layer=layui.layer;
+        var actionTotalCount='$!actionPageBean.totalCount';
+        var actionCurrentPage='$!actionPageBean.currentPage';
+        if(actionTotalCount>5){
+            laypage.render({
+                elem: 'actionPage'
+                ,count:actionTotalCount
+                ,limit:5
+                ,curr:actionCurrentPage
+                ,jump: function(obj,first){
+                    if(!first){
+                        window.location.href="/profile/$individuation/action/$!operation?page="+obj.curr;
+                    }
+                }
+            });
+        }
+    });
+    //取消动弹点赞
+    function cancleActionVote(actionId) {
+        $.post("/profile/$individuation/action/cancleVote", {actionId:actionId,_method:'delete'}, function (respData) {
+            if(respData.code==200){
+                layer.msg('取消点赞操作成功', {
+                    icon: 1,
+                    time: 2000
+                }, function () {
+                    window.location.reload();
+                });
+            } else {
+                layer.alert(respData.data, {icon: 5});
             }
         });
-    });
+    }
+    //取消动弹收藏
+    function cancleActionCollect(actionId) {
+        $.post("/profile/$individuation/action/cancleCollect", {actionId:actionId,_method:'delete'}, function (respData) {
+            if(respData.code==200){
+                layer.msg('取消收藏操作成功', {
+                    icon: 1,
+                    time: 2000
+                }, function () {
+                    window.location.reload();
+                });
+            } else {
+                layer.alert(respData.data, {icon: 5});
+            }
+        });
+    }
+    //动弹删除
+    function actionDelete(actionId) {
+        layer.confirm('你确定要删除该动弹吗？',{icon:3,title:'警告'}, function(index){
+            $.post("/profile/$individuation/action/delete", {actionId:actionId,_method:'delete'}, function (respData) {
+                if(respData.code==200){
+                    layer.msg('删除动弹操作成功', {
+                        icon: 1,
+                        time: 2000
+                    }, function () {
+                        layer.close(index);
+                        window.location.reload();
+                    });
+                } else {
+                    layer.alert(respData.data, {icon: 5});
+                }
+            })
+        });
+    }
 </script>

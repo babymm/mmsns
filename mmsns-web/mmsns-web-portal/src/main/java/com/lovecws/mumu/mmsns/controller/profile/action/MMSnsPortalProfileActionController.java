@@ -1,8 +1,11 @@
 package com.lovecws.mumu.mmsns.controller.profile.action;
 
 import com.lovecws.mumu.core.page.PageBean;
+import com.lovecws.mumu.core.response.ResponseEntity;
 import com.lovecws.mumu.core.utils.ValidateUtils;
+import com.lovecws.mumu.mmsns.action.entity.MMSnsActionCollectEntity;
 import com.lovecws.mumu.mmsns.action.entity.MMSnsActionEntity;
+import com.lovecws.mumu.mmsns.action.entity.MMSnsActionVoteEntity;
 import com.lovecws.mumu.mmsns.action.service.MMSnsActionCollectService;
 import com.lovecws.mumu.mmsns.action.service.MMSnsActionService;
 import com.lovecws.mumu.mmsns.action.service.MMSnsActionVoteService;
@@ -11,10 +14,7 @@ import com.lovecws.mumu.mmsns.common.user.entity.MMSnsCommonUserEntity;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -85,5 +85,55 @@ public class MMSnsPortalProfileActionController {
     @RequestMapping(value = "/{individuation}/action/publish", method = RequestMethod.GET)
     public String publish(@PathVariable String individuation) {
         return "/profile/action/publish";
+    }
+
+    /**
+     * 取消动弹点赞
+     *
+     * @param individuation
+     * @param actionId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/{individuation}/action/cancleVote", method = RequestMethod.DELETE)
+    public ResponseEntity cancleActionVote(@PathVariable String individuation, int actionId) {
+        MMSnsCommonUserEntity sessionCommonUser = (MMSnsCommonUserEntity) SecurityUtils.getSubject().getSession().getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
+        MMSnsActionVoteEntity actionVoteEntity = new MMSnsActionVoteEntity();
+        actionVoteEntity.setVoteUserId(sessionCommonUser.getUserId());
+        actionVoteEntity.setActionId(actionId);
+        actionVoteService.cancelActionVote(actionVoteEntity);
+        return new ResponseEntity();
+    }
+
+    /**
+     * 取消动弹收藏
+     *
+     * @param individuation
+     * @param actionId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/{individuation}/action/cancleCollect", method = RequestMethod.DELETE)
+    public ResponseEntity cancleActionCollect(@PathVariable String individuation, int actionId) {
+        MMSnsCommonUserEntity sessionCommonUser = (MMSnsCommonUserEntity) SecurityUtils.getSubject().getSession().getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
+        MMSnsActionCollectEntity actionCollectEntity = new MMSnsActionCollectEntity();
+        actionCollectEntity.setCollectUserId(sessionCommonUser.getUserId());
+        actionCollectEntity.setActionId(actionId);
+        actionCollectService.cancelActionCollect(actionCollectEntity);
+        return new ResponseEntity();
+    }
+
+    /**
+     * 删除动弹
+     *
+     * @param individuation
+     * @param actionId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/{individuation}/action/delete", method = RequestMethod.DELETE)
+    public ResponseEntity actionDelete(@PathVariable String individuation, int actionId) {
+        actionService.deleteActionById(actionId);
+        return new ResponseEntity();
     }
 }

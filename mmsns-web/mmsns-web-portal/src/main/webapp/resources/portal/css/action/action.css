@@ -95,9 +95,11 @@
     line-height: 24px;
     vertical-align: top;
 }
+.action-body .layout-action ul li .li-info .info-reprint img,
 .action-body .layout-action ul li .li-info .info-content img{
     max-width: 100%;
     max-height: 200px;
+    border: 1px solid #ddd;
 }
 .action-body .layout-action ul li .li-info .info-command{
     float: left;

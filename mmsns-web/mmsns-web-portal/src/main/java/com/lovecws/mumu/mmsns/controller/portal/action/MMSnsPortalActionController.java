@@ -107,7 +107,7 @@ public class MMSnsPortalActionController {
     @RequestMapping(value = "/reprint", method = RequestMethod.POST)
     public ResponseEntity reprintAction(int actionId, String actionContent) {
         //获取动弹详情
-        MMSnsActionEntity actionBaseInfo = actionService.getArctionBaseInfo(actionId);
+        MMSnsActionEntity actionBaseInfo = actionService.getActionBaseInfo(actionId);
         if (actionBaseInfo == null) {
             return new ResponseEntity(HttpCode.PARAMETER_ERROR);
         }
@@ -125,7 +125,7 @@ public class MMSnsPortalActionController {
         actionEntity.setReprintActionContent(actionBaseInfo.getActionContent());
         actionEntity.setReprintActionId(actionBaseInfo.getActionId());
         actionEntity.setReprintUserId(actionBaseInfo.getUserId());
-        actionEntity = actionService.addAction(actionEntity);
+        actionEntity = actionService.reprintAction(actionEntity);
 
         actionEntity.setAvator(sessionCommonUser.getAvator());
         actionEntity.setUserName(sessionCommonUser.getUserName());

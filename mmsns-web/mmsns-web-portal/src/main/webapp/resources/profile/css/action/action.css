@@ -84,12 +84,11 @@
     width: 70%;
     float: left;
     margin-top: 50px;
-    min-height: 850px;
 }
 .layout-body .layout-right .action-body{
     width: 100%;
     float: left;
-    min-height: 660px;
+    min-height: 750px;
 }
 .layout-body .layout-right .action-body ul{
     margin-top: 10px;
@@ -100,24 +99,30 @@
     width: 100%;
     float: left;
     border-bottom: 1px solid #ddd;
-    margin-bottom: 20px;
 }
 .layout-body .layout-right .action-body ul li .actioncontent{
-    width: 100%;
+    width: 95%;
     float: left;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
-.layout-body .layout-right .action-body ul li .actioncontent .actiontitle{
+.layout-body .layout-right .action-body ul li .actioncontent .actionheader{
     display: block;
     font-size: 15px;
     color: #000;
     word-break: break-all;
-    height: 40px;
+    height: auto;
+    max-height: 300px;
     text-overflow:ellipsis;
     overflow:hidden;
     width: 100%;
     float: left;
 }
-.layout-body .layout-right .action-body ul li .actioncontent .actiontitle .actiontype{
+.layout-body .layout-right .action-body ul li .actioncontent .actionheader img{
+    max-height: 300px;
+    max-width: 100%;
+}
+.layout-body .layout-right .action-body ul li .actioncontent .actionheader .actiontype{
     border-color: #51BAE3;
     color: #51BAE3;
     border: 2px solid #51BAE3;
@@ -138,11 +143,15 @@
     width: 100%;
     float: left;
 }
+.layout-body .layout-right .action-body ul li .actioncontent .actionediter a{
+    color: forestgreen;
+}
 .layout-body .layout-right .action-body ul li .actioncontent .actionpublish{
     font-size: 0.9rem;
     margin-top: 6px;
     width: 100%;
     float: left;
+    color: #666;
 }
 .layout-body .layout-right .action-page{
     float: left;

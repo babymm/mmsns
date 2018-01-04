@@ -68,6 +68,22 @@ public class MMSnsActionVoteServiceImpl implements MMSnsActionVoteService {
         Map<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("voteUserId", voteUserId);
         paramMap.put("voteStatus", PublicEnum.NORMAL.value());
-        return actionVoteDao.listPage(new PageParam(page,limit),paramMap);
+        return actionVoteDao.listPage(new PageParam(page, limit), paramMap);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void cancelActionVote(MMSnsActionVoteEntity actionVoteEntity) {
+        //删除此点赞信息
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("actionId", actionVoteEntity.getActionId());
+        paramMap.put("voteUserId", actionVoteEntity.getVoteUserId());
+        actionVoteDao.delete(paramMap);
+
+        //将动弹点赞数量-1
+        MMSnsActionEntity actionEntity = new MMSnsActionEntity();
+        actionEntity.setActionId(actionVoteEntity.getActionId());
+        actionEntity.setVoteCount(-1);
+        actionService.updateAction(actionEntity);
     }
 }

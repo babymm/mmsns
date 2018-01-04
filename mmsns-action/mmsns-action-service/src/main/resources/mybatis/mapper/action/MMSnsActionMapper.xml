@@ -29,6 +29,7 @@
         <result column="positional" property="positional" jdbcType="VARCHAR"/>
 
         <result column="reprint_user_name" property="reprintUserName" jdbcType="VARCHAR"/>
+        <result column="action_count" property="actionCount" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="MMSnsActionColumn">

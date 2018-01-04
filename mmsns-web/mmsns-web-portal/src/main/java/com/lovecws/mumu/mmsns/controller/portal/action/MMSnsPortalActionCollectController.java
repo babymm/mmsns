@@ -41,7 +41,7 @@ public class MMSnsPortalActionCollectController {
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity actionCollect(int actionId) {
-        MMSnsActionEntity actionInfo = actionService.getArctionBaseInfo(actionId);
+        MMSnsActionEntity actionInfo = actionService.getActionBaseInfo(actionId);
         if (actionInfo == null) {
             return new ResponseEntity(404, "parameter error", "动弹不存在");
         }

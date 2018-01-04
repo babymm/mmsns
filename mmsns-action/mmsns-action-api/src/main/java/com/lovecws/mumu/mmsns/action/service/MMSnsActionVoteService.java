@@ -20,4 +20,6 @@ public interface MMSnsActionVoteService {
     public int getVoteActionCountByCondition(String sessionUserId);
 
     public PageBean listVoteActionPage(String voteUserId, int page, int limit);
+
+    public void cancelActionVote(MMSnsActionVoteEntity actionVoteEntity);
 }

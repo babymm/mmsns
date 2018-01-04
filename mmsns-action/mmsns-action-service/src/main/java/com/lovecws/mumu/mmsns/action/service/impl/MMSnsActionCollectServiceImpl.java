@@ -47,7 +47,7 @@ public class MMSnsActionCollectServiceImpl implements MMSnsActionCollectService 
     public MMSnsActionCollectEntity collectAction(MMSnsActionCollectEntity actionCollect) {
         actionCollect = actionCollectDao.insert(actionCollect);
 
-        //点赞+1
+        //收藏+1
         MMSnsActionEntity actionEntity = new MMSnsActionEntity();
         actionEntity.setActionId(actionCollect.getActionId());
         actionEntity.setCollectCount(1);
@@ -68,5 +68,21 @@ public class MMSnsActionCollectServiceImpl implements MMSnsActionCollectService 
         paramMap.put("collectUserId", collectUserId);
         paramMap.put("collectStatus", PublicEnum.NORMAL.value());
         return actionCollectDao.listPage(new PageParam(page, limit), paramMap);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void cancelActionCollect(MMSnsActionCollectEntity actionCollectEntity) {
+        //删除动弹收藏信息
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("actionId", actionCollectEntity.getActionId());
+        paramMap.put("collectUserId", actionCollectEntity.getCollectUserId());
+        actionCollectDao.delete(paramMap);
+
+        //收藏-1
+        MMSnsActionEntity actionEntity = new MMSnsActionEntity();
+        actionEntity.setActionId(actionCollectEntity.getActionId());
+        actionEntity.setCollectCount(1);
+        actionService.updateAction(actionEntity);
     }
 }

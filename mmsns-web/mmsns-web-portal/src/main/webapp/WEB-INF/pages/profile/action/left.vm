@@ -12,7 +12,7 @@
             <div class="classify-header">
                 <span class="classifytitle" style="line-height: 30px;font-size: 18px;font-weight: 400">动弹类型</span>
                 #set($totalCount=$!originalActionCount+$!reprintActionCount+$!voteActionCount+$!collectActionCount)
-                <span class="classifycount">共$totalCount篇</span>
+                <span class="classifycount">共$!totalCount篇</span>
             </div>
             <hr>
             <ul>

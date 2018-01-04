@@ -41,9 +41,13 @@ public interface MMSnsActionService {
      * @param actionId
      * @return
      */
-    public MMSnsActionEntity getArctionBaseInfo(int actionId);
+    public MMSnsActionEntity getActionBaseInfo(int actionId);
 
     public List<MMSnsActionEntity> groupActionCountByActionType(String userId);
 
     public PageBean listActionPage(String userId, String actionType, int page, int limit);
+
+    public void deleteActionById(int actionId);
+
+    public MMSnsActionEntity reprintAction(MMSnsActionEntity actionEntity);
 }
