@@ -20,7 +20,7 @@
     width: 100%;
     float: left;
 }
-.layout-body .layout-right .right-content .right-header .articleheader{
+.layout-body .layout-right .right-content .right-header .header{
     width: 100%;
     font-size: 18px;
     font-weight: 400;
@@ -29,7 +29,7 @@
     color: #6a6a6a;
     border-bottom: 1px solid #ddd;
 }
-.layout-body .layout-right .right-content .right-header .articleheader span{
+.layout-body .layout-right .right-content .right-header .header span{
     margin-right: 20px;
     color: #4eaa4c;
 }
@@ -46,46 +46,56 @@
     padding-bottom: 15px;
     border-bottom: 1px solid #ddd;
 }
-.layout-body .layout-right .right-content .right-main ul li .userlogo{
+.layout-body .layout-right .right-content .right-main ul li .content-header{
     width: 70px;
     float: left;
 }
-.layout-body .layout-right .right-content .right-main ul li .userlogo a img{
+.layout-body .layout-right .right-content .right-main ul li .content-header a img{
     /*width: 60px;
     height: 60px;
     border-radius: 50%;*/
 }
-.layout-body .layout-right .right-content .right-main ul li .article{
+.layout-body .layout-right .right-content .right-main ul li .content-body{
     width: calc(100% - 70px);
     float: left;
 }
-.layout-body .layout-right .right-content .right-main ul li .article>span{
+.layout-body .layout-right .right-content .right-main ul li .content-body>span{
     width: 100%;
     float: left;
     margin-bottom: 3px;
 }
-.layout-body .layout-right .right-content .right-main ul li .article .articletitle a{
+.layout-body .layout-right .right-content .right-main ul li .content-body .body-title{
+    color: #4eaa4c;
+    width: 100%;
+    float: left;
+    margin-bottom: 3px;
+}
+.layout-body .layout-right .right-content .right-main ul li .content-body .body-title img{
+    max-width: 200px;
+    max-height: 200px;
+}
+.layout-body .layout-right .right-content .right-main ul li .content-body .body-title a{
     color: #4eaa4c;
 }
-.layout-body .layout-right .right-content .right-main ul li .article .articlecontent{
+.layout-body .layout-right .right-content .right-main ul li .content-body .body-comment{
     line-height: 22px;
     width: 100%;
     height: 100%;
 }
-.layout-body .layout-right .right-content .right-main ul li .article .articlecontent img{
+.layout-body .layout-right .right-content .right-main ul li .content-body .body-comment img{
     max-width: 200px;
     max-height: 200px;
 }
-.layout-body .layout-right .right-content .right-main ul li .article .articleextra .pubdate{
+.layout-body .layout-right .right-content .right-main ul li .content-body .body-extra .pubdate{
     width: 200px;
     float: left;
     color: #999;
 }
-.layout-body .layout-right .right-content .right-main ul li .article .articleextra .articlebuttons{
+.layout-body .layout-right .right-content .right-main ul li .content-body .body-extra .buttons{
     width: 200px;
     float: right;
     text-align: right;
 }
-.layout-body .layout-right .right-content .right-main ul li .article .articleextra .articlebuttons a{
-    color: #999;
+.layout-body .layout-right .right-content .right-main ul li .content-body .body-extra .buttons a{
+    color: #4eaa4c;
 }

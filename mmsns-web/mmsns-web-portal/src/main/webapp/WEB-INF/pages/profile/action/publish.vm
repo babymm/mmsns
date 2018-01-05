@@ -29,7 +29,7 @@
                     </div>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即发布</button>
+                            <button class="layui-btn" id="publishActionButton">立即发布</button>
                         </div>
                     </div>
                 </form>
@@ -42,17 +42,37 @@
 </body>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="${request.getContextPath()}/plugins/jquery/jquery-3.1.0.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="${request.getContextPath()}/resources/common/js/common.js" charset="utf-8"></script>
 <script type="text/javascript">
-    layui.use(['element','layedit','upload'], function () {
+    layui.use(['element','layedit'], function () {
         var element = layui.element,form=layui.form,layedit=layui.layedit;
+        var individuation='$!individuation';
         //设置文本编辑器 图片上传接口
         layedit.set({
             uploadImage: {url: '/common/upload/layedit', type: 'post'}
         });
-        layedit.build('actionTextarea',{
+        var actionContentTextAreaIndex=layedit.build('actionTextarea',{
             height:200,
             tool: ['strong','italic' ,'underline','del','|','left','center','right','link','unlink','face','help','image']
+        });
+        //发布动弹
+        $("#publishActionButton").click(function () {
+            var actionContent=layedit.getContent(actionContentTextAreaIndex);
+            if(actionContent==null||actionContent==''||actionContent=='<p><br></p>'){
+                layer.msg("请输入动弹内容！",{icon:1});
+                return false;
+            }
+            $.post("/profile/"+individuation+"/action/publish",{actionContent:actionContent},function(respData) {
+                if(respData.code==200){
+                    layer.msg('发布动弹操作成功', {
+                        icon: 1,
+                        time: 2000
+                    }, function () {
+                        window.location.href="/profile/"+individuation+"/action";
+                    });
+                }else{
+                    layer.alert(respData.data,{icon:5});
+                }
+            });
         });
     });
 </script>

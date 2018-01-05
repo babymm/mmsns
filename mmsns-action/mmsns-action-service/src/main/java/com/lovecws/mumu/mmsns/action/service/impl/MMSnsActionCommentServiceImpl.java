@@ -1,6 +1,7 @@
 package com.lovecws.mumu.mmsns.action.service.impl;
 
 import com.lovecws.mumu.core.enums.PublicEnum;
+import com.lovecws.mumu.core.page.PageBean;
 import com.lovecws.mumu.core.page.PageParam;
 import com.lovecws.mumu.mmsns.action.dao.MMSnsActionCommentDao;
 import com.lovecws.mumu.mmsns.action.entity.MMSnsActionCommentEntity;
@@ -44,6 +45,15 @@ public class MMSnsActionCommentServiceImpl implements MMSnsActionCommentService 
     }
 
     @Override
+    public PageBean<MMSnsActionCommentEntity> listUserActionCommentPageWithUserInfo(Integer userId, int page, int limit) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("userId", userId);
+        paramMap.put("actionStatus", PublicEnum.NORMAL.value());
+        paramMap.put("commentStatus", PublicEnum.NORMAL.value());
+        return actionCommentDao.listPage(new PageParam(page, limit), paramMap);
+    }
+
+    @Override
     public MMSnsActionCommentEntity getActionCommentInfo(int commentId) {
         return actionCommentDao.getById(String.valueOf(commentId));
     }
@@ -64,14 +74,14 @@ public class MMSnsActionCommentServiceImpl implements MMSnsActionCommentService 
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-    public void deleteArticleCommentById(String commentId) {
+    public void deleteActionCommentById(int commentId) {
         MMSnsActionCommentEntity articleCommentEntity = new MMSnsActionCommentEntity();
-        articleCommentEntity.setCommentId(Integer.parseInt(commentId));
+        articleCommentEntity.setCommentId(commentId);
         articleCommentEntity.setCommentStatus(PublicEnum.DELETE.value());
         updateArticleComment(articleCommentEntity);
 
-        MMSnsActionCommentEntity actionCommentInfo = getActionCommentInfo(Integer.parseInt(commentId));
-        //动弹数量+1
+        MMSnsActionCommentEntity actionCommentInfo = getActionCommentInfo(commentId);
+        //动弹评论数量-1
         MMSnsActionEntity actionEntity = new MMSnsActionEntity();
         actionEntity.setActionId(actionCommentInfo.getActionId());
         actionEntity.setCommentCount(-1);

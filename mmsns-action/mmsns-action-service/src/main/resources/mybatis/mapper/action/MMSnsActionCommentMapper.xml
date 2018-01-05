@@ -19,6 +19,7 @@
         <result column="reply_user_id" property="replyUserId" jdbcType="INTEGER"/>
         <result column="reply_comment_content" property="replyCommentContent" jdbcType="VARCHAR"/>
 
+        <result column="action_content" property="actionContent" jdbcType="VARCHAR"/>
         <result column="user_name" property="userName" jdbcType="VARCHAR"/>
         <result column="individuation" property="individuation" jdbcType="VARCHAR"/>
         <result column="avator" property="avator" jdbcType="VARCHAR"/>
@@ -28,7 +29,7 @@
 		comment_id,comment_status,comment_date,comment_type,comment_content,comment_user_id,action_id,action_user_id,reply_comment_id,reply_user_id,reply_comment_content
 	</sql>
 
-    <!-- 获取文章评论数量 -->
+    <!-- 获取动弹评论数量 -->
     <select id="listPageCount" resultType="long" parameterType="map">
         select count(ac.comment_id)
         from ma_action a
@@ -46,10 +47,10 @@
         </where>
     </select>
 
-    <!-- 分页获取用户的所有文章评论 -->
+    <!-- 分页获取用户发布的动弹下的所有评论 -->
     <select id="listPage" resultMap="MMSnsActionCommentResultMap" parameterType="map">
         select
-        a.action_id,a.action_title,
+        a.action_id,a.action_content,
         ac.comment_id,ac.comment_date,ac.comment_type,ac.comment_content,ac.reply_comment_id,reply_comment_content,
         u.user_name,u.individuation,u.avator,
         uu.user_name reply_user_name
@@ -74,7 +75,7 @@
         </if>
     </select>
 
-    <!-- 分页获取文章评论 -->
+    <!-- 分页获取动弹下的所有评论 -->
     <select id="listActionCommentPageWithUserInfo" resultMap="MMSnsActionCommentResultMap" parameterType="map">
         select
         ac.comment_id,ac.comment_date,ac.comment_type,ac.comment_content,ac.reply_comment_id,reply_comment_content,
@@ -97,7 +98,7 @@
         </if>
     </select>
 
-    <!-- 获取文章评论详情信息-->
+    <!-- 获取动弹评论详情信息-->
     <select id="selectByPrimaryKey" resultMap="MMSnsActionCommentResultMap" parameterType="java.lang.String">
         select
         <include refid="MMSnsActionCommentColumn"/>
@@ -105,7 +106,7 @@
         where comment_id=#{commentId}
     </select>
 
-    <!-- 添加文章评论信息 -->
+    <!-- 添加动弹评论信息 -->
     <insert id="insert" parameterType="MMSnsActionCommentEntity" useGeneratedKeys="true"
             keyProperty="commentId">
         insert into ma_action_comment
@@ -175,7 +176,7 @@
         </trim>
     </insert>
 
-    <!-- 更新文章评论信息 -->
+    <!-- 更新动弹评论信息 -->
     <update id="updateByPrimaryKey" parameterType="MMSnsActionCommentEntity">
         update ma_action_comment
         <set>
@@ -217,7 +218,7 @@
         </where>
     </update>
 
-    <!-- 根据id删除文章评论 -->
+    <!-- 根据id删除动弹评论 -->
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete
         from ma_action_comment

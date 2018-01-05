@@ -35,7 +35,7 @@ public class MMSnsPortalActionController {
     public String action() {
         request.setAttribute("mainModular", "action");
         //获取热门动弹
-        List<MMSnsActionEntity> actions = actionService.listActionPageWithUserInfo("comment_count", 0, 10);
+        List<MMSnsActionEntity> actions = actionService.listActionPageWithUserInfo("comment_count", 1, 10);
         request.setAttribute("hotActions", actions);
         return "/portal/action/action";
     }

@@ -26,7 +26,7 @@
                                     <span class="articlecontent">回复 $!articleComment.replyUserName: $articleComment.commentContent</span>
                                 #end
                                 <span class="articleextra">
-                                    <span class="pubdate">$date.format('yyyy-MM-dd',$!articleComment.commentDate)</span>
+                                    <span class="pubdate">$date.format('yyyy-MM-dd HH:mm:ss',$!articleComment.commentDate)</span>
                                     <span class="articlebuttons">
                                         <a class="articleCommentReply" onclick="articleCommentReply('$!articleComment.commentId','$!articleComment.userName')" href="javascript:void(0)">回复</a> |
                                         <a onclick="articleCommentDelete('$!articleComment.commentId')" href="javascript:void(0)">删除</a> </span>

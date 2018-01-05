@@ -1,5 +1,7 @@
 package com.lovecws.mumu.mmsns.controller.portal.index;
 
+import com.lovecws.mumu.mmsns.action.entity.MMSnsActionEntity;
+import com.lovecws.mumu.mmsns.action.service.MMSnsActionService;
 import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleEntity;
 import com.lovecws.mumu.mmsns.article.service.MMSnsArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class MMSnsPortalIndexController {
 
     @Autowired(required = false)
     private MMSnsArticleService articleService;
+    @Autowired(required = false)
+    private MMSnsActionService actionService;
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String index(HttpServletRequest request) {
@@ -30,6 +34,10 @@ public class MMSnsPortalIndexController {
         //精彩文章 附带图片
         List<MMSnsArticleEntity> articles = articleService.selectArticlePage(null, null, null, null, "read_count", true, 1, 8);
         request.setAttribute("articles", articles);
+
+        //热门动弹
+        List<MMSnsActionEntity> actions = actionService.listActionPageWithUserInfo("comment_count", 1, 8);
+        request.setAttribute("hotActions", actions);
         return "/portal/index";
     }
 }

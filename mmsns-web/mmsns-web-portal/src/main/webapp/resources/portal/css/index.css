@@ -47,17 +47,17 @@
     border: 1px solid #ddd;
     height: 276px;
 }
-.mmsns .mmsns-content .layout-body .layui-row .grid-demo .article-logo{
+.mmsns .mmsns-content .layout-body .layui-row .articlecontent .article-logo{
     float: left;
     width: 100%;
     height: 250px;
 }
-.mmsns .mmsns-content .layout-body .layui-row .grid-demo .article-logo img{
+.mmsns .mmsns-content .layout-body .layui-row .articlecontent .article-logo img{
     float: left;
     width: 100%;
     height: 100%;
 }
-.mmsns .mmsns-content .layout-body .layui-row .grid-demo .article-title{
+.mmsns .mmsns-content .layout-body .layui-row .articlecontent .article-title{
     float: left;
     width: 100%;
     margin-top: 4px;
@@ -65,7 +65,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-.mmsns .mmsns-content .layout-body .layui-row .grid-demo .article-title h4 a{
+.mmsns .mmsns-content .layout-body .layui-row .articlecontent .article-title h4 a{
     display: block;
     color: #0499e2;
     text-decoration: none;
@@ -73,4 +73,41 @@
     -o-transition: all .4s cubic-bezier(.175, .885, .32, 1);
     transition: all .4s cubic-bezier(.175, .885, .32, 1);
     text-align: center;
+}
+.mmsns .mmsns-content .layout-body .layui-row .actioncontent .actionimg{
+    float: left;
+    width: 70px;
+}
+.mmsns .mmsns-content .layout-body .layui-row .actioncontent .actioninfo{
+    float: left;
+    width: calc(100% - 70px);
+}
+.mmsns .mmsns-content .layout-body .layui-row .actioncontent .actioninfo .infoauthor{
+    float: left;
+    width: 100%;
+    font-size: 16px;
+    font-family: 'DejaVu Serif', Georgia, "Times New Roman", Times, serif;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.mmsns .mmsns-content .layout-body .layui-row .actioncontent .actioninfo .infocommand{
+    float: left;
+    width: 100%;
+    color: #666;
+    margin-top: 3px;
+}
+.mmsns .mmsns-content .layout-body .layui-row .actioncontent .actioncontentmsg{
+    width: 100%;
+    float: left;
+    height: 200px;
+    margin-top: 5px;
+}
+.mmsns .mmsns-content .layout-body .layui-row .actioncontent .actioncontentmsg .infocontent{
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+.mmsns .mmsns-content .layout-body .layui-row .actioncontent .actioncontentmsg .infocontent img{
+    max-width: 100%;
+    max-height: 100%;
 }

@@ -1,6 +1,8 @@
 package com.lovecws.mumu.mmsns.controller.profile.action;
 
+import com.lovecws.mumu.core.enums.PublicEnum;
 import com.lovecws.mumu.core.page.PageBean;
+import com.lovecws.mumu.core.response.HttpCode;
 import com.lovecws.mumu.core.response.ResponseEntity;
 import com.lovecws.mumu.core.utils.ValidateUtils;
 import com.lovecws.mumu.mmsns.action.entity.MMSnsActionCollectEntity;
@@ -11,12 +13,14 @@ import com.lovecws.mumu.mmsns.action.service.MMSnsActionService;
 import com.lovecws.mumu.mmsns.action.service.MMSnsActionVoteService;
 import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleEntity;
 import com.lovecws.mumu.mmsns.common.user.entity.MMSnsCommonUserEntity;
+import com.lovecws.mumu.mmsns.util.MMSnsContentUtil;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -84,7 +88,29 @@ public class MMSnsPortalProfileActionController {
 
     @RequestMapping(value = "/{individuation}/action/publish", method = RequestMethod.GET)
     public String publish(@PathVariable String individuation) {
+        MMSnsCommonUserEntity commonUserEntity = (MMSnsCommonUserEntity) SecurityUtils.getSubject().getSession().getAttribute(MMSnsCommonUserEntity.VISIT_USER);
+        String sessionUserId = String.valueOf(commonUserEntity.getUserId());
+        initActionCenter(sessionUserId);
+
         return "/profile/action/publish";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/{individuation}/action/publish", method = RequestMethod.POST)
+    public ResponseEntity publishAction(@PathVariable String individuation, String actionContent) {
+        if (actionContent == null || "".equals(actionContent)) {
+            return new ResponseEntity(HttpCode.PARAMETER_ERROR);
+        }
+        MMSnsActionEntity actionEntity = new MMSnsActionEntity();
+        actionEntity.setActionStatus(PublicEnum.NORMAL.value());
+        actionEntity.setActionDate(new Date());
+        actionEntity.setActionType(MMSnsActionEntity.ACTION_TYPE_ORIGINAL);
+        actionEntity.setActionContent(actionContent);
+        actionEntity.setWordCount(MMSnsContentUtil.wordCount(actionContent));
+        MMSnsCommonUserEntity sessionCommonUser = (MMSnsCommonUserEntity) request.getSession().getAttribute(MMSnsCommonUserEntity.MMSNS_COMMON_USER);
+        actionEntity.setUserId(sessionCommonUser.getUserId());
+        actionEntity = actionService.addAction(actionEntity);
+        return new ResponseEntity(actionEntity);
     }
 
     /**

@@ -119,10 +119,19 @@ public class MMSnsActionCommentEntity extends PersistentEntity {
         this.replyCommentContent = replyCommentContent;
     }
 
+    private String actionContent;
     private String userName;
     private String individuation;
     private String avator;
     private String replyUserName;
+
+    public String getActionContent() {
+        return actionContent;
+    }
+
+    public void setActionContent(String actionContent) {
+        this.actionContent = actionContent;
+    }
 
     public String getUserName() {
         return userName;

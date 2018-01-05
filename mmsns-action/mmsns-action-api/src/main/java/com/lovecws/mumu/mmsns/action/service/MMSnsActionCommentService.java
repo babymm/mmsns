@@ -1,5 +1,6 @@
 package com.lovecws.mumu.mmsns.action.service;
 
+import com.lovecws.mumu.core.page.PageBean;
 import com.lovecws.mumu.mmsns.action.entity.MMSnsActionCommentEntity;
 
 import java.util.List;
@@ -17,7 +18,9 @@ public interface MMSnsActionCommentService {
 
     public MMSnsActionCommentEntity publishActionComment(MMSnsActionCommentEntity actionCommentReply);
 
-    public void deleteArticleCommentById(String commentId);
+    public void deleteActionCommentById(int commentId);
 
     public void updateArticleComment(MMSnsActionCommentEntity articleCommentEntity);
+
+    public PageBean<MMSnsActionCommentEntity> listUserActionCommentPageWithUserInfo(Integer userId, int page, int limit);
 }

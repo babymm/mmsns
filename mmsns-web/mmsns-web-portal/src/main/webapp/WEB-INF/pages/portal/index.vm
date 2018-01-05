@@ -19,12 +19,40 @@
             <div class="layui-row">
                 #foreach($article in $articles)
                     <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
-                        <div class="grid-demo grid-demo-bg1">
+                        <div class="grid-demo grid-demo-bg1 articlecontent">
                             <div class="article-logo">
                                 <a href="/article/detail/$!article.articleId"><img src="$!article.articleLogo"></a>
                             </div>
                             <div class="article-title">
                                 <h4><a href="/article/detail/$!article.articleId">$!article.articleTitle</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                #end
+            </div>
+        </div>
+    </div>
+    <div class="mmsns-content">
+        <div class="layout-header">
+            <span class="headertitle">热门动弹</span>
+            <span class="headermore"><a href="/action">阅读更多</a></span>
+        </div>
+        <div class="layout-body">
+            <div class="layui-row">
+                #foreach($hotAction in $hotActions)
+                    <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
+                        <div class="grid-demo grid-demo-bg1 actioncontent">
+                            <div class="actionimg">
+                                <a href="/profile/$!hotAction.individuation/action">
+                                    <img src="$!hotAction.avator" width="60" height="60" style="border-radius: 50%"></a>
+                                </a>
+                            </div>
+                            <div class="actioninfo">
+                                <span class="infoauthor"><a href="/profile/$!hotaction.individuation/action">$!hotAction.userName</a></span>
+                                <span class="infocommand">转发 $!hotAction.reprintCount ·评论 $!hotAction.commentCount ·赞 $!hotAction.voteCount ·收藏 $!hotAction.collectCount ·<a href="/action/detail/$!hotAction.actionId">详情</a></span>
+                            </div>
+                            <div class="actioncontentmsg">
+                                <span class="infocontent">$!hotAction.actionContent</span>
                             </div>
                         </div>
                     </div>

@@ -64,6 +64,7 @@ public class MMSnsArticleServiceImpl implements MMSnsArticleService {
         paramMap.put("articleType", articleType);
         paramMap.put("articleStatus", PublicEnum.NORMAL.value());
         paramMap.put("userCategoryId", userCategoryId);
+        paramMap.put("orderby", "article_date");
         return articleDao.listPage(new PageParam(page, limit), paramMap);
     }
 

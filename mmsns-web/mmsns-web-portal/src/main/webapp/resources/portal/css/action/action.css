@@ -18,6 +18,8 @@
     margin-left: 2%;
     margin-right: 2%;
     min-width: 1056px;
+    height: auto;
+    float: left;
 }
 .action-body .action-content{
     width: 70%;
@@ -94,6 +96,9 @@
     width: 100%;
     line-height: 24px;
     vertical-align: top;
+    overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
 }
 .action-body .layout-action ul li .li-info .info-reprint img,
 .action-body .layout-action ul li .li-info .info-content img{

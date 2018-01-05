@@ -69,9 +69,7 @@
                 and action_status=#{actionStatus}
             </if>
         </where>
-        <if test="orderby!=null">
-            ORDER BY action_date DESC
-        </if>
+        ORDER BY action_date DESC
         <if test="beginIndex!=null and numPerPage!=null">
             limit #{beginIndex},#{numPerPage}
         </if>
