@@ -41,6 +41,7 @@
     text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
     background-color: #00aaee;
     border-color: #00aaee;
+    font-size: 14px;
 }
 .mmsns .mmsns-content .layout-body .layui-row .grid-demo{
     margin: 10px;
@@ -99,8 +100,9 @@
 .mmsns .mmsns-content .layout-body .layui-row .actioncontent .actioncontentmsg{
     width: 100%;
     float: left;
-    height: 200px;
+    height: 220px;
     margin-top: 5px;
+    overflow: hidden;
 }
 .mmsns .mmsns-content .layout-body .layui-row .actioncontent .actioncontentmsg .infocontent{
     float: left;

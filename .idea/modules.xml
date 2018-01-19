@@ -17,7 +17,8 @@
       <module fileurl="file://$PROJECT_DIR$/mmsns-common/mmsns-common-web/mmsns-common-web.iml" filepath="$PROJECT_DIR$/mmsns-common/mmsns-common-web/mmsns-common-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmsns-group/mmsns-group.iml" filepath="$PROJECT_DIR$/mmsns-group/mmsns-group.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmsns-modular/mmsns-modular.iml" filepath="$PROJECT_DIR$/mmsns-modular/mmsns-modular.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mmsns-modular/mmsns-modular-sqoop/mmsns-modular-sqoop.iml" filepath="$PROJECT_DIR$/mmsns-modular/mmsns-modular-sqoop/mmsns-modular-sqoop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-modular/mmsns-modular-api/mmsns-modular-api.iml" filepath="$PROJECT_DIR$/mmsns-modular/mmsns-modular-api/mmsns-modular-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mmsns-modular/mmsns-modular-recommend/mmsns-modular-recommend.iml" filepath="$PROJECT_DIR$/mmsns-modular/mmsns-modular-recommend/mmsns-modular-recommend.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmsns-news/mmsns-news.iml" filepath="$PROJECT_DIR$/mmsns-news/mmsns-news.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmsns-photo/mmsns-photo.iml" filepath="$PROJECT_DIR$/mmsns-photo/mmsns-photo.iml" />
       <module fileurl="file://$PROJECT_DIR$/mmsns-web/mmsns-web.iml" filepath="$PROJECT_DIR$/mmsns-web/mmsns-web.iml" />

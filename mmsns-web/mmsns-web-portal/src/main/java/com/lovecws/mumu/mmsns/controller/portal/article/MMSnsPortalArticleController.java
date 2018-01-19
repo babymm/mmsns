@@ -6,6 +6,8 @@ import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleCategoryEntity;
 import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleEntity;
 import com.lovecws.mumu.mmsns.article.service.MMSnsArticleCategoryService;
 import com.lovecws.mumu.mmsns.article.service.MMSnsArticleService;
+import com.lovecws.mumu.mmsns.modular.recommend.entity.RecommendTypeEnum;
+import com.lovecws.mumu.mmsns.modular.recommend.service.ModularRecommendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author babymm
@@ -31,6 +32,8 @@ public class MMSnsPortalArticleController {
     private MMSnsArticleService articleService;
     @Autowired(required = false)
     private MMSnsArticleCategoryService articleCategoryService;
+    @Autowired(required = false)
+    private ModularRecommendService recommendService;
 
     /**
      * 进入到文章列表页面
@@ -130,9 +133,11 @@ public class MMSnsPortalArticleController {
         //热门文章
         List<MMSnsArticleEntity> hotArticles = articleService.selectArticlePage(null, null, null, null, "read_count", false, 1, 5);
         request.setAttribute("hotArticles", hotArticles);
-        //最新文章
-        List<MMSnsArticleEntity> newsArticles = articleService.selectArticlePage(null, null, null, null, "article_date", false, 1, 5);
-        request.setAttribute("newsArticles", newsArticles);
+
+        //最新推荐 TODO
+        long[] recommendArticleIds = recommendService.recommend(RecommendTypeEnum.ARTICLE, articleId, 5f);
+        List<MMSnsArticleEntity> recommendArticles = articleService.getBatchArticleById(recommendArticleIds);
+        request.setAttribute("newsArticles", recommendArticles);
         return "/portal/article/detail";
     }
 }

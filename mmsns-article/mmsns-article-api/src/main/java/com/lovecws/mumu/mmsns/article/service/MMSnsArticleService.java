@@ -104,4 +104,6 @@ public interface MMSnsArticleService {
     public void updateArticleByCategoryId(String sysCategoryId, String userCategoryId, String articleStatus);
 
     public void deleteArticle(int articleId);
+
+    public List<MMSnsArticleEntity> getBatchArticleById(long[] recommendArticleIds);
 }

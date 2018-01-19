@@ -128,6 +128,102 @@
             <element id="module-output" name="mmsns-action-service" />
           </element>
           <element id="library" level="project" name="Maven: com.belerweb:pinyin4j:2.5.1" />
+          <element id="archive" name="mmsns-modular-recommend-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="mmsns-modular-recommend" />
+          </element>
+          <element id="library" level="project" name="Maven: org.apache.sqoop:sqoop-core:1.99.7" />
+          <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
+          <element id="library" level="project" name="Maven: org.apache.sqoop:connector-sdk:1.99.7" />
+          <element id="library" level="project" name="Maven: org.apache.sqoop:connector-sdk-hadoop:1.99.7" />
+          <element id="library" level="project" name="Maven: org.apache.sqoop:sqoop-client:1.99.7" />
+          <element id="library" level="project" name="Maven: javax.ws.rs:javax.ws.rs-api:2.0.1" />
+          <element id="library" level="project" name="Maven: org.apache.sqoop:sqoop-common:1.99.7" />
+          <element id="library" level="project" name="Maven: com.googlecode.json-simple:json-simple:1.1" />
+          <element id="library" level="project" name="Maven: commons-cli:commons-cli:1.2" />
+          <element id="library" level="project" name="Maven: joda-time:joda-time:2.4" />
+          <element id="library" level="project" name="Maven: org.apache.sqoop.repository:sqoop-repository-common:1.99.7" />
+          <element id="library" level="project" name="Maven: org.apache.crunch:crunch-core:0.15.0" />
+          <element id="library" level="project" name="Maven: org.apache.avro:avro:1.7.7" />
+          <element id="library" level="project" name="Maven: com.thoughtworks.paranamer:paranamer:2.3" />
+          <element id="library" level="project" name="Maven: org.xerial.snappy:snappy-java:1.0.5" />
+          <element id="library" level="project" name="Maven: org.apache.avro:avro-mapred:hadoop2:1.7.7" />
+          <element id="library" level="project" name="Maven: org.apache.parquet:parquet-avro:1.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.parquet:parquet-column:1.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.parquet:parquet-common:1.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.parquet:parquet-encoding:1.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.parquet:parquet-hadoop:1.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.parquet:parquet-jackson:1.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.parquet:parquet-format:2.3.0-incubating" />
+          <element id="library" level="project" name="Maven: it.unimi.dsi:fastutil:6.5.7" />
+          <element id="library" level="project" name="Maven: org.javassist:javassist:3.16.1-GA" />
+          <element id="library" level="project" name="Maven: org.apache.mahout:mahout-core:0.9.0.2.1.7.0-784" />
+          <element id="library" level="project" name="Maven: org.apache.mahout:mahout-math:0.9.0.2.1.7.0-784" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-core:4.6.1" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-analyzers-common:4.6.1" />
+          <element id="library" level="project" name="Maven: org.apache.mahout.commons:commons-cli:2.0-mahout" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-math3:3.2" />
+          <element id="library" level="project" name="Maven: org.apache.solr:solr-commons-csv:3.5.0" />
+          <element id="library" level="project" name="Maven: org.apache.hadoop:hadoop-common:2.8.1" />
+          <element id="library" level="project" name="Maven: xmlenc:xmlenc:0.52" />
+          <element id="library" level="project" name="Maven: commons-net:commons-net:3.1" />
+          <element id="library" level="project" name="Maven: org.mortbay.jetty:jetty:6.1.26" />
+          <element id="library" level="project" name="Maven: org.mortbay.jetty:jetty-util:6.1.26" />
+          <element id="library" level="project" name="Maven: org.mortbay.jetty:jetty-sslengine:6.1.26" />
+          <element id="library" level="project" name="Maven: javax.servlet.jsp:jsp-api:2.1" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-core:1.9" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-json:1.9" />
+          <element id="library" level="project" name="Maven: org.codehaus.jettison:jettison:1.1" />
+          <element id="library" level="project" name="Maven: com.sun.xml.bind:jaxb-impl:2.2.3-1" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-jaxrs:1.8.3" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-server:1.9" />
+          <element id="library" level="project" name="Maven: asm:asm:3.1" />
+          <element id="library" level="project" name="Maven: net.java.dev.jets3t:jets3t:0.9.0" />
+          <element id="library" level="project" name="Maven: com.jamesmurty.utils:java-xmlbuilder:0.4" />
+          <element id="library" level="project" name="Maven: commons-configuration:commons-configuration:1.6" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils-core:1.8.0" />
+          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:2.5.0" />
+          <element id="library" level="project" name="Maven: org.apache.curator:curator-client:2.7.1" />
+          <element id="library" level="project" name="Maven: org.apache.curator:curator-recipes:2.7.1" />
+          <element id="library" level="project" name="Maven: com.google.code.findbugs:jsr305:3.0.0" />
+          <element id="library" level="project" name="Maven: org.apache.htrace:htrace-core4:4.0.1-incubating" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-compress:1.4.1" />
+          <element id="library" level="project" name="Maven: org.tukaani:xz:1.0" />
+          <element id="library" level="project" name="Maven: org.apache.hadoop:hadoop-annotations:2.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.hadoop:hadoop-auth:2.8.1" />
+          <element id="library" level="project" name="Maven: com.nimbusds:nimbus-jose-jwt:3.9" />
+          <element id="library" level="project" name="Maven: net.jcip:jcip-annotations:1.0" />
+          <element id="library" level="project" name="Maven: net.minidev:json-smart:1.1.1" />
+          <element id="library" level="project" name="Maven: org.apache.directory.server:apacheds-kerberos-codec:2.0.0-M15" />
+          <element id="library" level="project" name="Maven: org.apache.directory.server:apacheds-i18n:2.0.0-M15" />
+          <element id="library" level="project" name="Maven: org.apache.directory.api:api-asn1-api:1.0.0-M20" />
+          <element id="library" level="project" name="Maven: org.apache.directory.api:api-util:1.0.0-M20" />
+          <element id="library" level="project" name="Maven: org.apache.curator:curator-framework:2.7.1" />
+          <element id="library" level="project" name="Maven: org.apache.hadoop:hadoop-hdfs:2.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.hadoop:hadoop-hdfs-client:2.8.1" />
+          <element id="library" level="project" name="Maven: com.squareup.okhttp:okhttp:2.4.0" />
+          <element id="library" level="project" name="Maven: com.squareup.okio:okio:1.4.0" />
+          <element id="library" level="project" name="Maven: commons-daemon:commons-daemon:1.0.13" />
+          <element id="library" level="project" name="Maven: io.netty:netty-all:4.0.23.Final" />
+          <element id="library" level="project" name="Maven: org.fusesource.leveldbjni:leveldbjni-all:1.8" />
+          <element id="library" level="project" name="Maven: org.apache.hadoop:hadoop-mapreduce-client-core:2.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.hadoop:hadoop-yarn-common:2.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.hadoop:hadoop-yarn-api:2.8.1" />
+          <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.2.2" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-client:1.9" />
+          <element id="library" level="project" name="Maven: com.google.inject:guice:3.0" />
+          <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: com.sun.jersey.contribs:jersey-guice:1.9" />
+          <element id="library" level="project" name="Maven: com.google.inject.extensions:guice-servlet:3.0" />
+          <element id="library" level="project" name="Maven: org.apache.hadoop:hadoop-mapreduce-client-common:2.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.hadoop:hadoop-yarn-client:2.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.hadoop:hadoop-yarn-server-common:2.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.hadoop:hadoop-mapreduce-client-jobclient:2.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.hadoop:hadoop-mapreduce-client-shuffle:2.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.hadoop:hadoop-yarn-server-nodemanager:2.8.1" />
+          <element id="archive" name="mmsns-modular-api-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="mmsns-modular-api" />
+          </element>
         </element>
       </element>
       <element id="directory" name="META-INF">

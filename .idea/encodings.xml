@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$//mmsns-modular" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-action" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-action/mmsns-action-api" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-action/mmsns-action-service" charset="UTF-8" />
@@ -16,7 +17,8 @@
     <file url="file://$PROJECT_DIR$/mmsns-common/mmsns-common-web" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-group" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-modular" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mmsns-modular/mmsns-modular-sqoop" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mmsns-modular/mmsns-modular-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mmsns-modular/mmsns-modular-recommend" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-news" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-photo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mmsns-web" charset="UTF-8" />

@@ -108,7 +108,7 @@
             </ul>
         </div>
         <div class="category-article">
-            <h2>最新文章</h2><hr>
+            <h2>最新推荐</h2><hr>
             <ul>
                 #foreach($newsArticle in $newsArticles)
                     <li>

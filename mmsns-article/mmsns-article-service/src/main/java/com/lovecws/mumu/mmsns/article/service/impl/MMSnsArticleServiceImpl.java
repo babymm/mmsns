@@ -4,7 +4,6 @@ import com.lovecws.mumu.core.enums.PublicEnum;
 import com.lovecws.mumu.core.page.PageBean;
 import com.lovecws.mumu.core.page.PageParam;
 import com.lovecws.mumu.mmsns.article.dao.MMSnsArticleDao;
-import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleCategoryEntity;
 import com.lovecws.mumu.mmsns.article.entity.MMSnsArticleEntity;
 import com.lovecws.mumu.mmsns.article.service.MMSnsArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -154,5 +153,12 @@ public class MMSnsArticleServiceImpl implements MMSnsArticleService {
         articleEntity.setArticleId(articleId);
         articleEntity.setArticleStatus(PublicEnum.DELETE.value());
         updateArticle(articleEntity);
+    }
+
+    @Override
+    public List<MMSnsArticleEntity> getBatchArticleById(final long[] recommendArticleIds) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("articleIds", recommendArticleIds);
+        return articleDao.selectList("getBatchArticleById", paramMap);
     }
 }
