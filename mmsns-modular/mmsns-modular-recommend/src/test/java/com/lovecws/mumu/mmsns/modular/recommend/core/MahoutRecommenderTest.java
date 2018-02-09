@@ -7,7 +7,7 @@ import org.junit.Test;
  * @author babymm
  * @version 1.0-SNAPSHOT
  * @Description: mahout推荐测试
- * @date 2018-01-18 16:07
+ * @date 2018-01-18 16:07.
  */
 public class MahoutRecommenderTest {
 
