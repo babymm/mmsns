@@ -1,4 +1,4 @@
-<title>baby慕慕SNS个人博客管理系统-群组</title>
+<title>群组-MMSNS博客系统</title>
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="${request.getContextPath()}/resources/portal/css/group/group.css">
 <link rel="stylesheet" href="${request.getContextPath()}/plugins/font-awesome/css/font-awesome.min.css">
@@ -8,13 +8,6 @@
         <a href="/group">
             <h1>我的群组</h1>
         </a>
-    </div>
-    <div class="search-input">
-        <form id="searchForm" action="" class="box vertical sec-search" autocomplete="off">
-            <input type="hidden" name="scope" value="blog">
-            <input class="search-text" type="text" name="q" placeholder="请输入搜索内容">
-            <span class="ic-search box vertical" onclick=""></span>
-        </form>
     </div>
 </div>
 <div class="group-body">

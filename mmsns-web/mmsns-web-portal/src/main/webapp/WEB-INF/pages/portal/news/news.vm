@@ -9,75 +9,44 @@
             <h1>我的资讯</h1>
         </a>
     </div>
-    <div class="search-input">
-        <form id="searchForm" action="" class="box vertical sec-search" autocomplete="off">
-            <input type="hidden" name="scope" value="blog">
-            <input class="search-text" type="text" name="q" placeholder="请输入搜索内容">
-            <span class="ic-search box vertical" onclick=""></span>
-        </form>
-    </div>
 </div>
 <div class="news-body">
     <div class="news-content">
         <div class="layui-row">
-            #set($newss=[0 .. 8])
+            #set($newss=[0 .. 6])
             #foreach($news in $newss)
-                <div class="maincontent layui-col-xs12 layui-col-sm6 layui-col-md6">
-                    <div class="grid-demo">
-                        <div class="news-header">
-                            <h2>JAVA工程师</h2>
-                            <a href="/news/classify" style="margin-right: 20px">更多</a>
+                <div class="maincontent layui-col-xs12 layui-col-sm12 layui-col-md12">
+                    <div class="grid-left">
+                        <div class="left-header">
+                            <a href="/news/music"><h3>娱乐</h3></a>
                         </div>
-                        <div class="news-article1">
-                            <div class="news-image"><a href="/news/detail/1"><img src="http://www.xiaomoc.top/group1/M00/00/02/eE0NXVkjpJeAVYsGAAGfKZ7BqmE159.png" width="180" height="120"></a></div>
-                            <div class="news-content">
-                                <a href="/news/detail/1"style="display: block;float: left;min-width: ">
-                                    <span><h3 class="text-overflow" style="margin-right: 20px;">千万富翁当共享单车维运工 中国富豪退休</h3></span>
-                                    <span style="margin-top: 10px;margin-right: 20px">退休富豪们，也该学习这种士绅精神。走出对财富的痴迷、走出无所事事，做慈善、参与公共事务，履行精英群体该负担的社会义务。</span>
+                        <div class="left-content">
+                            <ul class="content-ul">
+                                <li class="text-overflow"><a target="_self" href="/news/detail/1">《偶像练习生》学员一顿火锅捞 道出背后辛酸</a></li>
+                                <li class="text-overflow"><a target="_self" href="/news/detail/1">贝克汉姆被小七的十字绣弄晕了，贝嫂在一边悠闲地健身敷面膜</a></li>
+                                <li class="text-overflow"><a target="_self" href="/news/detail/1">《唐探2》首度公开发声：《红海行动》票房存在猫腻！</a></li>
+                                <li class="text-overflow"><a target="_self" href="/news/detail/1">当红男星未P图照片流出！杨洋竟是原图帅，张艺兴烟熏妆辣眼睛！</a></li>
+                                <li class="text-overflow"><a target="_self" href="/news/detail/1">《红海行动》中的这些镜头你看懂了吗？不知道这些你就看不懂电影</a></li>
+                                <li class="text-overflow"><a target="_self" href="/news/detail/1">平昌冬奥会上的这张照片火了！网友直言：快给摄影师发奖金！</a></li>
+                                <li class="text-overflow"><a target="_self" href="/news/detail/1">她17岁一脱成名，为情狠心抛下儿子跳楼身亡，如..</a></li>
+                                <li class="text-overflow"><a target="_self" href="/news/detail/1">她17岁一脱成名，为情狠心抛下儿子跳楼身亡，如..</a></li>
+                                <li class="text-overflow"><a target="_self" href="/news/detail/1">她17岁一脱成名，为情狠心抛下儿子跳楼身亡，如..她17岁一脱成名，为情狠心抛下儿子跳楼身亡，如.</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="grid-right">
+                        #set($newsimgs=[0 .. 5])
+                        #foreach($newsimg in $newsimgs)
+                            <div class="right-content layui-col-xs4 layui-col-sm4 layui-col-md4">
+                                <a href="/action/detail/" target="_self">
+                                    <img src="https://p1.ssl.cdn.btime.com/t014040cfc1209cc0d4.jpg">
+                                    <span class="newstitle">在阅读理解这件事上，AI已甩人类几条街?</span>
                                 </a>
                             </div>
-                        </div>
-                        <div class="news-article">
-                            <a href="/news/detail/1">
-                                <span class="artilce-title"><h3>千万富翁当共享单车维运工 中国富豪退休</h3></span>
-                                <span class="article-date" style="margin-right: 20px">2017-12-12</span>
-                            </a>
-                        </div>
-                        <div class="news-article">
-                            <a href="/news/detail/1">
-                                <span class="artilce-title"><h3>千万富翁当共享单车维运工 中国富豪退休</h3></span>
-                                <span class="article-date" style="margin-right: 20px">2017-12-12</span>
-                            </a>
-                        </div>
+                        #end
                     </div>
                 </div>
             #end
-        </div>
-    </div>
-    <div class="news-category">
-        <div class="news-recommend">
-            <h2>新闻推荐</h2>
-            <ul>
-                #set($recommendnews=[0 .. 9])
-                #foreach($recommendnew in $recommendnews)
-                    <li>
-                        <div class="news-title"><a href="/news/detail/1"><h3>千万富翁当共享单车维运工 中国富豪退休</h3></a></div>
-                        <div class="news-media">阅读 214084 点赞 1</div>
-                    </li>
-                #end
-            </ul>
-        </div>
-        <div class="news-hot">
-            <h2>热门新闻</h2>
-            <ul>
-                #set($hotnews=[0 .. 9])
-                #foreach($hotnew in $hotnews)
-                    <li>
-                        <div class="news-title"><a href="/news/detail/1"><h3>千万富翁当共享单车维运工 中国富豪退休</h3></a></div>
-                        <div class="news-media">阅读 214084 点赞 1</div>
-                    </li>
-                #end
-            </ul>
         </div>
     </div>
 </div>

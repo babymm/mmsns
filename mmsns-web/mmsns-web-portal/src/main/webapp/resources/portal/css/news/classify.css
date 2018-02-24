@@ -53,6 +53,15 @@ body{
     margin-top: 20px;
     height: 90px;
 }
+.newslist-body .newslist-content ul li .news-images{
+    width: 100%;
+    float: left;
+}
+.newslist-body .newslist-content ul li .news-images img{
+    margin-right: 10px;
+    width:98%;
+    height: 200px;
+}
 .newslist-body .newslist-content ul li .news-info{
     float: left;
     width: 100%;
