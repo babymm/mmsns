@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="mumu-modular-streaming:war">
+    <output-path>$PROJECT_DIR$/mmsns-modular/mumu-modular-streaming/target</output-path>
+    <root id="archive" name="mumu-modular-streaming.war">
+      <element id="artifact" artifact-name="mumu-modular-streaming:war exploded" />
+    </root>
+  </artifact>
+</component>

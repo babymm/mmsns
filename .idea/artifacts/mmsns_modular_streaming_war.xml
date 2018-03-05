@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="mmsns-modular-streaming:war">
+    <output-path>$PROJECT_DIR$/mmsns-modular/mmsns-modular-streaming/target</output-path>
+    <root id="archive" name="mmsns-modular-streaming-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="mmsns-modular-streaming:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -15,6 +15,7 @@
     <modules>
         <module>mmsns-modular-recommend</module>
         <module>mmsns-modular-api</module>
+        <module>mmsns-modular-streaming</module>
     </modules>
 
     <properties>

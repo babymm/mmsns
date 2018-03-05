@@ -33,6 +33,7 @@
                 <value>classpath:properties/email.properties</value>
                 <value>classpath:properties/sms.properties</value>
                 <value>classpath:properties/motan.properties</value>
+                <value>classpath:properties/kafka.properties</value>
             </list>
         </property>
     </bean>

@@ -265,12 +265,19 @@
             <groupId>com.weibo</groupId>
             <artifactId>motan-registry-zookeeper</artifactId>
         </dependency>
-        <!-- dependencies blow were only needed for spring-based features -->
         <dependency>
             <groupId>com.weibo</groupId>
             <artifactId>motan-springsupport</artifactId>
         </dependency>
 
+        <!-- kafka消息组件 -->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka_2.11</artifactId>
+            <version>0.11.0.0</version>
+        </dependency>
+
+        <!-- 自定义组件 -->
         <dependency>
             <groupId>com.lovecws.mumu</groupId>
             <artifactId>mumu-core</artifactId>

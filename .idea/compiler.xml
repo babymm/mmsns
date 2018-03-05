@@ -19,6 +19,7 @@
         <module name="mmsns-modular-api" />
         <module name="mmsns-modular-recommend" />
         <module name="mmsns-modular-sqoop" />
+        <module name="mmsns-modular-streaming" />
         <module name="mmsns-news" />
         <module name="mmsns-photo" />
         <module name="mmsns-picture" />
@@ -27,6 +28,7 @@
         <module name="mmsns-web-root" />
         <module name="mmsns-weibo" />
         <module name="mumu-modular-recommend" />
+        <module name="mumu-modular-streaming" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -49,6 +51,7 @@
       <module name="mmsns-modular-api" target="1.8" />
       <module name="mmsns-modular-recommend" target="1.8" />
       <module name="mmsns-modular-sqoop" target="1.8" />
+      <module name="mmsns-modular-streaming" target="1.8" />
       <module name="mmsns-news" target="1.8" />
       <module name="mmsns-photo" target="1.8" />
       <module name="mmsns-picture" target="1.8" />
@@ -57,6 +60,7 @@
       <module name="mmsns-web-portal" target="1.8" />
       <module name="mmsns-web-root" target="1.8" />
       <module name="mumu-modular-recommend" target="1.8" />
+      <module name="mumu-modular-streaming" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

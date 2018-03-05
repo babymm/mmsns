@@ -2,6 +2,7 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/mmsns-common/mmsns-common-web" />
+    <file type="web" url="file://$PROJECT_DIR$/mmsns-modular/mmsns-modular-streaming" />
     <file type="web" url="file://$PROJECT_DIR$/mmsns-web/mmsns-web-manager" />
     <file type="web" url="file://$PROJECT_DIR$/mmsns-web/mmsns-web-portal" />
     <file type="web" url="file://$PROJECT_DIR$/mmsns-web/mmsns-web-root" />
